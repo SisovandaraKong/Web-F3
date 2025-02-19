@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+
+  --color-primary: #0a2473;
+  --color-primary-hover: #2b407f;
+  --color-secondary: #eab308;
+  --color-secondary-hover: #deb229;
+  --color-accent: #e63946;
+  --color-accent-hover: #db515b;
+  --color-white-background: #f9fafb;
+  --color-black-background: #111827;
+  --color-white-text: #f9fafb;
+  --color-black-text: #111827;
+  --color-description: #9ca3af;
+
+  /* Font size */
+
+  --text-MainTitle: 42px;
+  --text-Sub2Title: 30px;
+  --text-Sub3Title: 22px;
+  --text-IconTitle: 18px;
+  --text-NavbarText: 16px;
+  --text-TabText: 16px;
+  --text-MainButtonText: 22px;
+  --text-MainBodyText: 16px;
+  --text-SubBodyText: 14px;
+  --text-CardMainTitle: 22px;
+  --text-CardSubTitle: 20px;
+  --text-Heading: 75px;
+  --text-SubButtonText: 14px;
+
+  /* Container */
+  --container-margin: 0 auto;
+}
