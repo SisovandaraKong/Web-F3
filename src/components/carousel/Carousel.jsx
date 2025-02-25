@@ -44,6 +44,21 @@ const Carousel = () => {
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
+      {slides.map((index) => (
+        <div
+          key={`decoration-${index}`}
+          className={`
+            absolute z-10 
+            bg-blue-900
+            h-24 w-full 
+            top-12 -right-48
+            rotate-45
+            transform
+            transition-all duration-700 ease-in-out
+            ${index === currentSlide ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'}
+          `}
+        />
+      ))}
       <div className="absolute inset-0 w-full h-full">
         {slides.map((slide, index) => (
           <img
@@ -61,14 +76,14 @@ const Carousel = () => {
         <h2
           data-aos="fade-left"
           key={currentSlide}
-          className="text-4xl md:text-5xl font-bold">
+          className="text-4xl md:text-5xl font-bold z-20">
           {slides[currentSlide].title}
         </h2>
         <p
           data-aos="fade-left"
           data-aos-delay="200"
           key={`sub-${currentSlide}`}
-          className="mt-2 text-lg md:text-xl">
+          className="mt-2 text-lg md:text-xl z-20 ">
           {slides[currentSlide].subtitle}
         </p>
         <button
@@ -82,5 +97,4 @@ const Carousel = () => {
     </div>
   );
 };
-
 export default Carousel;
