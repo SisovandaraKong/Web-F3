@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-export default function Navbar() {
+import { LuBotMessageSquare } from "react-icons/lu";
+import { VscAccount } from "react-icons/vsc";
+export default function NavbarLogin() {
   const [darkMode, setDarkMode] = useState(false);
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -19,11 +21,10 @@ export default function Navbar() {
       localStorage.setItem("theme", "light");
     }
   };
-
   return (
     <>
-      <nav className="bg-blue-900 border-gray-200 dark:bg-gray-900 dark:border-gray-700 min-w-sm">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto md:py-2 md:px-3 sm:py-2 sm:px-3">
+      <nav className="bg-blue-900 border-gray-200 dark:bg-gray-900 dark:border-gray-700 ">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2 px-3">
           <a
             href="#"
             className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -78,7 +79,7 @@ export default function Navbar() {
                   data-dropdown-toggle="dropdownNavbar"
                   className="flex items-center justify-between w-full py-2 px-3 text-white hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-200 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                 >
-                  Job{" "}
+                  Jobs{" "}
                   <svg
                     className="w-2.5 h-2.5 ms-2.5"
                     aria-hidden="true"
@@ -120,7 +121,7 @@ export default function Navbar() {
                         type="button"
                         className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                       >
-                        Job
+                        Dropdown
                         <svg
                           className="w-2.5 h-2.5 ms-2.5"
                           aria-hidden="true"
@@ -215,64 +216,57 @@ export default function Navbar() {
                   About Us
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-hover md:p-0 dark:text-white md:dark:hover:text-primary-hover dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
-                  Get Help
-                </a>
-              </li>
             </ul>
           </div>
+          {/*to do darkmode languages and account */}
           <div className="flex items-center gap-10">
-            {/* to do dark mode*/}
-            <div className=" flex items-center gap-5">
-            <button
-              onClick={toggleDarkMode}
-              className="text-secondary hover:text-secondary-hover duration-1000"
-            >
-              {darkMode ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6 "
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6 "
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                  />
-                </svg>
-              )}
-            </button>
+            <div className="flex items-center gap-5">
+              <button
+                onClick={toggleDarkMode}
+                className="text-secondary hover:text-secondary-hover "
+              >
+                {darkMode ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6 "
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6 "
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                    />
+                  </svg>
+                )}
+              </button>
+
               <a href="#">
-                <button className="bg-secondary px-5 py-1 rounded-lg hover:bg-se hover:data-aos=zoom-out-up">
-                  Sign in
-                </button>
+                <LuBotMessageSquare className="size-6 text-secondary hover:text-secondary-hover" />
               </a>
             </div>
-            
+
             <div className="">
               <ul className="flex ">
+                {/* to do dark mode*/}
+
                 <li>
                   <a href="">
                     <button className="flex flex-col items-center gap-1">
@@ -300,6 +294,9 @@ export default function Navbar() {
                 </li>
               </ul>
             </div>
+              <a href="#">
+                <VscAccount className="size-6 text-white-text " />
+              </a>
           </div>
         </div>
       </nav>
