@@ -44,12 +44,12 @@ const Carousel = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-   <>
-     <div className="relative w-full h-screen overflow-hidden">
-      {slides.map((slide, index) => (
-        <div
-          key={`decoration-${slide}`}
-          className={`
+    <>
+      <div className="relative w-full h-screen overflow-hidden">
+        {slides.map((slide, index) => (
+          <div
+            key={`decoration-${slide}`}
+            className={`
             absolute
             bg-gradient-to-b from-primary/40 
             z-10
@@ -63,12 +63,12 @@ const Carousel = () => {
                 : "opacity-0 translate-x-full"
             }
           `}
-        />
-      ))}
-      {slides.map((slide, index) => (
-        <div
-          key={`decoration-${slide}`}
-          className={`
+          />
+        ))}
+        {slides.map((slide, index) => (
+          <div
+            key={`decoration-${slide}`}
+            className={`
             absolute
             bg-gradient-to-b from-primary/70  
             z-10
@@ -82,12 +82,12 @@ const Carousel = () => {
                 : "opacity-0 translate-x-full"
             }
           `}
-        />
-      ))}
-      {slides.map((slide, index) => (
-        <div
-          key={`decoration-${slide}`}
-          className={`
+          />
+        ))}
+        {slides.map((slide, index) => (
+          <div
+            key={`decoration-${slide}`}
+            className={`
             absolute
             bg-gradient-to-b from-primary/100
             z-10
@@ -101,15 +101,15 @@ const Carousel = () => {
                 : "opacity-0 translate-x-full"
             }
           `}
-        />
-      ))}
-      <div className="absolute inset-0 w-full h-full">
-        {slides.map((slide, index) => (
-          <img
-            key={`image-${index}`}
-            src={slide.image}
-            alt="Slide"
-            className={`
+          />
+        ))}
+        <div className="absolute inset-0 w-full h-full">
+          {slides.map((slide, index) => (
+            <img
+              key={`image-${index}`}
+              src={slide.image}
+              alt="Slide"
+              className={`
               absolute inset-0 w-full h-[100vh]
               object-cover
               transition-all duration-700 ease-in-out
@@ -119,15 +119,15 @@ const Carousel = () => {
                   : "opacity-0 scale-105"
               }
             `}
-          />
-        ))}
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
-      <div className="absolute inset-0 flex flex-col z-20 justify-center items-start px-5 md:px-20  text-white">
-        {slides.map((slide, index) => (
-          <div
-            key={`content-${index}`}
-            className={`
+            />
+          ))}
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
+        <div className="absolute inset-0 flex flex-col z-20 justify-center items-start px-5 md:px-20 xl:px-36 text-white">
+          {slides.map((slide, index) => (
+            <div
+              key={`content-${index}`}
+              className={`
               transition-all duration-700 ease-in-out 
               absolute 
               ${
@@ -136,19 +136,18 @@ const Carousel = () => {
                   : "opacity-0 -translate-x-full"
               }
             `}>
-            <h2 className="text-3xl md:text-6xl font-bold relative z-20  xl:w-[1000px] ">
-              {slide.title}
-            </h2>
-            <p className="mt-2 text-lg md:text-xl relative z-20">
-              {slide.subtitle}
-            </p>
-            <Button text="Start" />
-          </div>
-        ))}
+              <h2 className="text-3xl md:text-6xl font-bold relative z-20  xl:w-[1000px] ">
+                {slide.title}
+              </h2>
+              <p className="mt-2 text-lg md:text-xl relative z-20">
+                {slide.subtitle}
+              </p>
+              <Button text="Start" />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-   </>
+    </>
   );
 };
-
 export default Carousel;

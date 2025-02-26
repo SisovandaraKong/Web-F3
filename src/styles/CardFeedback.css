@@ -1,0 +1,44 @@
+/* CardFeedback.css */
+.feedback-container {
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.feedback-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.feedback-card:hover {
+  transform: translateY(-5px);
+}
+
+.feedback-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.feedback-card .role {
+  font-style: italic;
+  color: #555;
+  margin: 0 0 15px;
+}
+
+.feedback-card .comment {
+  font-size: 1em;
+  line-height: 1.5;
+  color: #333;
+}

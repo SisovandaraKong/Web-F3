@@ -3,6 +3,7 @@ import Carousel from "../components/carousel/Carousel";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import CardHowerEffec from "../components/cards/CardHowerEffec";
 
 export default function HomePage() {
   useEffect(() => {
@@ -10,10 +11,14 @@ export default function HomePage() {
   }, []);
   return (
     <>
-      <div className="flex justify-center items-center min-h-screen bg-gray-100">
-        <Carousel />
-      </div>
-      <h1 className="text-black text-7xl">Home page</h1>
+      <section>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+          <Carousel />
+        </div>
+      </section>
+      <section>
+        <CardHowerEffec />
+      </section>
     </>
   );
 }
