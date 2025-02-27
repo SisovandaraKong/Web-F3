@@ -51,7 +51,7 @@ export default function NavbarLogin() {
       name: "ភាសារខ្មែរ",
       code: "km",
       flagUrl:
-        "data:image/png;base64,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",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/640px-Flag_of_Cambodia.svg.png"
     },
   ];
 
@@ -281,15 +281,19 @@ export default function NavbarLogin() {
                   <React.Fragment key={lang.code}>
                     <li>
                       <a href="#">
-                        <button className="flex flex-col items-center gap-1">
-                          <img
+                        <button className="flex flex-col items-center gap-[2px]">
+                        <div className="w-10 h-5">
+                        <img
                             src={lang.flagUrl}
-                            className="h-3 mt-1"
+                            className="h-full w-full object-cover mt-1"
                             alt={`${lang.name} flag`}
                           />
-                          <span className="text-sm text-white ">
+                        </div>
+                        <div className="h-5 w-14 flex items-center">
+                        <span className="text-xs w-full text-white mt-1">
                             {lang.name}
                           </span>
+                        </div>
                         </button>
                       </a>
                     </li>

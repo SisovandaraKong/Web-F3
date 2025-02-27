@@ -7,7 +7,7 @@ const slides = [
     subtitle:
       "We place you at the centre of international networks to advance your strategic interests.",
     buttonText: "Our Team",
-    image: "https://www.workandlearnindiana.com/assets/images/home-hero.jpg",
+    image: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?cs=srgb&dl=pexels-fauxels-3183197.jpg&fm=jpg",
   },
   {
     title: "Scale Your Business With Custom Web Solutions",
@@ -15,7 +15,7 @@ const slides = [
       "From responsive websites to e-commerce platforms, we create the perfect digital solution for your business needs.",
     buttonText: "Our Services",
     image:
-      "https://asset.gallup.com/p/WORKPLACEV9CMS/f10390ee-e9b1-461a-97d6-b82169fa25c0.jpg",
+      "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
   },
   {
     title: "Modern Web Development That Converts",
