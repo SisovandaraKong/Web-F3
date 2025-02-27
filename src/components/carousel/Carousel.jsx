@@ -51,7 +51,7 @@ const Carousel = () => {
             key={`decoration-${slide}`}
             className={`
             absolute
-            bg-gradient-to-b from-primary/40 
+            bg-gradient-to-b from-primary-hover/40 
             z-10
             h-[200vh] w-[100px]
             left-[450px] -top-30
@@ -123,7 +123,7 @@ const Carousel = () => {
           ))}
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
-        <div className="absolute inset-0 flex flex-col z-20 justify-center items-start px-5 md:px-20 xl:px-36 text-white">
+        <div className="absolute inset-0 flex flex-col z-20 justify-center items-start px-5 md:px-20 xl:px-32 text-white">
           {slides.map((slide, index) => (
             <div
               key={`content-${index}`}
@@ -139,10 +139,10 @@ const Carousel = () => {
               <h2 className="text-3xl md:text-6xl font-bold relative z-20  xl:w-[1000px] ">
                 {slide.title}
               </h2>
-              <p className="mt-2 text-lg md:text-xl relative z-20">
+              <p className="mt-2 text-lg md:text-xl relative z-20 mb-4">
                 {slide.subtitle}
               </p>
-              <Button text="Start" />
+              <Button text={slide.buttonText} />
             </div>
           ))}
         </div>
