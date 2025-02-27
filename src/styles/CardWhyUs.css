@@ -1,0 +1,77 @@
+.relative {
+    position: relative;
+  }
+  
+  .absolute {
+    position: absolute;
+  }
+  
+  .bg-gradient-to-r {
+    background: linear-gradient(to right, #fbbf24, #ec4899, #34d399);
+  }
+  
+  .shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rounded-xl {
+    border-radius: 0.75rem;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .h-full {
+    height: 100%;
+  }
+  
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+  
+  .opacity-30 {
+    opacity: 0.3;
+  }
+  
+  .blur-lg {
+    filter: blur(1rem);
+  }
+  
+  .p-9 {
+    padding: 2.25rem;
+  }
+  
+  .text-gray-400 {
+    color: #9ca3af;
+  }
+  
+  .text-gray-900 {
+    color: #111827;
+  }
+  
+  .text-gray-600 {
+    color: #4b5563;
+  }
+  
+  .mt-6 {
+    margin-top: 1.5rem;
+  }
+  
+  .mt-10 {
+    margin-top: 2.5rem;
+  }
+  
+  .font-bold {
+    font-weight: 700;
+  }
+  
+  .text-base {
+    font-size: 1rem;
+  }
+  
+  /* Hover effect */
+  .relative:hover .bg-gradient-to-r {
+    opacity: 0.6;
+  }
+  
