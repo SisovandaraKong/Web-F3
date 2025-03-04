@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { FiSun, FiPlus, FiChevronDown, FiSettings, FiSend, FiPaperclip, FiFileText, FiUser } from "react-icons/fi"
+import { FiPlus, FiChevronDown, FiSettings, FiSend, FiPaperclip, FiFileText, FiUser } from "react-icons/fi"
 import { CiTextAlignRight } from "react-icons/ci";
-import { BsListUl, BsClipboard } from "react-icons/bs"
+import { BsClipboard } from "react-icons/bs"
 
 const ChatbotPage = () => {
   const [chatInput, setChatInput] = useState("")
