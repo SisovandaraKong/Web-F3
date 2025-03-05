@@ -9,7 +9,7 @@ export default function CardOurMentor() {
   return (
     <>
       <div className="mt-15 grid grid-cols-1 md:grid-cols-2 px-36 gap-10">
-        <div className="max-w-sm dark:bg-amber-50 bg-amber-50 rounded-lg shadow-sm dark:bg-f9fafb p-5 ">
+        <div data-aos="fade-right" className="max-w-sm dark:bg-amber-50 bg-amber-50 rounded-lg shadow-sm dark:bg-f9fafb p-5 ">
           <div className="flex justify-center items-center ">
             <h1 className="text-4xl font-bold text-blue-900 relative inline-block">
               Kay Keo
@@ -29,7 +29,7 @@ export default function CardOurMentor() {
             <MdOutlineMailOutline />
           </div>
         </div>
-        <div className="max-w-sm dark:bg-amber-50 bg-amber-50 rounded-lg shadow-sm dark:bg-f9fafb p-5 ">
+        <div data-aos="fade-left" className="max-w-sm dark:bg-amber-50 bg-amber-50 rounded-lg shadow-sm dark:bg-f9fafb p-5 ">
           <div className="flex justify-center items-center ">
             <h1 className="text-4xl font-bold text-blue-900 relative inline-block">
               Proeung Chiso

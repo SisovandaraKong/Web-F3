@@ -5,7 +5,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 
 export default function CardContactUs() {
   return (
-    <div className="px-10 flex flex-col md:flex-row items-center justify-between mx-auto p-6 bg-amber-50 rounded-lg shadow-md dark:bg-amber-50">
+    <div className=" px-10 flex flex-col md:flex-row items-center justify-between mx-auto p-6 bg-amber-50 rounded-lg shadow-md dark:bg-amber-50">
       <div className="mb-6 md:mb-0">
       <h2 className="text-MainTitle font-bold text-primary mb-4 underline underline-offset-9 decoration-secondary">
               Contact Us

@@ -2,7 +2,7 @@ import React from "react";
 export default function CardService() {
   return (
     <>
-      <div className="min-w-80">
+      <div className="min-w-md flex flex-col items-center w-fit ">
       <div className="mt-15 grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className=" bg-amber-50 border border-gray-200 rounded-lg shadow-sm py-5  text-center p-10">
           <h3 className="text-CardMainTitle font-bold mx-4 text-primary mt-3">

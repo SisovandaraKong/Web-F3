@@ -13,7 +13,7 @@ export default function AboutUsPage() {
   return (
     <>
       <main>
-        <div className="min-w-80">
+        <div className="">
           <section className="px-36 relative bg-[url(https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2uQRrnlUBwOoqlNbcQSpYr/a4fbb0dbc1a6b5ba696410ff091039a8/GettyImages-2170485830.jpg?w=1500&h=680&q=60&fit=fill&f=faces&fm=jpg&fl=progressive&auto=format%2Ccompress&dpr=1&w=1000)] bg-cover bg-center bg-no-repeat">
             <div className="absolute inset-0 bg-gray-900/75 sm:bg-transparent sm:from-gray-900/95 sm:to-gray-900/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
 
@@ -44,7 +44,7 @@ export default function AboutUsPage() {
             </div>
           </section>
         </div>
-        <div className="max-w-screen-xl m-auto min-w-80">
+        <div className="max-w-screen-xl m-auto min-w-full">
           <section className="mt-28 grid grid-cols-1 md:grid-cols-2 px-36 gap-20">
             <div>
               <img
@@ -70,6 +70,7 @@ export default function AboutUsPage() {
                 an environment where careers grow, and success is within reach
                 for everyone.
               </p>
+
             </div>
           </section>
           <section className="grid grid-cols-1 md:grid-cols-2 px-36 gap-20">
@@ -102,7 +103,7 @@ export default function AboutUsPage() {
 
           <section className="mt-28 px-36">
             <div>
-              <h2 className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
+              <h2 data-aos="flip-left" className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
                 Our Mentor
               </h2>
             </div>
@@ -111,7 +112,7 @@ export default function AboutUsPage() {
 
           <section className="mt-28 ">
             <div>
-              <h2 className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
+              <h2 data-aos="flip-left" className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
                 Our Team
               </h2>
             </div>

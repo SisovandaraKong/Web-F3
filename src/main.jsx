@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import "./index.css";
 import AboutUsPage from "./pages/AboutUsPage.jsx";
 import RootLayout from "./components/layouts/RootLayout.jsx";
+import FreelancerProfile from "./pages/FreelancerProfile.jsx";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")).render(
         <Route element={<RootLayout />}>
           <Route path="/" element={<App />} />
           <Route path="/aboutus" element={<AboutUsPage />} />
+          <Route path="/freelancerProfile" element={<FreelancerProfile />} />
         </Route>
       </Routes>
     </BrowserRouter>
