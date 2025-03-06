@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import CardHowerEffec from "../components/cards/CardHowerEffec";
+import Navbar from "../components/layouts/Navbar";
 
 export default function HomePage() {
   useEffect(() => {

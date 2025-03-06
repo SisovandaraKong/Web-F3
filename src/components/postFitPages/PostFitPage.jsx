@@ -21,7 +21,7 @@ const PostFitPage = () => {
   return (
     <div className="flex justify-center items-center p-4">
       {!isModalOpen && (
-        <div className="w-[788px] bg-white dark:bg-white-background rounded-xl shadow-lg p-4 cursor-pointer flex justify-between items-center" onClick={() => setIsModalOpen(true)}>
+        <div className="w-full sm:w-[688px] lg:w-[800px] h-auto sm:h-auto bg-white dark:bg-white-background rounded-xl shadow-lg p-4 cursor-pointer flex justify-between items-center" onClick={() => setIsModalOpen(true)}>
           <div className="flex items-center gap-3">
             <img
               src="https://i.pravatar.cc/150?img=5"
@@ -31,7 +31,7 @@ const PostFitPage = () => {
             <input
               type="text"
               placeholder="What's on your mind?"
-              className="w-[650px] p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-white-background dark:text-white cursor-pointer"
+              className="w-full sm:w-[588px] lg:w-[680px] h-auto sm:h-auto p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-white-background dark:text-white cursor-pointer"
               readOnly
             />
           </div>

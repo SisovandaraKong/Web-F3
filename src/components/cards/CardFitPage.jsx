@@ -1,22 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 const CardFitPage = () => {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts/1")
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
       .then((response) => response.json())
       .then((data) => setPost(data))
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
   if (!post) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        Loading...
+      </div>
+    );
   }
 
   return (
     <div className="flex justify-center items-center bg-gray-100 p-4">
-      <div className="bg-white rounded-lg shadow-lg w-[788px] h-[522px] p-6">
+      <div className="bg-white rounded-lg shadow-lg w-full sm:w-[688px] lg:w-[800px] h-auto sm:h-auto p-6">
         {/* User Info */}
         <header className="flex items-center justify-between space-x-3">
           <div className="flex items-center space-x-3">
@@ -26,7 +30,7 @@ const CardFitPage = () => {
               alt="User Avatar"
             />
             <div>
-              <h3 className="text-lg font-semibold">John Doe</h3>
+              <h3 className="text-lg font-semibold text-gray-800">John Doe</h3>
               <p className="text-sm text-gray-500">Software Engineer</p>
               <p className="text-xs text-gray-400">March 5, 2025</p>
             </div>
@@ -55,8 +59,8 @@ const CardFitPage = () => {
         <section className="mt-3">
           <p className="text-sm text-gray-800">{post.body}</p>
           <img
-            src="https://via.placeholder.com/788x300"
-            className="w-full mt-3 rounded-lg"
+            src="https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg"
+            className="w-full mt-3 rounded-lg max-w-full max-h-[317px] object-cover"
             alt="Post Image"
           />
         </section>
