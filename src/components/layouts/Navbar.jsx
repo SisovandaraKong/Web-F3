@@ -86,7 +86,7 @@ export default function Navbar() {
                 <div className="absolute left-0 mt-2 py-1 px-3 bg-primary rounded-lg shadow-sm w-44 dark:bg-gray-700">
                   <ul className="py-2 space-y-2 text-sm justify-between text-gray-700 dark:text-gray-200">
                     <li>
-                      <NavLink to="/overview"  className={({ isActive, isPending, isTransitioning }) =>
+                      <NavLink to="/freelancer-page"  className={({ isActive, isPending, isTransitioning }) =>
                   [
                     "text-white hover:text-secondary",
                     isPending ? "pending" : "",
@@ -94,11 +94,11 @@ export default function Navbar() {
                     isTransitioning ? "transitioning" : "",
                   ].join(" ")
                 }            >
-                        {t("Overview")}
+                        {t("freelancer")}
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/downloads"  className={({ isActive, isPending, isTransitioning }) =>
+                      <NavLink to="/full-time"  className={({ isActive, isPending, isTransitioning }) =>
                   [
                     "text-white hover:text-secondary",
                     isPending ? "pending" : "",
@@ -106,11 +106,11 @@ export default function Navbar() {
                     isTransitioning ? "transitioning" : "",
                   ].join(" ")
                 }            >
-                        {t("My downloads")}
+                        {t("fullTime")}
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/billing"  className={({ isActive, isPending, isTransitioning }) =>
+                      <NavLink to="/part-time"  className={({ isActive, isPending, isTransitioning }) =>
                   [
                     "text-white hover:text-secondary",
                     isPending ? "pending" : "",
@@ -118,11 +118,11 @@ export default function Navbar() {
                     isTransitioning ? "transitioning" : "",
                   ].join(" ")
                 }            >
-                        {t("Billing")}
+                        {t("partTime")}
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/rewards"  className={({ isActive, isPending, isTransitioning }) =>
+                      <NavLink to="/business-owner"  className={({ isActive, isPending, isTransitioning }) =>
                   [
                     "text-white hover:text-secondary",
                     isPending ? "pending" : "",
@@ -130,7 +130,7 @@ export default function Navbar() {
                     isTransitioning ? "transitioning" : "",
                   ].join(" ")
                 }            >
-                        {t("Rewards")}
+                        {t("businessOwner")}
                       </NavLink>
                     </li>
                   </ul>

@@ -1,10 +1,10 @@
 {
     "Home": "Home",
     "Dropdown": "Dropdown",
-    "Overview": "Overview",
-    "My downloads": "My downloads",
-    "Billing": "Billing",
-    "Rewards": "Rewards",
+    "freelancer": "Freelancer",
+    "businessOwner": "Business Owner",
+    "fullTime": "Full Time",
+    "partTime": "Part Time",
     "aboutUs": "About Us"
   }
   
