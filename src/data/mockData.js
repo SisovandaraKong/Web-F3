@@ -7,7 +7,7 @@ const jobListings = [
       companyDescription: "A leading software company specializing in AI-driven applications.",
       requirements: ["JavaScript", "React.js", "Node.js"],
       publishedDate: "2025-02-21",
-      imageUrl: "https://example.com/images/fullstack.jpg"
+      imageUrl: "https://assets.grok.com/users/afc38671-906f-45b3-ba63-e3d6df47584c/sGrxp61RsZJsVFjv-generated_image.jpg"
     },
     {
       companyName: "Cloud Solutions Ltd.",
@@ -17,7 +17,7 @@ const jobListings = [
       companyDescription: "Providing top-tier cloud solutions for enterprises worldwide.",
       requirements: ["AWS", "Docker", "Kubernetes"],
       publishedDate: "2025-02-20",
-      imageUrl: "https://example.com/images/cloud.jpg"
+      imageUrl: "https://files.oaiusercontent.com/file-QsaPic18NoqRKCF1Fczgqu?se=2025-03-07T08%3A48%3A04Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D96444077-1725-409e-aa16-3815affa5490.webp&sig=CFtV/vwZMoppNEwJt23GinmqaGA6y1HWJ/8XjtkRkiE%3D"
     },
     {
       companyName: "CyberSecure Inc.",
@@ -27,7 +27,7 @@ const jobListings = [
       companyDescription: "Enhancing cybersecurity for businesses with innovative security solutions.",
       requirements: ["Penetration Testing", "SIEM", "Python"],
       publishedDate: "2025-02-19",
-      imageUrl: "https://example.com/images/security.jpg"
+      imageUrl: "https://files.oaiusercontent.com/file-4PktGTgvBvQLHjQ6FtcD62?se=2025-03-07T08%3A50%3A05Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D5155d817-68b2-4e7a-934d-8e60bcb28746.webp&sig=gPvQ5cbkgUQ0vlOiYY1H1NhfmK6WpCGhPBHL9fkNPuE%3D"
     },
     {
       companyName: "AI Revolution Co.",
@@ -37,7 +37,7 @@ const jobListings = [
       companyDescription: "Pioneering artificial intelligence solutions for various industries.",
       requirements: ["Python", "TensorFlow", "Deep Learning"],
       publishedDate: "2025-02-18",
-      imageUrl: "https://example.com/images/ai.jpg"
+      imageUrl: "https://files.oaiusercontent.com/file-VRn3qLN7LvAWdaooZi2Pdh?se=2025-03-07T08%3A58%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D7c9dff34-0ae6-4667-a4a6-acb72b66c020.webp&sig=w71F/vMWHh77qeKWCYQY%2BXf5AhDX2gCLoxHw2%2BpMoW0%3D"
     },
     {
       companyName: "Data Insights LLC",
@@ -47,7 +47,7 @@ const jobListings = [
       companyDescription: "Helping businesses make data-driven decisions through advanced analytics.",
       requirements: ["SQL", "Machine Learning", "Power BI"],
       publishedDate: "2025-02-17",
-      imageUrl: "https://example.com/images/data.jpg"
+      imageUrl: "https://files.oaiusercontent.com/file-8Q8x2wV4rpAKa4YhiFqSUh?se=2025-03-07T08%3A59%3A07Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D91e1a338-8f74-4e3e-ada8-1bc317263358.webp&sig=nvjiMScteqfGugqGdzB%2B4MlZKpNEWJer4zIjIwkBwPQ%3D"
     },
     {
       companyName: "DevOps Masters",
@@ -57,7 +57,7 @@ const jobListings = [
       companyDescription: "Bridging the gap between development and operations for seamless deployments.",
       requirements: ["CI/CD", "Terraform", "Jenkins"],
       publishedDate: "2025-02-16",
-      imageUrl: "https://example.com/images/devops.jpg"
+      imageUrl: "https://files.oaiusercontent.com/file-Y528HvxHz9SuntsDLmMk8e?se=2025-03-07T09%3A02%3A15Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D22f458a3-8d4c-40fd-8882-15ea1fd1b1dd.webp&sig=84ThBQi0deOZnMeRdzTGITZ/YWf69y3QYdrbZb2ryFM%3D"
     },
     {
       companyName: "UI/UX Pro",
@@ -67,7 +67,7 @@ const jobListings = [
       companyDescription: "Crafting intuitive and aesthetically pleasing user experiences.",
       requirements: ["Figma", "Adobe XD", "User Research"],
       publishedDate: "2025-02-15",
-      imageUrl: "https://example.com/images/uiux.jpg"
+      imageUrl: "https://files.oaiusercontent.com/file-BCfV2MjZePeF9QMi91EujX?se=2025-03-07T09%3A00%3A38Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D463d738f-5c35-40c9-bbf5-af679b0e64dc.webp&sig=dFP1Cn6/dS10qTKBf/uhWv3BC3RZ%2BcGkYgqK2WvoEmM%3D"
     },
     {
       companyName: "Mobile First Co.",
@@ -77,7 +77,7 @@ const jobListings = [
       companyDescription: "Building cutting-edge mobile applications for various industries.",
       requirements: ["Flutter", "React Native", "Swift"],
       publishedDate: "2025-02-14",
-      imageUrl: "https://example.com/images/mobile.jpg"
+      imageUrl: "https://files.oaiusercontent.com/file-AUiJF34AdjujmcHCy4KLk3?se=2025-03-07T09%3A01%3A10Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dde6ac845-975a-4132-b678-6a4bdac3349e.webp&sig=k6/mtJFQQjxcv%2BzOF%2BxhRDp7sGkOFbIJosxawFaNIss%3D"
     },
     {
       companyName: "Blockchain Innovators",
