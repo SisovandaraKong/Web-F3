@@ -20,7 +20,7 @@ const CardFitPage = () => {
 
   return (
     <div className="flex justify-center items-center bg-gray-100 p-4">
-      <div className="bg-white rounded-lg shadow-lg w-full sm:w-[688px] lg:w-[800px] h-auto sm:h-auto p-6">
+      <div className="bg-white rounded-lg shadow-lg w-full sm:w-[688px] md:w-[688px] lg:w-[800px] xl:w-[800px] p-6">
         {/* User Info */}
         <header className="flex items-center justify-between space-x-3">
           <div className="flex items-center space-x-3">
@@ -46,9 +46,9 @@ const CardFitPage = () => {
               className="w-6 h-6"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M5 3v18l7-4 7 4V3H5z"
               />
             </svg>
@@ -60,14 +60,14 @@ const CardFitPage = () => {
           <p className="text-sm text-gray-800">{post.body}</p>
           <img
             src="https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg"
-            className="w-full mt-3 rounded-lg max-w-full max-h-[317px] object-cover"
+            className="w-full mt-3 rounded-lg object-cover max-w-full max-h-[307px]"
             alt="Post Image"
           />
         </section>
 
         {/* Tags & Details */}
         <footer className="mt-4 border-t pt-3">
-          <div className="flex space-x-2 text-sm text-blue-600 font-semibold">
+          <div className="flex flex-wrap space-x-2 text-sm text-blue-600 font-semibold">
             <span className="px-2 py-1 bg-gray-200 rounded">#Technology</span>
             <span className="px-2 py-1 bg-gray-200 rounded">#Development</span>
             <span className="px-2 py-1 bg-gray-200 rounded">#Coding</span>

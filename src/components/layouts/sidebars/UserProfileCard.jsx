@@ -11,10 +11,11 @@ const UserProfileCard = () => {
   return (
     <div className="w-[278px] h-[168px] mt-5 bg-white dark:bg-gray-50 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-indigo-500/50 dark:hover:shadow-blue-900/50">
       <div className="relative h-14 bg-gradient-to-r from-indigo-600 to-blue-700 flex justify-center">
-        <img
+       <img className='w-full object-cover' src="https://cdn.phenompeople.com/CareerConnectResources/KIVKBRUS/images/MicrosoftTeams-image102[1920x927]web-1664813477508.jpg" alt="" />
+       <img
           src={user.avatar}
           alt={user.name}
-          className="absolute bottom-0 left-1/6 transform -translate-x-1/2 translate-y-1/2  w-16 h-16 rounded-full border-2 border-white dark:border-gray-800 transition-transform duration-300 hover:scale-105"
+          className="absolute bottom-0 left-1/6 transform -translate-x-1/2 translate-y-[45px]  w-16 h-16 rounded-full border-2 border-white dark:border-gray-800 transition-transform duration-300 hover:scale-105"
         />
       </div>
       <div className="pt-1 pb-2 text-left px-20">

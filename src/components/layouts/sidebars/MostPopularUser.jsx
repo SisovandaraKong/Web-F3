@@ -52,7 +52,7 @@ export const MostPopularUser = () => {
               </span>
             </div>
           </div>
-          <button className="h-8 mx-4 px-3 text-SubButtonText font-bold text-blue-400 border border-blue-400 rounded-full hover:bg-blue-100">
+          <button className="h-8 mx-4 px-3 text-SubButtonText font-bold text-blue-400 border border-primary-hover rounded-[8px] hover:bg-blue-100">
             Contact
           </button>
         </div>

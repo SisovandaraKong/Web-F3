@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaUserCircle, FaUsers } from 'react-icons/fa';
-import Navbar from '../components/layouts/Navbar';
 import LeftSidebar from '../components/layouts/sidebars/LeftSidebar';
 import { LeftTags } from '../components/layouts/sidebars/LeftTags';
 import UserProfileCard from '../components/layouts/sidebars/UserProfileCard';
@@ -10,7 +9,7 @@ import SearchFitPage from '../components/postFitPages/PostFitPage';
 import Footer from '../components/layouts/Footer';
 import SearchForm from '../components/searchForms/SearchForm';
 
-export default function FreelancerFitPage() {
+export default function BussinessOwnerFitPage() {
   const [isRightSidebarVisible, setIsRightSidebarVisible] = useState(false);
 
   return (
