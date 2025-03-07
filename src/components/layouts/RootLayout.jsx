@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Outlet } from "react-router";
 import NavbarLogin from "./NavbarLogin";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 export default function RootLayout({ toggleDarkMode, isDarkMode }) {
   useEffect(() => {
@@ -16,6 +17,7 @@ export default function RootLayout({ toggleDarkMode, isDarkMode }) {
     <div>
       <NavbarLogin toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
       <Outlet />
+      <Footer/>
     </div>
   );
 }
