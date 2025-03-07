@@ -4,11 +4,14 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import jobListings from "./mocks/mockData";
 import CardJob from "./components/cards/CardJob";
+import { useTranslation } from "react-i18next";  
+import "./i18n"; 
 
 
 function App() {
 console.log(jobListings);
 const [count, setCount] = useState(0);
+const { t } = useTranslation();
 
   return (
     <>
