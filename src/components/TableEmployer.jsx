@@ -40,9 +40,9 @@ function TableEmployer({ title }) {
             <td className="p-2">Department</td>
             <td className="p-2">
               <img
-                src="https://i.pinimg.com/736x/97/19/57/971957285e02f297f480ad87a0cfec98.jpg"
+                src="https://via.placeholder.com/40" // Replace with your image URL
                 alt="Interviewer"
-                className="rounded-full w-10 h-10 object-cover"
+                className="rounded-full w-10 h-10"
               />
             </td>
             <td className="p-2">30</td>
@@ -71,9 +71,9 @@ function TableEmployer({ title }) {
             <td className="p-2">Design</td>
             <td className="p-2">
               <img
-                src="https://i.pinimg.com/474x/5a/03/cf/5a03cf6f31a9a4265d107a460c12afa0.jpg" // Replace with your image URL
+                src="https://via.placeholder.com/40" // Replace with your image URL
                 alt="Interviewer"
-                className="rounded-full w-10 h-10 object-cover"
+                className="rounded-full w-10 h-10"
               />
             </td>
             <td className="p-2">15</td>
@@ -100,6 +100,7 @@ function TableEmployer({ title }) {
         <button className="text-blue-500 hover:text-blue-700">View More</button>
       </div>
     </section>
+    
   );
 }
 

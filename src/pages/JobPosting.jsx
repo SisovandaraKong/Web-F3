@@ -2,13 +2,59 @@ import React, { useState } from "react";
 import {
   FaUsers,
   FaUserPlus,
-  
   FaUserCheck,
-  FaEllipsisV,
+  FaEllipsisH,
+  FaSlidersH,
+  FaSearch,
 } from "react-icons/fa";
-import {FaRectangleXmark  } from "react-icons/fa6";
+import { PiNotePencil } from "react-icons/pi";
+
 const JobPosting = () => {
   const [openPopup, setOpenPopup] = useState({});
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(null);
+  const [showDeleteSuccess, setShowDeleteSuccess] = useState(null);
+  const [jobPostings, setJobPostings] = useState([
+    {
+      title: "IT Manager",
+      department: "IT",
+      location: "Phnom Penh",
+      createdBy: "Marinet",
+      activeApp: 10,
+      status: "Active",
+    },
+    {
+      title: "Customer Service",
+      department: "Client",
+      location: "Phnom Penh",
+      createdBy: "Marinet",
+      activeApp: 20,
+      status: "Inactive",
+    },
+    {
+      title: "Designer",
+      department: "IT",
+      location: "Phnom Penh",
+      createdBy: "Marinet",
+      activeApp: 30,
+      status: "Active",
+    },
+    {
+      title: "Programmer",
+      department: "IT",
+      location: "Phnom Penh",
+      createdBy: "Marinet",
+      activeApp: 15,
+      status: "Active",
+    },
+    {
+      title: "Network",
+      department: "IT",
+      location: "Phnom Penh",
+      createdBy: "Marinet",
+      activeApp: 5,
+      status: "Inactive",
+    },
+  ]);
 
   const handlePopupToggle = (index) => {
     setOpenPopup((prev) => ({
@@ -25,35 +71,41 @@ const JobPosting = () => {
     "Delete job posting",
   ];
 
-  const jobPostings = [
-    { title: "IT Manager", department: "IT", location: "Phnom Penh", createdBy: "Marinet", activeApp: 10, status: "Active" },
-    { title: "Customer Service", department: "Client", location: "Phnom Penh", createdBy: "Marinet", activeApp: 20, status: "Inactive" },
-    { title: "Designer", department: "IT", location: "Phnom Penh", createdBy: "Marinet", activeApp: 30, status: "Active" },
-    { title: "Programmer", department: "IT", location: "Phnom Penh", createdBy: "Marinet", activeApp: 15, status: "Active" },
-    { title: "Network", department: "IT", location: "Phnom Penh", createdBy: "Marinet", activeApp: 5, status: "Inactive" },
-  ];
+  const handleDeleteClick = (index) => {
+    setShowDeleteConfirm(index);
+    setOpenPopup((prev) => ({ ...prev, [index]: false }));
+  };
+
+  const confirmDelete = (index) => {
+    setJobPostings((prev) => prev.filter((_, i) => i !== index));
+    setShowDeleteConfirm(null);
+    setShowDeleteSuccess(index);
+    setTimeout(() => setShowDeleteSuccess(null), 2000);
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteConfirm(null);
+  };
 
   return (
-    <div className="bg-white dark:bg-[#1A1A1A] min-h-screen flex">
-      
-
-      {/* Main Content */}
+    <div className="bg-white min-h-screen flex">
       <div className="flex-1 p-6">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-            Job Postings
-          </h1>
+        <div className="mb-8 mt-8">
           <div className="flex justify-between items-center">
-            <a href="#" className="text-blue-500 dark:text-blue-400 underline">
-              View Careers page
-            </a>
-            <div className="flex space-x-4">
-              <input
-                type="text"
-                placeholder="Search"
-                className="p-2 rounded bg-gray-200 dark:bg-[#2A2A2A] text-gray-800 dark:text-white"
-              />
-              <button className="bg-[#EAB308] text-white px-4 py-2 rounded hover:bg-[#DEB229]">
+            <div className="flex justify-between items-center gap-4">
+              <h1 className="text-3xl font-bold text-[#2b407f] mb-4">
+                Job Postings
+              </h1>
+              <a href="#" className="text-[#2b407f] flex items-center gap-1">
+                <PiNotePencil />
+                View Careers page
+              </a>
+            </div>
+            <div className="flex space-x-4 items-center">
+              <button className="flex items-center bg-gray-400 text-[#2b407f] font-bold px-4 py-2 rounded hover:bg-gray-500">
+                Search <FaSearch className="ml-2" />
+              </button>
+              <button className="bg-yellow-600 text-[#2b407f] font-bold px-4 py-2 rounded hover:bg-[#DEB229]">
                 + Job Posting
               </button>
             </div>
@@ -61,15 +113,15 @@ const JobPosting = () => {
         </div>
 
         <div className="mb-4">
-          <button className="bg-gray-200 dark:bg-[#2A2A2A] text-gray-800 dark:text-white px-4 py-2 rounded flex items-center">
-            Filter <span className="ml-2">≡</span>
+          <button className="bg-[#d9d9d9] text-[#2b407f] font-bold px-4 py-2 rounded flex items-center">
+            <FaSlidersH className="mr-2" /> Filter
           </button>
         </div>
 
-        <div className="bg-white dark:bg-[#2A2A2A] p-4 rounded shadow">
+        <div className="bg-[#f5f5f5] p-4 rounded shadow">
           <table className="w-full text-sm">
             <thead>
-              <tr className="font-bold text-gray-600 dark:text-gray-300">
+              <tr className="font-bold text-dark-blue border-b-1">
                 <th className="p-2">Job Posting</th>
                 <th className="p-2">Department</th>
                 <th className="p-2">Location</th>
@@ -80,7 +132,7 @@ const JobPosting = () => {
             </thead>
             <tbody>
               {jobPostings.map((job, index) => (
-                <tr key={index} className="text-gray-800 dark:text-white">
+                <tr key={index} className="text-dark-blue border-b-1">
                   <td className="p-2 text-center">{job.title}</td>
                   <td className="p-2 text-center">{job.department}</td>
                   <td className="p-2 text-center">{job.location}</td>
@@ -95,17 +147,22 @@ const JobPosting = () => {
                     {job.status}
                   </td>
                   <td className="p-2 relative">
-                    <FaEllipsisV
+                    <FaEllipsisH
                       onClick={() => handlePopupToggle(index)}
-                      className="cursor-pointer text-gray-600 dark:text-gray-300"
+                      className="cursor-pointer text-dark-blue"
                     />
                     {openPopup[index] && (
-                      <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded z-10">
+                      <div className="absolute right-0 mt-2 w-48 bg-gray-200 shadow-lg rounded z-10">
                         <ul>
                           {popupOptions.map((option, idx) => (
                             <li
                               key={idx}
-                              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer border-b last:border-b-0 text-gray-800 dark:text-white"
+                              className="p-2 hover:bg-gray-100 cursor-pointer border-b last:border-b-0 text-dark-blue"
+                              onClick={
+                                option === "Delete job posting"
+                                  ? () => handleDeleteClick(index)
+                                  : null
+                              }
                             >
                               {option}
                             </li>
@@ -119,6 +176,50 @@ const JobPosting = () => {
             </tbody>
           </table>
         </div>
+
+        {showDeleteConfirm !== null && (
+          <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm">
+            <div className="bg-[#9e5342] text-white p-4 rounded shadow-lg flex flex-col items-center relative">
+              <button
+                className="absolute ml-2 top-4 right-3 text-white hover:text-gray-200"
+                onClick={cancelDelete}
+              >
+                ✕
+              </button>
+              <p className="mb-4">
+                Are you sure? Deleting an<br/>entry cannot be undone.
+              </p>
+              <div className="flex space-x-4">
+                <button
+                  className="bg-[#9e5342] px-4 py-2 text-sm rounded hover:bg-[#9f634a] text-white border border-white"
+                  onClick={cancelDelete}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="bg-[#9e5342] px-4 py-2 text-sm rounded hover:bg-[#9f634a] text-white border border-white"
+                  onClick={() => confirmDelete(showDeleteConfirm)}
+                >
+                  Delete anyway!
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showDeleteSuccess !== null && (
+          <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm">
+          <div className="bg-[#439daa] text-white p-4 rounded shadow-lg flex items-center relative pl-10 pr-8">
+            <button
+              className="absolute top-4 right-4 text-white hover:text-gray-200"
+              onClick={() => setShowDeleteSuccess(null)}
+            >
+              ✕
+            </button>
+            <p>Item deleted!</p>
+          </div>
+        </div>
+        )}
       </div>
     </div>
   );

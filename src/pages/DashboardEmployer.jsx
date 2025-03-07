@@ -1,336 +1,278 @@
-import React, { useState } from "react";
-import {
-  FaUsers,
-  FaInfoCircle,
-  FaUserPlus,
-  FaUserCheck,
-  FaEllipsisV,
-  FaExternalLinkAlt,
-  FaUserCircle,
-} from "react-icons/fa";
-import { FaRectangleXmark } from "react-icons/fa6";
+import { FaMoon, FaBell, FaGlobe, FaUserCircle } from "react-icons/fa";
+import Footer from "../components/layouts/Footer";
 
-const DashboardEmployer = () => {
-  const [openPopup, setOpenPopup] = useState({
-    recentlyHiring: null,
-    interviewerBoard: null,
-  });
-
-  const handlePopupToggle = (table, index) => {
-    setOpenPopup((prev) => ({
-      ...prev,
-      [table]: prev[table] === index ? null : index,
-    }));
-  };
-
-  const popupOptions = [
-    "View on careers page",
-    "Archive job posting",
-    "Edit job posting",
-    "Make a copy",
-    "Delete job posting",
+const HiringStats = () => {
+  const freelancers = [
+    { title: "Programmer", percentage: 70 },
+    { title: "Graphic", percentage: 78 },
+    { title: "Content Creator", percentage: 80 },
   ];
 
+  const jobseekers = [
+    { title: "Web Design", percentage: 100 },
+    { title: "Social Media", percentage: 85 },
+    { title: "Online Shopping", percentage: 45 },
+  ];
   return (
-    <div className="bg-white dark:bg-[#1A1A1A] min-h-screen p-6">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-          Dashboard
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Left Column - Chats Card */}
-          <div
-            className="bg-white dark:bg-[#2A2A2A] p-4 rounded-lg shadow-md"
-            style={{ width: "45%" }}
-          >
-            <div className="flex flex-col justify-between h-full">
-              <div className="mb-2">
-                <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-white">
-                  Chats
-                </h2>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  2 Unread Messages
-                </p>
-              </div>
-              <div className="flex justify-center items-center space-x-6 mt-8 ">
-                {/* Desktop and larger screens (default or md: and up) - 4 icons */}
-                <div className="gap-4 flex md:flex ">
-                  {[1, 2, 3, 4].map((item) => (
-                    <div
-                      key={item}
-                      className="w-10 h-10 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center md:block"
-                    >
-                      <FaUserCircle className="text-gray-500 dark:text-gray-400 text-2xl" />
-                    </div>
-                  ))}
-                </div>
-
-              </div>
-              <a
-                href="#"
-                className="text-sm text-[#B69A0A] hover:underline mt-auto"
-              >
-                View messages
-              </a>
-            </div>
-          </div>
-
-          <div className=" flex flex-col items-center">
-            <div className="w-[400px] h-[250px] bg-white dark:bg-[#2A2A2A] p-4 rounded shadow-md text-center flex flex-col items-center">
-              <div className="mt-2 w-16 h-16 bg-gray-300 dark:bg-gray-600 rounded-full mb-2 flex items-center justify-center">
-                <FaUserCircle className="text-gray-500 dark:text-gray-400 text-3xl" />
-              </div>
-              <h2 className="mt-2 text-lg font-semibold text-gray-800 dark:text-white">
-                John Doe
-              </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Manager
-              </p>
-              <a
-                href="#"
-                className="mt-8 p-2 text-sm text-gray-800 hover:underline mt-2 inline-flex items-center border dark:border-[#71747f] dark:text-white dark:hover:text-blue-500 dark:hover:border-blue-500 rounded transition"
-              >
-                <FaExternalLinkAlt title="Edit Profile" className="mr-1" />
-                <span>Edit Profile</span>
-              </a>
-            </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-              Last updated: February 26, 2025
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="flex flex-row gap-3 bg-light-gray dark:bg-[#303980] p-4 rounded shadow">
-          <FaUserPlus className="text-dark-blue text-3xl mb-2 dark:text-white" />
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Jobs Post
-            </p>
-            <p className="text-2xl font-bold text-gray-800 dark:text-white">
-              880
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-row gap-3 bg-light-gray dark:bg-[#303980] p-4 rounded shadow">
-          <FaRectangleXmark className="text-dark-blue text-3xl mb-2 dark:text-white" />
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Jobs Closed
-            </p>
-            <p className="text-2xl font-bold text-gray-800 dark:text-white">
-              1289
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-row gap-3 bg-light-gray dark:bg-[#303980] p-4 rounded shadow">
-          <FaUsers className="text-dark-blue text-3xl mb-2 dark:text-white" />
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Candidates
-            </p>
-            <p className="text-2xl font-bold text-gray-800 dark:text-white">
-              2509
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-row gap-3 bg-light-gray dark:bg-[#303980] p-4 rounded shadow">
-          <FaUserCheck className="text-dark-blue text-3xl mb-2 dark:text-white" />
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Got Hired
-            </p>
-            <p className="text-2xl font-bold text-gray-800 dark:text-white">
-              580
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mb-6">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
-          Recently Hiring
-        </h2>
-        <div className="bg-light-gray dark:bg-[234821] p-4 rounded shadow">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="font-bold text-gray-600 dark:text-gray-300">
-                <th className="p-2"></th> {/* Checkbox column */}
-                <th className="p-2 ">Job Title</th>
-                <th className="p-2">Department</th>
-                <th className="p-2">Interviewer</th>
-                <th className="p-2">Shortlisted</th>
-                <th className="p-2">RW</th>
-                <th className="p-2">Status</th>
-                <th className="p-2">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="text-gray-800 dark:text-white">
-                <td className="p-2 text-center">
-                  <input type="checkbox" />
-                </td>
-                <td className="p-2 text-center">UI/UX Designer</td>
-                <td className="p-2 text-center">Design</td>
-                <td className="p-2 text-center flex justify-center items-center">
-                  <div className="w-6 h-6 rounded-full bg-gray-300"></div>
-                </td>
-                <td className="p-2 text-center">30</td>
-                <td className="p-2 text-center">12</td>
-                <td className="p-2 flex items-center justify-center">
-                  <span className="w-3 h-3 bg-green-500 rounded-full mr-1"></span>
-                </td>
-                <td className="p-2 relative ">
-                  <FaEllipsisV
-                    onClick={() => handlePopupToggle("recentlyHiring", 0)}
-                    className="cursor-pointer text-gray-600 dark:text-gray-300"
-                  />
-                  {openPopup.recentlyHiring === 0 && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded z-10">
-                      <ul>
-                        {popupOptions.map((option, idx) => (
-                          <li
-                            key={idx}
-                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer border-b last:border-b-0 text-gray-800 dark:text-white"
-                          >
-                            {option}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button className="mt-2 bg-gold text-white px-4 py-2 rounded shadow hover:bg-opacity-90">
-          View More
-        </button>
-      </div>
-
-      <div className="mb-6">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
-          Interviewer Board
-        </h2>
-        <div className="bg-light-gray dark:bg-[234821] p-4 rounded shadow">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="font-bold text-gray-600 dark:text-gray-300">
-                <th className="p-2"></th> {/* Checkbox column */}
-                <th className="p-2">Name</th>
-                <th className="p-2">Expertise</th>
-                <th className="p-2">Department</th>
-                <th className="p-2">Type</th>
-                <th className="p-2">Fees</th>
-                <th className="p-2">Rating</th>
-                <th className="p-2">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="text-gray-800 dark:text-white">
-                <td className="p-2">
-                  <input type="checkbox" />
-                </td>
-                <td className="p-2 text-center">John</td>
-                <td className="p-2 text-center">Communication</td>
-                <td className="p-2 text-center">Design</td>
-                <td className="p-2 text-center">
-                  <FaExternalLinkAlt />
-                </td>
-                <td className="p-2 text-center">$2500</td>
-                <td className="p-2 text-center">⭐</td>
-                <td className="p-2 relative">
-                  <FaEllipsisV
-                    onClick={() => handlePopupToggle("interviewerBoard", 0)}
-                    className="cursor-pointer text-gray-600 dark:text-gray-300"
-                  />
-                  {openPopup.interviewerBoard === 0 && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 shadow-lg rounded z-10">
-                      <ul>
-                        {popupOptions.map((option, idx) => (
-                          <li
-                            key={idx}
-                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer border-b last:border-b-0 text-gray-800 dark:text-white"
-                          >
-                            {option}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <button className="mt-2 bg-gold text-white px-4 py-2 rounded shadow hover:bg-opacity-90">
-          Add New
-        </button>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
-            Growth
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white shadow-lg rounded-lg p-6 w-2/3 flex">
+        <div className="w-1/2 pr-4 border-r">
+          <h2 className="text-xl font-bold text-gray-800 mb-4">
+            Freelancers Hiring
           </h2>
-          <div className="bg-white dark:bg-[111827] p-4 rounded shadow">
-            <div className="h-48 bg-gray-200 dark:bg-[111827]"></div>{" "}
-            {/* Placeholder for Growth graph */}
-          </div>
-          <div className="grid grid-cols-3 gap-4 mt-4">
-            <div className="bg-light-gray dark:bg-[234821] p-4 rounded shadow">
-              <h3 className="text-xl font-bold text-gray-600 dark:text-gray-300">
-                Top Research
-              </h3>
-              <p className="text-sm text-gray-800 dark:text-white">
-                Placeholder
-              </p>
+          {freelancers.map((item, index) => (
+            <div key={index} className="mb-3">
+              <div className="flex justify-between text-gray-600 text-sm">
+                <span>{item.title}</span>
+                <span>{item.percentage}%</span>
+              </div>
+              <div className="h-2 bg-gray-300 rounded-full mt-1">
+                <div
+                  className="h-2 bg-[#6AA6D0] rounded-full"
+                  style={{ width: `${item.percentage}%` }}
+                ></div>
+              </div>
             </div>
-            <div className="bg-light-gray dark:bg-[234821] p-4 rounded shadow">
-              <h3 className="text-xl font-bold text-gray-600 dark:text-gray-300">
-                Top Year
-              </h3>
-              <p className="text-sm text-gray-800 dark:text-white">2023</p>
-            </div>
-            <div className="bg-light-gray dark:bg-[234821] p-4 rounded shadow">
-              <h3 className="text-xl font-bold text-gray-600 dark:text-gray-300">
-                Top Buyer
-              </h3>
-              <p className="text-sm text-gray-800 dark:text-white">Company X</p>
-            </div>
-          </div>
+          ))}
         </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
-            Top States
+
+        <div className="w-1/2 pl-4">
+          <h2 className="text-xl font-bold text-gray-800 mb-4">
+            Jobseekers Hiring
           </h2>
-          <div className="bg-white dark:bg-[111827] p-4 rounded shadow">
-            <div className="h-48 bg-gray-200 dark:bg-[111827]"></div>{" "}
-            {/* Placeholder for Top States graph */}
-          </div>
-          <div className="mt-4">
-            <div className="bg-light-gray dark:bg-[234821] p-4 rounded shadow">
-              <h3 className="text-xl font-bold text-gray-600 dark:text-gray-300 mb-2">
-                New Deals
-              </h3>
-              <ul className="text-sm text-gray-800 dark:text-white">
-                <li className="flex items-center mb-2">
-                  <span className="w-2 h-2 bg-gold rounded-full mr-2"></span>
-                  Echofy
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-gold rounded-full mr-2"></span>
-                  Zero mega
-                </li>
-              </ul>
+          {jobseekers.map((item, index) => (
+            <div key={index} className="mb-3">
+              <div className="flex justify-between text-gray-600 text-sm">
+                <span>{item.title}</span>
+                <span>{item.percentage}%</span>
+              </div>
+              <div className="h-2 bg-gray-300 rounded-full mt-1">
+                <div
+                  className="h-2 bg-[#6AA6D0] rounded-full"
+                  style={{ width: `${item.percentage}%` }}
+                ></div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
+const DashboardEmployer = () => {
+  return (
+    <div className="bg-white">
+      <main className="bg-white py-8 px-4">
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="md:w-1/3">
+            <div className="flex flex-col items-center mb-6">
+              <div className="relative w-32 h-32 mb-4">
+                <img
+                  src="/placeholder.svg?height=128&width=128"
+                  alt="Cameron Williamson"
+                  className="rounded-full border-4 border-white shadow-lg w-full h-full object-cover"
+                />
+              </div>
+              <h1 className="text-2xl font-bold text-center">
+                Cameron Williamson
+              </h1>
+              <p className="text-gray-600 text-center">Business Man</p>
+
+              <div className="flex items-center mt-4 space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-blue-500"
+                >
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+
+                {/* Mail Icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-blue-500"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+
+              <div className="mt-4 text-sm text-gray-600 text-center">
+                <p>
+                  As a business leader based in San Francisco, I specialize in
+                  managing and growing businesses.
+                </p>
+              </div>
+            </div>
+            <div className="bg-[#6AA6D0] rounded-3xl p-8 text-white mb-8">
+              <div className="space-y-4">
+                <div className="text-center">
+                  <p className="text-xl">Age: 27</p>
+                </div>
+
+                <div className="text-center">
+                  <p className="text-xl">Status: Single</p>
+                </div>
+
+                <div className="text-center">
+                  <p className="text-xl">Location: Belgrad-Serbian</p>
+                </div>
+
+                <div className="text-center">
+                  <p className="text-xl">Speciality: Kickbox</p>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-4 mt-6">
+                  <span className="bg-white text-black px-4 py-2 rounded-full">
+                    Friendly
+                  </span>
+                  <span className="bg-white text-black px-4 py-2 rounded-full">
+                    Loyal
+                  </span>
+                  <span className="bg-white text-black px-4 py-2 rounded-full">
+                    Patient
+                  </span>
+                  <span className="bg-white text-black px-4 py-2 rounded-full">
+                    Driven
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="md:w-2/3">
+            <div className="p-6 border-2 border-blue-200 rounded-lg shadow-sm">
+              <h2 className="text-lg font-semibold mb-2">Bio</h2>
+              <p className="text-gray-700 mb-4">
+                As a business owner, I am dedicated to connecting with skilled
+                freelancers and professionals to drive success. I utilize an
+                efficient hiring platform to post job opportunities, manage
+                applications, and collaborate with talented individuals. My goal
+                is to build strong partnerships to help businesses grow and
+                thrive.
+              </p>
+
+              <h2 className="text-lg font-semibold mb-2 mt-6">Approach</h2>
+              <p className="text-gray-700 mb-4">
+                I am proactive and detail-oriented, always looking for ways to
+                improve and address needs before they arise. I value
+                collaboration and foster an environment where everyone can
+                contribute to achieving common goals. My adaptability allows me
+                to adjust strategies to meet market demands, while my
+                results-driven approach ensures I focus on outcomes that drive
+                success.
+              </p>
+
+              <h2 className="text-lg font-semibold mb-2 mt-6">
+                Freelancer Hiring
+              </h2>
+
+              <div className="grid grid-cols-2 gap-6 mt-4">
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-sm font-medium">Programming</span>
+                    <span className="text-sm font-medium">75%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-[#6AA6D0] h-2 rounded-full"
+                      style={{ width: "75%" }}
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-sm font-medium">Web Design</span>
+                    <span className="text-sm font-medium">60%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-[#6AA6D0] h-2 rounded-full"
+                      style={{ width: "60%" }}
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-sm font-medium">Graphic Design</span>
+                    <span className="text-sm font-medium">80%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-[#6AA6D0] h-2 rounded-full"
+                      style={{ width: "80%" }}
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-sm font-medium">
+                      Content Creation
+                    </span>
+                    <span className="text-sm font-medium">65%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-[#6AA6D0] h-2 rounded-full"
+                      style={{ width: "65%" }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-8">
+              <h2 className="text-xl font-bold mb-4">Hiring For</h2>
+              <div className="grid grid-cols-3 gap-4">
+                <button className="flex items-center justify-center p-4 h-auto border-2 border-blue-200 hover:bg-blue-50 rounded-md">
+                  <div className="flex flex-col items-center">
+                    <div className="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center mb-2">
+                      <span className="text-blue-600 font-bold">P</span>
+                    </div>
+                    <span className="text-sm font-medium">Programming</span>
+                  </div>
+                </button>
+
+                <button className="flex items-center justify-center p-4 h-auto border-2 border-blue-200 hover:bg-blue-50 rounded-md">
+                  <div className="flex flex-col items-center">
+                    <div className="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center mb-2">
+                      <span className="text-blue-600 font-bold">G</span>
+                    </div>
+                    <span className="text-sm font-medium">Graphic Design</span>
+                  </div>
+                </button>
+
+                <button className="flex items-center justify-center p-4 h-auto border-2 border-blue-200 hover:bg-blue-50 rounded-md">
+                  <div className="flex flex-col items-center">
+                    <div className="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center mb-2">
+                      <span className="text-blue-600 font-bold">C</span>
+                    </div>
+                    <span className="text-sm font-medium">Content Creator</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+};
 export default DashboardEmployer;

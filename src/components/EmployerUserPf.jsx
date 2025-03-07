@@ -5,7 +5,7 @@ function EmployerUserPf() {
     <div className="bg-white p-4 rounded shadow w-1/2">
       <div className="bg-[#283891] rounded-t p-6 text-white text-center">
         <img
-          src="/static/images/profile.jpg" // Replace with your profile image
+          src="https://i.pinimg.com/474x/80/8e/b3/808eb3b81d94b0fecf8ebba405923e7c.jpg"
           alt="Profile"
           className="rounded-full w-20 h-20 mx-auto mb-4"
         />

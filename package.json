@@ -7,11 +7,17 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "git": "node -e \"const readline = require('readline'); const { exec } = require('child_process'); const rl = readline.createInterface({ input: process.stdin, output: process.stdout }); rl.question('Enter commit message: ', (message) => { rl.question('Enter branch name: ', (branch) => { exec(`git add . && git commit -m \\\"${message}\\\" && git push -u origin ${branch}`, (err, stdout, stderr) => { if (err) { console.error(`Error: ${err.message}`); } else { console.log(stdout); } rl.close(); }); }); });\""
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.0.7",
     "aos": "^2.3.4",
+    "class-variance-authority": "^0.7.1",
+    "flowbite": "^3.1.2",
+    "font-awesome": "^4.7.0",
+    "lucide-react": "^0.476.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icon": "^1.0.0",
@@ -22,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@types/node": "^22.13.5",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
@@ -30,6 +37,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
+    "typescript": "^5.7.3",
     "vite": "^6.1.0"
   }
 }

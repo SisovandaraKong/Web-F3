@@ -1,5 +1,4 @@
 import React from "react";
-
 function InterviewerBoard() {
   return (
     <div className="w-full border border-gray-300 p-4">
@@ -32,9 +31,9 @@ function InterviewerBoard() {
             </td>
             <td className="p-2 border-b border-gray-300 flex items-center">
               <img
-                src="https://i.pinimg.com/474x/98/18/e5/9818e531290e34c17a6017e09eeb857f.jpg"
+                src="path-to-net-image.jpg"
                 alt="Net"
-                className="w-8 h-8 rounded-full mr-2 object-cover"
+                className="w-8 h-8 rounded-full mr-2"
               />
               Net
             </td>
@@ -51,9 +50,9 @@ function InterviewerBoard() {
             </td>
             <td className="p-2 border-b border-gray-300 flex items-center">
               <img
-                src="https://i.pinimg.com/736x/eb/9a/28/eb9a28c12200157fb6888f35dc2034f1.jpg"
+                src="path-to-panha-image.jpg"
                 alt="Panha"
-                className="w-8 h-8 rounded-full mr-2 object-cover"
+                className="w-8 h-8 rounded-full mr-2"
               />
               Panha
             </td>

@@ -1,27 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import SideMenu from './SideMenu';
-import Navbar from './Navbar';
-export default function RootLayout() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+import React, { useEffect } from "react";
+import { Outlet } from "react-router";
+import NavbarLogin from "./NavbarLogin";
+import Footer from "./Footer";
 
-  const toggleDarkMode = () => setIsDarkMode(prev => !prev);
+export default function RootLayout({ toggleDarkMode, isDarkMode }) {
   useEffect(() => {
     if (isDarkMode) {
-      document.body.classList.add('dark');
+      document.body.classList.add("dark");
     } else {
-      document.body.classList.remove('dark');
+      document.body.classList.remove("dark");
     }
   }, [isDarkMode]);
 
   return (
-    <div className={`flex ${isDarkMode ? 'dark' : ''}`}>
-      <SideMenu />
-      <div className="flex-1">
-        <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-        
-        <Outlet /> 
-      </div>
+    <div>
+      <NavbarLogin toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+      <Outlet />
     </div>
   );
 }
