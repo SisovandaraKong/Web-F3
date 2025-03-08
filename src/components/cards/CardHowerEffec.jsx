@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/CardHowerEffec.css";
 
-const CardHowerEffec = ({ heading, content, svg }) => {
+const CardHowerEffec = ({ heading, content, svg  , className}) => {
   return (
     <div className="card">
       <div className="card-front">

@@ -51,7 +51,7 @@ export default function NavbarLogin() {
       name: "ភាសារខ្មែរ",
       code: "km",
       flagUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/640px-Flag_of_Cambodia.svg.png"
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/640px-Flag_of_Cambodia.svg.png",
     },
   ];
 
@@ -282,18 +282,18 @@ export default function NavbarLogin() {
                     <li>
                       <a href="#">
                         <button className="flex flex-col items-center gap-[2px]">
-                        <div className="w-10 h-5">
-                        <img
-                            src={lang.flagUrl}
-                            className="h-full w-full object-cover mt-1"
-                            alt={`${lang.name} flag`}
-                          />
-                        </div>
-                        <div className="h-5 w-14 flex items-center">
-                        <span className="text-xs w-full text-white mt-1">
-                            {lang.name}
-                          </span>
-                        </div>
+                          <div className="w-10 h-5">
+                            <img
+                              src={lang.flagUrl}
+                              className="h-full w-full object-cover mt-1"
+                              alt={`${lang.name} flag`}
+                            />
+                          </div>
+                          <div className="h-5 w-14 flex items-center">
+                            <span className="text-xs w-full text-white mt-1">
+                              {lang.name}
+                            </span>
+                          </div>
                         </button>
                       </a>
                     </li>
@@ -304,7 +304,10 @@ export default function NavbarLogin() {
                 ))}
               </ul>
             </div>
-            <Button color={"bg-secondary"} text="Sign In" />
+            <button className="text-white  px-[17px] py-[9px] border-2 border-white rounded-md">
+              Joint As Busssinis{" "}
+            </button>
+            <Button color={"bg-secondary"} text="As Freelancer " />
           </div>
         </div>
       </nav>
