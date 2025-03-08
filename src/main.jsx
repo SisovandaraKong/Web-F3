@@ -12,6 +12,7 @@ import FullTimePage from "./pages/FullTimePage.jsx";
 import PartTimePage from "./pages/PartTimePage.jsx";
 import FreelancerPage from "./pages/FreelancerPage.jsx";
 import BusinessOwnerPage from "./pages/BusinessOwnerPage.jsx";
+import RegisterFreelancer from "./components/auth/RegisterFreelancer.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/freelancer-page" element={<FreelancerPage/>} />
           <Route path="/business-owner" element={<BusinessOwnerPage/>} />
         </Route>
+           <Route path="/register-freelancer" element={<RegisterFreelancer/>} />
       </Routes>
     </BrowserRouter>
     </ThemeProvider>

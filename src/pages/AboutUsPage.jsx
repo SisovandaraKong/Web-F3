@@ -103,14 +103,13 @@ export default function AboutUsPage() {
               />
             </div>
           </section> */}
-          <VisionSection/>
+          <VisionSection />
 
           <section className="mt-28 px-36">
             <div>
               <h2
                 data-aos="flip-right"
-                className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary"
-              >
+                className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
                 Our Mentor
               </h2>
             </div>
@@ -121,8 +120,7 @@ export default function AboutUsPage() {
             <div>
               <h2
                 data-aos="flip-right"
-                className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary"
-              >
+                className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
                 Our Team
               </h2>
             </div>
@@ -133,8 +131,7 @@ export default function AboutUsPage() {
             <div>
               <h2
                 data-aos="flip-right"
-                className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary"
-              >
+                className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
                 Achievement
               </h2>
             </div>
@@ -145,8 +142,7 @@ export default function AboutUsPage() {
             <div>
               <h2
                 data-aos="flip-right"
-                className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary"
-              >
+                className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
                 Service
               </h2>
             </div>

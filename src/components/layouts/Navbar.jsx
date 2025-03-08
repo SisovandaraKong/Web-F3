@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { GoSun, GoMoon } from "react-icons/go"; // Added GoMoon for dark mode icon
 import { FaRegBell, FaRegUserCircle } from "react-icons/fa";
-import { NavLink } from "react-router"; // Note: Should be "react-router-dom" (fixing import)
+import { Link, NavLink } from "react-router"; // Note: Should be "react-router-dom" (fixing import)
 import { useTheme } from "../../context/ThemeContext"; // Import ThemeContext
 import "../../i18n"; // Import i18n configuration
 import Button from "../button/Button";
@@ -200,7 +200,9 @@ export default function Navbar() {
           <button className="text-white   px-[17px] py-[9px] border-2 border-secondary rounded-md cursor-pointer">
             Joint As Busssinis{" "}
           </button>
-          <Button color={"bg-secondary cursor-pointer"} text="Sign Up " />
+          <NavLink to="/register-freelancer">
+            <Button color={"bg-secondary cursor-pointer"} text="Sign Up " />
+          </NavLink>
         </div>
       </div>
     </nav>
