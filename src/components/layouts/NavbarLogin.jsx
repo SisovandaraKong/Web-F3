@@ -90,7 +90,7 @@ export default function NavbarLogin() {
 
   return (
     <>
-      <nav className="bg-primary border-gray-200  sticky top-0 z-50">
+      <nav className="bg-primary   border-gray-200  sticky top-0 z-50">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-3">
           <a
             href="#"
@@ -128,7 +128,7 @@ export default function NavbarLogin() {
               isNavOpen ? "block" : "hidden"
             } w-full md:block md:w-auto`}
             id="navbar-multi-level">
-            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-blue-900 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 ">
               {navItems.map((item, index) => (
                 <li key={index}>
                   {item.hasDropdown ? (

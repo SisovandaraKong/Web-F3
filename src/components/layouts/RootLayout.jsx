@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "./Navbar";
 import { Outlet } from "react-router";
 import NavbarLogin from "./NavbarLogin";
 import Footer from "./Footer";

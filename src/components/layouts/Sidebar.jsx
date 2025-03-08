@@ -1,64 +1,66 @@
-import React from "react";
-import { FaHome } from "react-icons/fa";
-import { VscAccount } from "react-icons/vsc";
-import { GoProject } from "react-icons/go";
-import { IoPeopleOutline,IoSettingsOutline } from "react-icons/io5";
-import { MdLogout } from "react-icons/md";
-export default function Sidebar() {
+"use client";
+import { Link, useLocation } from "react-router";
+import { Home, Mail, User, Users, Briefcase } from "lucide-react";
+
+const Sidebar = () => {
+  const location = useLocation();
+  const menuItems = [
+    {
+      path: "/dashboard",
+      name: "Dashboard",
+      icon: <Home className="h-5 w-5" />,
+    },
+    {
+      path: "/business-owner",
+      name: "Business Owner",
+      icon: <Briefcase className="h-5 w-5" />,
+    },
+    {
+      path: "/job-seekers",
+      name: "Job Seekers",
+      icon: <User className="h-5 w-5" />,
+    },
+    {
+      path: "/freelancers",
+      name: "Freelancers",
+      icon: <Users className="h-5 w-5" />,
+    },
+    {
+      path: "/messages",
+      name: "Messages",
+      icon: <Mail className="h-5 w-5" />,
+      active: true,
+    },
+  ];
+
   return (
-    <>
-      <div className="flex flex-col ">
-        <div className="flex flex-1 overflow-hidden">
-          <aside className="bg-primary text-white w-70 flex-shrink-0 flex flex-col p-4 ">
-          <a href="#">
-            <button className="flex items-center gap-3 py-4 text-md font-bold">
-            
-              <FaHome className="text-xl font-bold" />
-              Dashboard
-             
-            </button>
-            </a>
-
-            <a href="#">
-            <button className="flex items-center gap-3 text-md font-bold py-4">
-              <VscAccount className="text-xl font-bold" />
-              View Profile
-            </button>
-            </a>
-
-            <a href="">
-            <button className="flex items-center gap-3 text-md font-bold py-4">
-              <GoProject className="text-xl font-bold" />
-              Projects Posted
-            </button>
-            </a>
-
-            <a href="">
-            <button className="flex items-center gap-3 text-md font-bold py-4">
-              <IoPeopleOutline className="text-xl font-bold" />
-              Job Applications
-            </button>
-           </a>
-
-            <div className="mt-auto space-y-1">
-              <p className="text-sm font-medium "> SETTINGS</p>
-              <a href="">
-              <button className="flex items-center gap-3 text-sm font-bold py-1 ">
-              <IoSettingsOutline  className="text-xl font-bold"  />
-              Setting
-              </button>
-              </a>
-
-              <a href="">
-              <button className="flex items-center gap-3 text-sm font-bold py-1 text-accent hover:text-accent-hover">
-              <MdLogout  className="text-xl font-bold"  />
-              Logout
-              </button>
-              </a>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </>
+    <aside className="group h-screen w-[70px] hover:w-64 bg-primary transition-all duration-300 ease-in-out">
+      <nav className="mt-6">
+        <ul className="space-y-2 px-2">
+          {menuItems.map((item) => (
+            <li key={item.path}>
+              <Link
+                to={item.path}
+                className={`flex items-center rounded-md px-4 py-3 text-white hover:text-secondary transition-colors whitespace-nowrap
+                  ${
+                    location.pathname === item.path
+                      ? "bg-blue-800"
+                      : "hover:bg-primary-hover"
+                  }`}
+              >
+                <span className="min-w-[20px]">
+                  {item.icon}
+                </span>
+                <span className="ml-3 text-sm font-medium opacity-0 group-hover:opacity-100  transition-opacity duration-300">
+                  {item.name}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
   );
-}
+};
+
+export default Sidebar;
