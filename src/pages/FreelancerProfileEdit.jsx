@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-// import { CheckIcon, ChevronDownIcon } from "./icons"; // Optional - see note below
+import { Link } from "react-router-dom";
 
 export default function FreelancerEditProfile() {
   const [formData, setFormData] = useState({
@@ -36,8 +36,8 @@ export default function FreelancerEditProfile() {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-      <div className="w-full max-w-3xl bg-gray-200 shadow-md rounded-md overflow-hidden">
+    <div className="flex justify-center items-center min-h-screen  p-4">
+      <div className="w-full max-w-3xl bg-gray-300 shadow-md rounded-md overflow-hidden">
         <div className="p-6">
           <div className="flex flex-row items-center justify-between pb-4">
             <h2 className="text-xl font-bold text-primary">Edit profile</h2>
@@ -53,7 +53,7 @@ export default function FreelancerEditProfile() {
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div className="space-y-2">
-                <label htmlFor="firstName" className="block text-sm font-medium text-primary">
+                <label htmlFor="firstName" className="block text-sm font-bold text-primary">
                   First Name
                 </label>
                 <input
@@ -61,11 +61,11 @@ export default function FreelancerEditProfile() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                  className="text-black-text text-TabText font-semibold w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="lastName" className="block text-sm font-medium text-primary">
+                <label htmlFor="lastName" className="block text-sm font-bold text-primary">
                   Last Name
                 </label>
                 <input
@@ -73,13 +73,13 @@ export default function FreelancerEditProfile() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                  className="text-black-text text-TabText font-semibold w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
                 />
               </div>
             </div>
 
             <div className="space-y-2 mb-4">
-              <label htmlFor="email" className="block text-sm font-medium">
+              <label htmlFor="email" className="block text-sm font-bold text-primary">
                 Email
               </label>
               <div className="relative">
@@ -89,7 +89,7 @@ export default function FreelancerEditProfile() {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white pr-10"
+                  className="text-black-text text-TabText font-semibold w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white pr-10"
                 />
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-green-500 rounded-full p-0.5">
                   {/* CheckIcon component or inline SVG */}
@@ -109,7 +109,7 @@ export default function FreelancerEditProfile() {
             </div>
 
             <div className="space-y-2 mb-4">
-              <label htmlFor="address" className="block text-sm font-medium">
+              <label htmlFor="address" className="block text-sm font-bold text-primary">
                 Address
               </label>
               <input
@@ -117,12 +117,12 @@ export default function FreelancerEditProfile() {
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                className="text-black-text text-TabText font-semibold w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
               />
             </div>
 
             <div className="space-y-2 mb-4">
-              <label htmlFor="contactNumber" className="block text-sm font-medium">
+              <label htmlFor="contactNumber" className="block text-sm font-bold text-primary">
                 Contact Number
               </label>
               <input
@@ -130,20 +130,20 @@ export default function FreelancerEditProfile() {
                 name="contactNumber"
                 value={formData.contactNumber}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                className="text-black-text text-TabText font-semibold w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div className="space-y-2">
-                <label htmlFor="city" className="block text-sm font-medium">
+                <label htmlFor="city" className="block text-sm font-bold text-primary">
                   City
                 </label>
                 <div className="relative">
                   <button
                     type="button"
                     onClick={() => setCityOpen(!cityOpen)}
-                    className="w-full px-3 py-2 text-left border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white flex justify-between items-center"
+                    className="text-black-text text-TabText font-semibold w-full px-3 py-2 text-left border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white flex justify-between items-center"
                   >
                     <span>{formData.city}</span>
                     <svg
@@ -166,7 +166,7 @@ export default function FreelancerEditProfile() {
                           <li key={city}>
                             <button
                               type="button"
-                              className="w-full px-3 py-2 text-left hover:bg-gray-100"
+                              className="text-black-text font-semibold w-full px-3 py-2 text-left hover:bg-gray-100"
                               onClick={() => handleSelectChange("city", city)}
                             >
                               {city}
@@ -180,14 +180,14 @@ export default function FreelancerEditProfile() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="state" className="block text-sm font-medium">
+                <label htmlFor="state" className="block text-sm font-bold text-primary">
                   State
                 </label>
                 <div className="relative">
                   <button
                     type="button"
                     onClick={() => setStateOpen(!stateOpen)}
-                    className="w-full px-3 py-2 text-left border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white flex justify-between items-center"
+                    className="text-black-text font-semibold w-full px-3 py-2 text-left border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white flex justify-between items-center"
                   >
                     <span>{formData.state}</span>
                     <svg
@@ -210,7 +210,7 @@ export default function FreelancerEditProfile() {
                           <li key={state}>
                             <button
                               type="button"
-                              className="w-full px-3 py-2 text-left hover:bg-gray-100"
+                              className="text-black-text font-semibold w-full px-3 py-2 text-left hover:bg-gray-100"
                               onClick={() => handleSelectChange("state", state)}
                             >
                               {state}
@@ -227,16 +227,18 @@ export default function FreelancerEditProfile() {
             <div className="flex justify-start space-x-4">
               <button
                 type="button"
-                className="px-4 py-2 border border-gray-300 rounded-md bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-black-text text-TabText font-semibold px-4 py-2 border border-gray-300 rounded-md bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 Cancel
               </button>
+              <Link to="/FreelancerProfile">
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-800 text-white rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className=" text-TabText font-semibold px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 Save
               </button>
+              </Link>
             </div>
           </form>
         </div>

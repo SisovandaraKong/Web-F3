@@ -5,6 +5,7 @@ import { RiComputerLine } from "react-icons/ri";
 import { FaPenNib } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 const FreelancerProfile = () => {
   return (
@@ -15,12 +16,16 @@ const FreelancerProfile = () => {
         <h1 className="text-Sub2Title font-bold text-primary">View Profile</h1>
       </div>
       <div className="flex space-x-2 justify-end mr-5">
-              <button className="flex items-center px-3 py-1.5 border border-primary rounded bg-white text-TabText font-medium text-red-500">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                </svg>
-                Edit
-              </button>
+        
+              <Link to="/FreelancerProfileEdit">
+                <button className="flex items-center px-3 py-1.5 border border-primary rounded bg-white text-TabText font-medium text-red-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                  </svg>
+                  Edit
+                </button>
+                </Link>
+              
               <button className="flex items-center px-3 py-1.5 bg-primary rounded text-TabText font-medium text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
                 <ChatBubbleLeftEllipsisIcon className="w-4 h-4 text-white" />
