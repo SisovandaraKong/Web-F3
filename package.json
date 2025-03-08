@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-        "git": "node -e \"const readline = require('readline'); const { exec } = require('child_process'); const rl = readline.createInterface({ input: process.stdin, output: process.stdout }); rl.question('Enter commit message: ', (message) => { rl.question('Enter branch name: ', (branch) => { exec(`git add . && git commit -m \\\"${message}\\\" && git push -u origin ${branch}`, (err, stdout, stderr) => { if (err) { console.error(`Error: ${err.message}`); } else { console.log(stdout); } rl.close(); }); }); });\""
+    "git": "node -e \"const readline = require('readline'); const { exec } = require('child_process'); const rl = readline.createInterface({ input: process.stdin, output: process.stdout }); rl.question('Enter commit message: ', (message) => { rl.question('Enter branch name: ', (branch) => { exec(`git add . && git commit -m \\\"${message}\\\" && git push -u origin ${branch}`, (err, stdout, stderr) => { if (err) { console.error(`Error: ${err.message}`); } else { console.log(stdout); } rl.close(); }); }); });\""
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -16,10 +16,9 @@
     "aos": "^2.3.4",
     "class-variance-authority": "^0.7.1",
     "flowbite": "^3.1.2",
-    "font-awesome": "^4.7.0",
+    "next": "^15.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-fontawesome": "^1.7.1",
     "react-icons": "^5.5.0",
     "react-router": "^7.2.0",
     "tailwind-merge": "^3.0.2",
@@ -37,7 +36,6 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
-    "typescript": "^5.7.3",
-    "vite": "^6.1.0"
+    "vite": "^6.1.1"
   }
 }

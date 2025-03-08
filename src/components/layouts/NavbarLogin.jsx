@@ -90,7 +90,7 @@ export default function NavbarLogin() {
 
   return (
     <>
-      <nav className="bg-primary border-gray-200 dark:bg-gray-900 dark:border-gray-700  sticky top-0 z-50">
+      <nav className="bg-primary border-gray-200  sticky top-0 z-50">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-3">
           <a
             href="#"
