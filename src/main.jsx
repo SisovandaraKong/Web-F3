@@ -5,7 +5,12 @@ import "./index.css";
 import AboutUsPage from "./pages/AboutUsPage.jsx";
 import RootLayout from "./components/layouts/RootLayout.jsx";
 import FreelancerProfile from "./pages/FreelancerProfile.jsx";
+import UserSeeFreelancerProfilePage from "./pages/UserSeeFreelancerProfilePage.jsx";
 import App from "./App.jsx";
+import RootLayoutwithSidebar from "./components/layouts/RootLayoutwithSidebar.jsx";
+import UserSeeFreelancerProjectPage from "./pages/UserSeeFreelancerProjectPage.jsx";
+import CardDetail from "./pages/CardDetail.jsx";
+import FreelancerProfileEdit from "./pages/FreelancerProfileEdit.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -14,7 +19,13 @@ createRoot(document.getElementById("root")).render(
         <Route element={<RootLayout />}>
           <Route path="/" element={<App />} />
           <Route path="/aboutus" element={<AboutUsPage />} />
-          <Route path="/freelancerProfile" element={<FreelancerProfile />} />
+          <Route path="/UserSeeFreelancerProfilePage" element={<UserSeeFreelancerProfilePage />} />
+          <Route path="/UserSeeFreelancerProjectPage" element={<UserSeeFreelancerProjectPage />} />
+          <Route path="/CardDetail" element={<CardDetail />} />
+        </Route>
+        <Route element={<RootLayoutwithSidebar />}>
+          <Route path="/Freelancerprofile" element={<FreelancerProfile />} /> 
+          <Route path="/FreelancerProfileEdit" element={<FreelancerProfileEdit />} />
         </Route>
       </Routes>
     </BrowserRouter>

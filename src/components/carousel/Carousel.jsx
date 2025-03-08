@@ -7,7 +7,7 @@ const slides = [
     subtitle:
       "We place you at the centre of international networks to advance your strategic interests.",
     buttonText: "Our Team",
-    image: "https://www.workandlearnindiana.com/assets/images/home-hero.jpg",
+    image: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?cs=srgb&dl=pexels-fauxels-3183197.jpg&fm=jpg",
   },
   {
     title: "Scale Your Business With Custom Web Solutions",
@@ -15,7 +15,7 @@ const slides = [
       "From responsive websites to e-commerce platforms, we create the perfect digital solution for your business needs.",
     buttonText: "Our Services",
     image:
-      "https://asset.gallup.com/p/WORKPLACEV9CMS/f10390ee-e9b1-461a-97d6-b82169fa25c0.jpg",
+      "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
   },
   {
     title: "Modern Web Development That Converts",
@@ -51,7 +51,7 @@ const Carousel = () => {
             key={`decoration-${slide}`}
             className={`
             absolute
-            bg-gradient-to-b from-primary/40 
+            bg-gradient-to-b from-primary-hover/40 
             z-10
             h-[200vh] w-[100px]
             left-[450px] -top-30
@@ -123,7 +123,7 @@ const Carousel = () => {
           ))}
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
-        <div className="absolute inset-0 flex flex-col z-20 justify-center items-start px-5 md:px-20 xl:px-36 text-white">
+        <div className="absolute inset-0 flex flex-col z-20 justify-center items-start px-5 md:px-20 xl:px-32 text-white">
           {slides.map((slide, index) => (
             <div
               key={`content-${index}`}
@@ -139,10 +139,10 @@ const Carousel = () => {
               <h2 className="text-3xl md:text-6xl font-bold relative z-20  xl:w-[1000px] ">
                 {slide.title}
               </h2>
-              <p className="mt-2 text-lg md:text-xl relative z-20">
+              <p className="mt-2 text-lg md:text-xl relative z-20 mb-4">
                 {slide.subtitle}
               </p>
-              <Button text="Start" />
+              <Button text={slide.buttonText} />
             </div>
           ))}
         </div>

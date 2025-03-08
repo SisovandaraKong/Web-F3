@@ -1,16 +1,15 @@
-import React from 'react' 
-import { Outlet } from 'react-router'
-import Navbar from './Navbar'
-import Footer from './Footer'
-import Sidebar from './Sidebar'
- 
+import React from "react";
+import { Outlet } from "react-router";
+import NavbarLogin from "./NavbarLogin";
+import Footer from "./Footer";
+
+
 export default function RootLayout() {
   return (
     <div>
-      <Navbar/>
-      {/* <Sidebar/> */}
-      <Outlet/>
-      <Footer/>
+      <NavbarLogin />
+      <Outlet />
+      <Footer />
     </div>
-  )
+  );
 }

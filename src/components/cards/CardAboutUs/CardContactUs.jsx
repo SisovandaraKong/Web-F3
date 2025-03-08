@@ -5,13 +5,13 @@ import { MdOutlineMailOutline } from "react-icons/md";
 
 export default function CardContactUs() {
   return (
-    <div className=" px-10 flex flex-col md:flex-row items-center justify-between mx-auto p-6 bg-amber-50 rounded-lg shadow-md dark:bg-amber-50">
+    <div className=" px-10 flex flex-col md:flex-row items-center justify-between mx-auto p-6">
       <div className="mb-6 md:mb-0">
-      <h2 className="text-MainTitle font-bold text-primary mb-4 underline underline-offset-9 decoration-secondary">
+      <h2 data-aos="flip-left" className="text-MainTitle font-bold text-primary mb-4 underline underline-offset-9 decoration-secondary">
               Contact Us
             </h2>
 
-        <div className="space-y-4 text-primary">
+        <div data-aos="fade-right" className="space-y-4 text-primary">
           <div className="flex items-center text-Sub2Title font-bold">
             <FiPhone />
 
@@ -46,6 +46,7 @@ export default function CardContactUs() {
 
       <div className="w-full md:w-1/2 max-w-xs">
         <img
+        data-aos="fade-left"
           src="src/assets/imgAboutUs/Contact.svg"
           alt="Contact illustration"
           className="w-full h-auto object-contain"

@@ -1,69 +1,87 @@
 import React from "react";
+import { FaUserAlt } from "react-icons/fa";
+import { FaRegFileAlt } from "react-icons/fa";
+import { RiComputerLine } from "react-icons/ri";
+import { FaPenNib } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
+import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
 
 const FreelancerProfile = () => {
   return (
-    <div className="max-w-6xl mx-auto bg-gray-50 min-h-screen">
-      <div className="p-5">
-        <h1 className="text-xl font-semibold text-gray-800">View Profile</h1>
-      </div>
+    <>
 
+    <div className="max-w-7xl mx-auto min-h-screen">
+      <div className="p-5">
+        <h1 className="text-Sub2Title font-bold text-primary">View Profile</h1>
+      </div>
+      <div className="flex space-x-2 justify-end mr-5">
+              <button className="flex items-center px-3 py-1.5 border border-primary rounded bg-white text-TabText font-medium text-red-500">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                </svg>
+                Edit
+              </button>
+              <button className="flex items-center px-3 py-1.5 bg-primary rounded text-TabText font-medium text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <ChatBubbleLeftEllipsisIcon className="w-4 h-4 text-white" />
+                </svg>
+                Let's Chat
+              </button>
+            </div>
       <div className="flex flex-col md:flex-row px-5 pb-10 gap-6">
         <div className="w-full md:w-1/3">
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex flex-col items-center">
-              <div className="relative w-24 h-24 mb-4">
+              <div className="relative w-24 h-24 mb-4 ">
                 <img
-                  src="src/assets/imgAboutUs/daron.jpg"
+                  src="src/assets/imgAboutUs/sanom.jpg"
                   alt="Profile"
-                  className="w-24 h-24 rounded-full object-cover border-4 border-teal-400"
+                  className="w-24 h-24 rounded-full object-cover border-4 border-primary"
                 />
               </div>
               
               <div className="text-center mb-6">
-                <h2 className="text-lg font-semibold">
-                  John Doe <span className="text-gray-400 text-sm">• Videographer</span>
+                <h2 className="text-CardMainTitle font-bold text-primary">
+                  Rin Sanom 
                 </h2>
-                <div className="mt-1">
-                  <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                    Online
-                  </span>
-                </div>
+                <span className="text-primary text-sm">• Web Development</span>
+                
                 <div className="flex items-center justify-center mt-3">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-900 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                  <FaUserAlt />
                   </svg>
-                  <span className="text-sm text-gray-600">Full-time</span>
+                  <span className="text-sm text-primary">Full-time</span>
                 </div>
               </div>
             </div>
 
             <div className="border-t border-gray-100 pt-4">
-              <h3 className="font-medium text-gray-800 mb-3">Contact information</h3>
+              <h3 className="font-semibold text-primary mb-3 text-CardMainTitle">Contact information</h3>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary-hover mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                   </svg>
-                  <span className="text-sm text-gray-600">John@gmail.com</span>
+                  <span className="text-sm text-primary">Sanom@gmail.com</span>
                 </div>
                 <div className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary-hover mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   </svg>
-                  <span className="text-sm text-gray-600">+855 39 24 23 237</span>
+                  <span className="text-sm text-primary">+855 39 24 23 237</span>
                 </div>
                 <div className="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary-hover mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm text-gray-600">Phnom Penh, Cambodia</span>
+                  <span className="text-sm text-primary">Phnom Penh, Cambodia</span>
                 </div>
               </div>
             </div>
 
             <div className="border-t border-gray-100 pt-4 mt-4">
-              <h3 className="font-medium text-gray-800 mb-3">Share my profile</h3>
+              <h3 className="font-semibold text-primary mb-3 text-CardMainTitle">Share my profile</h3>
               <div className="flex space-x-2">
                 <a href="#" className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -92,25 +110,25 @@ const FreelancerProfile = () => {
 
         <div className="w-full md:w-2/3">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold text-gray-800">About</h2>
-            <div className="flex space-x-2">
-              <button className="flex items-center px-3 py-1.5 border border-gray-300 rounded bg-white text-sm font-medium text-gray-700">
+            <h2 className="text-CardMainTitle font-bold text-primary">About</h2>
+            {/* <div className="flex space-x-2">
+              <button className="flex items-center px-3 py-1.5 border border-primary rounded bg-white text-TabText font-medium text-red-500">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                 </svg>
                 Edit
               </button>
-              <button className="flex items-center px-3 py-1.5 bg-blue-900 rounded text-sm font-medium text-white">
+              <button className="flex items-center px-3 py-1.5 bg-primary rounded text-TabText font-medium text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+                <ChatBubbleLeftEllipsisIcon className="w-4 h-4 text-white" />
                 </svg>
                 Let's Chat
               </button>
-            </div>
+            </div> */}
           </div>
 
           <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-TabText text-black-text leading-relaxed">
               Recently, I had traveled to my parents for a quiet weekend at home. I was warm, 
               cozy, and was studying for upcoming interviews. I already had a dedicated 
               notebook full of doodles from company websites, job postings, online presentations, 
@@ -120,101 +138,102 @@ const FreelancerProfile = () => {
           </div>
 
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold text-gray-800">CV</h2>
-            <a href="#" className="text-blue-900 text-sm font-medium">Resume</a>
+            <h2 className="text-xl font-bold text-primary">CV</h2>
+            <a href="#" className="text-primary text-sm font-bold">Resume</a>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
             <div className="flex items-center">
-              <div className="bg-gray-100 p-3 rounded-lg mr-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <div className=" mr-3 ">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <FaRegFileAlt />
                 </svg>
               </div>
-              <span className="font-medium text-gray-700">UI/UX designer.pdf</span>
+              <span className="font-medium text-primary text-TabText">UI/UX designer.pdf</span>
             </div>
           </div>
 
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Work Experience</h2>
+          <h2 className="text-xl font-bold text-primary mb-4">Work Experience</h2>
 
-          <div className="bg-white rounded-lg shadow-sm p-5 mb-4">
-            <h3 className="font-medium text-gray-800 mb-2">Work Experience</h3>
+          <div className="bg-white rounded-lg shadow-sm p-5 mb-4 transition-transform transform hover:scale-105">
+            <h3 className="font-semibold text-primary mb-2">Work Experience</h3>
             <div className="mt-1">
-              <div className="text-sm text-gray-500">University of Fine Art</div>
-              <div className="font-medium text-gray-700">Bachelor's degree, Graphic Design</div>
-              <div className="text-sm text-gray-500">2018 - 2021</div>
+              <div className="text-TabText text-black-text">University of Fine Art</div>
+              <div className="font-medium text-primary">Bachelor's degree, Graphic Design</div>
+              <div className="text-TabText text-black-text">2018 - 2021</div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
-            <h3 className="font-medium text-gray-800 mb-2">Work Experience</h3>
+          <div className="bg-white rounded-lg shadow-sm p-5 mb-6 transition-transform transform hover:scale-105">
+            <h3 className="font-semibold text-primary mb-2">Work Experience</h3>
             <div className="mt-1">
-              <div className="text-sm text-gray-500">University of Fine Art</div>
-              <div className="font-medium text-gray-700">Bachelor's degree, Graphic Design</div>
-              <div className="text-sm text-gray-500">2014 - 2017</div>
+              <div className="text-TabText text-black-text">University of Fine Art</div>
+              <div className="font-medium text-primary">Bachelor's degree, Graphic Design</div>
+              <div className="text-TabText text-black-text">2014 - 2017</div>
             </div>
           </div>
 
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">My Services</h2>
+          <h2 className="text-xl font-bold text-primary mb-4">My Services</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center">
-              <div className="bg-gray-100 p-3 rounded-lg mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="p-3 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-13 w-13 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <RiComputerLine />
                 </svg>
               </div>
-              <span className="font-medium text-gray-700">Programming</span>
+              <span className="text-TabText text-black-text">Programming</span>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center">
-              <div className="bg-gray-100 p-3 rounded-lg mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="p-3 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-13 w-13 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <FaPenNib />
                 </svg>
               </div>
-              <span className="font-medium text-gray-700">Graphic</span>
+              <span className="text-TabText text-black-text">Graphic</span>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center">
-              <div className="bg-gray-100 p-3 rounded-lg mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="p-3 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-13 w-13 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <FaPencilAlt />
                 </svg>
               </div>
-              <span className="font-medium text-gray-700">Content Creator</span>
+              <span className="text-TabText text-black-text">Content Creator</span>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center">
-              <div className="bg-gray-100 p-3 rounded-lg mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="p-3 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-13 w-13 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <RiComputerLine />
                 </svg>
               </div>
-              <span className="font-medium text-gray-700">Programming</span>
+              <span className="text-TabText text-black-text">Programming</span>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center">
-              <div className="bg-gray-100 p-3 rounded-lg mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="p-3 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-13 w-13 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <FaPenNib />
                 </svg>
               </div>
-              <span className="font-medium text-gray-700">Graphic</span>
+              <span className="text-TabText text-black-text">Graphic</span>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center">
-              <div className="bg-gray-100 p-3 rounded-lg mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="p-3 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-13 w-13 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <FaPencilAlt />
                 </svg>
               </div>
-              <span className="font-medium text-gray-700">Programming</span>
+              <span className="text-TabText text-black-text">Content Creator</span>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 };
 
