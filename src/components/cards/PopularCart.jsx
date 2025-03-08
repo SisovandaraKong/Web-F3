@@ -1,5 +1,5 @@
 import React from "react";
-import jobListings from "../../mocks/mockData"; 
+import jobListings from "../../data/mockData"; 
 
 export default function PopularCart() {
   return (

@@ -7,27 +7,27 @@ import RootLayout from "./components/layouts/RootLayout.jsx";
 import FreelancerProfile from "./pages/FreelancerProfile.jsx";
 import UserSeeFreelancerProfilePage from "./pages/UserSeeFreelancerProfilePage.jsx";
 import App from "./App.jsx";
-import RootLayoutwithSidebar from "./components/layouts/RootLayoutwithSidebar.jsx";
-import UserSeeFreelancerProjectPage from "./pages/UserSeeFreelancerProjectPage.jsx";
-import CardDetail from "./pages/CardDetail.jsx";
-import FreelancerProfileEdit from "./pages/FreelancerProfileEdit.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
+import FullTimePage from "./pages/FullTimePage.jsx";
+import PartTimePage from "./pages/PartTimePage.jsx";
+import FreelancerPage from "./pages/FreelancerPage.jsx";
+import BusinessOwnerPage from "./pages/BusinessOwnerPage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <ThemeProvider>
     <BrowserRouter>
       <Routes>
         <Route element={<RootLayout />}>
           <Route path="/" element={<App />} />
-          <Route path="/aboutus" element={<AboutUsPage />} />
-          <Route path="/UserSeeFreelancerProfilePage" element={<UserSeeFreelancerProfilePage />} />
-          <Route path="/UserSeeFreelancerProjectPage" element={<UserSeeFreelancerProjectPage />} />
-          <Route path="/CardDetail" element={<CardDetail />} />
-        </Route>
-        <Route element={<RootLayoutwithSidebar />}>
-          <Route path="/Freelancerprofile" element={<FreelancerProfile />} /> 
-          <Route path="/FreelancerProfileEdit" element={<FreelancerProfileEdit />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/full-time" element={<FullTimePage/>} />
+          <Route path="/part-time" element={<PartTimePage/>} />
+          <Route path="/freelancer-page" element={<FreelancerPage/>} />
+          <Route path="/business-owner" element={<BusinessOwnerPage/>} />
         </Route>
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>
 );

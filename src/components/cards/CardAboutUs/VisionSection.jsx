@@ -4,10 +4,9 @@ export default function VisionSection() {
       <div
         data-aos="fade-left"
         data-aos-duration="700"
-        className="text-center md:text-left"
-      >
+        className="text-center md:text-left">
         <h2 className="text-SubHeading font-bold text-primary">Our Vision</h2>
-        <p className="text-lg md:text-xl text-black-text mt-4">
+        <p className="text-lg md:text-xl text-black-text mt-4 dark:text-white ">
           At [Jobseek], we connect freelancers, job seekers, and employers to
           create valuable opportunities. Our platform helps individuals find
           meaningful work while enabling businesses to discover the talent they

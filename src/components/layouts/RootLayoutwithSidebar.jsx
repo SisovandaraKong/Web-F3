@@ -1,6 +1,6 @@
 
 import React from 'react';
-import NavbarLogin from './NavbarLogin';
+import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import { Outlet } from 'react-router';
 import Footer from './Footer';
@@ -10,7 +10,7 @@ export default function RootLayoutwithSidebar() {
     <div className="flex flex-col h-screen">
 
       <div className='fixed w-full top-0 z-20'>
-        <NavbarLogin/>
+        <Navbar/>
       </div>
       
       <div className="flex flex-1 pt-[60px]"> 

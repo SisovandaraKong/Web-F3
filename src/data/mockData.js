@@ -9,7 +9,7 @@ const jobListings = [
     requirements: ["JavaScript", "React.js", "Node.js"],
     publishedDate: "2025-02-21",
     imageUrl:
-      "https://i.guim.co.uk/img/media/231cf25e242ae4afbab1c465d5bbfb45623def16/0_0_5472_3283/master/5472.jpg?width=465&dpr=1&s=none&crop=none",
+      "https://metro.org/sites/default/files/inline-images/DSC_6289.JPG",
   },
   {
     companyName: "Cloud Solutions Ltd.",
@@ -21,7 +21,7 @@ const jobListings = [
     requirements: ["AWS", "Docker", "Kubernetes"],
     publishedDate: "2025-02-20",
     imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF2tqZHleYp3h1sDXCF2qDBMcK1vkFpcv-wg&s",
+      "https://images.agoramedia.com/wte3.0/gcms/job-hunting-while-pregnant-2021-722x406.jpg",
   },
   {
     companyName: "CyberSecure Inc.",
@@ -33,7 +33,7 @@ const jobListings = [
     requirements: ["Penetration Testing", "SIEM", "Python"],
     publishedDate: "2025-02-19",
     imageUrl:
-      "https://www.roberthalf.com/content/dam/roberthalf/images/blogs/us/en/migrated-blogs/hr1/shutterstock_412257712-2.jpg",
+      "https://www.sydney.edu.au/content/dam/people/students/icpu-students-in-a-brainstorming-session.jpg",
   },
   {
     companyName: "AI Revolution Co.",
@@ -44,7 +44,8 @@ const jobListings = [
       "Pioneering artificial intelligence solutions for various industries.",
     requirements: ["Python", "TensorFlow", "Deep Learning"],
     publishedDate: "2025-02-18",
-    imageUrl: "https://example.com/images/ai.jpg",
+    imageUrl:
+      "https://files.oaiusercontent.com/file-VRn3qLN7LvAWdaooZi2Pdh?se=2025-03-07T08%3A58%3A28Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D7c9dff34-0ae6-4667-a4a6-acb72b66c020.webp&sig=w71F/vMWHh77qeKWCYQY%2BXf5AhDX2gCLoxHw2%2BpMoW0%3D",
   },
   {
     companyName: "Data Insights LLC",
@@ -55,7 +56,8 @@ const jobListings = [
       "Helping businesses make data-driven decisions through advanced analytics.",
     requirements: ["SQL", "Machine Learning", "Power BI"],
     publishedDate: "2025-02-17",
-    imageUrl: "https://example.com/images/data.jpg",
+    imageUrl:
+      "https://files.oaiusercontent.com/file-8Q8x2wV4rpAKa4YhiFqSUh?se=2025-03-07T08%3A59%3A07Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D91e1a338-8f74-4e3e-ada8-1bc317263358.webp&sig=nvjiMScteqfGugqGdzB%2B4MlZKpNEWJer4zIjIwkBwPQ%3D",
   },
   {
     companyName: "DevOps Masters",
@@ -66,7 +68,8 @@ const jobListings = [
       "Bridging the gap between development and operations for seamless deployments.",
     requirements: ["CI/CD", "Terraform", "Jenkins"],
     publishedDate: "2025-02-16",
-    imageUrl: "https://example.com/images/devops.jpg",
+    imageUrl:
+      "https://files.oaiusercontent.com/file-Y528HvxHz9SuntsDLmMk8e?se=2025-03-07T09%3A02%3A15Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D22f458a3-8d4c-40fd-8882-15ea1fd1b1dd.webp&sig=84ThBQi0deOZnMeRdzTGITZ/YWf69y3QYdrbZb2ryFM%3D",
   },
   {
     companyName: "UI/UX Pro",
@@ -77,7 +80,8 @@ const jobListings = [
       "Crafting intuitive and aesthetically pleasing user experiences.",
     requirements: ["Figma", "Adobe XD", "User Research"],
     publishedDate: "2025-02-15",
-    imageUrl: "https://example.com/images/uiux.jpg",
+    imageUrl:
+      "https://files.oaiusercontent.com/file-BCfV2MjZePeF9QMi91EujX?se=2025-03-07T09%3A00%3A38Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D463d738f-5c35-40c9-bbf5-af679b0e64dc.webp&sig=dFP1Cn6/dS10qTKBf/uhWv3BC3RZ%2BcGkYgqK2WvoEmM%3D",
   },
   {
     companyName: "Mobile First Co.",
@@ -88,7 +92,8 @@ const jobListings = [
       "Building cutting-edge mobile applications for various industries.",
     requirements: ["Flutter", "React Native", "Swift"],
     publishedDate: "2025-02-14",
-    imageUrl: "https://example.com/images/mobile.jpg",
+    imageUrl:
+      "https://files.oaiusercontent.com/file-AUiJF34AdjujmcHCy4KLk3?se=2025-03-07T09%3A01%3A10Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dde6ac845-975a-4132-b678-6a4bdac3349e.webp&sig=k6/mtJFQQjxcv%2BzOF%2BxhRDp7sGkOFbIJosxawFaNIss%3D",
   },
   {
     companyName: "Blockchain Innovators",

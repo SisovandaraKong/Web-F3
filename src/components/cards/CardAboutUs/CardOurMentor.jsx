@@ -53,7 +53,6 @@
 //   );
 // }
 
-
 // import React from "react";
 // import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 // import { MdOutlineMailOutline } from "react-icons/md";
@@ -98,7 +97,6 @@
 //   );
 // }
 
-
 import React from "react";
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -116,11 +114,14 @@ export default function CardOurMentor() {
   ];
 
   return (
-    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 xl:px-24">
+    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 xl:px-24  ">
       {mentors.map((mentor, index) => (
-        <div key={index} data-aos={index % 2 === 0 ? "fade-right" : "fade-left"} className="w-full max-w-sm mx-auto p-5 ">
+        <div
+          key={index}
+          data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+          className="w-full max-w-sm mx-auto p-5 ">
           <div className="flex justify-center items-center">
-            <h1 className="text-2xl md:text-3xl font-bold text-blue-900 text-center">
+            <h1 className="text-2xl md:text-3xl font-bold text-blue-900 dark:text-white  text-center">
               {mentor.name}
             </h1>
           </div>
@@ -142,4 +143,3 @@ export default function CardOurMentor() {
     </div>
   );
 }
-
