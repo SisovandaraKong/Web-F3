@@ -8,9 +8,13 @@ import FreelancerProfile from "./pages/FreelancerProfile.jsx";
 import UserSeeFreelancerProfilePage from "./pages/UserSeeFreelancerProfilePage.jsx";
 import App from "./App.jsx";
 import RootLayoutwithSidebar from "./components/layouts/RootLayoutwithSidebar.jsx";
-import UserSeeFreelancerProjectPage from "./pages/UserSeeFreelancerProjectPage.jsx";
-import CardDetail from "./pages/CardDetail.jsx";
 import FreelancerProfileEdit from "./pages/FreelancerProfileEdit.jsx";
+import UserSeeFreelancerProjectProgramming from "./pages/UserSeeFreelancerProjectProgramming.jsx";
+import UserSeeFreelancerProjectGraphic from "./pages/UserSeeFreelancerProjectGraphic.jsx";
+import UserSeeFreelancerProjectContentCreator from "./pages/UserSeeFreelancerProjectContentCreator.jsx";
+import CardDetailProgramming from "./pages/CardDetailProgramming.jsx";
+import CardDetailGraphic from "./pages/CardDetailGraphic.jsx";
+import CardDetailContentCreator from "./pages/CardDetailContentCreator.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,13 +23,17 @@ createRoot(document.getElementById("root")).render(
         <Route element={<RootLayout />}>
           <Route path="/" element={<App />} />
           <Route path="/aboutus" element={<AboutUsPage />} />
-          <Route path="/UserSeeFreelancerProfilePage" element={<UserSeeFreelancerProfilePage />} />
-          <Route path="/UserSeeFreelancerProjectPage" element={<UserSeeFreelancerProjectPage />} />
-          <Route path="/CardDetail" element={<CardDetail />} />
+          <Route path="/userSeeFreelancerProfilePage" element={<UserSeeFreelancerProfilePage />} />
+          <Route path="/userSeeFreelancerProjectProgramming" element={<UserSeeFreelancerProjectProgramming />} />
+          <Route path="/userSeeFreelancerProjectGraphic" element={<UserSeeFreelancerProjectGraphic />} />
+          <Route path="/userSeeFreelancerProjectContentCreator" element={<UserSeeFreelancerProjectContentCreator />} />
+          <Route path="/cardDetailProgramming" element={<CardDetailProgramming/>} />
+          <Route path="/cardDetailGraphic" element={<CardDetailGraphic/>} />
+          <Route path="/cardDetailContentCreator" element={<CardDetailContentCreator/>} />
         </Route>
         <Route element={<RootLayoutwithSidebar />}>
-          <Route path="/Freelancerprofile" element={<FreelancerProfile />} /> 
-          <Route path="/FreelancerProfileEdit" element={<FreelancerProfileEdit />} />
+          <Route path="/freelancerprofile" element={<FreelancerProfile />} /> 
+          <Route path="/freelancerProfileEdit" element={<FreelancerProfileEdit />} />
         </Route>
       </Routes>
     </BrowserRouter>

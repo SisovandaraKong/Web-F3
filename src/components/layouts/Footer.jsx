@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <>
-      <footer className="bg-white dark:bg-blue-900 mt-28 min-w-xs">
+      <footer className="bg-primary dark:bg-primary mt-28 min-w-xs">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
@@ -14,17 +14,17 @@ export default function Footer() {
                   alt="JobSeek Logo"
                 />
               </a>
-              <h2 className="dark:text-white mt-15">
+              <h2 className="dark:text-white text-white mt-15">
                 JobSeek is created by ISTAD <br /> Student for Job Matching{" "}
                 <br /> Service Specialized in IT.
               </h2>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
                   Quick Line
                 </h2>
-                <ul className="text-gray-500 dark:text-white font-medium">
+                <ul className="text-white dark:text-white font-medium">
                   <li className="mb-4">
                     <a
                       href="https://github.com/kea-daron"
@@ -60,10 +60,10 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
                   Support & Legal
                 </h2>
-                <ul className="text-gray-500 dark:text-white font-medium">
+                <ul className="text-white dark:text-white font-medium">
                   <li className="mb-4">
                     <a
                       href="https://github.com/themesberg/flowbite"
@@ -99,19 +99,19 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <h2 className="text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                <h2 className="text-sm font-semibold text-white uppercase dark:text-white">
                   Our Sponsors
                 </h2>
                 <ul>
-                  <li className="h-[100px] w-[200px]">
+                  {/* <li className="h-[100px] w-[200px]">
                     <a href="#" className="hover:underline">
                       <img
                         src="src/assets/Footer/ministry.png"
                         alt="Logo Ministry"
                       />
                     </a>
-                  </li>
-                  <li className="h-[100px] w-[200px]">
+                  </li> */}
+                  <li className="h-[100px] w-[200px] mt-5">
                     <a href="#" className="hover:underline">
                       <img
                         src="src/assets/Footer/istad.webp"
@@ -125,7 +125,7 @@ export default function Footer() {
           </div>
           <hr className="my-6 border-gray-200 sm:mx-auto dark:text-white lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm text-gray-500  dark:text-white">
+            <span className="text-sm text-white  dark:text-white">
               Privacy Policy
               <br />© 2025{" "}
               <a href="https://flowbite.com/" className="hover:underline">

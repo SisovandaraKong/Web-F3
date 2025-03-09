@@ -16,6 +16,8 @@ import {
 } from "react-icons/fa";
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
 import { FaRegFileAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 const UserSeeFreelancerPage = () => {
   return (
     <div className=" min-h-screen ">
@@ -75,15 +77,21 @@ const UserSeeFreelancerPage = () => {
               <div className="space-y-4">
                 <div className="flex items-start">
                   <FaEnvelope className="text-primary mt-1 mr-3" />
-                  <span className="text-primary text-TabText">Sanom@gmail.com</span>
+                  <span className="text-primary text-TabText">
+                    Sanom@gmail.com
+                  </span>
                 </div>
                 <div className="flex items-start">
                   <FaPhone className="text-primary mt-1 mr-3" />
-                  <span className="text-primary text-TabText">+855 31 34 73 237</span>
+                  <span className="text-primary text-TabText">
+                    +855 31 34 73 237
+                  </span>
                 </div>
                 <div className="flex items-start">
                   <FaMapMarkerAlt className="text-primary mt-1 mr-3" />
-                  <span className="text-primary text-TabText">Phnom Penh, Cambodia</span>
+                  <span className="text-primary text-TabText">
+                    Phnom Penh, Cambodia
+                  </span>
                 </div>
               </div>
             </div>
@@ -131,7 +139,38 @@ const UserSeeFreelancerPage = () => {
                 My Services
               </h2>
               <div className="grid grid-cols-2 gap-2">
-                <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center">
+                <Link to="/userSeeFreelancerProjectProgramming">
+                  <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center hover:scale-105">
+                    <div className="w-10 h-10 flex items-center justify-center text-primary">
+                      <FaDesktop size={24} />
+                    </div>
+                    <span className="text-sm mt-2 text-black-text">
+                      Programming
+                    </span>
+                  </div>
+                </Link>
+                <Link to="/userSeeFreelancerProjectGraphic">
+                  <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center hover:scale-105">
+                    <div className="w-10 h-10 flex items-center justify-center text-primary">
+                      <FaPencilAlt size={24} />
+                    </div>
+                    <span className="text-sm mt-2 text-black-text">
+                      Graphic
+                    </span>
+                  </div>
+                </Link>
+                <Link to="/userSeeFreelancerProjectContentCreator">
+                  <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center hover:scale-105">
+                    <div className="w-10 h-10 flex items-center justify-center text-primary">
+                      <FaFileAlt size={24} />
+                    </div>
+                    <span className="text-sm mt-2 text-black-text">
+                      Content Creator
+                    </span>
+                  </div>
+                </Link>
+                <Link to="/userSeeFreelancerProjectProgramming">
+                <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center hover:scale-105">
                   <div className="w-10 h-10 flex items-center justify-center text-primary">
                     <FaDesktop size={24} />
                   </div>
@@ -139,13 +178,19 @@ const UserSeeFreelancerPage = () => {
                     Programming
                   </span>
                 </div>
-                <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center">
+                </Link>
+                <Link to="/userSeeFreelancerProjectProgramming">
+                <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center hover:scale-105">
                   <div className="w-10 h-10 flex items-center justify-center text-primary">
-                    <FaPencilAlt size={24} />
+                    <FaDesktop size={24} />
                   </div>
-                  <span className="text-sm mt-2 text-black-text">Graphic</span>
+                  <span className="text-sm mt-2 text-black-text">
+                    Programming
+                  </span>
                 </div>
-                <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center">
+                </Link>
+                <Link to="/userSeeFreelancerProjectContentCreator">
+                <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center hover:scale-105">
                   <div className="w-10 h-10 flex items-center justify-center text-primary">
                     <FaFileAlt size={24} />
                   </div>
@@ -153,39 +198,16 @@ const UserSeeFreelancerPage = () => {
                     Content Creator
                   </span>
                 </div>
-                <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center">
-                  <div className="w-10 h-10 flex items-center justify-center text-primary">
-                    <FaDesktop size={24} />
-                  </div>
-                  <span className="text-sm mt-2 text-black-text">
-                    Programming
-                  </span>
-                </div>
-                <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center">
-                  <div className="w-10 h-10 flex items-center justify-center text-primary">
-                    <FaDesktop size={24} />
-                  </div>
-                  <span className="text-sm mt-2 text-black-text">
-                    Programming
-                  </span>
-                </div>
-                <div className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center justify-center text-center">
-                  <div className="w-10 h-10 flex items-center justify-center text-primary">
-                    <FaFileAlt size={24} />
-                  </div>
-                  <span className="text-sm mt-2 text-black-text">
-                    Content Creator
-                  </span>
-                </div>
+                </Link>
               </div>
             </div>
           </div>
 
-
           <div className="md:col-span-2">
-
             <div className="bg-white rounded-lg shadow-sm p-6 mb-4">
-              <h2 className="font-semibold text-CardMainTitle text-primary mb-4">About</h2>
+              <h2 className="font-semibold text-CardMainTitle text-primary mb-4">
+                About
+              </h2>
               <p className="text-black-text text-TabText">
                 Recently, I had traveled to my parents for a quiet weekend of
                 home. It was warm, sunny, and I was studying for upcoming
@@ -198,10 +220,11 @@ const UserSeeFreelancerPage = () => {
               </p>
             </div>
 
-
             <div className="">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-CardMainTitle font-semibold text-primary">CV</h2>
+                <h2 className="text-CardMainTitle font-semibold text-primary">
+                  CV
+                </h2>
                 <a href="#" className="text-primary text-TabText font-bold">
                   Resume
                 </a>
@@ -230,16 +253,20 @@ const UserSeeFreelancerPage = () => {
                 Work Experience
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-white rounded-lg shadow-sm p-4">
-                  <h3 className="font-medium mb-2 text-primary text-TabText">Work Experience</h3>
+                <div className="bg-white rounded-lg shadow-sm p-4 hover:scale-105">
+                  <h3 className="font-medium mb-2 text-primary text-TabText">
+                    Work Experience
+                  </h3>
                   <div className="text-black-text text-TabText">
                     <p>University of Fine Art</p>
                     <p>Bachelor's degree, Graphic Design</p>
                     <p className="text-gray-500">2014 - 2018</p>
                   </div>
                 </div>
-                <div className="bg-white rounded-lg shadow-sm p-4">
-                  <h3 className="font-medium mb-2 text-primary text-TabText">Work Experience</h3>
+                <div className="bg-white rounded-lg shadow-sm p-4 hover:scale-105">
+                  <h3 className="font-medium mb-2 text-primary text-TabText">
+                    Work Experience
+                  </h3>
                   <div className="text-black-text text-TabText">
                     <p>University of Fine Art</p>
                     <p>Bachelor's degree, Graphic Design</p>

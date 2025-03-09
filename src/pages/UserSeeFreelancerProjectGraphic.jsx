@@ -1,6 +1,7 @@
-
+import React from "react";
+import { FaPencilAlt } from "react-icons/fa";
 import CardProject from "../components/cards/Freelancer/CardProject";
-
+import { Link } from "react-router-dom";
 const MonitorIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -32,14 +33,16 @@ export default function UserSeeFreelancerProjectPage() {
       <div className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <MonitorIcon className="h-6 w-6" />
+            <FaPencilAlt className="h-6 w-6 text-primary" />
             <h1 className="text-CardMainTitle font-bold text-primary">
-              Programming
+              Graphic
             </h1>
           </div>
-          <button className="bg-primary hover:bg-primary-hover text-white px-3 py-1 rounded text-sm">
-            Back
-          </button>
+          <Link to="/userSeeFreelancerProfilePage">
+            <button className="bg-primary hover:bg-primary-hover text-white px-3 py-1 rounded text-sm">
+              Back
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -71,8 +74,9 @@ export default function UserSeeFreelancerProjectPage() {
           ))}
         </div>
       </div>
-      <CardProject />
-      
+      <Link to="/cardDetailGraphic">
+        <CardProject />
+      </Link>
     </div>
   );
 }
