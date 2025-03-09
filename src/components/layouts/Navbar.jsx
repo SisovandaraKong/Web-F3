@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router"; // Note: Should be "react-router-d
 import { useTheme } from "../../context/ThemeContext"; // Import ThemeContext
 import "../../i18n"; // Import i18n configuration
 import Button from "../button/Button";
+import { RiRobot3Line } from "react-icons/ri";
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -180,7 +181,9 @@ export default function Navbar() {
               <GoSun className="text-secondary text-[24px] cursor-pointer" />
             )}
           </button>
-          <FaRegBell className="text-secondary text-[24px] cursor-pointer" />
+          <NavLink to={"/chat-bot"}>
+          <RiRobot3Line className="text-secondary text-[24px] cursor-pointer" />
+          </NavLink>
         </div>
 
         {/* Language Switch */}
