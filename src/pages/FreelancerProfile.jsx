@@ -5,11 +5,12 @@ import { RiComputerLine } from "react-icons/ri";
 import { FaPenNib } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
+import ScrollIndicator from "../components/scrollIndicator/scrollIndicator";
 
 const FreelancerProfile = () => {
   return (
     <>
-
+  <ScrollIndicator/>
     <div className="max-w-7xl mx-auto min-h-screen">
       <div className="p-5">
         <h1 className="text-Sub2Title font-bold text-primary">View Profile</h1>

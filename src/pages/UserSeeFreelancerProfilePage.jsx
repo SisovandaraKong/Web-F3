@@ -16,9 +16,12 @@ import {
 } from "react-icons/fa";
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
 import { FaRegFileAlt } from "react-icons/fa";
+import ScrollIndicator from "../components/scrollIndicator/scrollIndicator";
 const UserSeeFreelancerPage = () => {
   return (
-    <div className=" min-h-screen ">
+<>
+<ScrollIndicator/>
+<div className=" min-h-screen ">
       <div className="max-w-7xl mx-auto p-4">
         <div className=" rounded-lg  p-6 mb-4">
           <div className="flex flex-col md:flex-row items-start gap-6">
@@ -252,6 +255,8 @@ const UserSeeFreelancerPage = () => {
         </div>
       </div>
     </div>
+
+</>
   );
 };
 

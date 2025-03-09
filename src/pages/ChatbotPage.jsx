@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaTrash } from 'react-icons/fa';
+import ScrollIndicator from '../components/scrollIndicator/scrollIndicator';
 
 const ChatbotPage = () => {
   const [message, setMessage] = useState('');
@@ -82,32 +83,28 @@ const ChatbotPage = () => {
     }
   };
 
-  // Refined parser to bold only necessary points (headings and section titles)
   const parseResponse = (text) => {
     return text.split('\n').map((line, index) => {
       if (!line.trim()) return null;
 
-      // Handle inline italics (*text*)
       let processedLine = line.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
-      // Determine if the line is a heading or section title
       if (processedLine.match(/^#+\s+.*/) || processedLine.match(/:\s*$/)) {
-        // Bold headings (e.g., starts with #) or lines ending with : (e.g., Ingredients:, Instructions:)
-        return <h3 key={index} className="text-lg font-bold text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: processedLine.replace(/^#+/, '').trim() }} />;
+        return <h3 key={index} className="font-bold text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: processedLine.replace(/^#+/, '').trim() }} />;
       } else if (processedLine.startsWith('* ') || processedLine.startsWith('*-')) {
-        // Bullet point (remove leading * and render as list item)
         const content = processedLine.slice(2).trim();
         return <li key={index} className="text-gray-600 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: content }} />;
       } else {
-        // Normal paragraph
         return <p key={index} className="text-gray-600 dark:text-gray-400 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: processedLine }} />;
       }
     }).filter(Boolean);
   };
 
   return (
+    <>
+    <ScrollIndicator/>
     <div className="flex h-[90vh] bg-gray-100 dark:bg-gray-900">
-      {/* Sticky Sidebar */}
+      {/* Sticky Sidebar - unchanged */}
       <div className="w-64 bg-primary text-white flex flex-col sticky top-0 h-full">
         <div className="p-4">
           <h1 className="text-xl font-bold text-white">Kong Sisovandara's Chat</h1>
@@ -144,9 +141,9 @@ const ChatbotPage = () => {
         </div>
       </div>
 
-      {/* Main Chat Area */}
+      {/* Main Chat Area - Modified to message style */}
       <div className="flex-1 flex flex-col">
-        {/* Conditional Rendering for Welcome, Loading, or Answer */}
+        {/* Welcome Screen - unchanged */}
         {!isLoading && !selectedChat && !response && (
           <div className="flex-1 flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800">
             <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">
@@ -171,24 +168,43 @@ const ChatbotPage = () => {
             </div>
           </div>
         )}
+        
+        {/* Loading State - unchanged */}
         {isLoading && (
           <div className="flex-1 flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800">
             <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-400">Loading...</p>
           </div>
         )}
+        
+        {/* Chat Messages Display */}
         {!isLoading && (selectedChat || response) && (
           <div className="flex-1 flex flex-col p-6 bg-white dark:bg-gray-800 overflow-y-auto">
-            <div className="mb-4">
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Question:</p>
-              <p className="text-gray-600 dark:text-gray-400">{selectedChat?.question || message}</p>
-            </div>
-            <div className="flex-1">
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Answer:</p>
-              <div className="text-gray-600 dark:text-gray-400 whitespace-pre-wrap">{parseResponse(response)}</div>
+            <div className="flex flex-col gap-4 max-w-2xl mx-auto w-full">
+              {/* User Message */}
+              <div className="flex justify-end">
+                <div className="bg-blue-500 dark:bg-blue-600 text-white rounded-lg p-3 max-w-md shadow-md">
+                  <p className="whitespace-pre-wrap">{selectedChat?.question || message}</p>
+                  {selectedChat && (
+                    <span className="text-xs opacity-75 mt-1 block">{selectedChat.timestamp}</span>
+                  )}
+                </div>
+              </div>
+              
+              {/* AI Response */}
+              <div className="flex justify-start">
+                <div className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg p-3 max-w-md shadow-md">
+                  <div>{parseResponse(response)}</div>
+                  {selectedChat && (
+                    <span className="text-xs opacity-75 mt-1 block">{selectedChat.timestamp}</span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         )}
+        
+        {/* Input Form - unchanged */}
         <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
           <form onSubmit={handleSubmit} className="flex items-center gap-3">
             <button type="button" className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
@@ -217,6 +233,7 @@ const ChatbotPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

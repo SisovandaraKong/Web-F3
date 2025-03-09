@@ -1,8 +1,11 @@
 import React from "react";
 import { RxCrossCircled } from "react-icons/rx";
+import ScrollIndicator from "../components/scrollIndicator/scrollIndicator";
 const CardDetail = () => {
   return (
-    <div className="max-w-lg mx-auto bg-white shadow-lg rounded-2xl p-4 mt-20">
+    <>
+    <ScrollIndicator/>
+          <div className="max-w-lg mx-auto bg-white shadow-lg rounded-2xl p-4 mt-20">
       <div className="flex justify-between items-center"> 
       <h2 className="text-xl font-bold text-primary" >Portfolio work </h2>
       <RxCrossCircled className="text-red-600 text-2xl"/>
@@ -44,6 +47,7 @@ const CardDetail = () => {
         Copy link
       </button>
     </div>
+    </>
   );
 };
 

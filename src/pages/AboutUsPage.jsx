@@ -9,6 +9,7 @@ import CardContactUs from "../components/cards/CardAboutUs/CardContactUs";
 import HeroSection from "../components/cards/CardAboutUs/HeroSection";
 import MissionSection from "../components/cards/CardAboutUs/MissionSection";
 import VisionSection from "../components/cards/CardAboutUs/VisionSection";
+import ScrollIndicator from "../components/scrollIndicator/scrollIndicator";
 
 export default function AboutUsPage() {
   const { t } = useTranslation();
@@ -19,6 +20,7 @@ export default function AboutUsPage() {
 
   return (
     <main>
+      <ScrollIndicator/>
       <HeroSection />
       <div className="max-w-screen-xl m-auto min-w-full">
         <MissionSection />

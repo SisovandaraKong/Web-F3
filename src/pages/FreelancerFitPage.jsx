@@ -8,10 +8,13 @@ import { MostPopularUser } from '../components/layouts/sidebars/MostPopularUser'
 import SearchFitPage from '../components/postFitPages/PostFitPage';
 import Footer from '../components/layouts/Footer';
 import SearchForm from '../components/searchForms/SearchForm';
+import ScrollIndicator from '../components/scrollIndicator/scrollIndicator';
 
 export default function FreelancerFitPage() {
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col">
+    <>
+    <ScrollIndicator/>
+          <div className="bg-gray-100 min-h-screen flex flex-col">
       {/* Navbar - Full Width */}
       {/* <Navbar className="w-full" /> */}
 
@@ -42,5 +45,6 @@ export default function FreelancerFitPage() {
       {/* Footer - Placed Outside the Flex Container */}
       <Footer className="w-full mt-6" />
     </div>
+    </>
   );
 }

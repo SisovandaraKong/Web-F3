@@ -15,6 +15,8 @@ import BusinessOwnerPage from "./pages/BusinessOwnerPage.jsx";
 import RegisterFreelancer from "./components/auth/RegisterFreelancer.jsx";
 import PostFitPage from "./components/postFitPages/PostFitPage.jsx";
 import ChatbotPage from "./pages/ChatbotPage.jsx";
+import ScrollIndicator from "./components/scrollIndicator/scrollIndicator.jsx";
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
