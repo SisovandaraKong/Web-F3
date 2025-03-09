@@ -197,11 +197,11 @@ export default function Navbar() {
             alt="Khmer"
             className="w-[40px] h-[20px] cursor-pointer"
           />
-          <button className="text-white   px-[17px] py-[9px] border-2 border-secondary rounded-md cursor-pointer">
-            Joint As Busssinis{" "}
+          <button className="text-white px-[17px] py-[9px] border-2 border-secondary rounded-md cursor-pointer">
+            {t("joinAsBusiness")}
           </button>
           <NavLink to="/register-freelancer">
-            <Button color={"bg-secondary cursor-pointer"} text="Sign Up " />
+            <Button color={"bg-secondary cursor-pointer"} text={t("signUp")} />
           </NavLink>
         </div>
       </div>
