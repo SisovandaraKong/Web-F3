@@ -5,7 +5,7 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-white dark:bg-blue-900 mt-28 min-w-xs">
+    <footer className="bg-primary dark:bg-primary mt-28 min-w-xs">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
@@ -22,10 +22,10 @@ export default function Footer() {
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-md font-semibold text-white uppercase dark:text-white">
                 {t('footer.quickLine')}
               </h2>
-              <ul className="text-gray-500 dark:text-white font-medium">
+              <ul className="text-white dark:text-white font-medium">
                 <li className="mb-4">
                   <a href="https://github.com/kea-daron" className="hover:underline">
                     {t('footer.findJobs')}
@@ -49,10 +49,10 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-md font-semibold text-white uppercase dark:text-white">
                 {t('footer.supportLegal')}
               </h2>
-              <ul className="text-gray-500 dark:text-white font-medium">
+              <ul className="text-white-text dark:text-white font-medium">
                 <li className="mb-4">
                   <a href="https://github.com/themesberg/flowbite" className="hover:underline">
                     {t('footer.chatBotHelp')}
@@ -76,7 +76,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="text-md font-semibold text-white uppercase dark:text-white">
                 {t('footer.ourSponsors')}
               </h2>
               <ul>
@@ -102,13 +102,13 @@ export default function Footer() {
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:text-white lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 dark:text-white">
+          <span className="text-sm text-white dark:text-white">
             {t('footer.privacyPolicy')}<br />
             {t('footer.rightsReserved')}
           </span>
           <div className="flex mt-4 sm:justify-center sm:mt-0">
             {/* Social Icons */}
-            <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <a href="#" className="text-white hover:text-gray-900 dark:hover:text-white">
               {/* SVG icon */}
             </a>
             {/* Other social icons here */}

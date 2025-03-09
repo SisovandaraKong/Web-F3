@@ -11,13 +11,13 @@ export default function CardService() {
           <div
             key={index}
             data-aos="flip-left"
-            className="p-6 bg-white shadow-lg rounded-xl text-center transform transition duration-300 hover:scale-105"
+            className="p-6 bg-white dark:bg-black-background dark:border dark:border-white shadow-lg rounded-xl text-center transform transition duration-300 hover:scale-105"
           >
             <h3 className="text-lg font-bold text-primary mt-3">
-              {t(card.title)}
+              {t(card.title)} {/* Translated title */}
             </h3>
             <p className="text-gray-600 mt-4 text-sm">
-              {t(card.description)}
+              {t(card.description)} {/* Translated description */}
             </p>
           </div>
         ))}
@@ -28,18 +28,15 @@ export default function CardService() {
 
 const cardData = [
   {
-    title: "Freelancer",
-    description:
-      "A freelancer is a self-employed professional who works on various projects for different clients without long-term commitments.",
+    title: "freelancer", // Use translation key for title
+    description: "freelancerDescription", // Use translation key for description
   },
   {
-    title: "Business Owner",
-    description:
-      "A business owner is someone who starts, manages, and oversees a company, taking responsibility for its success and growth.",
+    title: "businessOwner",
+    description: "businessOwnerDescription",
   },
   {
-    title: "Job Seeker",
-    description:
-      "A job seeker is someone actively looking for employment opportunities to start or advance their career.",
+    title: "jobSeeker",
+    description: "jobSeekerDescription",
   },
 ];
