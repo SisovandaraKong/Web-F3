@@ -47,7 +47,6 @@ export default function Navbar() {
             />
           </svg>
         </button>
-
         {/* Navigation Links */}
         <div
           className={`w-full md:flex md:w-auto md:items-center ${

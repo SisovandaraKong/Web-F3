@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { LuBotMessageSquare } from "react-icons/lu";
-import { VscAccount } from "react-icons/vsc";
 import Button from "../button/Button";
 
 export default function NavbarLogin() {

@@ -6,6 +6,9 @@ import Ta1 from "../../assets/Ta_Images/LoginJoinUs.png";
 import Ta2 from "../../assets/Ta_Images/Logo.png";
 import Ta3 from "../../assets/Ta_Images/facebook.png";
 import Ta4 from "../../assets/Ta_Images/google.png";
+import { useRegisterFreelancerMutation } from "../../feature/auth/register-freelancer";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const RegisterFreelancer = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -24,20 +27,95 @@ const RegisterFreelancer = () => {
 
   const handlePhoneNumberChange = (value) => {
     setPhoneNumber(value);
+    formik.setFieldValue("phone", value);
   };
 
   const handleSkillChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedSkill(selectedValue);
+    formik.setFieldValue("skill", selectedValue);
+    
+    // Update skills array based on selection
+    if (selectedValue && selectedValue !== "Other Skills") {
+      formik.setFieldValue("skills", [selectedValue]);
+    } else if (selectedValue === "Other Skills") {  
+    } else {
+      formik.setFieldValue("skills", []);
+    }
+    
     if (selectedValue !== "Other Skills") {
-      setOtherSkill(""); // Clear the "Other Skills" text box if it's no longer selected
+      setOtherSkill("");
     }
   };
 
   const handleOtherSkillChange = (event) => {
-    setOtherSkill(event.target.value);
+    const value = event.target.value;
+    setOtherSkill(value);
+    formik.setFieldValue("skills", [value]);
   };
+  
+  const [registerFreelancer, { isLoading, error }] =
+    useRegisterFreelancerMutation();
 
+  const validationSchema = Yup.object({
+    fullName: Yup.string().required("Full name is required"),
+    username: Yup.string()
+      .min(3, "Username too short")
+      .required("Username is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    phone: Yup.string().required("Phone number is required"),
+    skills: Yup.array().min(1, "Please select at least one skill"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Confirm password is required"),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      fullName: "Rin Sanom",
+      username: "rinsanom",
+      email: "rinsanom@gmial.com",
+      phone: "096429602",
+      skills: [],
+      password: "Ifmesayyes12345@",
+      confirmPassword: "Ifmesayyes12345@",
+      profileImageUrl: " ",
+      userType: "FREELANCER",
+      portfolioUrl: "",
+      experienceYears: "",
+      bio: ""
+    },
+    validationSchema,
+    onSubmit: async (values) => {
+      try {
+        // Format the data according to the API requirements
+        const formattedData = {
+          fullName: values.fullName,
+          username: values.username,
+          email: values.email,
+          profileImageUrl: " ",
+          phone: values.phone,
+          userType: "FREELANCER",
+          skills: values.skills,
+          portfolioUrl: "",
+          experienceYears: "",
+          bio: "",
+          password: values.password
+        };  
+        console.log("Submitting data:", formattedData);
+        const response = await registerFreelancer(formattedData).unwrap();
+        console.log("Success:", response);
+        alert("Registration successful!");
+      } catch (err) {
+        console.error("Registration error:", err);
+        alert(`Registration failed! ${err.data?.message || "Please try again."}`);
+      }
+    },
+  });
+  
   return (
     <div className="flex flex-col md:flex-row min-h-screen w-full overflow-y-auto">
       {/* Blue Section (Welcome) */}
@@ -92,18 +170,25 @@ const RegisterFreelancer = () => {
             Register as a Freelancer
           </h2>
         </div>
-        <form className="mt-3 w-11/12 sm:w-4/5">
+        <form className="mt-3 w-11/12 sm:w-4/5" onSubmit={formik.handleSubmit}>
           {/* Full Name Field */}
           <label
-            htmlFor="full-name"
+            htmlFor="fullName"
             className="block text-gray-800 font-medium mb-2">
             Full Name
           </label>
           <input
-            id="full-name"
+            id="fullName"
+            name="fullName"
             type="text"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.fullName}
             className="w-full p-2 border border-gray-300 rounded"
           />
+          {formik.touched.fullName && formik.errors.fullName && (
+            <div className="text-red-500 text-xs mt-1">{formik.errors.fullName}</div>
+          )}
 
           {/* Username Field */}
           <label
@@ -113,9 +198,16 @@ const RegisterFreelancer = () => {
           </label>
           <input
             id="username"
+            name="username"
             type="text"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.username}
             className="w-full p-2 border border-gray-300 rounded"
           />
+          {formik.touched.username && formik.errors.username && (
+            <div className="text-red-500 text-xs mt-1">{formik.errors.username}</div>
+          )}
 
           {/* Email Field */}
           <label
@@ -125,13 +217,20 @@ const RegisterFreelancer = () => {
           </label>
           <input
             id="email"
+            name="email"
             type="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
             className="w-full p-2 border border-gray-300 rounded"
           />
+          {formik.touched.email && formik.errors.email && (
+            <div className="text-red-500 text-xs mt-1">{formik.errors.email}</div>
+          )}
 
           {/* Phone Number Field */}
           <label
-            htmlFor="phone-number"
+            htmlFor="phone"
             className="block text-gray-800 font-medium mb-3 mt-4">
             Phone Number
           </label>
@@ -166,17 +265,22 @@ const RegisterFreelancer = () => {
             }}
             className="mb-3"
           />
+          {formik.touched.phone && formik.errors.phone && (
+            <div className="text-red-500 text-xs mt-1">{formik.errors.phone}</div>
+          )}
 
           {/* Skills Field */}
           <label
-            htmlFor="skills"
+            htmlFor="skill"
             className="block text-gray-800 font-medium mb-3 mt-4">
             Skills
           </label>
           <select
-            id="skills"
+            id="skill"
+            name="skill"
             value={selectedSkill}
             onChange={handleSkillChange}
+            onBlur={formik.handleBlur}
             className="w-full p-2 border border-gray-300 rounded bg-white">
             <option value="">Select a skill</option>
             <option value="Java">Java</option>
@@ -187,20 +291,25 @@ const RegisterFreelancer = () => {
             <option value="Python">Python</option>
             <option value="Other Skills">Other Skills</option>
           </select>
+          {formik.touched.skills && formik.errors.skills && (
+            <div className="text-red-500 text-xs mt-1">{formik.errors.skills}</div>
+          )}
 
           {/* Additional Field for "Other Skills" */}
           {selectedSkill === "Other Skills" && (
             <div className="mt-4">
               <label
-                htmlFor="other-skill"
+                htmlFor="otherSkill"
                 className="block text-gray-800 font-medium mb-3">
                 Please enter your specific skills
               </label>
               <input
-                id="other-skill"
+                id="otherSkill"
+                name="otherSkill"
                 type="text"
                 value={otherSkill}
                 onChange={handleOtherSkillChange}
+                onBlur={formik.handleBlur}
                 className="w-full p-2 border border-gray-300 rounded"
               />
             </div>
@@ -228,13 +337,20 @@ const RegisterFreelancer = () => {
           </label>
           <input
             id="password"
+            name="password"
             type={passwordVisible ? "text" : "password"}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
             className="w-full p-2 border border-gray-300 rounded mb-3 text-sm"
           />
+          {formik.touched.password && formik.errors.password && (
+            <div className="text-red-500 text-xs mt-1">{formik.errors.password}</div>
+          )}
 
           {/* Confirm Password Field */}
           <label
-            htmlFor="confirm-password"
+            htmlFor="confirmPassword"
             className="block text-gray-800 font-medium mt-2 mb-2 flex items-center justify-between text-sm">
             <span>Confirm Password</span>
             <span
@@ -253,16 +369,30 @@ const RegisterFreelancer = () => {
             </span>
           </label>
           <input
-            id="confirm-password"
+            id="confirmPassword"
+            name="confirmPassword"
             type={confirmPasswordVisible ? "text" : "password"}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.confirmPassword}
             className="w-full p-2 border border-gray-300 rounded mb-4 text-sm"
           />
+          {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+            <div className="text-red-500 text-xs mt-1">{formik.errors.confirmPassword}</div>
+          )}
 
           <button
-            className="w-full bg-gray-400 hover:bg-gray-500 text-white p-2 rounded mt-6 text-sm"
-            type="submit">
-            Create Account
+            className="w-full bg-blue-900 hover:bg-blue-800 text-white p-2 rounded mt-6 text-sm"
+            type="submit"
+            disabled={isLoading}>
+            {isLoading ? "Creating Account..." : "Create Account"}
           </button>
+          
+          {error && (
+            <div className="text-red-500 text-sm mt-2 text-center">
+              {error.data?.message || "An error occurred during registration."}
+            </div>
+          )}
         </form>
         <p className="mt-3 text-gray-600 text-sm font-medium text-center">
           Already have an account?{" "}

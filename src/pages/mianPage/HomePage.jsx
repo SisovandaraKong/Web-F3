@@ -1,13 +1,13 @@
 import React from "react";
-import Carousel from "../components/carousel/Carousel";
+import Carousel from "../../components/carousel/Carousel";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import CardHowerEffec from "../components/cards/CardHowerEffec";
-import CardWhyUS from "../components/cards/CardWhyUs";
-import CardJob from "../components/cards/CardJob";
-import PopularCart from "../components/cards/PopularCart";
-import CardFeedback from "../components/cards/CardFeedback";
+import CardHowerEffec from "../../components/cards/CardHowerEffec";
+import CardWhyUS from "../../components/cards/CardWhyUs";
+
+import PopularCart from "../../components/cards/PopularCart";
+import CardFeedback from "../../components/cards/CardFeedback";
 
 export default function HomePage() {
   useEffect(() => {

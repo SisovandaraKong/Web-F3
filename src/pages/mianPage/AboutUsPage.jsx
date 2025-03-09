@@ -1,13 +1,13 @@
 import Aos from "aos";
 import React, { useEffect } from "react";
-import CardOurMentor from "../components/cards/CardAboutUs/CardOurMentor";
-import CardOurTeam from "../components/cards/CardAboutUs/CardOurTeam";
-import CardAchievement from "../components/cards/CardAboutUs/CardAchievement";
-import CardService from "../components/cards/CardAboutUs/CardService";
-import CardContactUs from "../components/cards/CardAboutUs/CardContactUs";
-import HeroSection from "../components/cards/CardAboutUs/HeroSection";
-import MissionSection from "../components/cards/CardAboutUs/MissionSection";
-import VisionSection from "../components/cards/CardAboutUs/VisionSection";
+import CardOurMentor from "../../components/cards/CardAboutUs/CardOurMentor";
+import CardOurTeam from "../../components/cards/CardAboutUs/CardOurTeam";
+import CardAchievement from "../../components/cards/CardAboutUs/CardAchievement";
+import CardService from "../../components/cards/CardAboutUs/CardService";
+import CardContactUs from "../../components/cards/CardAboutUs/CardContactUs";
+import HeroSection from "../../components/cards/CardAboutUs/HeroSection";
+import MissionSection from "../../components/cards/CardAboutUs/MissionSection";
+import VisionSection from "../../components/cards/CardAboutUs/VisionSection";
 export default function AboutUsPage() {
   useEffect(() => {
     Aos.init();

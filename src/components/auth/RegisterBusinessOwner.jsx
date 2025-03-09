@@ -60,8 +60,6 @@ const RegisterBusinessOwner = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Desktop layout: visible on larger screens */}
                 <div className="hidden md:block text-center">
                     <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold">
                         Welcome to
