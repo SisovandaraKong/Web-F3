@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <DashboardEmployer />
-    <HomePage/>
+      <HomePage/>
     </>
   );
 }

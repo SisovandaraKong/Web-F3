@@ -14,8 +14,9 @@ export default function RootLayout({ toggleDarkMode, isDarkMode }) {
   }, [isDarkMode]);
 
   return (
-    <div>
-      <NavbarLogin toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+    <div className="bg-[#f5f5f5] dark:bg-[#111827]">
+      <Navbar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+      {/* <NavbarLogin toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} /> */}
       <Outlet />
       <Footer/>
     </div>

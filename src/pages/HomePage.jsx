@@ -13,11 +13,11 @@ export default function HomePage() {
   return (
     <>
       <section>
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-[#111827]">
           <Carousel />
         </div>
       </section>
-      <section>
+      <section className="bg-gray-50 dark:bg-[#111827]">
         <CardHowerEffec />
       </section>
     </>

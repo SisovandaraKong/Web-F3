@@ -25,39 +25,39 @@ const EditApplication = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#111827] p-8">
       <div className="max-w-screen-xl mx-auto">
-        <h1 className="text-3xl font-bold text-[#0A2473] mb-6">
+        <h1 className="text-3xl font-bold text-[#0A2473] dark:text-white mb-6">
           Edit Application Page
         </h1>
 
         <div className="flex flex-row items-start">
-          <div className="w-20 text-gray-700 mr-4 text-lg font-bold">Basic</div>
+          <div className="w-20 text-gray-700 dark:text-white mr-4 text-lg font-bold">Basic</div>
 
           <div className="flex-1">
             <div className="flex items-center mb-6">
-              <span className="text-gray-700 text-lg font-bold bg-gray-300 p-2 flex-1">
+              <span className="text-gray-700 dark:text-white text-lg font-bold bg-gray-300 dark:bg-gray-700 p-2 flex-1">
                 SEO
               </span>
             </div>
             <div className="mb-6">
-              <label className="block text-gray-700 mb-2">Page Name</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Page Name</label>
               <input
                 type="text"
                 name="pageName"
                 value={formData.pageName}
                 onChange={handleChange}
-                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#0A2473]"
+                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-300 focus:outline-none focus:border-[#0A2473] dark:focus:border-[#0A2473]"
                 placeholder="Page Name"
                 required
               />
             </div>
             <div className="mb-6">
               <div className="flex justify-between items-center mb-2">
-                <label className="block text-gray-700 mr-4">Page URL</label>
+                <label className="block text-gray-700 dark:text-white mr-4">Page URL</label>
                 <button
                   type="button"
-                  className="text-[#0A2473] underline hover:text-blue-700"
+                  className="text-[#0A2473] dark:text-[#6AA6D0] underline hover:text-blue-700 dark:hover:text-blue-400"
                 >
                   Change
                 </button>
@@ -67,21 +67,21 @@ const EditApplication = () => {
                 name="pageURL"
                 value={formData.pageURL}
                 onChange={handleChange}
-                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#0A2473]"
+                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 dark:text-white placeholder-gray-400 dark:placeholder-gray-300 focus:outline-none focus:border-[#0A2473] dark:focus:border-[#0A2473]"
                 placeholder="e.g. http://localhost/page-name"
                 required
               />
             </div>
 
             <div className="mb-6">
-              <label className="block text-gray-700 mb-2">
+              <label className="block text-gray-700 dark:text-white mb-2">
                 Visibility in Store
               </label>
               <select
                 name="visibility"
                 value={formData.visibility}
                 onChange={handleChange}
-                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 focus:outline-none focus:border-[#0A2473] appearance-none"
+                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 dark:text-white focus:outline-none focus:border-[#0A2473] dark:focus:border-[#0A2473] appearance-none"
               >
                 <option value="Hidden">Hidden</option>
                 <option value="Public">Public</option>
@@ -90,36 +90,36 @@ const EditApplication = () => {
             </div>
 
             <div className="mb-6">
-              <label className="block text-gray-700 mb-2">Theme</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Theme</label>
               <select
                 name="theme"
                 value={formData.theme}
                 onChange={handleChange}
-                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 focus:outline-none focus:border-[#0A2473] appearance-none"
+                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 dark:text-white focus:outline-none focus:border-[#0A2473] dark:focus:border-[#0A2473] appearance-none"
               >
                 <option value="Use Store Default">Use Store Default</option>
                 <option value="Custom Theme 1">Custom Theme 1</option>
               </select>
             </div>
             <div className="mb-6">
-              <label className="block text-gray-700 mb-2">Page Template</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Page Template</label>
               <select
                 name="pageTemplate"
                 value={formData.pageTemplate}
                 onChange={handleChange}
-                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 focus:outline-none focus:border-[#0A2473] appearance-none"
+                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 dark:text-white focus:outline-none focus:border-[#0A2473] dark:focus:border-[#0A2473] appearance-none"
               >
                 <option value="Use Store Default">Use Store Default</option>
                 <option value="Template 1">Template 1</option>
               </select>
             </div>
             <div className="mb-6">
-              <label className="block text-gray-700 mb-2">Inner Template</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Inner Template</label>
               <select
                 name="innerTemplate"
                 value={formData.innerTemplate}
                 onChange={handleChange}
-                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 focus:outline-none focus:border-[#0A2473] appearance-none"
+                className="w-full p-2 border-b-2 border-gray-300 bg-transparent text-gray-700 dark:text-white focus:outline-none focus:border-[#0A2473] dark:focus:border-[#0A2473] appearance-none"
               >
                 <option value="Use Store Default">Use Store Default</option>
                 <option value="Inner Template 1">Inner Template 1</option>
@@ -129,7 +129,7 @@ const EditApplication = () => {
               <button
                 type="submit"
                 onClick={handleSubmit}
-                className="bg-[#0A2473] text-white px-4 py-2 rounded hover:bg-blue-900"
+                className="bg-[#0A2473] text-white px-4 py-2 rounded hover:bg-blue-900 dark:hover:bg-blue-700"
               >
                 Finish
               </button>

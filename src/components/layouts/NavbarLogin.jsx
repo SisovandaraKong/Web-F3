@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { LuBotMessageSquare } from "react-icons/lu";
+import { IoIosNotificationsOutline } from "react-icons/io";
 import Button from "../button/Button";
+import { Link } from "react-router";
+import { VscAccount } from "react-icons/vsc";
 
 export default function NavbarLogin() {
   const [darkMode, setDarkMode] = useState(false);
@@ -50,7 +52,7 @@ export default function NavbarLogin() {
       name: "ភាសារខ្មែរ",
       code: "km",
       flagUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/640px-Flag_of_Cambodia.svg.png"
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/640px-Flag_of_Cambodia.svg.png",
     },
   ];
 
@@ -89,30 +91,33 @@ export default function NavbarLogin() {
 
   return (
     <>
-      <nav className="bg-primary border-gray-200 dark:bg-gray-900 dark:border-gray-700  sticky top-0 z-50">
+      <nav className="bg-[#0A2473] dark:bg-[#111827] border-gray-200 sticky top-0 z-50">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-3">
-          <a
-            href="#"
-            className="flex items-center space-x-3 rtl:space-x-reverse">
+          <Link
+            to="/"
+            className="flex items-center space-x-3 rtl:space-x-reverse"
+          >
             <img
               src="src/assets/Navbar/Logo3.png"
               className="h-8"
-              alt="Flowbite Logo"
+              alt="JobSeek Logo"
             />
-          </a>
+          </Link>
           <button
             onClick={toggleNav}
             type="button"
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-multi-level"
-            aria-expanded={isNavOpen}>
+            aria-expanded={isNavOpen}
+          >
             <span className="sr-only">Open main menu</span>
             <svg
               className="w-5 h-5"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              viewBox="0 0 17 14">
+              viewBox="0 0 17 14"
+            >
               <path
                 stroke="currentColor"
                 strokeLinecap="round"
@@ -122,122 +127,25 @@ export default function NavbarLogin() {
               />
             </svg>
           </button>
-          <div
-            className={`${
-              isNavOpen ? "block" : "hidden"
-            } w-full md:block md:w-auto`}
-            id="navbar-multi-level">
-            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-blue-900 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-              {navItems.map((item, index) => (
-                <li key={index}>
-                  {item.hasDropdown ? (
-                    <div className="relative">
-                      <button
-                        onClick={toggleDropdown}
-                        className="flex items-center justify-between w-full py-2 px-3 text-white hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-200 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
-                        {item.name}{" "}
-                        <svg
-                          className="w-2.5 h-2.5 ms-2.5"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 10 6">
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="m1 1 4 4 4-4"
-                          />
-                        </svg>
-                      </button>
 
-                      {dropdownOpen && (
-                        <div className="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
-                          <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                            {item.dropdownItems.map((dropItem, dropIndex) => (
-                              <li key={dropIndex}>
-                                {dropItem.hasNestedDropdown ? (
-                                  <div className="relative">
-                                    <button
-                                      onClick={toggleDoubleDropdown}
-                                      className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                      {dropItem.name}
-                                      <svg
-                                        className="w-2.5 h-2.5 ms-2.5"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 10 6">
-                                        <path
-                                          stroke="currentColor"
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"
-                                          strokeWidth="2"
-                                          d="m1 1 4 4 4-4"
-                                        />
-                                      </svg>
-                                    </button>
-                                    {doubleDropdownOpen && (
-                                      <div className="absolute left-full -top-2 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
-                                        <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                                          {dropItem.nestedItems.map(
-                                            (nestedItem, nestedIndex) => (
-                                              <li key={nestedIndex}>
-                                                <a
-                                                  href={nestedItem.link}
-                                                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                                                  {nestedItem.name}
-                                                </a>
-                                              </li>
-                                            )
-                                          )}
-                                        </ul>
-                                      </div>
-                                    )}
-                                  </div>
-                                ) : (
-                                  <a
-                                    href={dropItem.link}
-                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    {dropItem.name}
-                                  </a>
-                                )}
-                              </li>
-                            ))}
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                              Sign out
-                            </a>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <a
-                      href={item.link}
-                      className={`block py-2 px-3 ${
-                        item.active
-                          ? "text-white-text rounded-sm md:bg-transparent md:text-white-text md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                          : "text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                      }`}
-                      aria-current={item.active ? "page" : undefined}>
-                      {item.name}
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
+          <div
+            className={`${isNavOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
+            id="navbar-multi-level"
+          >
+            <a
+              href="#"
+              className="text-white dark:text-gray-300 text-md font-medium hover:text-blue-200"
+            >
+              Notification
+            </a>
           </div>
 
           <div className="flex items-center gap-10">
             <div className="flex items-center gap-5">
               <button
                 onClick={toggleDarkMode}
-                className="text-secondary hover:text-secondary-hover">
+                className="text-white dark:text-gray-300 hover:text-blue-200"
+              >
                 {darkMode ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -245,7 +153,8 @@ export default function NavbarLogin() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="size-6">
+                    className="size-6"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -259,7 +168,8 @@ export default function NavbarLogin() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="size-6">
+                    className="size-6"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -270,7 +180,7 @@ export default function NavbarLogin() {
               </button>
 
               <a href="#">
-                <LuBotMessageSquare className="size-6 text-secondary hover:text-secondary-hover" />
+                <IoIosNotificationsOutline className="size-6 text-white dark:text-gray-300 hover:text-blue-200" />
               </a>
             </div>
 
@@ -281,29 +191,31 @@ export default function NavbarLogin() {
                     <li>
                       <a href="#">
                         <button className="flex flex-col items-center gap-[2px]">
-                        <div className="w-10 h-5">
-                        <img
-                            src={lang.flagUrl}
-                            className="h-full w-full object-cover mt-1"
-                            alt={`${lang.name} flag`}
-                          />
-                        </div>
-                        <div className="h-5 w-14 flex items-center">
-                        <span className="text-xs w-full text-white mt-1">
-                            {lang.name}
-                          </span>
-                        </div>
+                          <div className="w-10 h-5">
+                            <img
+                              src={lang.flagUrl}
+                              className="h-full w-full object-cover mt-1"
+                              alt={`${lang.name} flag`}
+                            />
+                          </div>
+                          <div className="h-5 w-14 flex items-center">
+                            <span className="text-xs w-full text-white dark:text-gray-300 mt-1">
+                              {lang.name}
+                            </span>
+                          </div>
                         </button>
                       </a>
                     </li>
                     {index < languages.length - 1 && (
-                      <span className="mb-5">|</span>
+                      <span className="mb-5 text-white dark:text-gray-300">|</span>
                     )}
                   </React.Fragment>
                 ))}
               </ul>
             </div>
-            <Button color={"bg-secondary"} text="Sign In" />
+            <a href="#">
+              <VscAccount className="size-10 text-white dark:text-gray-300" />
+            </a>
           </div>
         </div>
       </nav>

@@ -1,5 +1,6 @@
 import { FaMoon, FaBell, FaGlobe, FaUserCircle } from "react-icons/fa";
 import Footer from "../components/layouts/Footer";
+import { Link } from "react-router-dom";
 
 const HiringStats = () => {
   const freelancers = [
@@ -69,7 +70,7 @@ const DashboardEmployer = () => {
             <div className="flex flex-col items-center mb-6">
               <div className="relative w-32 h-32 mb-4">
                 <img
-                  src="/placeholder.svg?height=128&width=128"
+                  src="https://s3-alpha-sig.figma.com/img/e285/60dd/8ca7b58b354b9639a9b942cc2f21c024?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=F-1tKDd3KigWH40TWNbBZloIcHFs0Ow3nDEkqFR3c6Z3iRcSNgrJi2fAUc1YcFMquoZkrLvL0hzOeIpI2cBj6cV3zLBaODn~7ogJsNW6DpjuM5D~4bCfECgUMFbxtXNJJRv~kMEtTXzl8~2dMOZ79sPJf~fCyMTmL0AtHSfYH580Ql5DXk1~l1DCGs-Uhs2MZvEoLOnf0mC47Rjz5DoPRp63EkDSARIocxHZ6-49HmWfii7ss7ivwCWhJ40bXnyspxDPNDgotJKSmGA~SOBZUlM4hCBCX19bKttP4ss2myNn-1I-fxpAJhgb-yPXAg63rq2YVI4FE9WTxbRXF37kyw__"
                   alt="Cameron Williamson"
                   className="rounded-full border-4 border-white shadow-lg w-full h-full object-cover"
                 />
@@ -241,14 +242,18 @@ const DashboardEmployer = () => {
             <div className="mt-8">
               <h2 className="text-xl font-bold mb-4">Hiring For</h2>
               <div className="grid grid-cols-3 gap-4">
-                <button className="flex items-center justify-center p-4 h-auto border-2 border-blue-200 hover:bg-blue-50 rounded-md">
+                  <Link to="/programming" className="flex items-center justify-center p-4 h-auto border-2 border-blue-200 hover:bg-blue-50 rounded-md">
+                <button >
                   <div className="flex flex-col items-center">
                     <div className="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center mb-2">
                       <span className="text-blue-600 font-bold">P</span>
                     </div>
-                    <span className="text-sm font-medium">Programming</span>
+                    <span  className="text-sm font-medium">
+                      Programming
+                    </span>
                   </div>
                 </button>
+                  </Link>
 
                 <button className="flex items-center justify-center p-4 h-auto border-2 border-blue-200 hover:bg-blue-50 rounded-md">
                   <div className="flex flex-col items-center">

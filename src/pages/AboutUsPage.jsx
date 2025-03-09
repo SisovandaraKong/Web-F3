@@ -12,7 +12,7 @@ export default function AboutUsPage() {
   }, []);
   return (
     <>
-      <main>
+      <main className="bg-gray-50 dark:bg-[#111827]">
         <div className="">
           <section className="px-36 relative bg-[url(https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/2uQRrnlUBwOoqlNbcQSpYr/a4fbb0dbc1a6b5ba696410ff091039a8/GettyImages-2170485830.jpg?w=1500&h=680&q=60&fit=fill&f=faces&fm=jpg&fl=progressive&auto=format%2Ccompress&dpr=1&w=1000)] bg-cover bg-center bg-no-repeat">
             <div className="absolute inset-0 bg-gray-900/75 sm:bg-transparent sm:from-gray-900/95 sm:to-gray-900/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
@@ -59,10 +59,10 @@ export default function AboutUsPage() {
               data-aos-duration="700"
               className=" m-auto "
             >
-              <h2 className="text-Heading font-bold text-primary">
+              <h2 className="text-Heading font-bold text-primary dark:text-white">
                 Our Mission
               </h2>
-              <p className="text-xl text-black-text">
+              <p className="text-xl text-black-text dark:text-gray-300">
                 Our mission is to connect job seekers, freelancers, and
                 employers. We aim to simplify the job search and hiring process.
                 Our platform helps talent find the right opportunities. We help
@@ -70,7 +70,6 @@ export default function AboutUsPage() {
                 an environment where careers grow, and success is within reach
                 for everyone.
               </p>
-
             </div>
           </section>
           <section className="grid grid-cols-1 md:grid-cols-2 px-36 gap-20">
@@ -79,10 +78,10 @@ export default function AboutUsPage() {
               data-aos-duration="700"
               className=" m-auto "
             >
-              <h2 className="text-Heading font-bold text-primary">
+              <h2 className="text-Heading font-bold text-primary dark:text-white">
                 Our Mission
               </h2>
-              <p className="text-xl text-black-text">
+              <p className="text-xl text-black-text dark:text-gray-300">
                 Our mission is to connect job seekers, freelancers, and
                 employers. We aim to simplify the job search and hiring process.
                 Our platform helps talent find the right opportunities. We help
@@ -103,7 +102,7 @@ export default function AboutUsPage() {
 
           <section className="mt-28 px-36">
             <div>
-              <h2 data-aos="flip-left" className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
+              <h2 data-aos="flip-left" className="text-MainTitle font-bold text-primary dark:text-white mb-4 text-center underline underline-offset-9 decoration-secondary">
                 Our Mentor
               </h2>
             </div>
@@ -112,7 +111,7 @@ export default function AboutUsPage() {
 
           <section className="mt-28 ">
             <div>
-              <h2 data-aos="flip-left" className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
+              <h2 data-aos="flip-left" className="text-MainTitle font-bold text-primary dark:text-white mb-4 text-center underline underline-offset-9 decoration-secondary">
                 Our Team
               </h2>
             </div>
@@ -121,7 +120,7 @@ export default function AboutUsPage() {
 
           <section className="mt-28 px-36">
             <div>
-              <h2 className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
+              <h2 className="text-MainTitle font-bold text-primary dark:text-white mb-4 text-center underline underline-offset-9 decoration-secondary">
                 Achievement
               </h2>
             </div>
@@ -130,7 +129,7 @@ export default function AboutUsPage() {
 
           <section className="mt-28 px-36 ">
             <div>
-              <h2 className="text-MainTitle font-bold text-primary mb-4  text-center underline underline-offset-9 decoration-secondary">
+              <h2 className="text-MainTitle font-bold text-primary dark:text-white mb-4 text-center underline underline-offset-9 decoration-secondary">
                 Service
               </h2>
             </div>

@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import {
-  FaUsers,
-  FaUserPlus,
-  FaUserCheck,
   FaEllipsisH,
   FaSlidersH,
   FaSearch,
 } from "react-icons/fa";
 import { PiNotePencil } from "react-icons/pi";
+import Sidebar from "../components/layouts/Sidebar";
 
 const JobPosting = () => {
   const [openPopup, setOpenPopup] = useState({});
@@ -88,24 +86,25 @@ const JobPosting = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen flex">
+    <div className="bg-white dark:bg-[#111827] min-h-screen flex">
+      <Sidebar />
       <div className="flex-1 p-6">
         <div className="mb-8 mt-8">
           <div className="flex justify-between items-center">
             <div className="flex justify-between items-center gap-4">
-              <h1 className="text-3xl font-bold text-[#2b407f] mb-4">
+              <h1 className="text-3xl font-bold text-[#2b407f] dark:text-white mb-4">
                 Job Postings
               </h1>
-              <a href="#" className="text-[#2b407f] flex items-center gap-1">
+              <a href="#" className="text-[#2b407f] dark:text-gray-300 flex items-center gap-1">
                 <PiNotePencil />
                 View Careers page
               </a>
             </div>
             <div className="flex space-x-4 items-center">
-              <button className="flex items-center bg-gray-400 text-[#2b407f] font-bold px-4 py-2 rounded hover:bg-gray-500">
+              <button className="flex items-center bg-gray-400 dark:bg-gray-700 text-[#2b407f] dark:text-gray-300 font-bold px-4 py-2 rounded hover:bg-gray-500 dark:hover:bg-gray-600">
                 Search <FaSearch className="ml-2" />
               </button>
-              <button className="bg-yellow-600 text-[#2b407f] font-bold px-4 py-2 rounded hover:bg-[#DEB229]">
+              <button className="bg-yellow-600 dark:bg-yellow-700 text-[#2b407f] dark:text-gray-300 font-bold px-4 py-2 rounded hover:bg-[#DEB229] dark:hover:bg-yellow-600">
                 + Job Posting
               </button>
             </div>
@@ -113,15 +112,15 @@ const JobPosting = () => {
         </div>
 
         <div className="mb-4">
-          <button className="bg-[#d9d9d9] text-[#2b407f] font-bold px-4 py-2 rounded flex items-center">
+          <button className="bg-[#d9d9d9] dark:bg-gray-700 text-[#2b407f] dark:text-gray-300 font-bold px-4 py-2 rounded flex items-center">
             <FaSlidersH className="mr-2" /> Filter
           </button>
         </div>
 
-        <div className="bg-[#f5f5f5] p-4 rounded shadow">
+        <div className="bg-[#f5f5f5] dark:bg-gray-800 p-4 rounded shadow">
           <table className="w-full text-sm">
             <thead>
-              <tr className="font-bold text-dark-blue border-b-1">
+              <tr className="font-bold text-dark-blue dark:text-gray-300 border-b-1 dark:border-gray-700">
                 <th className="p-2">Job Posting</th>
                 <th className="p-2">Department</th>
                 <th className="p-2">Location</th>
@@ -132,7 +131,7 @@ const JobPosting = () => {
             </thead>
             <tbody>
               {jobPostings.map((job, index) => (
-                <tr key={index} className="text-dark-blue border-b-1">
+                <tr key={index} className="text-dark-blue dark:text-gray-300 border-b-1 dark:border-gray-700">
                   <td className="p-2 text-center">{job.title}</td>
                   <td className="p-2 text-center">{job.department}</td>
                   <td className="p-2 text-center">{job.location}</td>
@@ -149,15 +148,15 @@ const JobPosting = () => {
                   <td className="p-2 relative">
                     <FaEllipsisH
                       onClick={() => handlePopupToggle(index)}
-                      className="cursor-pointer text-dark-blue"
+                      className="cursor-pointer text-dark-blue dark:text-gray-300"
                     />
                     {openPopup[index] && (
-                      <div className="absolute right-0 mt-2 w-48 bg-gray-200 shadow-lg rounded z-10">
+                      <div className="absolute right-0 mt-2 w-48 bg-gray-200 dark:bg-gray-700 shadow-lg rounded z-10">
                         <ul>
                           {popupOptions.map((option, idx) => (
                             <li
                               key={idx}
-                              className="p-2 hover:bg-gray-100 cursor-pointer border-b last:border-b-0 text-dark-blue"
+                              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer border-b last:border-b-0 text-dark-blue dark:text-gray-300 dark:border-gray-600"
                               onClick={
                                 option === "Delete job posting"
                                   ? () => handleDeleteClick(index)
@@ -179,7 +178,7 @@ const JobPosting = () => {
 
         {showDeleteConfirm !== null && (
           <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm">
-            <div className="bg-[#9e5342] text-white p-4 rounded shadow-lg flex flex-col items-center relative">
+            <div className="bg-[#9e5342] dark:bg-[#9e5342] text-white p-4 rounded shadow-lg flex flex-col items-center relative">
               <button
                 className="absolute ml-2 top-4 right-3 text-white hover:text-gray-200"
                 onClick={cancelDelete}
@@ -191,13 +190,13 @@ const JobPosting = () => {
               </p>
               <div className="flex space-x-4">
                 <button
-                  className="bg-[#9e5342] px-4 py-2 text-sm rounded hover:bg-[#9f634a] text-white border border-white"
+                  className="bg-[#9e5342] dark:bg-[#9e5342] px-4 py-2 text-sm rounded hover:bg-[#9f634a] dark:hover:bg-[#9f634a] text-white border border-white"
                   onClick={cancelDelete}
                 >
                   Cancel
                 </button>
                 <button
-                  className="bg-[#9e5342] px-4 py-2 text-sm rounded hover:bg-[#9f634a] text-white border border-white"
+                  className="bg-[#9e5342] dark:bg-[#9e5342] px-4 py-2 text-sm rounded hover:bg-[#9f634a] dark:hover:bg-[#9f634a] text-white border border-white"
                   onClick={() => confirmDelete(showDeleteConfirm)}
                 >
                   Delete anyway!
@@ -209,16 +208,16 @@ const JobPosting = () => {
 
         {showDeleteSuccess !== null && (
           <div className="fixed inset-0 flex items-center justify-center z-50 backdrop-blur-sm">
-          <div className="bg-[#439daa] text-white p-4 rounded shadow-lg flex items-center relative pl-10 pr-8">
-            <button
-              className="absolute top-4 right-4 text-white hover:text-gray-200"
-              onClick={() => setShowDeleteSuccess(null)}
-            >
-              ✕
-            </button>
-            <p>Item deleted!</p>
+            <div className="bg-[#439daa] dark:bg-[#439daa] text-white p-4 rounded shadow-lg flex items-center relative pl-10 pr-8">
+              <button
+                className="absolute top-4 right-4 text-white hover:text-gray-200"
+                onClick={() => setShowDeleteSuccess(null)}
+              >
+                ✕
+              </button>
+              <p>Item deleted!</p>
+            </div>
           </div>
-        </div>
         )}
       </div>
     </div>

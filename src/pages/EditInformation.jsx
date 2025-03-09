@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function EditInformation() {
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const defaultTextColor = "text-[#2b407f]";
+  const defaultTextColor = "text-[#2b407f] dark:text-[#6AA6D0]";
 
   const handleOptionClick = (option) => {
     setSelectedOptions((prev) => {
@@ -38,9 +38,9 @@ function EditInformation() {
     "Other",
   ];
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#111827]">
       <div className="max-w-screen-xl mx-auto px-3 sm:px-8 py-8">
-        <h1 className="text-3xl font-bold text-[#2b407f] text-left mb-8">
+        <h1 className="text-3xl font-bold text-[#2b407f] dark:text-white text-left mb-8">
           Jobs Description
         </h1>
         <div className="flex justify-center mb-8">
@@ -50,9 +50,9 @@ function EditInformation() {
               alt="Profile"
               className="w-40 h-40 rounded-full object-cover"
             />
-            <div className="absolute bottom-0 right-0 bg-gray-200 p-2 rounded-full">
+            <div className="absolute bottom-0 right-0 bg-gray-200 dark:bg-gray-700 p-2 rounded-full">
               <svg
-                className="w-5 h-5 text-gray-600"
+                className="w-5 h-5 text-gray-600 dark:text-gray-300"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -78,24 +78,24 @@ function EditInformation() {
         <form>
           <div className="flex flex-wrap justify-center gap-4 mb-4">
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">First Name</label>
+              <label className="block text-gray-700 dark:text-white mb-2">First Name</label>
               <input
                 type="text"
-                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="First Name"
               />
             </div>
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">Last Name</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Last Name</label>
               <input
                 type="text"
-                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Last Name"
               />
             </div>
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">Gender</label>
-              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-gray-700 dark:text-white mb-2">Gender</label>
+              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -106,34 +106,34 @@ function EditInformation() {
 
           <div className="flex flex-wrap justify-center gap-4 mb-4">
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">Email</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Email</label>
               <input
                 type="email"
-                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Email"
               />
             </div>
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">Phone</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Phone</label>
               <input
                 type="tel"
-                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Phone"
               />
             </div>
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">Date of Birth</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Date of Birth</label>
               <input
                 type="date"
-                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
 
           <div className="flex justify-start mb-4 ml-2">
             <div className="w-full md:w-[590px]">
-              <label className="block text-gray-700 mb-2">Job Title</label>
-              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-gray-700 dark:text-white mb-2">Job Title</label>
+              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Select Job Title</option>
                 <option value="backend">Backend Developer</option>
                 <option value="frontend">Frontend Developer</option>
@@ -144,8 +144,8 @@ function EditInformation() {
 
           <div className="flex flex-wrap justify-center gap-4 mb-4">
             <div className="w-full md:w-[590px]">
-              <label className="block text-gray-700 mb-2">Job Level</label>
-              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-gray-700 dark:text-white mb-2">Job Level</label>
+              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Select Job Level</option>
                 <option value="junior">Junior</option>
                 <option value="mid">Mid</option>
@@ -153,8 +153,8 @@ function EditInformation() {
               </select>
             </div>
             <div className="w-full md:w-[590px]">
-              <label className="block text-gray-700 mb-2">Qualification</label>
-              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-gray-700 dark:text-white mb-2">Qualification</label>
+              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Select Qualification</option>
                 <option value="bachelor">Bachelor</option>
                 <option value="master">Master</option>
@@ -165,16 +165,16 @@ function EditInformation() {
 
           <div className="flex flex-wrap justify-center gap-4 mb-4">
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">Address</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Address</label>
               <input
                 type="text"
-                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Address"
               />
             </div>
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">City</label>
-              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-gray-700 dark:text-white mb-2">City</label>
+              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Select City</option>
                 <option value="phnompenh">Phnom Penh</option>
                 <option value="siemreap">Siem Reap</option>
@@ -182,8 +182,8 @@ function EditInformation() {
               </select>
             </div>
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">Country</label>
-              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-gray-700 dark:text-white mb-2">Country</label>
+              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">Select Country</option>
                 <option value="cambodia">Cambodia</option>
                 <option value="thailand">Thailand</option>
@@ -194,26 +194,26 @@ function EditInformation() {
 
           <div className="flex flex-wrap justify-center gap-4 mb-4">
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">GitHub</label>
+              <label className="block text-gray-700 dark:text-white mb-2">GitHub</label>
               <input
                 type="text"
-                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="GitHub URL"
               />
             </div>
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">LinkedIn</label>
+              <label className="block text-gray-700 dark:text-white mb-2">LinkedIn</label>
               <input
                 type="text"
-                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="LinkedIn URL"
               />
             </div>
             <div className="w-full md:w-[387px]">
-              <label className="block text-gray-700 mb-2">Website</label>
+              <label className="block text-gray-700 dark:text-white mb-2">Website</label>
               <input
                 type="text"
-                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Website URL"
               />
             </div>
@@ -221,11 +221,11 @@ function EditInformation() {
 
           <div className="flex justify-start mb-4 ml-2">
             <div className="w-full md:w-[590px]">
-              <label className="block text-gray-700 mb-2">
+              <label className="block text-gray-700 dark:text-white mb-2">
                 Describe about yourself
               </label>
               <textarea
-                className="w-full min-h-[100px] px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full min-h-[100px] px-4 py-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Describe about yourself"
                 style={{ resize: "vertical" }}
               />
@@ -233,9 +233,9 @@ function EditInformation() {
           </div>
         </form>
       </div>
-      <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-8">
+      <div className="min-h-screen bg-gray-50 dark:bg-[#111827] py-8 px-4 sm:px-8">
         <div className="max-w-screen-xl mx-auto px-3 sm:px-8 py-8">
-          <h1 className="text-3xl font-bold text-[#2b407f] text-left mb-8">
+          <h1 className="text-3xl font-bold text-[#2b407f] dark:text-white text-left mb-8">
             Add Job details
           </h1>
 
@@ -252,9 +252,9 @@ function EditInformation() {
                   key={index}
                   type="button"
                   onClick={() => handleOptionClick(type)}
-                  className={`px-4 py-2 border border-[#2b407f] rounded-full ${defaultTextColor} hover:bg-[#2b407f] hover:text-white ${
+                  className={`px-4 py-2 border border-[#2b407f] dark:border-[#6AA6D0] rounded-full ${defaultTextColor} hover:bg-[#2b407f] dark:hover:bg-[#6AA6D0] hover:text-white dark:hover:text-white ${
                     selectedOptions.includes(type)
-                      ? "bg-[#2b407f] text-white"
+                      ? "bg-[#2b407f] dark:bg-[#6AA6D0] text-white dark:text-white"
                       : "bg-transparent"
                   } transition-colors duration-200`}
                 >
@@ -269,9 +269,9 @@ function EditInformation() {
                   key={index + 5}
                   type="button"
                   onClick={() => handleOptionClick(type)}
-                  className={`px-4 py-2 border border-[#2b407f] rounded-full ${defaultTextColor} hover:bg-[#2b407f] hover:text-white ${
+                  className={`px-4 py-2 border border-[#2b407f] dark:border-[#6AA6D0] rounded-full ${defaultTextColor} hover:bg-[#2b407f] dark:hover:bg-[#6AA6D0] hover:text-white dark:hover:text-white ${
                     selectedOptions.includes(type)
-                      ? "bg-[#2b407f] text-white"
+                      ? "bg-[#2b407f] dark:bg-[#6AA6D0] text-white dark:text-white"
                       : "bg-transparent"
                   } transition-colors duration-200`}
                 >
@@ -288,9 +288,9 @@ function EditInformation() {
                   key={index}
                   type="button"
                   onClick={() => handleOptionClick(shift)}
-                  className={`px-4 py-2 border border-[#2b407f] rounded-full ${defaultTextColor} hover:bg-[#2b407f] hover:text-white ${
+                  className={`px-4 py-2 border border-[#2b407f] dark:border-[#6AA6D0] rounded-full ${defaultTextColor} hover:bg-[#2b407f] dark:hover:bg-[#6AA6D0] hover:text-white dark:hover:text-white ${
                     selectedOptions.includes(shift)
-                      ? "bg-[#2b407f] text-white"
+                      ? "bg-[#2b407f] dark:bg-[#6AA6D0] text-white dark:text-white"
                       : "bg-transparent"
                   } transition-colors duration-200`}
                 >
@@ -305,9 +305,9 @@ function EditInformation() {
                   key={index + 4}
                   type="button"
                   onClick={() => handleOptionClick(shift)}
-                  className={`px-4 py-2 border border-[#2b407f] rounded-full ${defaultTextColor} hover:bg-[#2b407f] hover:text-white ${
+                  className={`px-4 py-2 border border-[#2b407f] dark:border-[#6AA6D0] rounded-full ${defaultTextColor} hover:bg-[#2b407f] dark:hover:bg-[#6AA6D0] hover:text-white dark:hover:text-white ${
                     selectedOptions.includes(shift)
-                      ? "bg-[#2b407f] text-white"
+                      ? "bg-[#2b407f] dark:bg-[#6AA6D0] text-white dark:text-white"
                       : "bg-transparent"
                   } transition-colors duration-200`}
                 >
@@ -322,9 +322,9 @@ function EditInformation() {
                   key={index + 8}
                   type="button"
                   onClick={() => handleOptionClick(shift)}
-                  className={`px-4 py-2 border border-[#2b407f] rounded-full ${defaultTextColor} hover:bg-[#2b407f] hover:text-white ${
+                  className={`px-4 py-2 border border-[#2b407f] dark:border-[#6AA6D0] rounded-full ${defaultTextColor} hover:bg-[#2b407f] dark:hover:bg-[#6AA6D0] hover:text-white dark:hover:text-white ${
                     selectedOptions.includes(shift)
-                      ? "bg-[#2b407f] text-white"
+                      ? "bg-[#2b407f] dark:bg-[#6AA6D0] text-white"
                       : "bg-transparent"
                   } transition-colors duration-200`}
                 >
@@ -342,13 +342,13 @@ function EditInformation() {
             <div className="ml-2">
               <label
                 htmlFor="yes"
-                className="w-full flex items-center p-2 border border-gray-300 rounded-md bg-gray-100 mb-2 cursor-pointer hover:bg-gray-200 transition-colors duration-200"
+                className="w-full flex items-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-100 dark:bg-gray-700 mb-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
               >
                 <input
                   type="radio"
                   id="yes"
                   name="startDate"
-                  className="mr-2 border-2 border-[#2b407f] rounded-full w-5 h-5 focus:ring-2 focus:ring-[#2b407f]"
+                  className="mr-2 border-2 border-[#2b407f] dark:border-[#6AA6D0] rounded-full w-5 h-5 focus:ring-2 focus:ring-[#2b407f] dark:focus:ring-[#6AA6D0]"
                 />
                 <span className={`${defaultTextColor}`}>Yes</span>
               </label>
@@ -357,13 +357,13 @@ function EditInformation() {
             <div className="ml-2">
               <label
                 htmlFor="no"
-                className="w-full flex items-center p-2 border border-gray-300 rounded-md bg-gray-100 cursor-pointer hover:bg-gray-200 transition-colors duration-200"
+                className="w-full flex items-center p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-100 dark:bg-gray-700 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
               >
                 <input
                   type="radio"
                   id="no"
                   name="startDate"
-                  className="mr-2 border-2 border-[#2b407f] rounded-full w-5 h-5 focus:ring-2 focus:ring-[#2b407f]"
+                  className="mr-2 border-2 border-[#2b407f] dark:border-[#6AA6D0] rounded-full w-5 h-5 focus:ring-2 focus:ring-[#2b407f] dark:focus:ring-[#6AA6D0]"
                 />
                 <span className={`${defaultTextColor}`}>No</span>
               </label>
@@ -377,7 +377,7 @@ function EditInformation() {
               </label>
             </div>
             <div className="ml-2">
-              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#2b407f]">
+              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#2b407f] dark:focus:ring-[#6AA6D0]">
                 <option value="">Select number</option>
                 {[...Array(10).keys()].map((i) => (
                   <option key={i + 1} value={i + 1}>
@@ -393,24 +393,24 @@ function EditInformation() {
               </label>
             </div>
             <div className="ml-2">
-              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-600 focus:outline-none focus:ring-2 focus:ring-[#2b407f]">
+              <select className="w-full h-[50px] px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#2b407f] dark:focus:ring-[#6AA6D0]">
                 <option value="">Select timeline</option>
                 <option value="1 week">1 week</option>
                 <option value="2 weeks">2 weeks</option>
                 <option value="1 month">1 month</option>
               </select>
             </div>
-            <div className="ml-2 text-center text-2xl text-gray-800">. . .</div>
+            <div className="ml-2 text-center text-2xl text-gray-800 dark:text-gray-300">. . .</div>
             <div className="ml-2 flex justify-between mt-6">
               <button
                 type="button"
-                className={`${defaultTextColor} px-4 py-2 border border-[#2b407f] rounded hover:bg-[#2b407f] hover:text-white transition-colors duration-200`}
+                className={`${defaultTextColor} px-4 py-2 border border-[#2b407f] dark:border-[#6AA6D0] rounded hover:bg-[#2b407f] dark:hover:bg-[#6AA6D0] hover:text-white dark:hover:text-white transition-colors duration-200`}
               >
                 Back
               </button>
               <button
                 type="button"
-                className="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition-colors duration-200"
+                className="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 dark:hover:bg-yellow-500 transition-colors duration-200"
               >
                 Next
               </button>
