@@ -4,22 +4,18 @@ import ReatingJobPost from '../components/reating/ReatingJobPost';
 import CommentJobPost from '../components/comments/CommentJobPost';
 import Footer from '../components/layouts/Footer';
 import FreelancerDetail from '../components/tabs/FreelancerDetail';
+import BusinessOwnerDetail from '../components/tabs/BussinessOwnerDetail';
+import BusinessJobPost from '../components/contacts/BusinessJobPost';
 
-const CardFreelancerDetail = () => {
+const CardBussinessOwnerDetail = () => {
   return (
     <div className="card-freelancer-detail">
       {/* Render the Breadcrumb Component */}
-      <FreelancerDetail />
+      <BusinessOwnerDetail />
 
       {/* Your CardFreelancerDetail content */}
       <div className="freelancer-contact-info">
-        <ContactJobPost />
-      </div>
-      <div className="freelancer-reating">
-        <ReatingJobPost />
-      </div>
-      <div className="freelancer-comments">
-        <CommentJobPost />
+        <BusinessJobPost />
       </div>
       <div>
         <Footer />
@@ -28,4 +24,4 @@ const CardFreelancerDetail = () => {
   );
 };
 
-export default CardFreelancerDetail;
+export default CardBussinessOwnerDetail;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ContactJobPost = () => {
+const BusinessJobPost = () => {
   return (
     <div className="contact" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
@@ -51,4 +51,4 @@ const ContactJobPost = () => {
   );
 };
 
-export default ContactJobPost;
+export default BusinessJobPost;
