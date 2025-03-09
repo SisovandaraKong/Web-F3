@@ -82,38 +82,33 @@ const ChatbotPage = () => {
     }
   };
 
-  // Improved parser to remove ** and handle inline formatting
+  // Refined parser to bold only necessary points (headings and section titles)
   const parseResponse = (text) => {
-    // Split into lines first
     return text.split('\n').map((line, index) => {
       if (!line.trim()) return null;
 
-      // Handle inline bold (**text**) and italics (*text*)
-      let processedLine = line;
-      processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Replace **text** with <strong>text</strong>
-      processedLine = processedLine.replace(/\*(.*?)\*/g, '<em>$1</em>'); // Replace *text* with <em>text</em>
+      // Handle inline italics (*text*)
+      let processedLine = line.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
-      // Handle different line types
-      if (processedLine.startsWith('* ') || processedLine.startsWith('*-')) {
+      // Determine if the line is a heading or section title
+      if (processedLine.match(/^#+\s+.*/) || processedLine.match(/:\s*$/)) {
+        // Bold headings (e.g., starts with #) or lines ending with : (e.g., Ingredients:, Instructions:)
+        return <h3 key={index} className="text-lg font-bold text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: processedLine.replace(/^#+/, '').trim() }} />;
+      } else if (processedLine.startsWith('* ') || processedLine.startsWith('*-')) {
         // Bullet point (remove leading * and render as list item)
         const content = processedLine.slice(2).trim();
         return <li key={index} className="text-gray-600 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: content }} />;
       } else {
-        // Check if it's a heading (assuming it's the first bolded line after a break)
-        if (processedLine.match(/<strong>.*<\/strong>/) && !processedLine.includes('<li>')) {
-          return <h3 key={index} className="text-lg font-bold text-gray-700 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: processedLine }} />;
-        } else {
-          // Normal paragraph
-          return <p key={index} className="text-gray-600 dark:text-gray-400 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: processedLine }} />;
-        }
+        // Normal paragraph
+        return <p key={index} className="text-gray-600 dark:text-gray-400 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: processedLine }} />;
       }
     }).filter(Boolean);
   };
 
   return (
     <div className="flex h-[90vh] bg-gray-100 dark:bg-gray-900">
-      {/* Sidebar */}
-      <div className="w-64 bg-[#1A2C5B] dark:bg-[#0F1A3A] text-white flex flex-col">
+      {/* Sticky Sidebar */}
+      <div className="w-64 bg-primary text-white flex flex-col sticky top-0 h-full">
         <div className="p-4">
           <h1 className="text-xl font-bold text-white">Kong Sisovandara's Chat</h1>
         </div>
@@ -141,61 +136,60 @@ const ChatbotPage = () => {
                   className="text-red-400 hover:text-red-300 dark:text-red-500 dark:hover:text-red-400 transition p-1"
                   title="Delete chat"
                 >
-                  <FaTrash className="w-4 h-4" />
+                  <FaTrash className="w-4 h-4 cursor-pointer" />
                 </button>
               </div>
             ))}
-          </div>
-        </div>
-        <div className="p-4 border-t border-blue-800 dark:border-blue-900">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center">
-              <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">K</span>
-            </div>
-            <p className="text-sm text-gray-200 dark:text-gray-300">Koko</p>
           </div>
         </div>
       </div>
 
       {/* Main Chat Area */}
       <div className="flex-1 flex flex-col">
-        <div className="flex-1 flex flex-col items-center justify-center p-6">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-            Welcome to Kong Sisovandara's AI
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 flex items-center gap-2">
-            Hi <span className="text-yellow-500 dark:text-yellow-400">👋</span> Koko what can I help with
-          </p>
-          <div className="flex gap-4">
-            <button className="px-6 py-2 bg-white dark:bg-gray-800 border border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-400 rounded-full flex items-center gap-2 hover:bg-blue-50 dark:hover:bg-blue-900 transition">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-              </svg>
-              Generate Resume
-            </button>
-            <button className="px-6 py-2 bg-white dark:bg-gray-800 border border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-400 rounded-full flex items-center gap-2 hover:bg-blue-50 dark:hover:bg-blue-900 transition">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Create CV
-            </button>
-          </div>
-        </div>
-
-        {/* Chat Input */}
-        <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-          {selectedChat && (
-            <div className="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg max-h-64 overflow-y-auto">
-              <div className="mb-2">
-                <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Question:</p>
-                <p className="text-gray-600 dark:text-gray-400">{selectedChat.question}</p>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Answer:</p>
-                <div className="text-gray-600 dark:text-gray-400 whitespace-pre-wrap">{parseResponse(response)}</div>
-              </div>
+        {/* Conditional Rendering for Welcome, Loading, or Answer */}
+        {!isLoading && !selectedChat && !response && (
+          <div className="flex-1 flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800">
+            <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+              Welcome to Kong Sisovandara's AI
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-6 flex items-center gap-2">
+              Hi <span className="text-yellow-500 dark:text-yellow-400">👋</span> Koko what can I help with
+            </p>
+            <div className="flex gap-4">
+              <button className="px-6 py-2 bg-white dark:bg-gray-700 border border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-400 rounded-full flex items-center gap-2 hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+                Generate Resume
+              </button>
+              <button className="px-6 py-2 bg-white dark:bg-gray-700 border border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-400 rounded-full flex items-center gap-2 hover:bg-blue-50 dark:hover:bg-blue-900 transition">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Create CV
+              </button>
             </div>
-          )}
+          </div>
+        )}
+        {isLoading && (
+          <div className="flex-1 flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading...</p>
+          </div>
+        )}
+        {!isLoading && (selectedChat || response) && (
+          <div className="flex-1 flex flex-col p-6 bg-white dark:bg-gray-800 overflow-y-auto">
+            <div className="mb-4">
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Question:</p>
+              <p className="text-gray-600 dark:text-gray-400">{selectedChat?.question || message}</p>
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Answer:</p>
+              <div className="text-gray-600 dark:text-gray-400 whitespace-pre-wrap">{parseResponse(response)}</div>
+            </div>
+          </div>
+        )}
+        <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
           <form onSubmit={handleSubmit} className="flex items-center gap-3">
             <button type="button" className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
