@@ -22,7 +22,8 @@ html {
   --color-white-text: #f9fafb;
   --color-black-text: #111827;
   --color-description: #9ca3af;
-
+  --color-white: #f9fafb;
+  --color-black: #111827;
 
   /* Font size */
 
@@ -44,13 +45,10 @@ html {
 
   /* Container */
   --container-margin: 0 auto;
-
 }
 
-
-
 a.active {
-  color:#eab308 ;
+  color: #eab308;
 }
 
 a.pending {
@@ -62,7 +60,7 @@ a.transitioning {
   /* css transition is running */
 }
 a.active {
-  color:#eab308 ;
+  color: #eab308;
 }
 
 a.pending {
@@ -75,10 +73,10 @@ a.transitioning {
 }
 /* Apply Poppins for English */
 html[lang="en"] {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Apply Koh Santepheap for Khmer */
 html[lang="km"] {
-  font-family: 'Koh Santepheap', sans-serif;
+  font-family: "Koh Santepheap", sans-serif;
 }

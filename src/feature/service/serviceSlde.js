@@ -13,7 +13,17 @@ export const serviceSlide = apiSlide.injectEndpoints({
         method: "GET",
       }),
     }),
+    getAllServices: build.query({
+      query: () => ({
+        url: "/api/jobs-service/services",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetAllUsersQuery, useGetUserByIdQuery } = serviceSlide;
+export const {
+  useGetAllUsersQuery,
+  useGetUserByIdQuery,
+  useGetAllServicesQuery,
+} = serviceSlide;

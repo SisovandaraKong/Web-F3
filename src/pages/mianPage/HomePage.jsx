@@ -11,6 +11,7 @@ import CardFeedback from "../../components/cards/CardFeedback";
 import { FaUserFriends } from "react-icons/fa";
 import { FaUserTie } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
+import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
 
 export default function HomePage() {
   const { t } = useTranslation(); // Initialize the translation hook
@@ -41,6 +42,7 @@ export default function HomePage() {
 
   return (
     <>
+      <ScrollIndicator />
       <section>
         <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-black-background">
           <Carousel />

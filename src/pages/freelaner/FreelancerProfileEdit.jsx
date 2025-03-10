@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import ScrollIndicator from "../components/scrollIndicator/scrollIndicator"
 // import { CheckIcon, ChevronDownIcon } from "./icons"; // Optional - see note below
 
 export default function FreelancerEditProfile() {
@@ -36,7 +37,9 @@ export default function FreelancerEditProfile() {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+  <>
+  <ScrollIndicator/>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
       <div className="w-full max-w-3xl bg-gray-200 shadow-md rounded-md overflow-hidden">
         <div className="p-6">
           <div className="flex flex-row items-center justify-between pb-4">
@@ -242,6 +245,7 @@ export default function FreelancerEditProfile() {
         </div>
       </div>
     </div>
+  </>
   )
 }
 

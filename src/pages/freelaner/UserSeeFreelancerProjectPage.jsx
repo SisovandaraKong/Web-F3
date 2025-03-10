@@ -1,5 +1,7 @@
 
-import CardProject from "../../components/cards/Freelancer/CardProject";
+import CardProject from "../components/cards/Freelancer/CardProject";
+import ScrollIndicator from "../components/scrollIndicator/scrollIndicator";
+
 
 const MonitorIcon = () => (
   <svg
@@ -28,7 +30,9 @@ export default function UserSeeFreelancerProjectPage() {
   });
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto">
+    <>
+<ScrollIndicator/>
+<div className="min-h-screen max-w-7xl mx-auto">
       <div className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -74,5 +78,7 @@ export default function UserSeeFreelancerProjectPage() {
       <CardProject />
       
     </div>
+    </>
+    
   );
 }

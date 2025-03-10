@@ -29,6 +29,8 @@ export default function PopularCart() {
             </p>
             <p className="mt-2 text-pretty text-gray-700 line-clamp-2">
               {t(jobData.companyDescription)} {/* Use translation key for description */}
+              {t(jobData.companyDescriptionKey)}{" "}
+              {/* Use translation key for description */}
             </p>
             <span className="mt-4 block text-center rounded-md border border-indigo-900 bg-indigo-900 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-900">
               {t("learnMore")} {/* Translation for "Learn More" button */}
