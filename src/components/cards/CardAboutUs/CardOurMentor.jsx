@@ -120,7 +120,7 @@ export default function CardOurMentor() {
       {mentors.map((mentor, index) => (
         <div key={index} data-aos={index % 2 === 0 ? "fade-right" : "fade-left"} className="w-full max-w-sm mx-auto p-5 ">
           <div className="flex justify-center items-center">
-            <h1 className="text-2xl md:text-3xl font-bold text-blue-900 text-center">
+            <h1 className="text-2xl md:text-3xl font-bold text-blue-900 text-center dark:text-white">
               {mentor.name}
             </h1>
           </div>

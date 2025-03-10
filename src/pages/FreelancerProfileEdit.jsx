@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function FreelancerEditProfile() {
@@ -12,31 +12,30 @@ export default function FreelancerEditProfile() {
     contactNumber: "58077.79",
     city: "Mehrab",
     state: "Bozorgi",
-  })
+  });
 
   // State for dropdowns
-  const [cityOpen, setCityOpen] = useState(false)
-  const [stateOpen, setStateOpen] = useState(false)
+  const [cityOpen, setCityOpen] = useState(false);
+  const [stateOpen, setStateOpen] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSelectChange = (name, value) => {
-    setFormData((prev) => ({ ...prev, [name]: value }))
-    if (name === "city") setCityOpen(false)
-    if (name === "state") setStateOpen(false)
-  }
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "city") setCityOpen(false);
+    if (name === "state") setStateOpen(false);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-
-  }
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
 
   return (
-    <div className="flex justify-center items-center min-h-screen  p-4">
+    <div className="flex justify-center items-center min-h-screen p-4 dark:bg-black">
       <div className="w-full max-w-3xl bg-gray-300 shadow-md rounded-md overflow-hidden">
         <div className="p-6">
           <div className="flex flex-row items-center justify-between pb-4">
@@ -53,7 +52,10 @@ export default function FreelancerEditProfile() {
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div className="space-y-2">
-                <label htmlFor="firstName" className="block text-sm font-bold text-primary">
+                <label
+                  htmlFor="firstName"
+                  className="block text-sm font-bold text-primary"
+                >
                   First Name
                 </label>
                 <input
@@ -65,7 +67,10 @@ export default function FreelancerEditProfile() {
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="lastName" className="block text-sm font-bold text-primary">
+                <label
+                  htmlFor="lastName"
+                  className="block text-sm font-bold text-primary"
+                >
                   Last Name
                 </label>
                 <input
@@ -79,7 +84,10 @@ export default function FreelancerEditProfile() {
             </div>
 
             <div className="space-y-2 mb-4">
-              <label htmlFor="email" className="block text-sm font-bold text-primary">
+              <label
+                htmlFor="email"
+                className="block text-sm font-bold text-primary"
+              >
                 Email
               </label>
               <div className="relative">
@@ -109,7 +117,10 @@ export default function FreelancerEditProfile() {
             </div>
 
             <div className="space-y-2 mb-4">
-              <label htmlFor="address" className="block text-sm font-bold text-primary">
+              <label
+                htmlFor="address"
+                className="block text-sm font-bold text-primary"
+              >
                 Address
               </label>
               <input
@@ -122,7 +133,10 @@ export default function FreelancerEditProfile() {
             </div>
 
             <div className="space-y-2 mb-4">
-              <label htmlFor="contactNumber" className="block text-sm font-bold text-primary">
+              <label
+                htmlFor="contactNumber"
+                className="block text-sm font-bold text-primary"
+              >
                 Contact Number
               </label>
               <input
@@ -136,7 +150,10 @@ export default function FreelancerEditProfile() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div className="space-y-2">
-                <label htmlFor="city" className="block text-sm font-bold text-primary">
+                <label
+                  htmlFor="city"
+                  className="block text-sm font-bold text-primary"
+                >
                   City
                 </label>
                 <div className="relative">
@@ -162,17 +179,19 @@ export default function FreelancerEditProfile() {
                   {cityOpen && (
                     <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
                       <ul className="py-1">
-                        {["Mehrab", "New York", "Los Angeles", "Chicago"].map((city) => (
-                          <li key={city}>
-                            <button
-                              type="button"
-                              className="text-black-text font-semibold w-full px-3 py-2 text-left hover:bg-gray-100"
-                              onClick={() => handleSelectChange("city", city)}
-                            >
-                              {city}
-                            </button>
-                          </li>
-                        ))}
+                        {["Mehrab", "New York", "Los Angeles", "Chicago"].map(
+                          (city) => (
+                            <li key={city}>
+                              <button
+                                type="button"
+                                className="text-black-text font-semibold w-full px-3 py-2 text-left hover:bg-gray-100"
+                                onClick={() => handleSelectChange("city", city)}
+                              >
+                                {city}
+                              </button>
+                            </li>
+                          )
+                        )}
                       </ul>
                     </div>
                   )}
@@ -180,7 +199,10 @@ export default function FreelancerEditProfile() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="state" className="block text-sm font-bold text-primary">
+                <label
+                  htmlFor="state"
+                  className="block text-sm font-bold text-primary"
+                >
                   State
                 </label>
                 <div className="relative">
@@ -206,17 +228,21 @@ export default function FreelancerEditProfile() {
                   {stateOpen && (
                     <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
                       <ul className="py-1">
-                        {["Bozorgi", "California", "New York", "Texas"].map((state) => (
-                          <li key={state}>
-                            <button
-                              type="button"
-                              className="text-black-text font-semibold w-full px-3 py-2 text-left hover:bg-gray-100"
-                              onClick={() => handleSelectChange("state", state)}
-                            >
-                              {state}
-                            </button>
-                          </li>
-                        ))}
+                        {["Bozorgi", "California", "New York", "Texas"].map(
+                          (state) => (
+                            <li key={state}>
+                              <button
+                                type="button"
+                                className="text-black-text font-semibold w-full px-3 py-2 text-left hover:bg-gray-100"
+                                onClick={() =>
+                                  handleSelectChange("state", state)
+                                }
+                              >
+                                {state}
+                              </button>
+                            </li>
+                          )
+                        )}
                       </ul>
                     </div>
                   )}
@@ -232,19 +258,17 @@ export default function FreelancerEditProfile() {
                 Cancel
               </button>
               <Link to="/FreelancerProfile">
-              <button
-                type="submit"
-                className=" text-TabText font-semibold px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                Save
-              </button>
+                <button
+                  type="submit"
+                  className=" text-TabText font-semibold px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  Save
+                </button>
               </Link>
             </div>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-

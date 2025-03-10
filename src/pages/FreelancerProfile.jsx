@@ -10,15 +10,15 @@ import { Link } from "react-router-dom";
 const FreelancerProfile = () => {
   return (
     <>
-      <div className="max-w-7xl mx-auto min-h-screen">
+      <div className="max-w-8xl mx-auto min-h-screen dark:bg-black">
         <div className="p-5">
-          <h1 className="text-Sub2Title font-bold text-primary">
+          <h1 className="text-Sub2Title font-bold text-primary dark:text-white">
             View Profile
           </h1>
         </div>
         <div className="flex space-x-2 justify-end mr-5">
           <Link to="/FreelancerProfileEdit">
-            <button className="flex items-center px-3 py-1.5 border border-primary rounded bg-white text-TabText font-medium text-red-500">
+            <button className=" flex items-center px-3 py-1.5 border border-primary rounded bg-white text-TabText font-medium text-red-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 mr-1 text-red-500"
@@ -31,7 +31,7 @@ const FreelancerProfile = () => {
             </button>
           </Link>
 
-          <button className="flex items-center px-3 py-1.5 bg-primary rounded text-TabText font-medium text-white">
+          <button className="flex items-center px-3 py-1.5 bg-primary hover:bg-primary-hover rounded text-TabText font-medium text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4 mr-1"
@@ -45,7 +45,7 @@ const FreelancerProfile = () => {
         </div>
         <div className="flex flex-col md:flex-row px-5 pb-10 gap-6">
           <div className="w-full md:w-1/3">
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg shadow-sm p-6 dark:bg-gray-900">
               <div className="flex flex-col items-center">
                 <div className="relative w-24 h-24 mb-4 ">
                   <img
@@ -56,63 +56,65 @@ const FreelancerProfile = () => {
                 </div>
 
                 <div className="text-center mb-6">
-                  <h2 className="text-CardMainTitle font-bold text-primary">
+                  <h2 className="text-CardMainTitle font-bold text-primary dark:text-white">
                     Rin Sanom
                   </h2>
-                  <span className="text-primary text-sm">
+                  <span className="text-primary text-sm dark:text-white">
                     • Web Development
                   </span>
 
                   <div className="flex items-center justify-center mt-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-blue-900 mr-1"
+                      className="h-5 w-5 text-blue-900 mr-1 dark:text-white"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
                       <FaUserAlt />
                     </svg>
-                    <span className="text-sm text-primary">Full-time</span>
+                    <span className="text-sm text-primary dark:text-white">
+                      Full-time
+                    </span>
                   </div>
                 </div>
               </div>
 
               <div className="border-t border-gray-100 pt-4">
-                <h3 className="font-semibold text-primary mb-3 text-CardMainTitle">
+                <h3 className="font-semibold text-primary mb-3 text-CardMainTitle dark:text-white">
                   Contact information
                 </h3>
                 <div className="space-y-3">
                   <div className="flex items-start">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-primary-hover mr-2 mt-0.5"
+                      className="h-5 w-5 text-primary-hover mr-2 mt-0.5 dark:text-white"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                     </svg>
-                    <span className="text-sm text-primary">
+                    <span className="text-sm text-primary dark:text-white">
                       Sanom@gmail.com
                     </span>
                   </div>
                   <div className="flex items-start">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-primary-hover mr-2 mt-0.5"
+                      className="h-5 w-5 text-primary-hover mr-2 mt-0.5 dark:text-white"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
-                    <span className="text-sm text-primary">
+                    <span className="text-sm text-primary dark:text-white">
                       +855 39 24 23 237
                     </span>
                   </div>
                   <div className="flex items-start">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-primary-hover mr-2 mt-0.5"
+                      className="h-5 w-5 text-primary-hover mr-2 mt-0.5 dark:text-white"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -122,7 +124,7 @@ const FreelancerProfile = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span className="text-sm text-primary">
+                    <span className="text-sm text-primary dark:text-white">
                       Phnom Penh, Cambodia
                     </span>
                   </div>
@@ -130,7 +132,7 @@ const FreelancerProfile = () => {
               </div>
 
               <div className="border-t border-gray-100 pt-4 mt-4">
-                <h3 className="font-semibold text-primary mb-3 text-CardMainTitle">
+                <h3 className="font-semibold text-primary mb-3 text-CardMainTitle dark:text-white">
                   Share my profile
                 </h3>
                 <div className="flex space-x-2">
@@ -189,27 +191,13 @@ const FreelancerProfile = () => {
 
           <div className="w-full md:w-2/3">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-CardMainTitle font-bold text-primary">
+              <h2 className="text-CardMainTitle font-bold text-primary dark:text-white">
                 About
               </h2>
-              {/* <div className="flex space-x-2">
-              <button className="flex items-center px-3 py-1.5 border border-primary rounded bg-white text-TabText font-medium text-red-500">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                </svg>
-                Edit
-              </button>
-              <button className="flex items-center px-3 py-1.5 bg-primary rounded text-TabText font-medium text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                <ChatBubbleLeftEllipsisIcon className="w-4 h-4 text-white" />
-                </svg>
-                Let's Chat
-              </button>
-            </div> */}
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
-              <p className="text-TabText text-black-text leading-relaxed">
+            <div className="bg-white rounded-lg shadow-sm p-5 mb-6 dark:bg-gray-900">
+              <p className="text-TabText text-black-text dark:text-white leading-relaxed ">
                 Recently, I had traveled to my parents for a quiet weekend at
                 home. I was warm, cozy, and was studying for upcoming
                 interviews. I already had a dedicated notebook full of doodles
@@ -221,18 +209,23 @@ const FreelancerProfile = () => {
             </div>
 
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-primary">CV</h2>
-              <a href="#" className="text-primary text-sm font-bold">
+              <h2 className="text-xl font-bold text-primary dark:text-white">
+                CV
+              </h2>
+              <a
+                href="#"
+                className="text-primary text-sm font-bold dark:text-white"
+              >
                 Resume
               </a>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
-              <div className="flex items-center">
+            <div className="bg-white rounded-lg shadow-sm p-4 mb-6 dark:bg-gray-900">
+              <div className="flex items-center ">
                 <div className=" mr-3 ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-10 text-primary"
+                    className="h-8 w-10 text-primary dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -240,54 +233,56 @@ const FreelancerProfile = () => {
                     <FaRegFileAlt />
                   </svg>
                 </div>
-                <span className="font-medium text-primary text-TabText">
+                <span className="font-medium text-primary text-TabText dark:text-white">
                   UI/UX designer.pdf
                 </span>
               </div>
             </div>
 
-            <h2 className="text-xl font-bold text-primary mb-4">
+            <h2 className="text-xl font-bold text-primary mb-4 dark:text-white">
               Work Experience
             </h2>
 
-            <div className="bg-white rounded-lg shadow-sm p-5 mb-4 transition-transform transform hover:scale-105">
-              <h3 className="font-semibold text-primary mb-2">
+            <div className="bg-white border border-transparent hover:border-secondary  rounded-lg shadow-sm p-5 mb-4 transition-transform transform hover:scale-105 dark:bg-gray-900">
+              <h3 className="font-semibold text-primary mb-2 dark:text-white">
                 Work Experience
               </h3>
               <div className="mt-1">
-                <div className="text-TabText text-black-text">
+                <div className="text-TabText text-black-text dark:text-white">
                   University of Fine Art
                 </div>
-                <div className="font-medium text-primary">
+                <div className="font-medium text-primary dark:text-white">
                   Bachelor's degree, Graphic Design
                 </div>
                 <div className="text-TabText text-black-text">2018 - 2021</div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-sm p-5 mb-6 transition-transform transform hover:scale-105">
-              <h3 className="font-semibold text-primary mb-2">
+            <div className="bg-white border border-transparent hover:border-secondary  rounded-lg shadow-sm p-5 mb-6 transition-transform transform hover:scale-105 dark:bg-gray-900">
+              <h3 className="font-semibold text-primary mb-2 dark:text-white">
                 Work Experience
               </h3>
               <div className="mt-1">
                 <div className="text-TabText text-black-text">
                   University of Fine Art
                 </div>
-                <div className="font-medium text-primary">
+                <div className="font-medium text-primary dark:text-white">
                   Bachelor's degree, Graphic Design
                 </div>
                 <div className="text-TabText text-black-text">2014 - 2017</div>
               </div>
             </div>
 
-            <h2 className="text-xl font-bold text-primary mb-4">My Services</h2>
+            <h2 className="text-xl font-bold text-primary mb-4 dark:text-white">
+              My Services
+            </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="bg-white border border-transparent hover:border-secondary rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105 dark:bg-gray-900">
                 <div className="p-3 mb-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
+                    className="h-13 w-13 text-blue-900 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -295,16 +290,16 @@ const FreelancerProfile = () => {
                     <RiComputerLine />
                   </svg>
                 </div>
-                <span className="text-TabText text-black-text">
+                <span className="text-TabText text-black-text dark:text-white">
                   Programming
                 </span>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="bg-white border border-transparent hover:border-secondary rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105 dark:bg-gray-900">
                 <div className="p-3 mb-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
+                    className="h-13 w-13 text-blue-900 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -312,14 +307,16 @@ const FreelancerProfile = () => {
                     <FaPenNib />
                   </svg>
                 </div>
-                <span className="text-TabText text-black-text">Graphic</span>
+                <span className="text-TabText text-black-text dark:text-white">
+                  Graphic
+                </span>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="bg-white border border-transparent hover:border-secondary rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105 dark:bg-gray-900">
                 <div className="p-3 mb-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
+                    className="h-13 w-13 text-blue-900 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -327,16 +324,16 @@ const FreelancerProfile = () => {
                     <FaPencilAlt />
                   </svg>
                 </div>
-                <span className="text-TabText text-black-text">
+                <span className="text-TabText text-black-text dark:text-white">
                   Content Creator
                 </span>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="bg-white border border-transparent hover:border-secondary rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105 dark:bg-gray-900">
                 <div className="p-3 mb-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
+                    className="h-13 w-13 text-blue-900 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -344,16 +341,16 @@ const FreelancerProfile = () => {
                     <RiComputerLine />
                   </svg>
                 </div>
-                <span className="text-TabText text-black-text">
+                <span className="text-TabText text-black-text dark:text-white">
                   Programming
                 </span>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="bg-white border border-transparent hover:border-secondary rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105 dark:bg-gray-900">
                 <div className="p-3 mb-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
+                    className="h-13 w-13 text-blue-900 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -361,14 +358,16 @@ const FreelancerProfile = () => {
                     <FaPenNib />
                   </svg>
                 </div>
-                <span className="text-TabText text-black-text">Graphic</span>
+                <span className="text-TabText text-black-text dark:text-white">
+                  Graphic
+                </span>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+              <div className="bg-white border border-transparent hover:border-secondary rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105 dark:bg-gray-900">
                 <div className="p-3 mb-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
+                    className="h-13 w-13 text-blue-900 dark:text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -376,7 +375,7 @@ const FreelancerProfile = () => {
                     <FaPencilAlt />
                   </svg>
                 </div>
-                <span className="text-TabText text-black-text">
+                <span className="text-TabText text-black-text dark:text-white">
                   Content Creator
                 </span>
               </div>

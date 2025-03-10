@@ -6,8 +6,8 @@ export default function VisionSection() {
         data-aos-duration="700"
         className="text-center md:text-left"
       >
-        <h2 className="text-SubHeading font-bold text-primary">Our Vision</h2>
-        <p className="text-lg md:text-xl text-black-text mt-4">
+        <h2 className="text-SubHeading font-bold text-primary dark:text-white">Our Vision</h2>
+        <p className="text-lg md:text-xl text-black-text mt-4 dark:text-white">
           At [Jobseek], we connect freelancers, job seekers, and employers to
           create valuable opportunities. Our platform helps individuals find
           meaningful work while enabling businesses to discover the talent they
@@ -19,7 +19,7 @@ export default function VisionSection() {
         <img
           data-aos="fade-right"
           data-aos-duration="700"
-          src="src/assets/imgAboutUs/Critical thinking.gif"
+          src="src/assets/imgAboutUs/Vision.svg"
           alt="Business Mission"
           className="w-full max-w-md md:max-w-lg lg:max-w-xl"
         />

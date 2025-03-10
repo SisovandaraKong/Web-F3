@@ -295,7 +295,7 @@ export default function CardOurTeam() {
               index % 2 !== 0 ? "md:text-right" : ""
             }`}
           >
-            <h5 className="mb-2 text-2xl md:text-4xl font-bold text-gray-900 dark:text-primary">
+            <h5 className="mb-2 text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
               {member.name}
             </h5>
             <p className="mb-3 text-gray-700 dark:text-gray-400 text-lg md:text-2xl font-bold">

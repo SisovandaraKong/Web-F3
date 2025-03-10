@@ -5,14 +5,14 @@ export default function MissionSection() {
           <img
             data-aos="fade-right"
             data-aos-duration="700"
-            src="src/assets/imgAboutUs/Business mission.gif"
+            src="src/assets/imgAboutUs/mission.svg"
             alt="Business Mission"
             className="w-full max-w-md md:max-w-lg lg:max-w-xl"
           />
         </div>
         <div data-aos="fade-left" data-aos-duration="700" className="text-center md:text-left">
-          <h2 className="text-SubHeading font-bold text-primary">Our Mission</h2>
-          <p className="text-lg md:text-xl text-black-text mt-4">
+          <h2 className="text-SubHeading font-bold text-primary dark:text-white">Our Mission</h2>
+          <p className="text-lg md:text-xl text-black-text mt-4 dark:text-white">
             Our mission is to connect job seekers, freelancers, and employers. We aim to simplify the job search and hiring process.
             Our platform helps talent find the right opportunities. We help businesses discover skilled professionals. We strive to create
             an environment where careers grow, and success is within reach for everyone.

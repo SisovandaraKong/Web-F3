@@ -7,11 +7,11 @@ export default function CardContactUs() {
   return (
     <div className=" px-10 flex flex-col md:flex-row items-center justify-between mx-auto p-6">
       <div className="mb-6 md:mb-0">
-      <h2 data-aos="flip-left" className="text-MainTitle font-bold text-primary mb-4 underline underline-offset-9 decoration-secondary">
+      <h2 data-aos="flip-left" className="dark:text-white text-MainTitle font-bold text-primary mb-4 underline underline-offset-9 decoration-secondary">
               Contact Us
             </h2>
 
-        <div data-aos="fade-right" className="space-y-4 text-primary">
+        <div data-aos="fade-right" className="space-y-4 text-primary dark:text-white">
           <div className="flex items-center text-Sub2Title font-bold">
             <FiPhone />
 

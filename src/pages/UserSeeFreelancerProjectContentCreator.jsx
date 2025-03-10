@@ -13,7 +13,7 @@ const MonitorIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="text-primary"
+    className="text-primary dark:text-white"
   >
     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
     <line x1="8" y1="21" x2="16" y2="21"></line>
@@ -29,13 +29,13 @@ export default function UserSeeFreelancerProjectPage() {
   });
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto">
+    <div className="min-h-screen max-w-8xl mx-auto dark:bg-black p-10">
       <div className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <FaFileAlt className="h-6 w-6 text-primary" />
-            <h1 className="text-CardMainTitle font-bold text-primary">
-              Content Creator
+            <FaFileAlt className="h-6 w-6 text-white" />
+            <h1 className="text-CardMainTitle font-bold text-primary dark:text-white">
+              Graphic
             </h1>
           </div>
           <Link to="/userSeeFreelancerProfilePage">
@@ -47,11 +47,11 @@ export default function UserSeeFreelancerProjectPage() {
       </div>
 
       <div className="container mx-auto px-4 py-6">
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="mb-4 text-CardSubTitle font-semibold text-primary">
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-8 dark:bg-gray-900">
+          <h2 className="mb-4 text-CardSubTitle font-semibold text-primary dark:text-white">
             About about my service
           </h2>
-          <p className="text-black-text text-TabText">
+          <p className="text-black-text text-TabText dark:text-white">
             Recently, I had travelled to my parents for a quiet weekend at home.
             It was warm, sunny, and I was studying for upcoming interviews. I
             already had a dedicated schedule full of details from company
@@ -63,7 +63,7 @@ export default function UserSeeFreelancerProjectPage() {
         </div>
 
         <div>
-          <h2 className="text-CardMainTitle font-bold text-primary">
+          <h2 className="text-CardMainTitle font-bold text-primary dark:text-white">
             My Projects
           </h2>
         </div>

@@ -7,16 +7,16 @@ export default function CardProject() {
   });
 
   return (
-    <div className="container mx-auto px-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="container mx-auto px-4 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg p-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-gray-50 cursor-pointer border border-transparent hover:border-amber-200"
+            className="bg-white rounded-lg dark:bg-gray-900 p-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-105 dark:hover:bg-gray-900 cursor-pointer border border-transparent hover:border-secondary "
           >
             <div className="flex flex-col">
               <div className="mb-2 text-right">
-                <span className="inline-block px-3 py-1 text-xs font-medium bg-secondary text-white rounded-lg">
+                <span className="inline-block px-3 py-1 text-xs font-medium bg-secondary text-white rounded-lg ">
                   {project.label}
                 </span>
               </div>
@@ -25,14 +25,14 @@ export default function CardProject() {
                 <img
                   src="src/assets/Footer/Freelancer/Project.svg"
                   alt=""
-                  className="w-16 h-16  rounded-lg flex items-center justify-center relative"
+                  className="w-16 h-16 rounded-lg flex items-center justify-center relative"
                 />
-                <h3 className="text-CardMainTitle font-bold text-primary">
+                <h3 className="text-CardMainTitle font-bold text-primary dark:text-white">
                   {project.title}
                 </h3>
               </div>
 
-              <p className="text-MainBodyText text-black-text leading-relaxed">
+              <p className="text-MainBodyText text-black-text leading-relaxed dark:text-white">
                 {project.description}
               </p>
             </div>
