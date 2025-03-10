@@ -147,25 +147,11 @@ const ChatbotPage = () => {
         {!isLoading && !selectedChat && !response && (
           <div className="flex-1 flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800">
             <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-              Welcome to Kong Sisovandara's AI
+              Welcome to JobSeek's AI
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mb-6 flex items-center gap-2">
               Hi <span className="text-yellow-500 dark:text-yellow-400">👋</span> Koko what can I help with
             </p>
-            <div className="flex gap-4">
-              <button className="px-6 py-2 bg-white dark:bg-gray-700 border border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-400 rounded-full flex items-center gap-2 hover:bg-blue-50 dark:hover:bg-blue-900 transition">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                </svg>
-                Generate Resume
-              </button>
-              <button className="px-6 py-2 bg-white dark:bg-gray-700 border border-blue-500 dark:border-blue-600 text-blue-500 dark:text-blue-400 rounded-full flex items-center gap-2 hover:bg-blue-50 dark:hover:bg-blue-900 transition">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                Create CV
-              </button>
-            </div>
           </div>
         )}
         
@@ -173,7 +159,7 @@ const ChatbotPage = () => {
         {isLoading && (
           <div className="flex-1 flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800">
             <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading...</p>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">Please wait</p>
           </div>
         )}
         
