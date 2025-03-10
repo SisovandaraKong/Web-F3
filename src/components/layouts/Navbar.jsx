@@ -6,6 +6,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import "../../i18n";
 import Button from "../button/Button";
+import toast from 'react-hot-toast'; // Import toast
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -26,6 +27,11 @@ export default function Navbar() {
     // Remove tokens from localStorage
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
+    
+    // Show success toast
+    toast.success('Logged out successfully!', {
+      position: 'top-right',
+    });
     
     // Close the dropdown
     setProfileDropdown(false);
@@ -171,7 +177,7 @@ export default function Navbar() {
                 onClick={() => setProfileDropdown(!profileDropdown)}
               >
                 <span className="sr-only">Open user menu</span>
-                <img className="w-16 h-16 rounded-full" src="https://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG.png" alt="user photo" />
+                <img className="md:w-12 md:h-12 h-6 w-6 rounded-full" src="https://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG.png" alt="user photo" />
               </button>
               {profileDropdown && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg">

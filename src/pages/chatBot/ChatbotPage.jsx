@@ -103,7 +103,7 @@ const ChatbotPage = () => {
   return (
     <>
     <ScrollIndicator/>
-    <div className="flex h-[90vh] bg-gray-100 dark:bg-gray-900">
+    <div className="flex h-[85vh] bg-gray-100 dark:bg-gray-900">
       {/* Sticky Sidebar - unchanged */}
       <div className="w-64 bg-primary text-white flex flex-col sticky top-0 h-full">
         <div className="p-4">

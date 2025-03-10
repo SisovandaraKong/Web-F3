@@ -15,6 +15,8 @@ import FreelancerProfile from "./pages/freelaner/FreelancerProfile.jsx";
 import UserSeeFreelancerProfilePage from "./pages/freelaner/UserSeeFreelancerProfilePage.jsx";
 import ChatbotPage from "./pages/chatBot/ChatbotPage.jsx";
 import FreelancerPage from "./pages/freelaner/FreelancerPage.jsx";
+// import { Toaster } from "react-hot-toast";
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

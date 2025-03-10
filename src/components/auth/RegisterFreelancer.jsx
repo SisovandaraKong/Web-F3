@@ -10,6 +10,7 @@ import { useRegisterFreelancerMutation } from "../../feature/auth/authSlide";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
+import toast from 'react-hot-toast'; // Import toast
 
 const RegisterFreelancer = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -83,13 +84,15 @@ const RegisterFreelancer = () => {
         console.log("Submitting data:", formattedData);
         const response = await registerFreelancer(formattedData).unwrap();
         console.log("Success:", response);
-        alert("Registration successful!");
+        // Show success toast instead of alert
+        toast.success('Registration successful! Welcome to JobSeek!', {
+          position: 'top-right',
+        });
         navigate("/register-freelancer/login");
       } catch (err) {
         console.error("Registration error:", err);
-        alert(
-          `Registration failed! ${err.data?.message || "Please try again."}`
-        );
+        // Show error toast instead of alert
+        toast.error(err.data?.message || 'Registration failed! Please try again.');
       }
     },
   });

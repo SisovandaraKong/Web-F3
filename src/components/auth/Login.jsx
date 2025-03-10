@@ -8,6 +8,7 @@ import Ta1 from "../../assets/Ta_Images/LoginJoinUs.png";
 import Ta2 from "../../assets/Ta_Images/Logo.png";
 import Ta3 from "../../assets/Ta_Images/facebook.png";
 import Ta4 from "../../assets/Ta_Images/google.png";
+import toast from 'react-hot-toast'; // Import toast
 
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -39,12 +40,17 @@ const LoginPage = () => {
           if (response.refreshToken) {
             localStorage.setItem("refreshToken", response.refreshToken);
           }
+          // Show success toast
+          toast.success('Login successful! Welcome back!', {
+            position: 'top-right',
+          });
           navigate("/freelancer-feed");
         } else {
-          alert("Login successful, but no token received.");
+          toast.error('Login successful, but no token received.');
         }
       } catch (err) {
         console.error("Login error:", err);
+        toast.error(err.data?.message || 'Invalid credentials. Please try again.');
       }
     },
   });
@@ -132,7 +138,7 @@ const LoginPage = () => {
           </button>
         </form>
         <p className="mt-4 text-gray-600 text-sm">
-          Don&#39;t have an account?{" "}
+          Don't have an account?{" "}
           <span
             className="cursor-pointer text-blue-900"
             onClick={() => navigate("/register-freelancer")}>
