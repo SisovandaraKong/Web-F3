@@ -10,7 +10,6 @@ const SearchForm = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Construct the API URL with the query parameters
     const apiUrl = `https://api.example.com/search?q=${keyword}&pricingType=${pricingType}`;
 
     try {

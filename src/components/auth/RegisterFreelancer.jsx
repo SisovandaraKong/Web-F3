@@ -6,16 +6,16 @@ import Ta1 from "../../assets/Ta_Images/LoginJoinUs.png";
 import Ta2 from "../../assets/Ta_Images/Logo.png";
 import Ta3 from "../../assets/Ta_Images/facebook.png";
 import Ta4 from "../../assets/Ta_Images/google.png";
-import { useRegisterFreelancerMutation } from "../../feature/auth/register-freelancer";
+import { useRegisterFreelancerMutation } from "../../feature/auth/authSlide";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router";
 
 const RegisterFreelancer = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [selectedSkill, setSelectedSkill] = useState(""); // For dropdown selection
-  const [otherSkill, setOtherSkill] = useState(""); // For "Other Skills" input
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -30,41 +30,18 @@ const RegisterFreelancer = () => {
     formik.setFieldValue("phone", value);
   };
 
-  const handleSkillChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedSkill(selectedValue);
-    formik.setFieldValue("skill", selectedValue);
-    
-    // Update skills array based on selection
-    if (selectedValue && selectedValue !== "Other Skills") {
-      formik.setFieldValue("skills", [selectedValue]);
-    } else if (selectedValue === "Other Skills") {  
-    } else {
-      formik.setFieldValue("skills", []);
-    }
-    
-    if (selectedValue !== "Other Skills") {
-      setOtherSkill("");
-    }
-  };
-
-  const handleOtherSkillChange = (event) => {
-    const value = event.target.value;
-    setOtherSkill(value);
-    formik.setFieldValue("skills", [value]);
-  };
-  
   const [registerFreelancer, { isLoading, error }] =
     useRegisterFreelancerMutation();
 
   const validationSchema = Yup.object({
     fullName: Yup.string().required("Full name is required"),
+    gender: Yup.string().required("Gender is required"),
+    address: Yup.string().required("Address is required"),
     username: Yup.string()
-      .min(3, "Username too short")
+      .min(3, "Username must be at least 3 characters")
       .required("Username is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     phone: Yup.string().required("Phone number is required"),
-    skills: Yup.array().min(1, "Please select at least one skill"),
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
@@ -75,18 +52,14 @@ const RegisterFreelancer = () => {
 
   const formik = useFormik({
     initialValues: {
-      fullName: "Rin Sanom",
-      username: "rinsanom",
-      email: "rinsanom@gmial.com",
-      phone: "096429602",
-      skills: [],
-      password: "Ifmesayyes12345@",
-      confirmPassword: "Ifmesayyes12345@",
-      profileImageUrl: " ",
-      userType: "FREELANCER",
-      portfolioUrl: "",
-      experienceYears: "",
-      bio: ""
+      fullName: "",
+      gender: "",
+      address: "",
+      username: "",
+      email: "",
+      phone: "",
+      password: "",
+      confirmPassword: "",
     },
     validationSchema,
     onSubmit: async (values) => {
@@ -94,28 +67,33 @@ const RegisterFreelancer = () => {
         // Format the data according to the API requirements
         const formattedData = {
           fullName: values.fullName,
+          gender: values.gender,
+          address: values.address,
           username: values.username,
           email: values.email,
-          profileImageUrl: " ",
+          profileImageUrl: "",
           phone: values.phone,
           userType: "FREELANCER",
-          skills: values.skills,
-          portfolioUrl: "",
-          experienceYears: "",
+          skills: [],
+          portfolioUrl: " ",
+          experienceYears: 0,
           bio: "",
-          password: values.password
-        };  
+          password: values.password,
+        };
         console.log("Submitting data:", formattedData);
         const response = await registerFreelancer(formattedData).unwrap();
         console.log("Success:", response);
         alert("Registration successful!");
+        navigate("/register-freelancer/login");
       } catch (err) {
         console.error("Registration error:", err);
-        alert(`Registration failed! ${err.data?.message || "Please try again."}`);
+        alert(
+          `Registration failed! ${err.data?.message || "Please try again."}`
+        );
       }
     },
   });
-  
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen w-full overflow-y-auto">
       {/* Blue Section (Welcome) */}
@@ -187,13 +165,60 @@ const RegisterFreelancer = () => {
             className="w-full p-2 border border-gray-300 rounded"
           />
           {formik.touched.fullName && formik.errors.fullName && (
-            <div className="text-red-500 text-xs mt-1">{formik.errors.fullName}</div>
+            <div className="text-red-500 text-xs mt-1">
+              {formik.errors.fullName}
+            </div>
+          )}
+
+          {/* Gender Field */}
+          <label
+            htmlFor="gender"
+            className="block text-gray-800 font-medium mb-2 mt-4">
+            Gender
+          </label>
+          <select
+            id="gender"
+            name="gender"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.gender}
+            className="w-full p-2 border border-gray-300 rounded bg-white">
+            <option value="">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+          {formik.touched.gender && formik.errors.gender && (
+            <div className="text-red-500 text-xs mt-1">
+              {formik.errors.gender}
+            </div>
+          )}
+
+          {/* Address Field */}
+          <label
+            htmlFor="address"
+            className="block text-gray-800 font-medium mb-2 mt-4">
+            Address
+          </label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.address}
+            className="w-full p-2 border border-gray-300 rounded"
+          />
+          {formik.touched.address && formik.errors.address && (
+            <div className="text-red-500 text-xs mt-1">
+              {formik.errors.address}
+            </div>
           )}
 
           {/* Username Field */}
           <label
             htmlFor="username"
-            className="block text-gray-800 font-medium mb-3 mt-4">
+            className="block text-gray-800 font-medium mb-2 mt-4">
             Username
           </label>
           <input
@@ -206,13 +231,15 @@ const RegisterFreelancer = () => {
             className="w-full p-2 border border-gray-300 rounded"
           />
           {formik.touched.username && formik.errors.username && (
-            <div className="text-red-500 text-xs mt-1">{formik.errors.username}</div>
+            <div className="text-red-500 text-xs mt-1">
+              {formik.errors.username}
+            </div>
           )}
 
           {/* Email Field */}
           <label
             htmlFor="email"
-            className="block text-gray-800 font-medium mb-3 mt-4">
+            className="block text-gray-800 font-medium mb-2 mt-4">
             Email address
           </label>
           <input
@@ -225,13 +252,15 @@ const RegisterFreelancer = () => {
             className="w-full p-2 border border-gray-300 rounded"
           />
           {formik.touched.email && formik.errors.email && (
-            <div className="text-red-500 text-xs mt-1">{formik.errors.email}</div>
+            <div className="text-red-500 text-xs mt-1">
+              {formik.errors.email}
+            </div>
           )}
 
           {/* Phone Number Field */}
           <label
             htmlFor="phone"
-            className="block text-gray-800 font-medium mb-3 mt-4">
+            className="block text-gray-800 font-medium mb-2 mt-4">
             Phone Number
           </label>
           <PhoneInput
@@ -266,52 +295,8 @@ const RegisterFreelancer = () => {
             className="mb-3"
           />
           {formik.touched.phone && formik.errors.phone && (
-            <div className="text-red-500 text-xs mt-1">{formik.errors.phone}</div>
-          )}
-
-          {/* Skills Field */}
-          <label
-            htmlFor="skill"
-            className="block text-gray-800 font-medium mb-3 mt-4">
-            Skills
-          </label>
-          <select
-            id="skill"
-            name="skill"
-            value={selectedSkill}
-            onChange={handleSkillChange}
-            onBlur={formik.handleBlur}
-            className="w-full p-2 border border-gray-300 rounded bg-white">
-            <option value="">Select a skill</option>
-            <option value="Java">Java</option>
-            <option value="Spring Boot">Spring Boot</option>
-            <option value="Docker">Docker</option>
-            <option value="C#">C#</option>
-            <option value="SQL">SQL</option>
-            <option value="Python">Python</option>
-            <option value="Other Skills">Other Skills</option>
-          </select>
-          {formik.touched.skills && formik.errors.skills && (
-            <div className="text-red-500 text-xs mt-1">{formik.errors.skills}</div>
-          )}
-
-          {/* Additional Field for "Other Skills" */}
-          {selectedSkill === "Other Skills" && (
-            <div className="mt-4">
-              <label
-                htmlFor="otherSkill"
-                className="block text-gray-800 font-medium mb-3">
-                Please enter your specific skills
-              </label>
-              <input
-                id="otherSkill"
-                name="otherSkill"
-                type="text"
-                value={otherSkill}
-                onChange={handleOtherSkillChange}
-                onBlur={formik.handleBlur}
-                className="w-full p-2 border border-gray-300 rounded"
-              />
+            <div className="text-red-500 text-xs mt-1">
+              {formik.errors.phone}
             </div>
           )}
 
@@ -345,7 +330,9 @@ const RegisterFreelancer = () => {
             className="w-full p-2 border border-gray-300 rounded mb-3 text-sm"
           />
           {formik.touched.password && formik.errors.password && (
-            <div className="text-red-500 text-xs mt-1">{formik.errors.password}</div>
+            <div className="text-red-500 text-xs mt-1">
+              {formik.errors.password}
+            </div>
           )}
 
           {/* Confirm Password Field */}
@@ -378,7 +365,9 @@ const RegisterFreelancer = () => {
             className="w-full p-2 border border-gray-300 rounded mb-4 text-sm"
           />
           {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-            <div className="text-red-500 text-xs mt-1">{formik.errors.confirmPassword}</div>
+            <div className="text-red-500 text-xs mt-1">
+              {formik.errors.confirmPassword}
+            </div>
           )}
 
           <button
@@ -387,7 +376,7 @@ const RegisterFreelancer = () => {
             disabled={isLoading}>
             {isLoading ? "Creating Account..." : "Create Account"}
           </button>
-          
+
           {error && (
             <div className="text-red-500 text-sm mt-2 text-center">
               {error.data?.message || "An error occurred during registration."}
@@ -398,6 +387,7 @@ const RegisterFreelancer = () => {
           Already have an account?{" "}
           <span
             className="cursor-pointer underline"
+            onClick={() => navigate("/register-freelancer/login")}
             style={{ color: "#1c398e" }}>
             Login now
           </span>

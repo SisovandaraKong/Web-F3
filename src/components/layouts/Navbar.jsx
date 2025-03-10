@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { GoSun, GoMoon } from "react-icons/go"; // Added GoMoon for dark mode icon
+import { GoSun, GoMoon } from "react-icons/go";
 import { FaRegBell, FaRegUserCircle } from "react-icons/fa";
-import { Link, NavLink } from "react-router"; // Note: Should be "react-router-dom" (fixing import)
-import { useTheme } from "../../context/ThemeContext"; // Import ThemeContext
-import "../../i18n"; // Import i18n configuration
+import { Link, NavLink } from "react-router-dom"; // Corrected import
+import { useTheme } from "../../context/ThemeContext";
+import "../../i18n";
 import Button from "../button/Button";
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const { isDark, toggleDarkMode } = useTheme(); // Use theme context
+  const { isDark, toggleDarkMode } = useTheme();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  // Assuming you're getting these tokens from localStorage or a context
+  const accessToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem("refreshToken");
 
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
@@ -47,6 +51,7 @@ export default function Navbar() {
             />
           </svg>
         </button>
+
         {/* Navigation Links */}
         <div
           className={`w-full md:flex md:w-auto md:items-center ${
@@ -68,6 +73,7 @@ export default function Navbar() {
               </NavLink>
             </li>
           </ul>
+          {/* Dropdown Menu */}
           <ul className="flex flex-col md:flex-row md:space-x-6 bg-primary md:bg-transparent p-4 md:p-0">
             <li className="relative">
               <button
@@ -94,56 +100,28 @@ export default function Navbar() {
                     <li>
                       <NavLink
                         to="/freelancer-page"
-                        className={({ isActive, isPending, isTransitioning }) =>
-                          [
-                            "text-white hover:text-secondary",
-                            isPending ? "pending" : "",
-                            isActive ? "active" : "",
-                            isTransitioning ? "transitioning" : "",
-                          ].join(" ")
-                        }>
+                        className="text-white hover:text-secondary">
                         {t("freelancer")}
                       </NavLink>
                     </li>
                     <li>
                       <NavLink
                         to="/full-time"
-                        className={({ isActive, isPending, isTransitioning }) =>
-                          [
-                            "text-white hover:text-secondary",
-                            isPending ? "pending" : "",
-                            isActive ? "active" : "",
-                            isTransitioning ? "transitioning" : "",
-                          ].join(" ")
-                        }>
+                        className="text-white hover:text-secondary">
                         {t("fullTime")}
                       </NavLink>
                     </li>
                     <li>
                       <NavLink
                         to="/part-time"
-                        className={({ isActive, isPending, isTransitioning }) =>
-                          [
-                            "text-white hover:text-secondary",
-                            isPending ? "pending" : "",
-                            isActive ? "active" : "",
-                            isTransitioning ? "transitioning" : "",
-                          ].join(" ")
-                        }>
+                        className="text-white hover:text-secondary">
                         {t("partTime")}
                       </NavLink>
                     </li>
                     <li>
                       <NavLink
                         to="/business-owner"
-                        className={({ isActive, isPending, isTransitioning }) =>
-                          [
-                            "text-white hover:text-secondary",
-                            isPending ? "pending" : "",
-                            isActive ? "active" : "",
-                            isTransitioning ? "transitioning" : "",
-                          ].join(" ")
-                        }>
+                        className="text-white hover:text-secondary">
                         {t("businessOwner")}
                       </NavLink>
                     </li>
@@ -156,22 +134,15 @@ export default function Navbar() {
             <li>
               <NavLink
                 to="/about-us"
-                className={({ isActive, isPending, isTransitioning }) =>
-                  [
-                    "text-white hover:text-secondary",
-                    isPending ? "pending" : "",
-                    isActive ? "active" : "",
-                    isTransitioning ? "transitioning" : "",
-                  ].join(" ")
-                }>
+                className="text-white hover:text-secondary">
                 {t("aboutUs")}
               </NavLink>
             </li>
           </ul>
         </div>
 
-        {/* Right-side icons */}
-        <div className="flex items-center space-x-4">
+        {/* Language Switch */}
+        <div className="hidden md:flex items-center space-x-4 ">
           <button onClick={toggleDarkMode} className="focus:outline-none">
             {isDark ? (
               <GoMoon className="text-secondary text-[24px] cursor-pointer" />
@@ -179,11 +150,6 @@ export default function Navbar() {
               <GoSun className="text-secondary text-[24px] cursor-pointer" />
             )}
           </button>
-          <FaRegBell className="text-secondary text-[24px] cursor-pointer" />
-        </div>
-
-        {/* Language Switch */}
-        <div className="flex items-center space-x-4">
           <img
             onClick={() => changeLanguage("en")}
             src="src/assets/images/England.png"
@@ -196,12 +162,37 @@ export default function Navbar() {
             alt="Khmer"
             className="w-[40px] h-[20px] cursor-pointer"
           />
+        </div>
+        <div className="flex items-center space-x-4">
           <button className="text-white   px-[17px] py-[9px] border-2 border-secondary rounded-md cursor-pointer">
             Joint As Busssinis{" "}
           </button>
-          <NavLink to="/register-freelancer">
-            <Button color={"bg-secondary cursor-pointer"} text="Sign Up " />
-          </NavLink>
+          {accessToken || refreshToken ? (
+            <NavLink to="/freelancer-profile">
+              <button
+                type="button"
+                class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                id="user-menu-button"
+                aria-expanded="false"
+                data-dropdown-toggle="user-dropdown"
+                data-dropdown-placement="bottom">
+                <span class="sr-only">Open user menu</span>
+                <img
+                  class="w-16 h-16 rounded-full"
+                  src="https://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG.png"
+                  alt="user photo"
+                />
+              </button>
+            </NavLink>
+          ) : (
+            // User is not logged in, show the Sign Up button
+            <NavLink to="/register-freelancer">
+              <Button
+                color={"bg-secondary cursor-pointer"}
+                text={t("signUp")}
+              />
+            </NavLink>
+          )}
         </div>
       </div>
     </nav>

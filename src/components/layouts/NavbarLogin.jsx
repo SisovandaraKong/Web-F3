@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { LuBotMessageSquare } from "react-icons/lu";
 import Button from "../button/Button";
+import { useTranslation } from "react-i18next";
 
 export default function NavbarLogin() {
   const [darkMode, setDarkMode] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [doubleDropdownOpen, setDoubleDropdownOpen] = useState(false);
+  const { t, i18n } = useTranslation(); // i18n hook for translation
 
   const navItems = [
-    {
-      name: "Home",
-      link: "/",
-      active: true,
-    },
+    { name: "Home", link: "/", active: true },
     {
       name: "Jobs",
       link: "jobs",
@@ -34,11 +32,9 @@ export default function NavbarLogin() {
         { name: "Earnings", link: "#" },
       ],
     },
-    {
-      name: "About Us",
-      link: "aboutus",
-    },
+    { name: "About Us", link: "aboutus" },
   ];
+
   const languages = [
     {
       name: "English",
@@ -87,13 +83,15 @@ export default function NavbarLogin() {
     setDoubleDropdownOpen(!doubleDropdownOpen);
   };
 
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+  };
+
   return (
     <>
-      <nav className="bg-primary   border-gray-200  sticky top-0 z-50">
+      <nav className="bg-primary border-gray-200 sticky top-0 z-50">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-3">
-          <a
-            href="#"
-            className="flex items-center space-x-3 rtl:space-x-reverse">
+          <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img
               src="src/assets/Navbar/Logo3.png"
               className="h-8"
@@ -135,7 +133,7 @@ export default function NavbarLogin() {
                       <button
                         onClick={toggleDropdown}
                         className="flex items-center justify-between w-full py-2 px-3 text-white hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-200 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
-                        {item.name}{" "}
+                        {t(item.name)}{" "}
                         <svg
                           className="w-2.5 h-2.5 ms-2.5"
                           aria-hidden="true"
@@ -162,7 +160,7 @@ export default function NavbarLogin() {
                                     <button
                                       onClick={toggleDoubleDropdown}
                                       className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                      {dropItem.name}
+                                      {t(dropItem.name)}
                                       <svg
                                         className="w-2.5 h-2.5 ms-2.5"
                                         aria-hidden="true"
@@ -200,7 +198,7 @@ export default function NavbarLogin() {
                                   <a
                                     href={dropItem.link}
                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    {dropItem.name}
+                                    {t(dropItem.name)}
                                   </a>
                                 )}
                               </li>
@@ -210,7 +208,7 @@ export default function NavbarLogin() {
                             <a
                               href="#"
                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                              Sign out
+                              {t("Sign out")}
                             </a>
                           </div>
                         </div>
@@ -224,90 +222,34 @@ export default function NavbarLogin() {
                           ? "text-white-text rounded-sm md:bg-transparent md:text-white-text md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
                           : "text-white rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-200 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                       }`}
-                      aria-current={item.active ? "page" : undefined}>
-                      {item.name}
+                      aria-current={item.active ? "page" : ""}>
+                      {t(item.name)}
                     </a>
                   )}
                 </li>
               ))}
+              <li>
+                <div className="flex space-x-2 rtl:space-x-reverse">
+                  {languages.map((language) => (
+                    <Button
+                      key={language.code}
+                      onClick={() => changeLanguage(language.code)}
+                    >
+                      <img
+                        src={language.flagUrl}
+                        alt={language.name}
+                        className="w-6 h-6 rounded-full"
+                      />
+                    </Button>
+                  ))}
+                </div>
+              </li>
             </ul>
           </div>
-
-          <div className="flex items-center gap-10">
-            <div className="flex items-center gap-5">
-              <button
-                onClick={toggleDarkMode}
-                className="text-secondary hover:text-secondary-hover">
-                {darkMode ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-6">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-6">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                    />
-                  </svg>
-                )}
-              </button>
-
-              <a href="#">
-                <LuBotMessageSquare className="size-6 text-secondary hover:text-secondary-hover" />
-              </a>
-            </div>
-
-            <div className="">
-              <ul className="flex">
-                {languages.map((lang, index) => (
-                  <React.Fragment key={lang.code}>
-                    <li>
-                      <a href="#">
-                        <button className="flex flex-col items-center gap-[2px]">
-                          <div className="w-10 h-5">
-                            <img
-                              src={lang.flagUrl}
-                              className="h-full w-full object-cover mt-1"
-                              alt={`${lang.name} flag`}
-                            />
-                          </div>
-                          <div className="h-5 w-14 flex items-center">
-                            <span className="text-xs w-full text-white mt-1">
-                              {lang.name}
-                            </span>
-                          </div>
-                        </button>
-                      </a>
-                    </li>
-                    {index < languages.length - 1 && (
-                      <span className="mb-5">|</span>
-                    )}
-                  </React.Fragment>
-                ))}
-              </ul>
-            </div>
-            <button className="text-white  px-[17px] py-[9px] border-2 border-white rounded-md">
-              Joint As Busssinis{" "}
-            </button>
-            <Button color={"bg-secondary"} text="As Freelancer " />
-          </div>
+          <button onClick={toggleDarkMode}>
+            <span className="sr-only">Toggle dark mode</span>
+            <LuBotMessageSquare size={28} />
+          </button>
         </div>
       </nav>
     </>

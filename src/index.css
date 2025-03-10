@@ -23,6 +23,7 @@ html {
   --color-black-text: #111827;
   --color-description: #9ca3af;
 
+
   /* Font size */
 
   --text-MainTitle: 42px;
@@ -45,6 +46,9 @@ html {
   --container-margin: 0 auto;
 
 }
+
+
+
 a.active {
   color:#eab308 ;
 }

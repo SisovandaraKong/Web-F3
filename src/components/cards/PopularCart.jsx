@@ -1,7 +1,10 @@
 import React from "react";
-import jobListings from "../../data/mockData"; 
+import jobListings from "../../data/mockData";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 export default function PopularCart() {
+  const { t } = useTranslation(); // Initialize the t function for translations
+
   return (
     <>
       {jobListings.slice(0, 3).map((jobData, index) => (
@@ -18,13 +21,17 @@ export default function PopularCart() {
           />
           <div className="p-4 text-start">
             <strong className="text-xl font-medium text-gray-900">
-              {jobData.companyName}
+              {t(jobData.companyType)}{" "}
+              {/* Use translation key for company name */}
             </strong>
             <p className="mt-2 text-pretty text-gray-700 line-clamp-2">
-              {jobData.companyDescription}
+              {t(jobData.role)} {/* Use translation key for description */}
             </p>
-            <span className="mt-4 block text-center  rounded-md border border-indigo-900 bg-indigo-900 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-900">
-              Learn More
+            <p className="mt-2 text-pretty text-gray-700 line-clamp-2">
+              {t(jobData.companyDescription)} {/* Use translation key for description */}
+            </p>
+            <span className="mt-4 block text-center rounded-md border border-indigo-900 bg-indigo-900 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-indigo-900">
+              {t("learnMore")} {/* Translation for "Learn More" button */}
             </span>
           </div>
         </div>

@@ -1,5 +1,5 @@
 
-import CardProject from "../components/cards/Freelancer/CardProject";
+import CardProject from "../../components/cards/Freelancer/CardProject";
 
 const MonitorIcon = () => (
   <svg

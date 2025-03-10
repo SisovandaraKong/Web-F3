@@ -1,135 +1,60 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Carousel from "../../components/carousel/Carousel";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useTranslation } from "react-i18next"; // Import the hook
 import CardHowerEffec from "../../components/cards/CardHowerEffec";
 import CardWhyUS from "../../components/cards/CardWhyUs";
-
+import CardJob from "../../components/cards/CardJob";
 import PopularCart from "../../components/cards/PopularCart";
 import CardFeedback from "../../components/cards/CardFeedback";
+import { FaUserFriends } from "react-icons/fa";
+import { FaUserTie } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
 
 export default function HomePage() {
+  const { t } = useTranslation(); // Initialize the translation hook
   useEffect(() => {
     AOS.init({ duration: 700, once: false });
   }, []);
+
   const cardData = [
     {
       id: 1,
-      title: "Freelancer ",
-      description: "Searching for opportunities to apply skills and expertise.",
-      svg: (
-        <svg
-          fill="#0a2473"
-          height="200px"
-          width="200px"
-          version="1.1"
-          id="Capa_1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 477.655 477.655"
-          xml:space="preserve"
-          stroke="#0a2473">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g
-            id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"></g>
-          <g id="SVGRepo_iconCarrier">
-            {" "}
-            <g>
-              {" "}
-              <path d="M440.367,440.415l-10.173-29.91c-19.102-56.262-70.83-94.605-129.763-97.121c-5.187,4.03-10.655,7.493-16.322,10.521 c-8.449,22.185-36.836,28.195-53.468,11.205c-19.676-1.738-37.69-9.511-53.422-21.725c-58.933,2.508-110.647,40.851-129.763,97.121 L37.3,440.415c-2.936,8.603-1.522,18.084,3.774,25.469c5.279,7.391,13.821,11.771,22.906,11.771h349.693 c9.083,0,17.626-4.379,22.906-11.771C441.873,458.499,443.286,449.018,440.367,440.415z"></path>{" "}
-              <path d="M277.758,290.619c34.212-24.047,58.141-77.151,58.141-128.491c0-145.907-194.133-145.752-194.133,0 c0,62.397,35.33,127.303,81.546,139.556c4.456-12.626,16.382-21.757,30.515-21.757C263.331,279.926,271.81,284.095,277.758,290.619 z"></path>{" "}
-              <path d="M99.169,223.042c4.813,18.906,31.044,13.704,31.044-3.805c0-70.178,3.354-76.731-6.041-84.348 C145.679,2.361,330.946,3.355,353.495,134.904c-9.381,7.641-6.025,14.163-6.025,84.333c0,5.489,2.95,10.095,7.189,12.952 c0,54.594-22.145,51.402-88.736,69.052c-10.295-11.174-28.683-3.899-28.683,11.173c0,18.876,27.053,23.293,32.302,4.318 c53.762-14.256,101.018-18.752,101.018-72.484v-11.027c3.991-2.066,6.817-5.729,7.951-10.179c51.822-1.056,51.838-78.719,0-79.775 c-1.072-4.24-3.711-7.703-7.423-9.815c1.336-15.902-1.94-36.805-11.057-56.985C296.626-54.368,109.355-3.176,106.422,123.622 c-0.404,4.294-0.078,7.338,0.17,9.83c-3.712,2.112-6.351,5.575-7.423,9.815c-21.71,0.419-39.212,18.084-39.212,39.888 C59.957,204.958,77.459,222.622,99.169,223.042z"></path>{" "}
-            </g>{" "}
-          </g>
-        </svg>
-      ),
+      title: t("freelancer"), // Use the translation key
+      description: t("freelancerDescription"), // Use the translation key
+      svg: <FaUserFriends />,
     },
     {
       id: 2,
-      title: "Business Owner",
-      description: "Managing and growing businesses with digital solutions.",
-      svg: (
-        <svg
-          fill="#0a2473"
-          height="200px"
-          width="200px"
-          version="1.1"
-          id="Capa_1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 477.655 477.655"
-          xml:space="preserve"
-          stroke="#0a2473">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g
-            id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"></g>
-          <g id="SVGRepo_iconCarrier">
-            {" "}
-            <g>
-              {" "}
-              <path d="M440.367,440.415l-10.173-29.91c-19.102-56.262-70.83-94.605-129.763-97.121c-5.187,4.03-10.655,7.493-16.322,10.521 c-8.449,22.185-36.836,28.195-53.468,11.205c-19.676-1.738-37.69-9.511-53.422-21.725c-58.933,2.508-110.647,40.851-129.763,97.121 L37.3,440.415c-2.936,8.603-1.522,18.084,3.774,25.469c5.279,7.391,13.821,11.771,22.906,11.771h349.693 c9.083,0,17.626-4.379,22.906-11.771C441.873,458.499,443.286,449.018,440.367,440.415z"></path>{" "}
-              <path d="M277.758,290.619c34.212-24.047,58.141-77.151,58.141-128.491c0-145.907-194.133-145.752-194.133,0 c0,62.397,35.33,127.303,81.546,139.556c4.456-12.626,16.382-21.757,30.515-21.757C263.331,279.926,271.81,284.095,277.758,290.619 z"></path>{" "}
-              <path d="M99.169,223.042c4.813,18.906,31.044,13.704,31.044-3.805c0-70.178,3.354-76.731-6.041-84.348 C145.679,2.361,330.946,3.355,353.495,134.904c-9.381,7.641-6.025,14.163-6.025,84.333c0,5.489,2.95,10.095,7.189,12.952 c0,54.594-22.145,51.402-88.736,69.052c-10.295-11.174-28.683-3.899-28.683,11.173c0,18.876,27.053,23.293,32.302,4.318 c53.762-14.256,101.018-18.752,101.018-72.484v-11.027c3.991-2.066,6.817-5.729,7.951-10.179c51.822-1.056,51.838-78.719,0-79.775 c-1.072-4.24-3.711-7.703-7.423-9.815c1.336-15.902-1.94-36.805-11.057-56.985C296.626-54.368,109.355-3.176,106.422,123.622 c-0.404,4.294-0.078,7.338,0.17,9.83c-3.712,2.112-6.351,5.575-7.423,9.815c-21.71,0.419-39.212,18.084-39.212,39.888 C59.957,204.958,77.459,222.622,99.169,223.042z"></path>{" "}
-            </g>{" "}
-          </g>
-        </svg>
-      ),
+      title: t("businessOwner"),
+      description: t("businessOwnerDescription"),
+      svg: <FaUserTie />,
     },
     {
       id: 3,
-      title: "Job Seeker",
-      description: "Searching for opportunities to apply skills and expertise.",
-      svg: (
-        <svg
-          fill="#0a2473"
-          height="200px"
-          width="200px"
-          version="1.1"
-          id="Capa_1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 477.655 477.655"
-          xml:space="preserve"
-          stroke="#0a2473">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g
-            id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"></g>
-          <g id="SVGRepo_iconCarrier">
-            {" "}
-            <g>
-              {" "}
-              <path d="M440.367,440.415l-10.173-29.91c-19.102-56.262-70.83-94.605-129.763-97.121c-5.187,4.03-10.655,7.493-16.322,10.521 c-8.449,22.185-36.836,28.195-53.468,11.205c-19.676-1.738-37.69-9.511-53.422-21.725c-58.933,2.508-110.647,40.851-129.763,97.121 L37.3,440.415c-2.936,8.603-1.522,18.084,3.774,25.469c5.279,7.391,13.821,11.771,22.906,11.771h349.693 c9.083,0,17.626-4.379,22.906-11.771C441.873,458.499,443.286,449.018,440.367,440.415z"></path>{" "}
-              <path d="M277.758,290.619c34.212-24.047,58.141-77.151,58.141-128.491c0-145.907-194.133-145.752-194.133,0 c0,62.397,35.33,127.303,81.546,139.556c4.456-12.626,16.382-21.757,30.515-21.757C263.331,279.926,271.81,284.095,277.758,290.619 z"></path>{" "}
-              <path d="M99.169,223.042c4.813,18.906,31.044,13.704,31.044-3.805c0-70.178,3.354-76.731-6.041-84.348 C145.679,2.361,330.946,3.355,353.495,134.904c-9.381,7.641-6.025,14.163-6.025,84.333c0,5.489,2.95,10.095,7.189,12.952 c0,54.594-22.145,51.402-88.736,69.052c-10.295-11.174-28.683-3.899-28.683,11.173c0,18.876,27.053,23.293,32.302,4.318 c53.762-14.256,101.018-18.752,101.018-72.484v-11.027c3.991-2.066,6.817-5.729,7.951-10.179c51.822-1.056,51.838-78.719,0-79.775 c-1.072-4.24-3.711-7.703-7.423-9.815c1.336-15.902-1.94-36.805-11.057-56.985C296.626-54.368,109.355-3.176,106.422,123.622 c-0.404,4.294-0.078,7.338,0.17,9.83c-3.712,2.112-6.351,5.575-7.423,9.815c-21.71,0.419-39.212,18.084-39.212,39.888 C59.957,204.958,77.459,222.622,99.169,223.042z"></path>{" "}
-            </g>{" "}
-          </g>
-        </svg>
-      ),
+      title: t("jobSeeker"),
+      description: t("jobSeekerDescription"),
+      svg: <FaUsers />,
     },
   ];
+
   return (
     <>
       <section>
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-black-background">
           <Carousel />
         </div>
       </section>
-      <section className="bg-primary container mx-auto  gap-7 px-5 md:px-20 xl:px-32 py-17">
+      <section className="bg-primary container mx-auto gap-7 px-5 md:px-20 xl:px-32 py-17 dark:bg-primary">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-center  text-white-text">
-            For JobSeek Service
+          <h2 className="text-3xl font-bold text-center text-white-text dark:text-white-text">
+            {t("forJobSeekService")}{" "}
+            {/* Replace static text with translation key */}
           </h2>
-          <p className="text-lg text-white-text text-center">
-            The Ultimate Platform for Job Seekers, Freelancers, and Employers.{" "}
-            <br /> Join Job Finder and take your career or business to the next
-            level.
+          <p className="text-lg text-white-text text-center dark:text-white-text">
+            {t("jobSeekDescription")}{" "}
+            {/* Replace static text with translation key */}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -144,21 +69,20 @@ export default function HomePage() {
         </div>
       </section>
       <section className="container mt-12 md:px-20 xl:px-32">
-        <div className="overflow-hidden  sm:grid sm:grid-cols-2 sm:items-center">
+        <div className="overflow-hidden sm:grid sm:grid-cols-2 sm:items-center">
           <div className="p-8 md:p-12 lg:px-16 lg:py-24">
-            <div className="md:col-span-2  justify-center items-center order-1 md:order-none">
-              <h1 className="text-3xl font-bold  ">
-                We Work to Ensure Your Career{" "}
-                <span className="text-primary">Success</span>{" "}
+            <div className="md:col-span-2 justify-center items-center order-1 md:order-none">
+              <h1 className="text-3xl font-bold text-black-text dark:text-white-text">
+                {t("careerSuccess")}{" "}
+                {/* Replace static text with translation key */}
               </h1>
-              <p className="text-xl mt-2 text-black-text">
-                At JobSeek, our mission is to empower you to achieve your
-                professional goals. We are dedicated to providing the tools,
-                resources, and opportunities you need to succeed in your job
-                search and beyond.
+              <p className="text-xl mt-2 text-black-text dark:text-white-text">
+                {t("careerSuccessDescription")}{" "}
+                {/* Replace static text with translation key */}
               </p>
-              <button className="mt-4 p-3 bg-primary text-white rounded-[5px]  hover:bg-primary-hover">
-                More About Us{" "}
+              <button className="mt-4 p-3 bg-primary text-white rounded-[5px] hover:bg-primary-hover dark:bg-primary dark:hover:bg-primary-hover">
+                {t("moreAboutUs")}{" "}
+                {/* Replace static text with translation key */}
               </button>
             </div>
           </div>
@@ -170,52 +94,59 @@ export default function HomePage() {
           />
         </div>
       </section>
-      <section className="bg-primary container   px-5 py-5 my-16 md:px-20 xl:px-32 ">
+      <section className="bg-primary container px-5 py-5 my-16 md:px-20 xl:px-32 dark:bg-black-background">
         <div className="md:col-span-3 flex flex-col justify-center items-center">
-          <h2 className="text-3xl text-white-text font-bold  ">
-            Why You Need To Jont Us ?
+          <h2 className="text-3xl text-white-text font-bold dark:text-white-text">
+            {t("whyJoinUs")} {/* Replace static text with translation key */}
           </h2>
-          <p className="text-lg mt-2 text-white-text ">
-            The Ultimate Platform for Job Seekers, Freelancers, and Employers.{" "}
-            <br /> Join Job Finder and take your career or business to the next
-            level.
+          <p className="text-lg mt-2 text-white-text dark:text-white-text">
+            {t("whyJoinUsDescription")}{" "}
+            {/* Replace static text with translation key */}
           </p>
         </div>
         <div className="mt-10">
           <CardWhyUS />
         </div>
       </section>
-      <section className=" px-5 py-5  md:px-20 xl:px-32 ">
+      <section className="px-5 py-5 md:px-20 xl:px-32 dark:bg-black-background">
         <div>
-          <h2 className="text-3xl font-bold  ">Most Populor Job</h2>
-          <p className="text-lg mt-4 text-black-text ">
-            Discover the latest job opportunities in your area.{" "}
+          <h2 className="text-3xl font-bold text-black-text dark:text-white-text">
+            {t("mostPopularJob")}
+          </h2>{" "}
+          {/* Replace static text with translation key */}
+          <p className="text-lg mt-4 text-black-text dark:text-white-text">
+            {t("discoverJobOpportunities")}{" "}
+            {/* Replace static text with translation key */}
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           <PopularCart />
         </div>
       </section>
-      <section className="bg-primary container  px-5 py-5  md:px-20 xl:px-32">
-        <div className=" text-white flex justify-between items-center px-12 py-8 rounded-xl">
+      <section className="bg-primary container px-5 py-5 md:px-20 xl:px-32 dark:bg-primary">
+        <div className="text-white flex justify-between items-center px-12 py-8 rounded-xl">
           <div className="max-w-lg">
-            <h2 className="text-3xl font-semibold leading-tight">
-              Thousands of{" "}
-              <span className=" text-secondary  rounded-md font-bold">
-                Opportunities
-              </span>{" "}
-              <br /> Curated by Industry Leaders
+            <h2 className="text-3xl font-semibold leading-tight text-white-text dark:text-white-text">
+              {t("opportunitiesCurated")}
             </h2>
           </div>
 
           <div className="flex items-center gap-12 border-l-2 border-white px-12">
             <div className="text-center">
-              <h3 className="text-4xl font-bold">45K+</h3>
-              <p className="text-lg">Job Openings</p>
+              <h3 className="text-4xl font-bold text-white-text dark:text-white-text">
+                45K+
+              </h3>
+              <p className="text-lg text-white-text dark:text-white-text">
+                {t("jobOpenings")}
+              </p>
             </div>
             <div className="text-center">
-              <h3 className="text-4xl font-bold">328+</h3>
-              <p className="text-lg">Top Employers</p>
+              <h3 className="text-4xl font-bold text-white-text dark:text-white-text">
+                328+
+              </h3>
+              <p className="text-lg text-white-text dark:text-white-text">
+                {t("topEmployers")}
+              </p>
             </div>
           </div>
 
@@ -228,10 +159,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section className="container px-5 py-5  md:px-20 xl:px-32">
+      <section className="container px-5 py-5 md:px-20 xl:px-32 dark:bg-black-background">
         <div className="py-16 text-center">
-          <h2 className="text-3xl font-bold text-blue-900 mb-12">
-            What Our Clients Say About Us
+          <h2 className="text-3xl font-bold text-black-text dark:text-white-text mb-12">
+            {t("clientsFeedback")}
           </h2>
           <CardFeedback />
         </div>

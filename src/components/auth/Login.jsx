@@ -1,180 +1,162 @@
 import { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.css";
-import Ta1 from "../assets/Ta_Images/LoginJoinUs.png";
-import Ta2 from "../assets/Ta_Images/Logo.png";
-import Ta3 from "../assets/Ta_Images/facebook.png";
-import Ta4 from "../assets/Ta_Images/google.png";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useNavigate } from "react-router";
+import { useLoginMutation } from "../../feature/auth/authSlide";
+import Ta1 from "../../assets/Ta_Images/LoginJoinUs.png";
+import Ta2 from "../../assets/Ta_Images/Logo.png";
+import Ta3 from "../../assets/Ta_Images/facebook.png";
+import Ta4 from "../../assets/Ta_Images/google.png";
 
 const LoginPage = () => {
-    const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigate = useNavigate();
+  const [login, { isLoading, error }] = useLoginMutation();
 
-    // Toggle Password Visibility
-    const togglePasswordVisibility = () => {
-        setPasswordVisible(!passwordVisible);
-    };
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
-    return (
-        <div className="flex flex-col md:flex-row min-h-screen w-full overflow-y-auto">
-            {/* Left Section (Blue Section - Text + Image) */}
-            <div className="hide-for-small block md:flex w-full md:w-1/2 bg-blue-900 text-white flex-col items-center justify-center p-6 md:p-8 flex-grow">
-                <div className="text-center flex flex-col items-center">
-                    {/* Original layout for larger/full screens */}
-                    <div className="hidden md:block">
-                        <h1 className="text-3xl sm:text-4xl md:text-7xl font-semibold">
-                            Welcome to
-                        </h1>
-                        <h1 className="text-3xl sm:text-4xl md:text-7xl font-bold mt-2">
-                            JobSeek
-                        </h1>
-                        <img
-                            src={Ta1}
-                            alt="Welcome Graphic"
-                            className="mt-8 sm:mt-10 w-3/4 md:w-1/2 mx-auto"
-                        />
-                    </div>
+  const validationSchema = Yup.object({
+    email: Yup.string().required("Email or username is required"),
+    password: Yup.string().required("Password is required"),
+  });
 
-                    {/* For phone screens (small only): Image in front of "Welcome to JobSeek" */}
-                    <div className="flex flex-col md:hidden items-center">
-                        <div className="flex items-center justify-between w-full">
-                            <img
-                                src={Ta1}
-                                alt="Join Us Now"
-                                className="w-24 h-24 sm:w-28 sm:h-28 ml-3 mr-8"
-                            />
-                            <div className="flex flex-col items-end pr-4">
-                                <h1 className="text-xl text-[28px] font-semibold text-right">
-                                    Welcome to
-                                </h1>
-                                <h1 className="text-xl text-[28px] font-bold text-right">
-                                    JobSeek
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema,
+    onSubmit: async (values) => {
+      try {
+        const response = await login(values).unwrap();
+        console.log("Login successful:", response);
 
-            {/* Right Section (Login Form Section) */}
-            <div className="w-full md:w-1/2 bg-gray-100 flex flex-col items-center justify-center p-6 md:p-8 flex-grow">
-                <div className="w-4/5">
-                    <div className="flex items-center mb-6">
-                        <img
-                            src={Ta2}
-                            alt="Logo"
-                            className="w-12 h-12 sm:w-14 sm:h-14 mr-2"
-                        />
-                        <h1
-                            className="text-xl sm:text-3xl md:text-3xl font-bold"
-                            style={{ color: "#1c398e" }}
-                        >
-                            JobSeek
-                        </h1>
-                    </div>
+        if (response.accessToken) {
+          sessionStorage.setItem("token", response.accessToken);
+          if (response.refreshToken) {
+            localStorage.setItem("refreshToken", response.refreshToken);
+          }
+          navigate("/freelancer-feed");
+        } else {
+          alert("Login successful, but no token received.");
+        }
+      } catch (err) {
+        console.error("Login error:", err);
+      }
+    },
+  });
 
-                    <h2
-                        className="text-2xl sm:text-3xl font-bold text-left mt-4 sm:mt-6"
-                        style={{ color: "#1c398e" }}
-                    >
-                        Log in
-                    </h2>
-                </div>
-                <form className="mt-6 w-4/5">
-                    {/* Email Input */}
-                    <label
-                        htmlFor="email"
-                        className="block text-gray-800 font-medium mb-2 text-base sm:text-[15px]"
-                    >
-                        Email address or username
-                    </label>
-                    <input
-                        id="email"
-                        type="email"
-                        className="w-full p-2.5 border border-gray-300 rounded-lg mb-4 text-base sm:text-[15px]"
-                    />
-
-                    {/* Password Input */}
-                    <label
-                        htmlFor="password"
-                        className="block text-gray-800 font-medium mb-2 flex items-center justify-between text-base sm:text-[15px]"
-                    >
-                        <span>Password</span>
-                        <span
-                            onClick={togglePasswordVisibility}
-                            className="cursor-pointer flex items-center gap-2 text-base sm:text-[15px]"
-                            style={{ color: "#1c398e" }}
-                        >
-                            {passwordVisible ? (
-                                <>
-                                    <i className="fas fa-eye-slash"></i> Hide
-                                </>
-                            ) : (
-                                <>
-                                    <i className="fas fa-eye"></i> Show
-                                </>
-                            )}
-                        </span>
-                    </label>
-                    <input
-                        id="password"
-                        type={passwordVisible ? "text" : "password"}
-                        className="w-full p-2.5 border border-gray-300 rounded-lg text-base sm:text-[15px]"
-                    />
-
-                    {/* Forgot Password Link */}
-                    <div className="text-right mt-1">
-                        <span
-                            className="underline cursor-pointer"
-                            style={{ color: "#1c398e" }}
-                        >
-                            Forget your password?
-                        </span>
-                    </div>
-
-                    {/* Log In Button */}
-                    <button
-                        className="w-full bg-gray-400 hover:bg-gray-500 text-white p-2.5 rounded-lg mt-5 text-base sm:text-[15px]"
-                        type="submit"
-                    >
-                        Log in
-                    </button>
-                </form>
-
-                {/* Sign-up Section */}
-                <p className="mt-4 text-gray-600 text-[13px] sm:text-[14px] font-semibold">
-                    Don&#39;t have an account?{" "}
-                    <span
-                        className="cursor-pointer"
-                        style={{ color: "#1c398e" }}
-                    >
-                        Sign up
-                    </span>
-                </p>
-                <p className="mt-3 text-gray-500 text-[13px] sm:text-[14px]">
-                    OR
-                </p>
-
-                {/* Social Media Login Buttons */}
-                <div className="flex flex-col gap-3 mt-4 w-4/5">
-                    <button className="w-full border font-medium border-gray-300 p-2.5 rounded-lg flex items-center justify-center gap-1 text-[15px] sm:text-base cursor-pointer hover:bg-gray-200">
-                        <img
-                            src={Ta3}
-                            alt="Facebook Logo"
-                            className="w-8 h-5 sm:w-9 sm:h-6"
-                        />
-                        Continue with Facebook
-                    </button>
-                    <button className="w-full border font-medium border-gray-300 p-2.5 rounded-lg flex items-center justify-center gap-2 text-[15px] sm:text-base cursor-pointer hover:bg-gray-200">
-                        <img
-                            src={Ta4}
-                            alt="Google Logo"
-                            className="w-6 h-6"
-                        />
-                        Continue with Google
-                    </button>
-                </div>
-            </div>
+  return (
+    <div className="flex flex-col md:flex-row min-h-screen w-full overflow-y-auto">
+      <div className="hidden md:flex w-1/2 bg-blue-900 text-white flex-col items-center justify-center p-8">
+        <h1 className="text-4xl md:text-7xl font-semibold">Welcome to</h1>
+        <h1 className="text-4xl md:text-7xl font-bold mt-2">JobSeek</h1>
+        <img src={Ta1} alt="Welcome Graphic" className="mt-10 w-1/2" />
+      </div>
+      <div className="w-full md:w-1/2 bg-gray-100 flex flex-col items-center justify-center p-6 md:p-8">
+        <div className="w-4/5">
+          <div className="flex items-center mb-6">
+            <img src={Ta2} alt="Logo" className="w-14 h-14 mr-2" />
+            <h1 className="text-3xl font-bold text-blue-900">JobSeek</h1>
+          </div>
+          <h2 className="text-3xl font-bold text-blue-900 mt-6">Log in</h2>
         </div>
-    );
+        <form className="mt-6 w-4/5" onSubmit={formik.handleSubmit}>
+          <label
+            htmlFor="email"
+            className="block text-gray-800 font-medium mb-2">
+            Email address or username
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="text"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+            className="w-full p-2.5 border border-gray-300 rounded-lg"
+          />
+          {formik.touched.email && formik.errors.email && (
+            <div className="text-red-500 text-xs mb-3">
+              {formik.errors.email}
+            </div>
+          )}
+          <label
+            htmlFor="password"
+            className="block text-gray-800 font-medium mb-2 mt-3 flex justify-between">
+            <span>Password</span>
+            <span
+              onClick={togglePasswordVisibility}
+              className="cursor-pointer text-blue-900">
+              <i
+                className={`fas ${
+                  passwordVisible ? "fa-eye-slash" : "fa-eye"
+                }`}></i>{" "}
+              {passwordVisible ? "Hide" : "Show"}
+            </span>
+          </label>
+          <input
+            id="password"
+            name="password"
+            type={passwordVisible ? "text" : "password"}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            className="w-full p-2.5 border border-gray-300 rounded-lg"
+          />
+          {formik.touched.password && formik.errors.password && (
+            <div className="text-red-500 text-xs mt-1">
+              {formik.errors.password}
+            </div>
+          )}
+          <div className="text-right mt-1">
+            <span
+              className="underline cursor-pointer text-blue-900"
+              onClick={() => navigate("/forgot-password")}>
+              Forget your password?
+            </span>
+          </div>
+          {error && (
+            <div className="text-red-500 text-sm mt-2 text-center">
+              {error?.data?.message || "Invalid credentials. Please try again."}
+            </div>
+          )}
+          <button
+            className="w-full bg-blue-900 hover:bg-blue-800 text-white p-2.5 rounded-lg mt-5"
+            type="submit"
+            disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Log in"}
+          </button>
+        </form>
+        <p className="mt-4 text-gray-600 text-sm">
+          Don&#39;t have an account?{" "}
+          <span
+            className="cursor-pointer text-blue-900"
+            onClick={() => navigate("/register-freelancer")}>
+            Sign up
+          </span>
+        </p>
+        <p className="mt-3 text-gray-500 text-sm">OR</p>
+        <div className="flex flex-col gap-3 mt-4 w-4/5">
+          <button
+            className="w-full border border-gray-300 p-2.5 rounded-lg flex items-center justify-center gap-2 text-base hover:bg-gray-200"
+            type="button">
+            <img src={Ta3} alt="Facebook Logo" className="w-9 h-6" />
+            Continue with Facebook
+          </button>
+          <button
+            className="w-full border border-gray-300 p-2.5 rounded-lg flex items-center justify-center gap-2 text-base hover:bg-gray-200"
+            type="button">
+            <img src={Ta4} alt="Google Logo" className="w-6 h-6" />
+            Continue with Google
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default LoginPage;

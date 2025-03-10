@@ -8,7 +8,12 @@ import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { Provider } from "react-redux";
 import store from "./app/store.js";
 import RegisterFreelancer from "./components/auth/RegisterFreelancer.jsx";
+import Login from "./components/auth/Login.jsx";
 import AboutUsPage from "./pages/mianPage/AboutUsPage.jsx";
+import FreelancerFitPage from "./pages/freelaner/FreelancerFitPage.jsx";
+import FreelancerProfile from "./pages/freelaner/FreelancerProfile.jsx";
+import UserSeeFreelancerProfilePage from "./pages/freelaner/UserSeeFreelancerProfilePage.jsx";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
@@ -17,9 +22,22 @@ createRoot(document.getElementById("root")).render(
           <Routes>
             <Route element={<RootLayout />}>
               <Route path="/" element={<App />} />
-              <Route path="/about-us" element={<AboutUsPage/>} />
+              <Route path="/about-us" element={<AboutUsPage />} />
+              <Route path="/freelanecer-feed" element={<FreelancerFitPage />} />
+              <Route
+                path="/freelancer-profile"
+                element={<FreelancerProfile />}
+              />
+              <Route
+                path="/freelancer-profile"
+                element={<UserSeeFreelancerProfilePage />}
+              />
             </Route>
-            <Route path="/register-freelancer" element={<RegisterFreelancer />}/>
+            <Route
+              path="/register-freelancer"
+              element={<RegisterFreelancer />}
+            />
+            <Route path="/register-freelancer/login" element={<Login />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

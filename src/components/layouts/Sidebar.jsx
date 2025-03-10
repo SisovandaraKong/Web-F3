@@ -1,33 +1,36 @@
 "use client";
 import { Link, useLocation } from "react-router";
 import { Home, Mail, User, Users, Briefcase } from "lucide-react";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 const Sidebar = () => {
   const location = useLocation();
+  const { t } = useTranslation(); // Initialize translation function
+
   const menuItems = [
     {
       path: "/dashboard",
-      name: "Dashboard",
+      name: t("dashboard"), // Translate "Dashboard"
       icon: <Home className="h-5 w-5" />,
     },
     {
       path: "/business-owner",
-      name: "Business Owner",
+      name: t("businessOwner"), // Translate "Business Owner"
       icon: <Briefcase className="h-5 w-5" />,
     },
     {
       path: "/job-seekers",
-      name: "Job Seekers",
+      name: t("jobSeekers"), // Translate "Job Seekers"
       icon: <User className="h-5 w-5" />,
     },
     {
       path: "/freelancers",
-      name: "Freelancers",
+      name: t("freelancers"), // Translate "Freelancers"
       icon: <Users className="h-5 w-5" />,
     },
     {
       path: "/messages",
-      name: "Messages",
+      name: t("messages"), // Translate "Messages"
       icon: <Mail className="h-5 w-5" />,
       active: true,
     },
