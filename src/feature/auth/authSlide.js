@@ -18,13 +18,20 @@ export const registerFreelancer = apiSlide.injectEndpoints({
       }),
     }),
     getMe: build.query({
-      query: () => ({
-        url: "/api/users/me",
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("token")}`, // Ensure token is stored correctly
-        },
-      }),
+      query: () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("Token is missing. Please log in again.");
+          return {};
+        }
+        return {
+          url: "/api/users/me",
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
     }),
   }),
 });

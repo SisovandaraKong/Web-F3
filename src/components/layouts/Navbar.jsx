@@ -28,7 +28,6 @@ export default function Navbar() {
     // Remove tokens from localStorage
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
-
     // Close the dropdown
     setProfileDropdown(false);
 
