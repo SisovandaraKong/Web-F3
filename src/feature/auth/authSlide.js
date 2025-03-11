@@ -17,8 +17,20 @@ export const registerFreelancer = apiSlide.injectEndpoints({
         body: JSON.stringify(body),
       }),
     }),
+    getMe: build.query({
+      query: () => ({
+        url: "/api/users/me",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`, // Ensure token is stored correctly
+        },
+      }),
+    }),
   }),
 });
 
-export const { useRegisterFreelancerMutation, useLoginMutation } =
-  registerFreelancer;
+export const {
+  useRegisterFreelancerMutation,
+  useLoginMutation,
+  useGetMeQuery,
+} = registerFreelancer;

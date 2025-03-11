@@ -46,7 +46,7 @@ function JobDescription() {
         <div className="flex justify-center mb-8">
           <div className="relative">
             <img
-              src="https://via.placeholder.com/150"
+              src="https://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG.png"
               alt="Profile"
               className="w-40 h-40 rounded-full object-cover"
             />
@@ -56,8 +56,7 @@ function JobDescription() {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -253,8 +252,7 @@ function JobDescription() {
                     selectedOptions.includes(type)
                       ? "bg-[#2b407f] text-white"
                       : "bg-transparent"
-                  } transition-colors duration-200`}
-                >
+                  } transition-colors duration-200`}>
                   + {type}
                 </button>
               ))}
@@ -270,8 +268,7 @@ function JobDescription() {
                     selectedOptions.includes(type)
                       ? "bg-[#2b407f] text-white"
                       : "bg-transparent"
-                  } transition-colors duration-200`}
-                >
+                  } transition-colors duration-200`}>
                   + {type}
                 </button>
               ))}
@@ -289,8 +286,7 @@ function JobDescription() {
                     selectedOptions.includes(shift)
                       ? "bg-[#2b407f] text-white"
                       : "bg-transparent"
-                  } transition-colors duration-200`}
-                >
+                  } transition-colors duration-200`}>
                   + {shift}
                 </button>
               ))}
@@ -306,8 +302,7 @@ function JobDescription() {
                     selectedOptions.includes(shift)
                       ? "bg-[#2b407f] text-white"
                       : "bg-transparent"
-                  } transition-colors duration-200`}
-                >
+                  } transition-colors duration-200`}>
                   + {shift}
                 </button>
               ))}
@@ -323,8 +318,7 @@ function JobDescription() {
                     selectedOptions.includes(shift)
                       ? "bg-[#2b407f] text-white"
                       : "bg-transparent"
-                  } transition-colors duration-200`}
-                >
+                  } transition-colors duration-200`}>
                   + {shift}
                 </button>
               ))}
@@ -339,8 +333,7 @@ function JobDescription() {
             <div className="ml-2">
               <label
                 htmlFor="yes"
-                className="w-full flex items-center p-2 border border-gray-300 rounded-md bg-gray-100 mb-2 cursor-pointer hover:bg-gray-200 transition-colors duration-200"
-              >
+                className="w-full flex items-center p-2 border border-gray-300 rounded-md bg-gray-100 mb-2 cursor-pointer hover:bg-gray-200 transition-colors duration-200">
                 <input
                   type="radio"
                   id="yes"
@@ -354,8 +347,7 @@ function JobDescription() {
             <div className="ml-2">
               <label
                 htmlFor="no"
-                className="w-full flex items-center p-2 border border-gray-300 rounded-md bg-gray-100 cursor-pointer hover:bg-gray-200 transition-colors duration-200"
-              >
+                className="w-full flex items-center p-2 border border-gray-300 rounded-md bg-gray-100 cursor-pointer hover:bg-gray-200 transition-colors duration-200">
                 <input
                   type="radio"
                   id="no"
@@ -401,14 +393,12 @@ function JobDescription() {
             <div className="ml-2 flex justify-between mt-6">
               <button
                 type="button"
-                className={`${defaultTextColor} px-4 py-2 border border-[#2b407f] rounded hover:bg-[#2b407f] hover:text-white transition-colors duration-200`}
-              >
+                className={`${defaultTextColor} px-4 py-2 border border-[#2b407f] rounded hover:bg-[#2b407f] hover:text-white transition-colors duration-200`}>
                 Back
               </button>
               <button
                 type="button"
-                className="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition-colors duration-200"
-              >
+                className="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition-colors duration-200">
                 Next
               </button>
             </div>

@@ -15,6 +15,7 @@ import FreelancerProfile from "./pages/freelaner/FreelancerProfile.jsx";
 import UserSeeFreelancerProfilePage from "./pages/freelaner/UserSeeFreelancerProfilePage.jsx";
 import ChatbotPage from "./pages/chatBot/ChatbotPage.jsx";
 import FreelancerPage from "./pages/freelaner/FreelancerPage.jsx";
+import JobDescription from "./pages/creatAtJob/JobDescription.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -36,7 +37,7 @@ createRoot(document.getElementById("root")).render(
               />
               <Route path="/chat-bot" element={<ChatbotPage />} />
               <Route path="/freelancer-page" element={<FreelancerPage />} />
-
+              <Route path="/job-description" element={<JobDescription/>} />
             </Route>
             <Route
               path="/register-freelancer"
