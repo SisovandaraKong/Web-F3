@@ -6,8 +6,17 @@ import { FaPenNib } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
 import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
+import { useGetMeQuery } from "../../feature/auth/authSlide";
 
 const FreelancerProfile = () => {
+  const { data, isLoading, error } = useGetMeQuery();
+  
+  // Use optional chaining to safely access data
+  const userData = data?.data || {};
+  
+  if (isLoading) return <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center">Loading...</div>;
+  if (error) return <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center">Error loading profile</div>;
+
   return (
     <>
       <ScrollIndicator />
@@ -45,7 +54,7 @@ const FreelancerProfile = () => {
               <div className="flex flex-col items-center">
                 <div className="relative w-24 h-24 mb-4 ">
                   <img
-                    src="src/assets/imgAboutUs/sanom.jpg"
+                    src={userData.profileImageUrl || "src/assets/imgAboutUs/sanom.jpg"}
                     alt="Profile"
                     className="w-24 h-24 rounded-full object-cover border-4 border-primary"
                   />
@@ -53,10 +62,12 @@ const FreelancerProfile = () => {
 
                 <div className="text-center mb-6">
                   <h2 className="text-CardMainTitle font-bold text-primary">
-                    Rin Sanom
+                    {userData.fullName || ""}
                   </h2>
                   <span className="text-primary text-sm">
-                    • Web Development
+                    {userData.skills && userData.skills.length > 0 
+                      ? `• ${userData.skills[0]}` 
+                      : "• Web Development"}
                   </span>
 
                   <div className="flex items-center justify-center mt-3">
@@ -67,7 +78,7 @@ const FreelancerProfile = () => {
                       fill="currentColor">
                       <FaUserAlt />
                     </svg>
-                    <span className="text-sm text-primary">Full-time</span>
+                    <span className="text-sm text-primary">{userData.userType || "Full-time"}</span>
                   </div>
                 </div>
               </div>
@@ -87,7 +98,7 @@ const FreelancerProfile = () => {
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                     </svg>
                     <span className="text-sm text-primary">
-                      Sanom@gmail.com
+                      {userData.email || "Email not available"}
                     </span>
                   </div>
                   <div className="flex items-start">
@@ -99,7 +110,7 @@ const FreelancerProfile = () => {
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
                     <span className="text-sm text-primary">
-                      +855 39 24 23 237
+                      {userData.phone || "Phone not available"}
                     </span>
                   </div>
                   <div className="flex items-start">
@@ -115,7 +126,7 @@ const FreelancerProfile = () => {
                       />
                     </svg>
                     <span className="text-sm text-primary">
-                      Phnom Penh, Cambodia
+                      {userData.address || "Location not available"}
                     </span>
                   </div>
                 </div>
@@ -176,31 +187,11 @@ const FreelancerProfile = () => {
               <h2 className="text-CardMainTitle font-bold text-primary">
                 About
               </h2>
-              {/* <div className="flex space-x-2">
-              <button className="flex items-center px-3 py-1.5 border border-primary rounded bg-white text-TabText font-medium text-red-500">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                </svg>
-                Edit
-              </button>
-              <button className="flex items-center px-3 py-1.5 bg-primary rounded text-TabText font-medium text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                <ChatBubbleLeftEllipsisIcon className="w-4 h-4 text-white" />
-                </svg>
-                Let's Chat
-              </button>
-            </div> */}
             </div>
 
             <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
               <p className="text-TabText text-black-text leading-relaxed">
-                Recently, I had traveled to my parents for a quiet weekend at
-                home. I was warm, cozy, and was studying for upcoming
-                interviews. I already had a dedicated notebook full of doodles
-                from company websites, job postings, online presentations, and
-                that kind of stuff some of these companies is so proud of. I had
-                even looked at what tools some of these companies use and tried
-                to familiarize myself with should it come up in conversation.
+                {userData.bio || "No bio information available."}
               </p>
             </div>
 
@@ -224,7 +215,7 @@ const FreelancerProfile = () => {
                   </svg>
                 </div>
                 <span className="font-medium text-primary text-TabText">
-                  UI/UX designer.pdf
+                  {userData.fullName || "User"}_CV.pdf
                 </span>
               </div>
             </div>
@@ -239,12 +230,16 @@ const FreelancerProfile = () => {
               </h3>
               <div className="mt-1">
                 <div className="text-TabText text-black-text">
-                  University of Fine Art
+                  {userData.experienceYears ? `${userData.experienceYears} years of experience` : "Experience information not available"}
                 </div>
                 <div className="font-medium text-primary">
-                  Bachelor's degree, Graphic Design
+                  {userData.skills && userData.skills.length > 0 
+                    ? userData.skills.join(", ") 
+                    : "Skills not specified"}
                 </div>
-                <div className="text-TabText text-black-text">2018 - 2021</div>
+                <div className="text-TabText text-black-text">
+                  {userData.createdAt ? new Date(userData.createdAt).getFullYear() : "2018"} - {userData.updatedAt ? new Date(userData.updatedAt).getFullYear() : "2021"}
+                </div>
               </div>
             </div>
 
@@ -266,97 +261,121 @@ const FreelancerProfile = () => {
             <h2 className="text-xl font-bold text-primary mb-4">My Services</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
-                <div className="p-3 mb-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <RiComputerLine />
-                  </svg>
-                </div>
-                <span className="text-TabText text-black-text">
-                  Programming
-                </span>
-              </div>
+              {/* Map through skills if available, otherwise show default services */}
+              {userData.skills && userData.skills.length > 0 ? (
+                userData.skills.map((skill, index) => (
+                  <div key={index} className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+                    <div className="p-3 mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-13 w-13 text-blue-900"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        {index % 3 === 0 ? <RiComputerLine /> : index % 3 === 1 ? <FaPenNib /> : <FaPencilAlt />}
+                      </svg>
+                    </div>
+                    <span className="text-TabText text-black-text">
+                      {skill}
+                    </span>
+                  </div>
+                ))
+              ) : (
+                // Default services if no skills are available
+                <>
+                  <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+                    <div className="p-3 mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-13 w-13 text-blue-900"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <RiComputerLine />
+                      </svg>
+                    </div>
+                    <span className="text-TabText text-black-text">
+                      Programming
+                    </span>
+                  </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
-                <div className="p-3 mb-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <FaPenNib />
-                  </svg>
-                </div>
-                <span className="text-TabText text-black-text">Graphic</span>
-              </div>
+                  <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+                    <div className="p-3 mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-13 w-13 text-blue-900"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <FaPenNib />
+                      </svg>
+                    </div>
+                    <span className="text-TabText text-black-text">Graphic</span>
+                  </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
-                <div className="p-3 mb-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <FaPencilAlt />
-                  </svg>
-                </div>
-                <span className="text-TabText text-black-text">
-                  Content Creator
-                </span>
-              </div>
+                  <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+                    <div className="p-3 mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-13 w-13 text-blue-900"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <FaPencilAlt />
+                      </svg>
+                    </div>
+                    <span className="text-TabText text-black-text">
+                      Content Creator
+                    </span>
+                  </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
-                <div className="p-3 mb-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <RiComputerLine />
-                  </svg>
-                </div>
-                <span className="text-TabText text-black-text">
-                  Programming
-                </span>
-              </div>
+                  <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+                    <div className="p-3 mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-13 w-13 text-blue-900"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <RiComputerLine />
+                      </svg>
+                    </div>
+                    <span className="text-TabText text-black-text">
+                      Programming
+                    </span>
+                  </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
-                <div className="p-3 mb-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <FaPenNib />
-                  </svg>
-                </div>
-                <span className="text-TabText text-black-text">Graphic</span>
-              </div>
+                  <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+                    <div className="p-3 mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-13 w-13 text-blue-900"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <FaPenNib />
+                      </svg>
+                    </div>
+                    <span className="text-TabText text-black-text">Graphic</span>
+                  </div>
 
-              <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
-                <div className="p-3 mb-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-13 w-13 text-blue-900"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <FaPencilAlt />
-                  </svg>
-                </div>
-                <span className="text-TabText text-black-text">
-                  Content Creator
-                </span>
-              </div>
+                  <div className="bg-white rounded-lg shadow-sm p-5 flex flex-col items-center transition-transform transform hover:scale-105">
+                    <div className="p-3 mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-13 w-13 text-blue-900"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <FaPencilAlt />
+                      </svg>
+                    </div>
+                    <span className="text-TabText text-black-text">
+                      Content Creator
+                    </span>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

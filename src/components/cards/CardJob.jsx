@@ -2,8 +2,8 @@ import React from "react";
 import { IoMdTime } from "react-icons/io";
 import { useGetAllServicesQuery } from "../../feature/service/serviceSlde";
 
-export default function CardJob() {
-  const { data, isLoading, isError } = useGetAllServicesQuery();
+export default function CardJob({ page }) {
+  const { data, isLoading, isError } = useGetAllServicesQuery(page);
 
   if (isLoading) return <p>Loading services...</p>;
   if (isError) return <p>Failed to load services</p>;
