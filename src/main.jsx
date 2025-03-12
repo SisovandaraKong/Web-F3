@@ -16,10 +16,7 @@ import UserSeeFreelancerProfilePage from "./pages/freelaner/UserSeeFreelancerPro
 import ChatbotPage from "./pages/chatBot/ChatbotPage.jsx";
 import FreelancerPage from "./pages/freelaner/FreelancerPage.jsx";
 import JobDescription from "./pages/creatAtJob/JobDescription.jsx";
-
-
-
-
+import ServiceDetail from "./pages/freelaner/ServideDetail.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -41,14 +38,14 @@ createRoot(document.getElementById("root")).render(
               />
               <Route path="/chat-bot" element={<ChatbotPage />} />
               <Route path="/freelancer-page" element={<FreelancerPage />} />
-              <Route path="/job-description" element={<JobDescription/>} />
+              <Route path="/job-description" element={<JobDescription />} />
+              <Route path="/freelancer-page/:id" element={<ServiceDetail />} />
             </Route>
             <Route
               path="/register-freelancer"
               element={<RegisterFreelancer />}
             />
             <Route path="/register-freelancer/login" element={<Login />} />
-
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

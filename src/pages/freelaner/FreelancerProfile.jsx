@@ -10,10 +10,12 @@ import { useGetMeQuery } from "../../feature/auth/authSlide";
 
 const FreelancerProfile = () => {
   const { data, isLoading, error } = useGetMeQuery();
+  console.log("User data:", data);
   
   // Use optional chaining to safely access data
   const userData = data?.data || {};
-  
+   console.log("User data :", userData);
+   
   if (isLoading) return <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center">Loading...</div>;
   if (error) return <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center">Error loading profile</div>;
 

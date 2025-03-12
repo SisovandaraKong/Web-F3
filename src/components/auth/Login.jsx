@@ -32,12 +32,16 @@ const LoginPage = () => {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const response = await login(values).unwrap();
+        const response = await login(values).unwrap();  // Unwrap the response to avoid redux-toolkit's automatic error handling.
         console.log("Login successful:", response);
-
-        if (response.accessToken) {
-          sessionStorage.setItem("token", response.accessToken);
-          if (response.refreshToken) {
+      
+        // Ensure that the tokens are present before setting them in storage
+        if (response?.accessToken) {
+          localStorage.setItem("token", response.accessToken);
+          console.log("Token stored in session storage:", response.accessToken);
+          
+          // Only store refreshToken if it's available
+          if (response?.refreshToken) {
             localStorage.setItem("refreshToken", response.refreshToken);
           }
           // Show success toast
@@ -49,9 +53,11 @@ const LoginPage = () => {
           toast.error('Login successful, but no token received.');
         }
       } catch (err) {
+        // Log the error for debugging and show a friendly message
         console.error("Login error:", err);
         toast.error(err.data?.message || 'Invalid credentials. Please try again.');
       }
+      
     },
   });
 
