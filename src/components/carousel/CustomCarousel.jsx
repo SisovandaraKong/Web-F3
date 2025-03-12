@@ -88,7 +88,7 @@ export default function CustomCarousel() {
       {/* Previous Button */}
       <button
         onClick={goToPrevious}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
       >
         ‹
       </button>
@@ -96,7 +96,7 @@ export default function CustomCarousel() {
       {/* Next Button */}
       <button
         onClick={goToNext}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
       >
         ›
       </button>
