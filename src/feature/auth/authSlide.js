@@ -9,6 +9,14 @@ export const registerFreelancer = apiSlide.injectEndpoints({
         body,
       }),
     }),
+    registerBusinessOwner: build.mutation({
+      query: (data) => ({
+        url: "https://jobbridge-api.devnerd.store/api/users/register-business-owner", // Your API endpoint
+        method: "POST",
+        body: data, 
+      }),
+    }),
+    
     login: build.mutation({
       query: (body) => ({
         url: "/api/users/login",
@@ -17,6 +25,7 @@ export const registerFreelancer = apiSlide.injectEndpoints({
         body: JSON.stringify(body),
       }),
     }),
+
     getMe: build.query({
       query: () => {
         const token = localStorage.getItem("accessToken");
@@ -38,6 +47,7 @@ export const registerFreelancer = apiSlide.injectEndpoints({
 
 export const {
   useRegisterFreelancerMutation,
+  useRegisterBusinessOwnerMutation,
   useLoginMutation,
   useGetMeQuery,
 } = registerFreelancer;

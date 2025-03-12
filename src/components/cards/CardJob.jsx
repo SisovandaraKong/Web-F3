@@ -6,7 +6,7 @@ import dataMuck from "../../data/mockData";
 
 export default function CardJob({ page }) {
   const { data, isLoading, isError } = useGetAllServicesQuery(page);
-  console.log("Daata in CArt JOb", dataMuck);
+  console.log("Data in Card Job", data);
 
   if (isLoading)
     return (
@@ -14,17 +14,23 @@ export default function CardJob({ page }) {
         <img
           className="items-center text-9xl"
           src="src/assets/animation/louding/Animation - 1741739020308 (1).gif"
-          alt=""
+          alt="Loading animation"
         />
       </div>
     );
+
   if (isError) return <p>Failed to load services</p>;
 
   const services = data?.content || [];
 
+  // Remove duplicates based on service ID
+  const uniqueServices = services.filter(
+    (value, index, self) => index === self.findIndex((t) => t.id === value.id)
+  );
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {services.map((service) => (
+      {uniqueServices.map((service) => (
         <NavLink key={service.id} to={`/freelancer-page/${service.id}`}>
           <div className="rounded-lg bg-white dark:bg-black p-4 shadow-lg">
             <img
