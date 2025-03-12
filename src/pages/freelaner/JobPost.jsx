@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
 import CardJob from "../../components/cards/CardJob";
-import { Carousel } from "flowbite";
-
-export default function FreelancerPage() {
+export default function JobPost() {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 5; // Ideally, this should be dynamic from API response
+  const totalPages = 5;
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -21,7 +19,7 @@ export default function FreelancerPage() {
         <section className="bg-primary-hover h-[200px] text-white flex items-center justify-center rounded-lg overflow-hidden mb-10 "></section>
         <section className="border-b-2 py-1">
           <h2 className="text-3xl font-bold ">
-            Explor The Service Of Freelancer{" "}
+            What The Bussiness Owner Need.{" "}
           </h2>
         </section>
         <section className="mt-10">

@@ -24,7 +24,6 @@ export default function AboutUsPage() {
       <div className="max-w-screen-xl m-auto min-w-full">
         <MissionSection />
         <VisionSection />
-
         <section className="mt-28 px-36">
           <div>
             <h2
@@ -35,7 +34,6 @@ export default function AboutUsPage() {
           </div>
           <CardOurMentor />
         </section>
-
         <section className="mt-28">
           <div>
             <h2
@@ -68,7 +66,6 @@ export default function AboutUsPage() {
           </div>
           <CardService />
         </section>
-
         <section className="mt-28 px-36">
           <CardContactUs />
         </section>

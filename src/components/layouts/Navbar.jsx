@@ -76,15 +76,18 @@ export default function Navbar() {
           }`}>
           <ul className="flex flex-col md:flex-row md:space-x-6 bg-primary md:bg-transparent p-4 md:p-0">
             <li>
-              <NavLink to="/" className="text-white hover:text-secondary">
-                {t("Home")}
+              <NavLink
+                to="/job-post"
+                className="text-white hover:text-secondary">
+                {t("job")}
               </NavLink>
             </li>
+
             <li>
               <NavLink
                 to="/freelancer-page"
                 className="text-white hover:text-secondary">
-                {t("freelancer")}
+                {t("services")}
               </NavLink>
             </li>
             <li>
@@ -226,7 +229,7 @@ export default function Navbar() {
                 ) : (
                   <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center">
                     <span className="text-blue-600 text-4xl font-bold">
-                      {userData?.name?.charAt(0) || "S"}
+                      {userData?.fullName?.charAt(0) || "S"}
                     </span>
                   </div>
                 )}
@@ -250,7 +253,7 @@ export default function Navbar() {
                     </li>
                     <li>
                       <NavLink
-                        to="/job-description"
+                        to="/create-service"
                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
                         {t("Create Job")}
                       </NavLink>

@@ -1,50 +1,37 @@
 import React from "react";
 import { IoMdTime } from "react-icons/io";
 import { useGetAllServicesQuery } from "../../feature/service/serviceSlde";
-import { NavLink } from "react-router-dom"; // Make sure this is imported correctly
+import { NavLink } from "react-router"; // Make sure this is imported correctly
+import dataMuck from "../../data/mockData";
 
 export default function CardJob({ page }) {
   const { data, isLoading, isError } = useGetAllServicesQuery(page);
+  console.log("Daata in CArt JOb", dataMuck);
 
-  if (isLoading) return <p>Loading services...</p>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-96">
+        <img
+          className="items-center text-9xl"
+          src="src/assets/animation/louding/Animation - 1741739020308 (1).gif"
+          alt=""
+        />
+      </div>
+    );
   if (isError) return <p>Failed to load services</p>;
 
   const services = data?.content || [];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {services.map((service) => (
         <NavLink key={service.id} to={`/freelancer-page/${service.id}`}>
           <div className="rounded-lg bg-white dark:bg-black p-4 shadow-lg">
-
-            <div className="relative mb-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <img
-                  src={
-                    service.jobImages.length > 0
-                      ? service.jobImages[0]
-                      : "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
-                  }
-                  className="h-8 w-8 rounded-full object-cover bg-gray-200 dark:bg-gray-700"
-                  alt="service logo"
-                />
-                <div>
-                  <h2 className="text-lg font-bold text-black dark:text-white">
-                    {service.category?.name || "Unknown Category"}
-                  </h2>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {service.status}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Service Image */}
             <img
               src={
                 service.jobImages.length > 0
-                  ? service.jobImages[0]
-                  : "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                  ? service.jobImages[0] || dataMuck.imageUrl
+                  : "https://i.pinimg.com/originals/4f/7e/ab/4f7eab8b98913e658391c54b57980e68.gif"
               }
               className="mb-4 object-cover aspect-video w-full rounded-lg bg-gray-200 dark:bg-gray-700"
               alt="service banner"
@@ -52,6 +39,17 @@ export default function CardJob({ page }) {
 
             {/* Service Description */}
             <div className="mb-4">
+              <p
+                className={`text-sm px-2 py-1 rounded text-white w-fit ${
+                  service.status === "active"
+                    ? "bg-yellow-300 blur-sm"
+                    : service.status === "disable"
+                    ? "bg-red-500"
+                    : "bg-blue-700"
+                }`}>
+                {service.status}
+              </p>
+
               <h3 className="text-lg font-semibold text-black dark:text-white">
                 {service.title}
               </h3>

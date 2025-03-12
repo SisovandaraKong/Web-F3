@@ -7,7 +7,8 @@ const slides = [
     titleKey: "prosperInMarket",
     subtitleKey: "centerInternationalNetworks",
     buttonTextKey: "ourTeamButton",
-    image: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?cs=srgb&dl=pexels-fauxels-3183197.jpg&fm=jpg",
+    image:
+      "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?cs=srgb&dl=pexels-fauxels-3183197.jpg&fm=jpg",
   },
   {
     titleKey: "scaleBusiness",
@@ -19,10 +20,10 @@ const slides = [
     titleKey: "modernWebDevelopment",
     subtitleKey: "transformIdeasIntoWebsites",
     buttonTextKey: "viewPortfolioButton",
-    image: "https://www.calendar.com/wp-content/uploads/2022/02/How-to-Catch-up-at-Work.jpg.webp",
+    image:
+      "https://www.calendar.com/wp-content/uploads/2022/02/How-to-Catch-up-at-Work.jpg.webp",
   },
 ];
-
 const Carousel = () => {
   const { t } = useTranslation(); // Initialize the t function for translations
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -47,7 +48,9 @@ const Carousel = () => {
         <div
           key={`decoration-${slide}`}
           className={`absolute bg-gradient-to-b from-[var(--color-primary-hover)]/40 z-10 h-[200vh] w-[100px] left-[450px] -top-30 transform rotate-25 transition-all duration-700 ease-in-out ${
-            index === currentSlide ? "opacity-70 translate-x-0" : "opacity-0 translate-x-full"
+            index === currentSlide
+              ? "opacity-70 translate-x-0"
+              : "opacity-0 translate-x-full"
           }`}
         />
       ))}
@@ -55,7 +58,9 @@ const Carousel = () => {
         <div
           key={`decoration-${slide}`}
           className={`absolute bg-gradient-to-b from-[var(--color-primary)]/70 z-10 h-[200vh] w-[100px] left-[561px] -top-30 transform rotate-25 transition-all duration-700 ease-in-out ${
-            index === currentSlide ? "opacity-70 translate-x-0" : "opacity-0 translate-x-full"
+            index === currentSlide
+              ? "opacity-70 translate-x-0"
+              : "opacity-0 translate-x-full"
           }`}
         />
       ))}
@@ -63,7 +68,9 @@ const Carousel = () => {
         <div
           key={`decoration-${slide}`}
           className={`absolute bg-gradient-to-b from-[var(--color-primary)]/100 z-10 h-[200vh] w-[500px] left-[-20px] -top-30 transform -rotate-50 transition-all duration-700 ease-in-out ${
-            index === currentSlide ? "opacity-70 translate-x-0" : "opacity-0 translate-x-full"
+            index === currentSlide
+              ? "opacity-70 translate-x-0"
+              : "opacity-0 translate-x-full"
           }`}
         />
       ))}
@@ -74,7 +81,9 @@ const Carousel = () => {
             src={slide.image}
             alt="Slide"
             className={`absolute inset-0 w-full h-[100vh] object-cover transition-all duration-700 ease-in-out ${
-              index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+              index === currentSlide
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-105"
             }`}
           />
         ))}
@@ -85,16 +94,18 @@ const Carousel = () => {
           <div
             key={`content-${index}`}
             className={`transition-all duration-700 ease-in-out absolute ${
-              index === currentSlide ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-full"
-            }`}
-          >
+              index === currentSlide
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-full"
+            }`}>
             <h2 className="text-3xl md:text-6xl font-bold relative z-20 xl:w-[1000px]">
               {t(slide.titleKey)} {/* Use the translation keys */}
             </h2>
             <p className="mt-2 text-lg md:text-xl relative z-20 mb-4">
               {t(slide.subtitleKey)} {/* Use the translation keys */}
             </p>
-            <Button text={t(slide.buttonTextKey)} /> {/* Use the translation key */}
+            <Button text={t(slide.buttonTextKey)} />{" "}
+            {/* Use the translation key */}
           </div>
         ))}
       </div>
