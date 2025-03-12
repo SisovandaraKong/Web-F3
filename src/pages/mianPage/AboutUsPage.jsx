@@ -10,63 +10,58 @@ import MissionSection from "../../components/cards/CardAboutUs/MissionSection";
 import VisionSection from "../../components/cards/CardAboutUs/VisionSection";
 import { useTranslation } from "react-i18next";
 import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
+
 export default function AboutUsPage() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    Aos.init();
+    Aos.init({ duration: 800, easing: "ease-in-out", once: true });
   }, []);
 
   return (
-    <main>
-      <ScrollIndicator/>
+    <main className="bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <ScrollIndicator />
       <HeroSection />
-      <div className="max-w-screen-xl m-auto min-w-full">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <MissionSection />
         <VisionSection />
-        <section className="mt-28 px-36">
-          <div>
-            <h2
-              data-aos="flip-right"
-              className="text-MainTitle font-bold text-primary mb-4 text-center underline underline-offset-9 decoration-secondary">
-              {t("aboutUs.ourMentor")}
-            </h2>
-          </div>
+        <section className="mt-20">
+          <h2
+            data-aos="fade-up"
+            className="text-3xl md:text-4xl font-bold text-primary text-center underline underline-offset-8 decoration-secondary mb-10"
+          >
+            {t("aboutUs.ourMentor")}
+          </h2>
           <CardOurMentor />
         </section>
-        <section className="mt-28">
-          <div>
-            <h2
-              data-aos="flip-right"
-              className="text-MainTitle font-bold text-primary mb-4 text-center underline underline-offset-9 decoration-secondary">
-              {t("aboutUs.ourTeam")}
-            </h2>
-          </div>
+        <section className="mt-20">
+          <h2
+            data-aos="fade-up"
+            className="text-3xl md:text-4xl font-bold text-primary text-center underline underline-offset-8 decoration-secondary mb-10"
+          >
+            {t("aboutUs.ourTeam")}
+          </h2>
           <CardOurTeam />
         </section>
-
-        <section className="mt-28 px-36">
-          <div>
-            <h2
-              data-aos="flip-right"
-              className="text-MainTitle font-bold text-primary mb-4 text-center underline underline-offset-9 decoration-secondary">
-              {t("aboutUs.achievement")}
-            </h2>
-          </div>
+        <section className="mt-20">
+          <h2
+            data-aos="fade-up"
+            className="text-3xl md:text-4xl font-bold text-primary text-center underline underline-offset-8 decoration-secondary mb-10"
+          >
+            {t("aboutUs.achievement")}
+          </h2>
           <CardAchievement />
         </section>
-
-        <section className="mt-28 px-36">
-          <div>
-            <h2
-              data-aos="flip-right"
-              className="text-MainTitle font-bold text-primary mb-4 text-center underline underline-offset-9 decoration-secondary">
-              {t("aboutUs.service")}
-            </h2>
-          </div>
+        <section className="mt-20">
+          <h2
+            data-aos="fade-up"
+            className="text-3xl md:text-4xl font-bold text-primary text-center underline underline-offset-8 decoration-secondary mb-10"
+          >
+            {t("aboutUs.service")}
+          </h2>
           <CardService />
         </section>
-        <section className="mt-28 px-36">
+        <section className="mt-20">
           <CardContactUs />
         </section>
       </div>
