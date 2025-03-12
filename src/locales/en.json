@@ -8,8 +8,9 @@
   "partTime": "Part Time",
   "aboutUs": "About Us",
   "createjob": "Create Job",
+  "services": "Services",
   "job": "Job",
-
+  "joinASBusiness": "Join As Business",
 
   "_Comment Footer": "Footer",
   "footer": {
@@ -35,9 +36,6 @@
     "dribbble": "Dribbble account",
     "createdBy": "JobSeek is created by ISTAD Student for Job Matching Service Specialized in IT"
   },
-   
-
- 
 
   "_Comment Sidebar": "Sidebar",
   "dashboard": "Dashboard",
@@ -45,7 +43,6 @@
   "jobSeekers": "Job Seekers",
   "freelancers": "Freelancers",
   "messages": "Messages",
-
 
   "_Comment HomePage": "HomePage",
   "freelancer": "Freelancer",
@@ -56,8 +53,8 @@
   "jobSeekerDescription": "Description for job seekers",
   "forJobSeekService": "For Job Seekers Services",
   "jobSeekDescription": "Explore job opportunities.",
-  "careerSuccess": "Career Success",
-  "careerSuccessDescription": "Helping you achieve career success.",
+  "careerSuccess": "We Work To Ensure Your Career Success",
+  "careerSuccessDescription": "At JobSeek, our mission is to empower you to achieve your professional goals. We are dedicated to providing the tools, resources, and opportunities you need to succeed in your job search and beyond.",
   "moreAboutUs": "Learn More About Us",
   "whyJoinUs": "Why Join Us?",
   "whyJoinUsDescription": "Discover the benefits of joining our platform.",
@@ -105,7 +102,6 @@
   "companyName3": "Company Three",
   "companyDescription3": "Company Three specializes in providing scalable tech solutions.",
 
-
   "_Comment AboutUs page": "About Us Page",
   "heroTitle": "Welcome To",
   "heroHighlight": "JobSeek.",
@@ -124,7 +120,7 @@
   "ourVision": "Our Vision",
   "visionDescription": "At [Jobseek], we connect freelancers, job seekers, and employers to create valuable opportunities. Our platform helps individuals find meaningful work while enabling businesses to discover the talent they need. We're committed to making the job search and hiring process seamless and effective for all.",
   "businessMissionAlt": "Business Mission",
-    "mentorKayKeo": "Kay Keo",
+  "mentorKayKeo": "Kay Keo",
   "mentorProeungChiso": "Proeung Chiso",
   "Kong Sisovandara": "Kong Sisovandara",
   "Leader": "Leader",
@@ -155,6 +151,6 @@
   "Contact Us": "Contact Us",
   "address": "No. 24, Street 562, Sangkat Boeung Kok,\nToul Kork, Phnom Penh City.",
   "Contact illustration": "Contact illustration",
-    "joinAsBusiness": "Join As Business",
+  "joinAsBusiness": "Join As Business",
   "signUp": "Sign Up"
 }

@@ -19,7 +19,7 @@ export const registerFreelancer = apiSlide.injectEndpoints({
     }),
     getMe: build.query({
       query: () => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("accessToken");
         if (!token) {
           console.error("Token is missing. Please log in again.");
           return {};

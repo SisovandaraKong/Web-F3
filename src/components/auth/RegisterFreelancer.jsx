@@ -98,7 +98,7 @@ const RegisterFreelancer = () => {
   });
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen w-full overflow-y-auto">
+    <div className="flex flex-col md:flex-row  w-full overflow-y-auto">
       {/* Blue Section (Welcome) */}
       <div className="order-1 md:order-2 w-full md:w-1/2 bg-blue-900 text-white flex flex-col items-center justify-center p-4 md:p-6 flex-grow">
         {/* Phone layout: visible on small screens */}
@@ -153,155 +153,131 @@ const RegisterFreelancer = () => {
         </div>
         <form className="mt-3 w-11/12 sm:w-4/5" onSubmit={formik.handleSubmit}>
           {/* Full Name Field */}
-          <label
-            htmlFor="fullName"
-            className="block text-gray-800 font-medium mb-2">
-            Full Name
-          </label>
-          <input
-            id="fullName"
-            name="fullName"
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.fullName}
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          {formik.touched.fullName && formik.errors.fullName && (
-            <div className="text-red-500 text-xs mt-1">
-              {formik.errors.fullName}
-            </div>
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              placeholder="Full Name"
+              id="fullName"
+              name="fullName"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.fullName}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+            {formik.touched.fullName && formik.errors.fullName && (
+              <div className="text-red-500 text-xs mt-1">
+                {formik.errors.fullName}
+              </div>
+            )}
+
+            <input
+              placeholder="Username"
+              id="username"
+              name="username"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.username}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+            {formik.touched.username && formik.errors.username && (
+              <div className="text-red-500 text-xs mt-1">
+                {formik.errors.username}
+              </div>
+            )}
+          </div>
 
           {/* Gender Field */}
-          <label
-            htmlFor="gender"
-            className="block text-gray-800 font-medium mb-2 mt-4">
-            Gender
-          </label>
-          <select
-            id="gender"
-            name="gender"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.gender}
-            className="w-full p-2 border border-gray-300 rounded bg-white">
-            <option value="">Select gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-          {formik.touched.gender && formik.errors.gender && (
-            <div className="text-red-500 text-xs mt-1">
-              {formik.errors.gender}
-            </div>
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <select
+              id="gender"
+              name="gender"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.gender}
+              className="w-full p-2 border border-gray-300 rounded bg-white">
+              <option value="">Select gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            {formik.touched.gender && formik.errors.gender && (
+              <div className="text-red-500 text-xs mt-1">
+                {formik.errors.gender}
+              </div>
+            )}
+            <input
+              placeholder="Address"
+              id="address"
+              name="address"
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.address}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+            {formik.touched.address && formik.errors.address && (
+              <div className="text-red-500 text-xs mt-1">
+                {formik.errors.address}
+              </div>
+            )}
+          </div>
 
-          {/* Address Field */}
-          <label
-            htmlFor="address"
-            className="block text-gray-800 font-medium mb-2 mt-4">
-            Address
-          </label>
-          <input
-            id="address"
-            name="address"
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.address}
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          {formik.touched.address && formik.errors.address && (
-            <div className="text-red-500 text-xs mt-1">
-              {formik.errors.address}
-            </div>
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <input
+              placeholder="Email"
+              id="email"
+              name="email"
+              type="email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+            {formik.touched.email && formik.errors.email && (
+              <div className="text-red-500 text-xs mt-1">
+                {formik.errors.email}
+              </div>
+            )}
 
-          {/* Username Field */}
-          <label
-            htmlFor="username"
-            className="block text-gray-800 font-medium mb-2 mt-4">
-            Username
-          </label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.username}
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          {formik.touched.username && formik.errors.username && (
-            <div className="text-red-500 text-xs mt-1">
-              {formik.errors.username}
-            </div>
-          )}
-
-          {/* Email Field */}
-          <label
-            htmlFor="email"
-            className="block text-gray-800 font-medium mb-2 mt-4">
-            Email address
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          {formik.touched.email && formik.errors.email && (
-            <div className="text-red-500 text-xs mt-1">
-              {formik.errors.email}
-            </div>
-          )}
-
-          {/* Phone Number Field */}
-          <label
-            htmlFor="phone"
-            className="block text-gray-800 font-medium mb-2 mt-4">
-            Phone Number
-          </label>
-          <PhoneInput
-            country={"kh"}
-            value={phoneNumber}
-            onChange={handlePhoneNumberChange}
-            inputStyle={{
-              width: "100%",
-              height: "40px",
-              border: "1px solid #D1D5DB",
-              borderRadius: "4px",
-              fontSize: "14px",
-              paddingLeft: "58px",
-            }}
-            buttonStyle={{
-              width: "38px",
-              height: "38px",
-              border: "none",
-              background: "transparent",
-              position: "absolute",
-              left: "8px",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
-            containerStyle={{
-              position: "relative",
-              width: "100%",
-            }}
-            dropdownStyle={{
-              zIndex: 999,
-            }}
-            className="mb-3"
-          />
-          {formik.touched.phone && formik.errors.phone && (
-            <div className="text-red-500 text-xs mt-1">
-              {formik.errors.phone}
-            </div>
-          )}
+            <PhoneInput
+              placeholder="Phone Number"
+              country={"kh"}
+              value={phoneNumber}
+              onChange={handlePhoneNumberChange}
+              inputStyle={{
+                width: "100%",
+                height: "40px",
+                border: "1px solid #D1D5DB",
+                borderRadius: "4px",
+                fontSize: "14px",
+                paddingLeft: "58px",
+              }}
+              buttonStyle={{
+                width: "38px",
+                height: "38px",
+                border: "none",
+                background: "transparent",
+                position: "absolute",
+                left: "8px",
+                top: "50%",
+                transform: "translateY(-50%)",
+              }}
+              containerStyle={{
+                position: "relative",
+                width: "100%",
+              }}
+              dropdownStyle={{
+                zIndex: 999,
+              }}
+              className="mb-3"
+            />
+            {formik.touched.phone && formik.errors.phone && (
+              <div className="text-red-500 text-xs mt-1">
+                {formik.errors.phone}
+              </div>
+            )}
+          </div>
 
           {/* Password Field */}
           <label
@@ -396,20 +372,6 @@ const RegisterFreelancer = () => {
           </span>
         </p>
         <p className="mt-2 text-gray-500 text-sm text-center">OR</p>
-        <div className="flex flex-col gap-2 mt-3 w-11/12 sm:w-4/5">
-          <button className="w-full border font-medium border-gray-300 py-3 rounded-lg flex items-center justify-center gap-2 text-[15px] cursor-pointer hover:bg-gray-200">
-            <img
-              src={Ta3}
-              alt="Facebook Logo"
-              className="w-8 h-5 sm:w-9 sm:h-6"
-            />
-            Continue with Facebook
-          </button>
-          <button className="w-full border font-medium border-gray-300 py-3 rounded-lg flex items-center justify-center gap-2 text-[15px] cursor-pointer hover:bg-gray-200 mt-2 mb-3">
-            <img src={Ta4} alt="Google Logo" className="w-6 h-6" />
-            Continue with Google
-          </button>
-        </div>
       </div>
     </div>
   );

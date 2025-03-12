@@ -32,14 +32,14 @@ const LoginPage = () => {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const response = await login(values).unwrap();  // Unwrap the response to avoid redux-toolkit's automatic error handling.
+        const response = await login(values).unwrap(); // Unwrap the response to avoid redux-toolkit's automatic error handling.
         console.log("Login successful:", response);
-      
+
         // Ensure that the tokens are present before setting them in storage
         if (response?.accessToken) {
-          localStorage.setItem("token", response.accessToken);
+          localStorage.setItem("accessToken", response.accessToken);
           console.log("Token stored in session storage:", response.accessToken);
-          
+
           // Only store refreshToken if it's available
           if (response?.refreshToken) {
             localStorage.setItem("refreshToken", response.refreshToken);
@@ -57,7 +57,6 @@ const LoginPage = () => {
         console.error("Login error:", err);
         toast.error(err.data?.message || 'Invalid credentials. Please try again.');
       }
-      
     },
   });
 
@@ -151,21 +150,6 @@ const LoginPage = () => {
             Sign up
           </span>
         </p>
-        <p className="mt-3 text-gray-500 text-sm">OR</p>
-        <div className="flex flex-col gap-3 mt-4 w-4/5">
-          <button
-            className="w-full border border-gray-300 p-2.5 rounded-lg flex items-center justify-center gap-2 text-base hover:bg-gray-200"
-            type="button">
-            <img src={Ta3} alt="Facebook Logo" className="w-9 h-6" />
-            Continue with Facebook
-          </button>
-          <button
-            className="w-full border border-gray-300 p-2.5 rounded-lg flex items-center justify-center gap-2 text-base hover:bg-gray-200"
-            type="button">
-            <img src={Ta4} alt="Google Logo" className="w-6 h-6" />
-            Continue with Google
-          </button>
-        </div>
       </div>
     </div>
   );

@@ -50,11 +50,11 @@ export default function HomePage() {
       </section>
       <section className="bg-primary container mx-auto gap-7 px-5 md:px-20 xl:px-32 py-17 dark:bg-primary">
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-center text-white-text dark:text-white-text">
+          <h2 className="text-3xl font-bold text-start text-white-text dark:text-white-text">
             {t("forJobSeekService")}{" "}
             {/* Replace static text with translation key */}
           </h2>
-          <p className="text-lg text-white-text text-center dark:text-white-text">
+          <p className="text-lg text-white-text text-start dark:text-white-text">
             {t("jobSeekDescription")}{" "}
             {/* Replace static text with translation key */}
           </p>
@@ -82,10 +82,9 @@ export default function HomePage() {
                 {t("careerSuccessDescription")}{" "}
                 {/* Replace static text with translation key */}
               </p>
-              <button className="mt-4 p-3 bg-primary text-white rounded-[5px] hover:bg-primary-hover dark:bg-primary dark:hover:bg-primary-hover">
+              {/* <button className="mt-4 p-3 bg-primary text-white rounded-[5px] hover:bg-primary-hover dark:bg-primary dark:hover:bg-primary-hover">
                 {t("moreAboutUs")}{" "}
-                {/* Replace static text with translation key */}
-              </button>
+              </button> */}
             </div>
           </div>
 

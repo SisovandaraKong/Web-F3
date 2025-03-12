@@ -1,12 +1,9 @@
-// pages/FreelancerPage.jsx
 import React, { useState } from "react";
 import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
 import CardJob from "../../components/cards/CardJob";
-import CustomCarousel from "../../components/carousel/CustomCarousel"; // Adjust path as needed
-
-export default function FreelancerPage() {
+export default function JobPost() {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 5; // Ideally, this should be dynamic from API response
+  const totalPages = 5;
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -17,26 +14,17 @@ export default function FreelancerPage() {
   return (
     <>
       <ScrollIndicator />
+
       <main className="max-w-screen-xl mx-auto p-4">
-        {/* Carousel Section */}
-        <section className="mb-10">
-          <CustomCarousel />
-        </section>
-
-
-        {/* Existing Title Section */}
+        <section className="bg-primary-hover h-[200px] text-white flex items-center justify-center rounded-lg overflow-hidden mb-10 "></section>
         <section className="border-b-2 py-1">
-          <h2 className="text-3xl font-bold">
-            Explore The Service Of Freelancer
+          <h2 className="text-3xl font-bold ">
+            What The Bussiness Owner Need.{" "}
           </h2>
         </section>
-
-        {/* Existing CardJob Grid Section */}
         <section className="mt-10">
           <CardJob page={currentPage} />
         </section>
-
-        {/* Existing Pagination Section */}
         <section>
           <ol className="flex justify-center gap-2 mt-4">
             <li>
@@ -45,8 +33,7 @@ export default function FreelancerPage() {
                 disabled={currentPage === 1}
                 className={`px-3 py-2 border ${
                   currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
+                }`}>
                 Prev
               </button>
             </li>
@@ -58,8 +45,7 @@ export default function FreelancerPage() {
                     onClick={() => handlePageChange(page)}
                     className={`px-3 py-2 border ${
                       currentPage === page ? "bg-blue-500 text-white" : ""
-                    }`}
-                  >
+                    }`}>
                     {page}
                   </button>
                 </li>
@@ -73,8 +59,7 @@ export default function FreelancerPage() {
                   currentPage === totalPages
                     ? "opacity-50 cursor-not-allowed"
                     : ""
-                }`}
-              >
+                }`}>
                 Next
               </button>
             </li>

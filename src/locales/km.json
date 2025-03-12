@@ -1,4 +1,4 @@
-{
+ {
   "_Comment Navbar": "Navbar",
   "Home": "ទំព័រដើម",
   "Dropdown": "ម៉ឺនុយចុះក្រោម",
@@ -7,7 +7,6 @@
   "fullTime": "ពេញម៉ោង",
   "partTime": "កន្លះម៉ោង",
   "aboutUs": "អំពីពួកយើង",
-  "createjob": "បង្កើតការងារ",
   "job": "ការងារ",
 
 
@@ -36,14 +35,12 @@
     "createdBy": "JobSeek ត្រូវបានបង្កើតដោយអ្នកសិស្ស ISTAD សម្រាប់សេវាការប្រកួតការងារដែលមានជំនាញពិសេសក្នុង IT"
   },
 
-
   "_Comment Sidebar": "Sidebar",
   "dashboard": "បន្ទប់គ្រប់គ្រង",
   "businessOwner": "ម្ចាស់អាជីវកម្ម",
   "jobSeekers": "អ្នកស្វែងរកការងារ",
   "freelancers": "អ្នកផ្តល់សេវាកម្មឯកជន",
   "messages": "សារ",
-
 
   "_Comment HomePage": "HomePage",
   "freelancer": "អ្នកធ្វើការតាមពេលវេលា",
@@ -103,7 +100,6 @@
   "companyName3": "ក្រុមហ៊ុនទីបី",
   "companyDescription3": "ក្រុមហ៊ុនទីបីមានជំនាញក្នុងការផ្តល់ដំណោះស្រាយបច្ចេកវិទ្យាដែលអាចពង្រីកបាន។",
 
-
   "_Comment AboutUs page": "About Us Page",
   "heroTitle": "ស្វាគមន៍​មកកាន់",
   "heroHighlight": "JobSeek.",
@@ -153,6 +149,6 @@
   "Contact Us": "ទំនាក់ទំនងមកយើង",
   "address": "លេខ ២៤ ផ្លូវ ៥៦២ សង្កាត់បឹងកក់,\nទួលគក ភ្នំពេញ",
   "Contact illustration": "រូបភាពទំនាក់ទំនង",
-    "joinAsBusiness": "ចូលរួមជាមួយអាជីវកម្ម",
+  "joinAsBusiness": "ចូលរួមជាមួយអាជីវកម្ម",
   "signUp": "ចុះឈ្មោះ"
 }

@@ -1,10 +1,11 @@
+
 import { apiSlide } from "../api/apiSlide";
 
 export const serviceSlide = apiSlide.injectEndpoints({
   endpoints: (build) => ({
     getAllUsers: build.query({
-      query: ({ userType, page = 0, size = 10, sortBy = 'email' }) => ({
-        url: `/api/users?userType=${userType}&page=${page}&size=${size}&sortBy=${sortBy}`,
+      query: () => ({
+        url: "/api/users?userType=freelancer&page=0&size=10&sortBy=email",
         method: "GET",
       }),
     }),
@@ -16,8 +17,15 @@ export const serviceSlide = apiSlide.injectEndpoints({
     }),
     getAllServices: build.query({
       query: (page = 1) => ({
-        url: `/api/jobs-service/services?page=${page}`,
+        url: `/api/jobs-service/services?page=${page} `,
         method: "GET",
+      }),
+    }),
+    createService: build.mutation({
+      query: (data) => ({
+        url: "/api/jobs-service/services/create-new",
+        method: "POST",
+        body: data,
       }),
     }),
   }),
@@ -27,4 +35,6 @@ export const {
   useGetAllUsersQuery,
   useGetUserByIdQuery,
   useGetAllServicesQuery,
+  useGetServicesByIdQuery,
+  useCreateServiceMutation,
 } = serviceSlide;
