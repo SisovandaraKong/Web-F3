@@ -1,8 +1,8 @@
 // pages/FreelancerPage.jsx
 import React, { useState } from "react";
 import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
-import CardJob from "../../components/cards/CardJob";
 import CustomCarousel from "../../components/carousel/CustomCarousel"; // Adjust path as needed
+import CardServices from "../../components/cards/Freelancer/CardServices";
 
 export default function FreelancerPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +23,6 @@ export default function FreelancerPage() {
           <CustomCarousel />
         </section>
 
-
         {/* Existing Title Section */}
         <section className="border-b-2 py-1">
           <h2 className="text-3xl font-bold">
@@ -33,7 +32,7 @@ export default function FreelancerPage() {
 
         {/* Existing CardJob Grid Section */}
         <section className="mt-10">
-          <CardJob page={currentPage} />
+          <CardServices page={currentPage} />
         </section>
 
         {/* Existing Pagination Section */}
@@ -45,8 +44,7 @@ export default function FreelancerPage() {
                 disabled={currentPage === 1}
                 className={`px-3 py-2 border ${
                   currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
+                }`}>
                 Prev
               </button>
             </li>
@@ -58,8 +56,7 @@ export default function FreelancerPage() {
                     onClick={() => handlePageChange(page)}
                     className={`px-3 py-2 border ${
                       currentPage === page ? "bg-blue-500 text-white" : ""
-                    }`}
-                  >
+                    }`}>
                     {page}
                   </button>
                 </li>
@@ -73,8 +70,7 @@ export default function FreelancerPage() {
                   currentPage === totalPages
                     ? "opacity-50 cursor-not-allowed"
                     : ""
-                }`}
-              >
+                }`}>
                 Next
               </button>
             </li>

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import { useLoginMutation } from "../../feature/auth/authSlide";
 import Ta1 from "../../assets/Ta_Images/LoginJoinUs.png";
 import Ta2 from "../../assets/Ta_Images/Logo.png";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -38,16 +38,18 @@ const LoginPage = () => {
           if (response?.refreshToken) {
             localStorage.setItem("refreshToken", response.refreshToken);
           }
-          toast.success('Login successful! Welcome back!', {
-            position: 'top-right',
+          toast.success("Login successful! Welcome back!", {
+            position: "top-right",
           });
           navigate("/freelancer-feed");
         } else {
-          toast.error('Login successful, but no token received.');
+          toast.error("Login successful, but no token received.");
         }
       } catch (err) {
         console.error("Login error:", err);
-        toast.error(err.data?.message || 'Invalid credentials. Please try again.');
+        toast.error(
+          err.data?.message || "Invalid credentials. Please try again."
+        );
       }
     },
   });
@@ -57,9 +59,15 @@ const LoginPage = () => {
       {/* Welcome Section */}
       <div className="hidden md:flex w-full md:w-1/2 bg-gradient-to-br from-blue-900 to-blue-700 text-white items-center justify-center p-8">
         <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">Welcome to</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">
+            Welcome to
+          </h1>
           <h1 className="text-4xl md:text-5xl font-extrabold">JobSeek</h1>
-          <img src={Ta1} alt="Welcome Graphic" className="mt-10 w-3/4 max-w-md mx-auto" />
+          <img
+            src={Ta1}
+            alt="Welcome Graphic"
+            className="mt-10 w-3/4 max-w-md mx-auto"
+          />
         </div>
       </div>
 
@@ -72,17 +80,17 @@ const LoginPage = () => {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold text-gray-800">Welcome Back</h2>
+            <h2 className="text-2xl font-semibold text-gray-800">
+              Welcome Back
+            </h2>
             <p className="text-sm text-gray-600 mt-1">Log in to your account</p>
           </div>
 
           <form onSubmit={formik.handleSubmit} className="space-y-6">
             {/* Email/Username */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                Email or Username
-              </label>
               <input
+                placeholder="Enter your email"
                 id="email"
                 name="email"
                 type="text"
@@ -90,16 +98,19 @@ const LoginPage = () => {
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
-                placeholder="Enter your email or username"
               />
               {formik.touched.email && formik.errors.email && (
-                <p className="text-red-500 text-xs mt-1">{formik.errors.email}</p>
+                <p className="text-red-500 text-xs mt-1">
+                  {formik.errors.email}
+                </p>
               )}
             </div>
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-1">
                 Password
               </label>
               <div className="relative">
@@ -116,8 +127,7 @@ const LoginPage = () => {
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-900"
-                >
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-900">
                   {passwordVisible ? (
                     <i className="fas fa-eye-slash"></i>
                   ) : (
@@ -126,13 +136,14 @@ const LoginPage = () => {
                 </button>
               </div>
               {formik.touched.password && formik.errors.password && (
-                <p className="text-red-500 text-xs mt-1">{formik.errors.password}</p>
+                <p className="text-red-500 text-xs mt-1">
+                  {formik.errors.password}
+                </p>
               )}
               <div className="text-right mt-2">
                 <span
                   className="text-sm text-blue-900 hover:underline cursor-pointer"
-                  onClick={() => navigate("/forgot-password")}
-                >
+                  onClick={() => navigate("/forgot-password")}>
                   Forgot password?
                 </span>
               </div>
@@ -141,7 +152,8 @@ const LoginPage = () => {
             {/* Error Message */}
             {error && (
               <p className="text-red-500 text-sm text-center">
-                {error?.data?.message || "Invalid credentials. Please try again."}
+                {error?.data?.message ||
+                  "Invalid credentials. Please try again."}
               </p>
             )}
 
@@ -149,8 +161,7 @@ const LoginPage = () => {
             <button
               className="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 rounded-lg font-medium disabled:opacity-50 transition"
               type="submit"
-              disabled={isLoading}
-            >
+              disabled={isLoading}>
               {isLoading ? "Logging in..." : "Log in"}
             </button>
           </form>
@@ -159,8 +170,7 @@ const LoginPage = () => {
             Don't have an account?{" "}
             <span
               className="text-blue-900 hover:underline cursor-pointer font-medium"
-              onClick={() => navigate("/register-freelancer")}
-            >
+              onClick={() => navigate("/register-freelancer")}>
               Sign up
             </span>
           </p>

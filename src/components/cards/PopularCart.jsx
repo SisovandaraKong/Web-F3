@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import jobListings from "../../data/mockData";
 import { useTranslation } from "react-i18next"; // Import useTranslation
+import Aos from "aos";
 
 export default function PopularCart() {
   const { t } = useTranslation(); // Initialize the t function for translations
+  useEffect(() => {
+    Aos.init({ duration: 700, once: false });
+  }, []);
 
   return (
     <>
       {jobListings.slice(0, 3).map((jobData, index) => (
         <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
           key={index}
           className="relative block rounded-tr-3xl border border-gray-100">
           <span className="absolute -right-px -top-px rounded-bl-3xl rounded-tr-3xl bg-rose-600 px-6 py-4 font-medium uppercase tracking-widest text-white">
@@ -28,7 +34,8 @@ export default function PopularCart() {
               {t(jobData.role)} {/* Use translation key for description */}
             </p>
             <p className="mt-2 text-pretty text-gray-700 line-clamp-2">
-              {t(jobData.companyDescription)} {/* Use translation key for description */}
+              {t(jobData.companyDescription)}{" "}
+              {/* Use translation key for description */}
               {t(jobData.companyDescriptionKey)}{" "}
               {/* Use translation key for description */}
             </p>

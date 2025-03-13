@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/CardHowerEffec.css";
+import Aos from "aos";
 
 const CardHowerEffec = ({ heading, content, svg }) => {
+  useEffect(() => {
+    Aos.init({ duration: 700, once: false });
+  }, []);
+
   return (
-    <div className="card">
+    <div data-aos="fade-up" data-aos-duration="1000" className="card">
       <div className="card-front">
-        <div className="card-icon">{svg}</div>
+        <div className="card-icon  ">{svg}</div>
         <h3 className="font-bold text-CardMainTitle dark:text-black-text">
           {heading}
         </h3>

@@ -107,7 +107,7 @@ const ChatbotPage = () => {
       {/* Sticky Sidebar - unchanged */}
       <div className="w-64 bg-primary text-white flex flex-col sticky top-0 h-full">
         <div className="p-4">
-          <h1 className="text-xl font-bold text-white">Kong Sisovandara's Chat</h1>
+          <h1 className="text-xl font-bold text-white">Job Seek's Chat</h1>
         </div>
         <button
           onClick={startNewChat}

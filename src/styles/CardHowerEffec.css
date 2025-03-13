@@ -58,7 +58,6 @@
   padding: 20px;
   background-color: #2b407f;
   transition: top 0.4s ease;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,7 +82,8 @@
 .hover-icon svg {
   width: 96px; /* Adjust SVG size */
   height: 96px;
-  fill: #333; /* Icon color */
+  fill: #333;
+  align-items: start  ; /* Icon color */
 }
 
 /* .card-content h3 {

@@ -38,7 +38,7 @@ const CreateServicePage = () => {
         description,
         categoryId: String(categoryId),
         status: "ACTIVE",
-        imageUrls, // Now correctly formatted as an array
+        imageUrls,
       };
 
       console.log("Submitting service data:", serviceData);
@@ -70,88 +70,127 @@ const CreateServicePage = () => {
 
   if (categoriesError) {
     return (
-      <div className="max-w-4xl mx-auto p-8 bg-red-50 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-red-700">Error Loading Categories</h2>
-        <p className="mt-2">Please refresh the page or try again later.</p>
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="max-w-md w-full p-6 bg-white rounded-xl shadow-lg">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Error Loading Categories</h2>
+          <p className="text-gray-600">Something went wrong while fetching categories. Please refresh the page or try again later.</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-gray-50 rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold text-center mb-6">Create Service</h2>
-      
-      {createError && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-300 rounded-md">
-          <p className="text-red-700">
-            Error: {createError.data?.message || createError.message || "Something went wrong"}
-          </p>
-        </div>
-      )}
-      
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label className="block text-lg font-semibold text-gray-700">Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        <div>
-          <label className="block text-lg font-semibold text-gray-700">Description:</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="4"
-          />
-        </div>
-        <div>
-          <label className="block text-lg font-semibold text-gray-700">Category:</label>
-          {isLoading ? (
-            <p className="text-gray-500 italic">Loading categories...</p>
-          ) : (
-            <select
-              value={categoryId}
-              onChange={(e) => setCategoryId(e.target.value)}
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12">
+      <div className="max-w-2xl w-full bg-white rounded-xl shadow-lg p-8">
+        <h2 className="text-3xl font-bold text-gray-800 mb-2 text-center">Create a New Service</h2>
+        <p className="text-gray-500 text-center mb-8">Fill in the details below to add a new service.</p>
+
+        {createError && (
+          <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded-r-md">
+            <p className="text-red-700 text-sm font-medium">
+              Error: {createError.data?.message || createError.message || "Something went wrong"}
+            </p>
+          </div>
+        )}
+        
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+              Service Title <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               required
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Select a category</option>
-              {Array.isArray(categories) ? (
-                categories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                ))
-              ) : (
-                <option disabled>No categories available</option>
-              )}
-            </select>
-          )}
-        </div>
-        <div>
-          <label className="block text-lg font-semibold text-gray-700">Image URLs (comma-separated):</label>
-          <input
-            type="text"
-            value={imageUrls.join(", ")}
-            onChange={(e) => setImageUrls(e.target.value.split(",").map(url => url.trim()))}
-            required
-            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={isLoading || isCreating}
-          className="w-full py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-blue-300"
-        >
-          {isLoading || isCreating ? "Processing..." : "Create Service"}
-        </button>
-      </form>
+              placeholder="Enter service title"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+              Description <span className="text-red-500">*</span>
+            </label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+              placeholder="Describe your service"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 resize-y"
+              rows="4"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
+              Category <span className="text-red-500">*</span>
+            </label>
+            {isLoading ? (
+              <div className="w-full p-3 bg-gray-100 border border-gray-300 rounded-md text-gray-500 italic">
+                Loading categories...
+              </div>
+            ) : (
+              <select
+                id="category"
+                value={categoryId}
+                onChange={(e) => setCategoryId(e.target.value)}
+                required
+                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 appearance-none bg-white"
+              >
+                <option value="" disabled>
+                  Select a category
+                </option>
+                {Array.isArray(categories) && categories.length > 0 ? (
+                  categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))
+                ) : (
+                  <option disabled>No categories available</option>
+                )}
+              </select>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="imageUrls" className="block text-sm font-medium text-gray-700 mb-1">
+              Image URLs <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="imageUrls"
+              type="text"
+              value={imageUrls.join(", ")}
+              onChange={(e) => setImageUrls(e.target.value.split(",").map(url => url.trim()))}
+              required
+              placeholder="Enter URLs separated by commas (e.g., url1, url2)"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+            />
+            <p className="text-xs text-gray-500 mt-1">Separate multiple URLs with commas.</p>
+          </div>
+
+          <button
+            type="submit"
+            disabled={isLoading || isCreating}
+            className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-300 disabled:cursor-not-allowed transition-all duration-200"
+          >
+            {isLoading || isCreating ? (
+              <span className="flex items-center justify-center">
+                <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                </svg>
+                Processing...
+              </span>
+            ) : (
+              "Create Service"
+            )}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

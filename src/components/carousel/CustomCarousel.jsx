@@ -45,11 +45,7 @@ export default function CustomCarousel() {
   }
 
   if (isError || totalSlides === 0) {
-    return (
-      <div className="h-[400px] flex items-center justify-center text-gray-500">
-        No services available
-      </div>
-    );
+    return <div className="">{""}</div>;
   }
 
   return (
@@ -57,12 +53,13 @@ export default function CustomCarousel() {
       {/* Slides Container */}
       <div
         className="flex transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-      >
+        style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
         {services.map((service) => (
           <div key={service.id} className="min-w-full px-4">
             <NavLink to={`/freelancer-page/${service.id}`}>
-              <div className="relative h-[400px]"> {/* Adjusted to full height */}
+              <div className="relative h-[400px]">
+                {" "}
+                {/* Adjusted to full height */}
                 {/* Image */}
                 <img
                   src={
@@ -88,19 +85,16 @@ export default function CustomCarousel() {
       {/* Previous Button */}
       <button
         onClick={goToPrevious}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
-      >
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all">
         ‹
       </button>
 
       {/* Next Button */}
       <button
         onClick={goToNext}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
-      >
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all">
         ›
       </button>
-
     </div>
   );
 }
