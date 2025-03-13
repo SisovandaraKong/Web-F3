@@ -18,6 +18,7 @@ import FreelancerPage from "./pages/freelaner/FreelancerPage.jsx";
 import ServiceDetail from "./pages/freelaner/ServideDetail.jsx";
 import JobPost from "./pages/freelaner/JobPost.jsx";
 import CreateServicePage from "./pages/creatAtJob/CreatAtService.jsx";
+import RegisterBusinessOwner from "./components/auth/RegisterBusinessOwner.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -46,6 +47,10 @@ createRoot(document.getElementById("root")).render(
             <Route
               path="/register-freelancer"
               element={<RegisterFreelancer />}
+            />
+              <Route
+              path="/register-businessowner"
+              element={<RegisterBusinessOwner />}
             />
             <Route path="/register-freelancer/login" element={<Login />} />
           </Routes>

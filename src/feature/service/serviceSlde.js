@@ -21,13 +21,28 @@ export const serviceSlide = apiSlide.injectEndpoints({
         method: "GET",
       }),
     }),
-    createService: build.mutation({
-      query: (data) => ({
-        url: "/api/jobs-service/services/create-new",
-        method: "POST",
-        body: data,
+    getAllCategories : build.query({
+      query: () => ({
+        url: "/api/jobs-service/categories",
+        method: "GET",
       }),
     }),
+ createService: build.mutation({
+  query: (data) => {
+    const token = localStorage.getItem("accessToken"); // Retrieve token
+
+    return {
+      url: "/api/jobs-service/services/create-new",
+      method: "POST",
+      body: data,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // Attach token
+      },
+    };
+  },
+}),
+
   }),
 });
 
@@ -37,4 +52,5 @@ export const {
   useGetAllServicesQuery,
   useGetServicesByIdQuery,
   useCreateServiceMutation,
+  useGetAllCategoriesQuery,
 } = serviceSlide;

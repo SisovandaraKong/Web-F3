@@ -7,7 +7,7 @@ import {
 
 export default function ServiceDetail() {
   const { id } = useParams();
-  const { data: serviceData, isLoading, isError } = useGetAllServicesQuery();
+  const { data: serviceData, isLoading, isError } = useGetAllServicesQuery(1); // Pass the correct page number here
   const { data: userData } = useGetAllUsersQuery();
 
   const users = userData?.data?.content || [];
@@ -161,10 +161,7 @@ export default function ServiceDetail() {
                   }}
                 >
                   {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                    <div
-                      key={slideIndex}
-                      className="flex min-w-full gap-4"
-                    >
+                    <div key={slideIndex} className="flex min-w-full gap-4">
                       {relatedServices
                         .slice(
                           slideIndex * slidesToShow,

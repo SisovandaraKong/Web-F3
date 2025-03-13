@@ -215,10 +215,11 @@ export default function Navbar() {
         </div>
         {/* Buttons */}
         <div className="flex items-center space-x-4">
-          <button className="text-white px-[17px] py-[9px] border-2 border-secondary rounded-md cursor-pointer">
-          {t("joinASBusiness")}
-          </button>
-
+          <NavLink to="/register-businessowner">
+            <button className="text-white px-[17px] py-[9px] border-2 border-secondary rounded-md cursor-pointer">
+              Joint As Business
+            </button>
+          </NavLink>
           {accessToken || refreshToken ? (
             // User Profile with Dropdown
             <div className="relative">

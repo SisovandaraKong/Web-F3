@@ -1,306 +1,189 @@
-import { useState } from "react";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
-import "@fortawesome/fontawesome-free/css/all.css";
-import Ta1 from "../assets/Ta_Images/LoginJoinUs.png";
-import Ta2 from "../assets/Ta_Images/Logo.png";
-import Ta3 from "../assets/Ta_Images/facebook.png";
-import Ta4 from "../assets/Ta_Images/google.png";
+import React, { useState } from "react";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useRegisterBusinessOwnerMutation } from "../../feature/auth/authSlide";
+
+const validationSchema = Yup.object({
+  fullName: Yup.string().required("Full Name is required"),
+  gender: Yup.string().required("Gender is required"),
+  profileImageUrl: Yup.string().required("Profile Image is required"),
+  email: Yup.string().email("Invalid email address").required("Email is required"),
+  phone: Yup.string().required("Phone number is required"),
+  userType: Yup.string().required("User type is required"),
+  companyName: Yup.string().required("Company Name is required"),
+  companyWebsite: Yup.string().url("Invalid URL").required("Company Website is required"),
+  industry: Yup.string().required("Industry is required"),
+  password: Yup.string().required("Password is required").min(6, "Password should be at least 6 characters"),
+});
 
 const RegisterBusinessOwner = () => {
-    const [passwordVisible, setPasswordVisible] = useState(false);
-    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [selectedSkill, setSelectedSkill] = useState(""); // For dropdown selection
-    const [otherSkill, setOtherSkill] = useState(""); // For "Other Skills" input
+  const [registerBusinessOwner, { isLoading, error }] = useRegisterBusinessOwnerMutation();
+  const [formError, setFormError] = useState(null);
 
-    const togglePasswordVisibility = () => {
-        setPasswordVisible(!passwordVisible);
-    };
+  const handleSubmit = async (values) => {
+    try {
+      const response = await registerBusinessOwner(values).unwrap();
+      console.log("Registration successful:", response);
+      // Redirect or show success message here
+    } catch (err) {
+      console.error("Registration failed", err);
+      setFormError(err.message);
+    }
+  };
 
-    const toggleConfirmPasswordVisibility = () => {
-        setConfirmPasswordVisible(!confirmPasswordVisible);
-    };
+  return (
+    <Formik
+      initialValues={{
+        fullName: "",
+        gender: "",
+        profileImageUrl: "",
+        email: "",
+        phone: "",
+        userType: "BUSINESS_OWNER",
+        companyName: "",
+        companyWebsite: "",
+        industry: "",
+        password: "",
+      }}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
+      {() => (
+        <Form className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg">
+          <div className="mb-4">
+            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name</label>
+            <Field
+              type="text"
+              name="fullName"
+              id="fullName"
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+            <ErrorMessage name="fullName" component="div" className="text-red-500 text-sm" />
+          </div>
 
-    const handlePhoneNumberChange = (value) => {
-        setPhoneNumber(value);
-    };
+          <div className="mb-4">
+            <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender</label>
+            <Field
+              as="select"
+              name="gender"
+              id="gender"
+              className="mt-1 p-2 w-full border rounded-md"
+            >
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </Field>
+            <ErrorMessage name="gender" component="div" className="text-red-500 text-sm" />
+          </div>
 
-    const handleSkillChange = (event) => {
-        const selectedValue = event.target.value;
-        setSelectedSkill(selectedValue);
-        if (selectedValue !== "Other Skills") {
-            setOtherSkill(""); // Clear the "Other Skills" text box if it's no longer selected
-        }
-    };
+          <div className="mb-4">
+            <label htmlFor="profileImageUrl" className="block text-sm font-medium text-gray-700">Profile Image</label>
+            <Field
+              type="text"
+              name="profileImageUrl"
+              id="profileImageUrl"
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+            <ErrorMessage name="profileImageUrl" component="div" className="text-red-500 text-sm" />
+          </div>
 
-    const handleOtherSkillChange = (event) => {
-        setOtherSkill(event.target.value);
-    };
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <Field
+              type="email"
+              name="email"
+              id="email"
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+            <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+          </div>
 
-    return (
-        <div className="flex flex-col md:flex-row min-h-screen w-full overflow-y-auto">
-            {/* Blue Section (Welcome) */}
-            <div className="order-1 md:order-2 w-full md:w-1/2 bg-blue-900 text-white flex flex-col items-center justify-center p-4 md:p-6 flex-grow">
-                {/* Phone layout: visible on small screens */}
-                <div className="flex flex-col md:hidden items-center">
-                    <div className="flex items-center justify-between w-full">
-                        <img
-                            src={Ta1}
-                            alt="Join Us Now"
-                            className="w-24 h-24 sm:w-28 sm:h-28 ml-4 mr-11"
-                        />
-                        <div className="flex flex-col items-end pr-4">
-                            <h1 className="text-xl text-[28px] font-semibold text-right">
-                                Welcome to
-                            </h1>
-                            <h1 className="text-xl text-[28px] font-bold text-right">
-                                JobSeek
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-                <div className="hidden md:block text-center">
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold">
-                        Welcome to
-                    </h1>
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mt-2">
-                        JobSeek
-                    </h1>
-                    <img
-                        src={Ta1}
-                        alt="Join Us Now"
-                        className="mt-6 sm:mt-8 w-4/5 md:w-2/3 mx-auto"
-                    />
-                </div>
+          <div className="mb-4">
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
+            <Field
+              type="text"
+              name="phone"
+              id="phone"
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+            <ErrorMessage name="phone" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="userType" className="block text-sm font-medium text-gray-700">User Type</label>
+            <Field
+              as="select"
+              name="userType"
+              id="userType"
+              className="mt-1 p-2 w-full border rounded-md"
+            >
+              <option value="BUSINESS_OWNER">Business Owner</option>
+              <option value="INDIVIDUAL">Individual</option>
+            </Field>
+            <ErrorMessage name="userType" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="companyName" className="block text-sm font-medium text-gray-700">Company Name</label>
+            <Field
+              type="text"
+              name="companyName"
+              id="companyName"
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+            <ErrorMessage name="companyName" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="companyWebsite" className="block text-sm font-medium text-gray-700">Company Website</label>
+            <Field
+              type="url"
+              name="companyWebsite"
+              id="companyWebsite"
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+            <ErrorMessage name="companyWebsite" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="industry" className="block text-sm font-medium text-gray-700">Industry</label>
+            <Field
+              type="text"
+              name="industry"
+              id="industry"
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+            <ErrorMessage name="industry" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <Field
+              type="password"
+              name="password"
+              id="password"
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+            <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+            disabled={isLoading}
+          >
+            {isLoading ? "Submitting..." : "Submit"}
+          </button>
+
+          {formError && (
+            <div className="mt-4 text-red-500">
+              <p>{formError}</p>
             </div>
-
-            {/* White Section (Form) */}
-            <div className="order-2 md:order-1 w-full md:w-1/2 bg-gray-100 flex flex-col items-center justify-start p-4 text-sm sm:text-base flex-grow">
-                <div className="mt-4 w-11/12 sm:w-4/5">
-                    <div className="flex items-center mb-5">
-                        <img
-                            src={Ta2}
-                            alt="Logo"
-                            className="w-10 h-10 sm:w-14 sm:h-14 mr-3"
-                        />
-                        <h1 className="text-3xl font-bold text-blue-900">JobSeek</h1>
-                    </div>
-                    <h2 className="text-2xl font-bold text-left text-blue-900 mb-1">
-                        Create an account
-                    </h2>
-                </div>
-                <form className="mt-3 w-11/12 sm:w-4/5">
-                    {/* Full Name Field */}
-                    <label
-                        htmlFor="full-name"
-                        className="block text-gray-800 font-medium mb-2"
-                    >
-                        Full Name
-                    </label>
-                    <input
-                        id="full-name"
-                        type="text"
-                        className="w-full p-2 border border-gray-300 rounded"
-                    />
-
-                    {/* Username Field */}
-                    <label
-                        htmlFor="username"
-                        className="block text-gray-800 font-medium mb-3 mt-4"
-                    >
-                        Username
-                    </label>
-                    <input
-                        id="username"
-                        type="text"
-                        className="w-full p-2 border border-gray-300 rounded"
-                    />
-
-                    {/* Email Field */}
-                    <label
-                        htmlFor="email"
-                        className="block text-gray-800 font-medium mb-3 mt-4"
-                    >
-                        Email address
-                    </label>
-                    <input
-                        id="email"
-                        type="email"
-                        className="w-full p-2 border border-gray-300 rounded"
-                    />
-
-                    {/* Phone Number Field */}
-                    <label
-                        htmlFor="phone-number"
-                        className="block text-gray-800 font-medium mb-3 mt-4"
-                    >
-                        Phone Number
-                    </label>
-                    <PhoneInput
-                        country={"kh"}
-                        value={phoneNumber}
-                        onChange={handlePhoneNumberChange}
-                        inputStyle={{
-                            width: "100%",
-                            height: "40px",
-                            border: "1px solid #D1D5DB",
-                            borderRadius: "4px",
-                            fontSize: "14px",
-                            paddingLeft: "58px",
-                        }}
-                        buttonStyle={{
-                            width: "38px",
-                            height: "38px",
-                            border: "none",
-                            background: "transparent",
-                            position: "absolute",
-                            left: "8px",
-                            top: "50%",
-                            transform: "translateY(-50%)",
-                        }}
-                        containerStyle={{
-                            position: "relative",
-                            width: "100%",
-                        }}
-                        dropdownStyle={{
-                            zIndex: 999,
-                        }}
-                        className="mb-3"
-                    />
-
-                    {/* Skills Field */}
-                    <label
-                        htmlFor="skills"
-                        className="block text-gray-800 font-medium mb-3 mt-4"
-                    >
-                        Skills
-                    </label>
-                    <select
-                        id="skills"
-                        value={selectedSkill}
-                        onChange={handleSkillChange}
-                        className="w-full p-2 border border-gray-300 rounded bg-white"
-                    >
-                        <option value="">Select a skill</option>
-                        <option value="Java">Java</option>
-                        <option value="Spring Boot">Spring Boot</option>
-                        <option value="Docker">Docker</option>
-                        <option value="C#">C#</option>
-                        <option value="SQL">SQL</option>
-                        <option value="Python">Python</option>
-                        <option value="Other Skills">Other Skills</option>
-                    </select>
-
-                    {/* Additional Field for "Other Skills" */}
-                    {selectedSkill === "Other Skills" && (
-                        <div className="mt-4">
-                            <label
-                                htmlFor="other-skill"
-                                className="block text-gray-800 font-medium mb-3"
-                            >
-                                Please enter your specific skills
-                            </label>
-                            <input
-                                id="other-skill"
-                                type="text"
-                                value={otherSkill}
-                                onChange={handleOtherSkillChange}
-                                className="w-full p-2 border border-gray-300 rounded"
-                            />
-                        </div>
-                    )}
-
-                    {/* Password Field */}
-                    <label
-                        htmlFor="password"
-                        className="block text-gray-800 font-medium mt-4 mb-2 flex items-center justify-between text-sm"
-                    >
-                        <span>Password</span>
-                        <span
-                            onClick={togglePasswordVisibility}
-                            className="cursor-pointer flex items-center gap-1"
-                            style={{ color: "#1c398e" }}
-                        >
-                            {passwordVisible ? (
-                                <>
-                                    <i className="fas fa-eye-slash"></i> Hide
-                                </>
-                            ) : (
-                                <>
-                                    <i className="fas fa-eye"></i> Show
-                                </>
-                            )}
-                        </span>
-                    </label>
-                    <input
-                        id="password"
-                        type={passwordVisible ? "text" : "password"}
-                        className="w-full p-2 border border-gray-300 rounded mb-3 text-sm"
-                    />
-
-                    {/* Confirm Password Field */}
-                    <label
-                        htmlFor="confirm-password"
-                        className="block text-gray-800 font-medium mt-2 mb-2 flex items-center justify-between text-sm"
-                    >
-                        <span>Confirm Password</span>
-                        <span
-                            onClick={toggleConfirmPasswordVisibility}
-                            className="cursor-pointer flex items-center gap-1"
-                            style={{ color: "#1c398e" }}
-                        >
-                            {confirmPasswordVisible ? (
-                                <>
-                                    <i className="fas fa-eye-slash"></i> Hide
-                                </>
-                            ) : (
-                                <>
-                                    <i className="fas fa-eye"></i> Show
-                                </>
-                            )}
-                        </span>
-                    </label>
-                    <input
-                        id="confirm-password"
-                        type={confirmPasswordVisible ? "text" : "password"}
-                        className="w-full p-2 border border-gray-300 rounded mb-4 text-sm"
-                    />
-
-                    <button
-                        className="w-full bg-gray-400 hover:bg-gray-500 text-white p-2 rounded mt-6 text-sm"
-                        type="submit"
-                    >
-                        Create Account
-                    </button>
-                </form>
-                <p className="mt-3 text-gray-600 text-sm font-medium text-center">
-                    Already have an account?{" "}
-                    <span
-                        className="cursor-pointer underline"
-                        style={{ color: "#1c398e" }}
-                    >
-                        Login now
-                    </span>
-                </p>
-                <p className="mt-2 text-gray-500 text-sm text-center">OR</p>
-                <div className="flex flex-col gap-2 mt-3 w-11/12 sm:w-4/5">
-                    <button className="w-full border font-medium border-gray-300 py-3 rounded-lg flex items-center justify-center gap-2 text-[15px] cursor-pointer hover:bg-gray-200">
-                        <img
-                            src={Ta3}
-                            alt="Facebook Logo"
-                            className="w-8 h-5 sm:w-9 sm:h-6"
-                        />
-                        Continue with Facebook
-                    </button>
-                    <button className="w-full border font-medium border-gray-300 py-3 rounded-lg flex items-center justify-center gap-2 text-[15px] cursor-pointer hover:bg-gray-200 mt-2 mb-3">
-                        <img src={Ta4} alt="Google Logo" className="w-6 h-6" />
-                        Continue with Google
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
+          )}
+        </Form>
+      )}
+    </Formik>
+  );
 };
 
 export default RegisterBusinessOwner;
