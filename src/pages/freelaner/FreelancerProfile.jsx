@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaUserAlt, FaRegFileAlt, FaPenNib, FaPencilAlt } from "react-icons/fa";
 import { RiComputerLine } from "react-icons/ri";
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
 import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
 import { useGetMeQuery } from "../../feature/auth/authSlide";
+import { useGetMyOwnServiceQuery } from "../../feature/service/serviceSlde";
+import { MdError } from "react-icons/md";
 
 const FreelancerProfile = () => {
+  // State to toggle services view
+  
   const { data, isLoading, error } = useGetMeQuery();
+  const {
+    data: myService,
+    isLoading: myServiceIsLoading,
+    error: myServiceError,
+  } = useGetMyOwnServiceQuery();
+
+  const [showAllServices, setShowAllServices] = useState(false);
+  const handleToggleServices = () => {
+    setShowAllServices((prevState) => !prevState); // Toggle between showing all or limited services
+  };
+  console.log("My Service data:", myService);
   console.log("User data:", data);
 
   const userData = data?.data || {};
@@ -20,18 +35,24 @@ const FreelancerProfile = () => {
     );
   if (error)
     return (
-      <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center text-red-500 dark:text-red-400">
-        Error loading profile
+      <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center text-primary dark:text-white">
+        <div className="text-center p-6  border rounded-lg shadow-lg">
+          <MdError className="text-4xl mb-4 mx-auto text-primary" />
+          <h1 className="text-2xl font-bold">Internal Error</h1>
+          <p className="mt-2 text-lg">
+            Oops! Something went wrong on our end. Please try again later.
+          </p>
+        </div>
       </div>
     );
 
   return (
     <>
       <ScrollIndicator />
-      <div className="max-w-7xl mx-auto min-h-screen py-10 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto min-h-screen py-10 px-4 sm:px-6 lg:px- bg-gray-50 dark:bg-gray-900">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <div className="flex justify-between items-center mb-8 border-b-2 border-primary pb-2">
+          <h1 className="text-3xl font-bold text-primary dark:text-white ">
             My Profile
           </h1>
           <div className="flex space-x-3">
@@ -58,7 +79,7 @@ const FreelancerProfile = () => {
           <div className="w-full md:w-1/3">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
               {/* Profile Picture & Info */}
-              <div className="flex flex-col items-center text-center  ">
+              <div className="flex flex-col items-center text-center">
                 <div>
                   <div className="w-40 h-40 mb-4 ">
                     {userData?.profileImageUrl ? (
@@ -69,31 +90,28 @@ const FreelancerProfile = () => {
                       />
                     ) : (
                       <div className="w-full h-full rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                        <span className="text-blue-600 dark:text-blue-300 text-3xl font-bold">
-                          {userData?.fullName?.charAt(0) || "S"}
+                        <span className="text-blue-600 dark:text-blue-300 text-5xl font-bold">
+                          {userData?.fullName?.charAt(0) || ""}
                         </span>
                       </div>
                     )}
                   </div>
                 </div>
-                <div className="border-t w-full">
+                <div className="border-t w-full text-center p-4">
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                     {userData.fullName || ""}
                   </h2>
-                  <span className="text-gray-600 dark:text-gray-400 text-sm mt-1 text-center">
-                    {userData.skills && userData.skills.length > 0
-                      ? userData.skills[0]
-                      : ""}
-                  </span>
-                  <div className="flex items-center mt-2 text-gray-600 dark:text-gray-400 text-center">
-                    {/* <FaUserAlt className="h-4 w-4 mr-1 text-blue-900 dark:text-blue-300" /> */}
-                    <span className="text-sm text-primary font-extrabold text-center">
-                      {userData.userType || "Freelancer"}
+                  <div className="flex items-center justify-center gap-2 mt-3">
+                    <FaUserAlt className="h-4 w-4 text-blue-900 dark:text-blue-300" />
+                    <span className="text-sm font-extrabold text-primary">
+                      {userData.userType || "NONE TYPE"}
                     </span>
                   </div>
+                  <span className="text-gray-600 dark:text-gray-400 text-sm mt-3 block">
+                    Experience Years {userData.experienceYears}
+                  </span>
                 </div>
               </div>
-              {/* Contact Info */}
               <div className="mt-6 pt-6 border-t dark:border-gray-700">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                   Contact Information
@@ -144,138 +162,55 @@ const FreelancerProfile = () => {
               </div>
             </div>
           </div>
-
           {/* Right Column */}
           <div className="w-full md:w-2/3 space-y-8">
-            {/* About */}
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                About
-              </h2>
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {userData.bio || "No bio information available."}
-                </p>
-              </div>
-            </div>
-
-            {/* CV */}
-            <div>
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  CV
-                </h2>
-                <a
-                  href="#"
-                  className="text-blue-900 dark:text-blue-300 hover:underline text-sm font-medium">
-                  Download Resume
-                </a>
-              </div>
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 flex items-center">
-                <FaRegFileAlt className="h-8 w-8 text-blue-900 dark:text-blue-300 mr-4" />
-                <span className="text-gray-700 dark:text-gray-300 font-medium">
-                  {userData.fullName || "User"}_CV.pdf
-                </span>
-              </div>
-            </div>
-
-            {/* Work Experience */}
-            <div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Work Experience
-              </h2>
-              <div className="space-y-4">
-                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                    Professional Experience
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {userData.experienceYears
-                      ? `${userData.experienceYears} years of experience`
-                      : "Experience information not available"}
-                  </p>
-                  <p className="text-blue-900 dark:text-blue-300 font-medium mt-1">
-                    {userData.skills && userData.skills.length > 0
-                      ? userData.skills.join(", ")
-                      : "Skills not specified"}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 mt-1">
-                    {userData.createdAt
-                      ? new Date(userData.createdAt).getFullYear()
-                      : "2018"}{" "}
-                    -{" "}
-                    {userData.updatedAt
-                      ? new Date(userData.updatedAt).getFullYear()
-                      : "2021"}
-                  </p>
-                </div>
-                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                    Education
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    University of Fine Art
-                  </p>
-                  <p className="text-blue-900 dark:text-blue-300 font-medium mt-1">
-                    Bachelor's degree, Graphic Design
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 mt-1">
-                    2014 - 2017
-                  </p>
-                </div>
-              </div>
-            </div>
-
             {/* Services */}
             <div>
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 My Services
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {userData.skills && userData.skills.length > 0 ? (
-                  userData.skills.map((skill, index) => (
-                    <div
-                      key={index}
-                      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 flex flex-col items-center hover:shadow-md transition">
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-full mb-3">
-                        {index % 3 === 0 ? (
-                          <RiComputerLine className="h-6 w-6 text-blue-900 dark:text-blue-300" />
-                        ) : index % 3 === 1 ? (
-                          <FaPenNib className="h-6 w-6 text-blue-900 dark:text-blue-300" />
-                        ) : (
-                          <FaPencilAlt className="h-6 w-6 text-blue-900 dark:text-blue-300" />
-                        )}
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">
-                        {skill}
-                      </span>
-                    </div>
-                  ))
-                ) : (
-                  <>
-                    {["Programming", "Graphic", "Content Creator"].map(
-                      (service, index) => (
-                        <div
-                          key={index}
-                          className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 flex flex-col items-center hover:shadow-md transition">
-                          <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-full mb-3">
-                            {index === 0 ? (
-                              <RiComputerLine className="h-6 w-6 text-blue-900 dark:text-blue-300" />
-                            ) : index === 1 ? (
-                              <FaPenNib className="h-6 w-6 text-blue-900 dark:text-blue-300" />
-                            ) : (
-                              <FaPencilAlt className="h-6 w-6 text-blue-900 dark:text-blue-300" />
-                            )}
-                          </div>
-                          <span className="text-gray-700 dark:text-gray-300 font-medium">
-                            {service}
-                          </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+                {myServiceIsLoading ? (
+                  <p className="text-gray-500">Loading services...</p>
+                ) : myServiceError ? (
+                  <p className="text-red-500">Error loading services.</p>
+                ) : myService && myService.length > 0 ? (
+                  myService
+                    .slice(0, showAllServices ? myService.length : 4)
+                    .map((service) => (
+                      <a
+                        key={service.id}
+                        href="#"
+                        className="relative block rounded-tr-3xl border border-gray-100">
+                        {/* Service Image */}
+                        <img
+                          src={
+                            service.imageUrls && service.imageUrls.length > 0
+                              ? service.imageUrls[0]
+                              : "defaultImage.jpg"
+                          }
+                          alt={service.title}
+                          className="h-60 w-full rounded-tr-3xl object-cover"
+                        />
+                        <div className="p-4 text-start">
+                          <strong className="text-xl font-medium text-gray-900">
+                            {service.title}
+                          </strong>
+                          <p className="mt-2 text-gray-700">
+                            {service.description || "No description available."}
+                          </p>
                         </div>
-                      )
-                    )}
-                  </>
+                      </a>
+                    ))
+                ) : (
+                  <p className="text-gray-500">No services available.</p>
                 )}
               </div>
+              <button
+                className="mt-4 text-primary underline   p-3 rounded-md  "
+                onClick={handleToggleServices}>
+                {showAllServices ? "See Less Service" : "See All Servide"}
+              </button>
             </div>
           </div>
         </div>

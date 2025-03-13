@@ -41,7 +41,7 @@ const LoginPage = () => {
           toast.success("Login successful! Welcome back!", {
             position: "top-right",
           });
-          navigate("/freelancer-feed");
+          navigate("/");
         } else {
           toast.error("Login successful, but no token received.");
         }
@@ -108,11 +108,6 @@ const LoginPage = () => {
 
             {/* Password */}
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1">
-                Password
-              </label>
               <div className="relative">
                 <input
                   id="password"
