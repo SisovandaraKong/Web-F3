@@ -1,5 +1,6 @@
+"use client";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const teamMembers = [
   {
@@ -57,31 +58,35 @@ export default function CardOurTeam() {
   const { t } = useTranslation();
 
   return (
-    <div className="grid grid-cols-1 gap-8 px-6 md:px-16 lg:px-36">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 lg:px-0">
       {teamMembers.map((member, index) => (
         <div
           key={index}
           data-aos={member.aos}
-          className={`flex flex-col md:flex-row md:max-w-6xl p-5 items-center ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
+          className={`flex flex-col md:flex-row items-center bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow ${
+            index % 2 !== 0 ? "md:flex-row-reverse" : ""
+          }`}
         >
-          <a href="#">
-            <img
-              className="w-40 h-40 md:w-48 md:h-48 mb-3 rounded-full shadow-lg border-primary border-3 object-cover"
-              src={member.image}
-              alt={member.name}
-            />
-          </a>
-          <div className={`flex flex-col justify-between p-4 leading-normal md:mx-14 text-center md:text-left ${index % 2 !== 0 ? "md:text-right" : ""}`}>
-            <h5 className="mb-2 text-2xl md:text-4xl font-bold text-gray-900 dark:text-primary">
+          <img
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-primary object-cover mb-4 md:mb-0"
+            src={member.image}
+            alt={t(member.name)}
+          />
+          <div
+            className={`flex flex-col justify-center p-4 text-center md:text-left ${
+              index % 2 !== 0 ? "md:text-right" : ""
+            }`}
+          >
+            <h5 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
               {t(member.name)}
             </h5>
-            <p className="mb-3 text-gray-700 dark:text-gray-400 text-lg md:text-2xl font-bold">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-semibold">
               {t(member.role)}
             </p>
-            <div className="text-4xl md:text-6xl text-secondary">
+            <div className="text-3xl text-secondary my-2">
               {index % 2 === 0 ? <RiDoubleQuotesL /> : <RiDoubleQuotesR />}
             </div>
-            <p className="mx-4 md:mx-14 text-gray-700 dark:text-gray-400">
+            <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base">
               {t(member.quote)}
             </p>
           </div>

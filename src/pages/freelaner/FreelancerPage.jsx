@@ -1,7 +1,8 @@
+// pages/FreelancerPage.jsx
 import React, { useState } from "react";
 import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
-import CardJob from "../../components/cards/CardJob";
-import { Carousel } from "flowbite";
+import CustomCarousel from "../../components/carousel/CustomCarousel"; // Adjust path as needed
+import CardServices from "../../components/cards/Freelancer/CardServices";
 
 export default function FreelancerPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,17 +17,25 @@ export default function FreelancerPage() {
   return (
     <>
       <ScrollIndicator />
-
       <main className="max-w-screen-xl mx-auto p-4">
-        <section className="bg-primary-hover h-[200px] text-white flex items-center justify-center rounded-lg overflow-hidden mb-10 "></section>
+        {/* Carousel Section */}
+        <section className="mb-10">
+          <CustomCarousel />
+        </section>
+
+        {/* Existing Title Section */}
         <section className="border-b-2 py-1">
-          <h2 className="text-3xl font-bold ">
-            Explor The Service Of Freelancer{" "}
+          <h2 className="text-3xl font-bold">
+            Explore The Service Of Freelancer
           </h2>
         </section>
+
+        {/* Existing CardJob Grid Section */}
         <section className="mt-10">
-          <CardJob page={currentPage} />
+          <CardServices page={currentPage} />
         </section>
+
+        {/* Existing Pagination Section */}
         <section>
           <ol className="flex justify-center gap-2 mt-4">
             <li>

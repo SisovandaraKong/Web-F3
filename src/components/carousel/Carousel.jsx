@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../button/Button";
 import { useTranslation } from "react-i18next"; // Import useTranslation
+import Aos from "aos";
 
 const slides = [
   {
@@ -41,7 +42,9 @@ const Carousel = () => {
     const interval = setInterval(nextSlide, 4000);
     return () => clearInterval(interval);
   }, []);
-
+  useEffect(() => {
+    Aos.init({});
+  }, []);
   return (
     <div className="relative w-full h-screen overflow-hidden dark:bg-black-background">
       {slides.map((slide, index) => (
@@ -89,7 +92,10 @@ const Carousel = () => {
         ))}
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
-      <div className="absolute inset-0 flex flex-col z-20 justify-center items-start px-5 md:px-20 xl:px-32 text-white dark:text-[var(--color-white-text)]">
+      <div
+        data-aos="fade-right"
+        data-aos-duration="1000"
+        className="absolute inset-0 flex flex-col z-20 justify-center items-start px-5 md:px-20 xl:px-32 text-white dark:text-[var(--color-white-text)]">
         {slides.map((slide, index) => (
           <div
             key={`content-${index}`}
@@ -99,13 +105,12 @@ const Carousel = () => {
                 : "opacity-0 -translate-x-full"
             }`}>
             <h2 className="text-3xl md:text-6xl font-bold relative z-20 xl:w-[1000px]">
-              {t(slide.titleKey)} {/* Use the translation keys */}
+              {t(slide.titleKey)}
             </h2>
             <p className="mt-2 text-lg md:text-xl relative z-20 mb-4">
-              {t(slide.subtitleKey)} {/* Use the translation keys */}
+              {t(slide.subtitleKey)}
             </p>
             <Button text={t(slide.buttonTextKey)} />{" "}
-            {/* Use the translation key */}
           </div>
         ))}
       </div>

@@ -7,6 +7,7 @@ import { useTheme } from "../../context/ThemeContext";
 import "../../i18n";
 import Button from "../button/Button";
 import { useGetMeQuery } from "../../feature/auth/authSlide";
+import toast from 'react-hot-toast'; // Import toast
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -28,6 +29,12 @@ export default function Navbar() {
     // Remove tokens from localStorage
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
+    
+    // Show success toast
+    toast.success('Logged out successfully!', {
+      position: 'top-right',
+    });
+
     // Close the dropdown
     setProfileDropdown(false);
 

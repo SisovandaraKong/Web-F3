@@ -8,51 +8,41 @@ export default function CardContactUs() {
   const { t } = useTranslation();
 
   return (
-    <div className="px-10 flex flex-col md:flex-row items-center justify-between mx-auto p-6">
-      <div className="mb-6 md:mb-0">
+    <div className="flex flex-col md:flex-row items-center justify-between bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
+      <div className="mb-6 md:mb-0 md:w-1/2">
         <h2
-          data-aos="flip-left"
-          className="text-MainTitle font-bold text-primary mb-4 underline underline-offset-9 decoration-secondary"
+          data-aos="fade-up"
+          className="text-3xl md:text-4xl font-bold text-primary mb-6 underline underline-offset-8 decoration-secondary"
         >
           {t("Contact Us")}
         </h2>
-
         <div data-aos="fade-right" className="space-y-4 text-primary">
-          <div className="flex items-center text-Sub2Title font-bold">
-            <FiPhone />
-            <a
-              href="tel:+85531473327"
-              className="hover:text-blue-600 text-CardSubTitle mx-3"
-            >
-              +85531473327
+          <div className="flex items-center text-lg font-semibold">
+            <FiPhone className="text-xl" />
+            <a href="tel:+85531473327" className="ml-3 hover:text-blue-600">
+              +855 31 473 327
             </a>
           </div>
-
-          <div className="flex items-center text-Sub2Title font-bold">
-            <MdOutlineMailOutline />
-            <a
-              href="mailto:info.jobseek@gmail.com"
-              className="hover:text-blue-600 text-CardSubTitle mx-3"
-            >
+          <div className="flex items-center text-lg font-semibold">
+            <MdOutlineMailOutline className="text-xl" />
+            <a href="mailto:info.jobseek@gmail.com" className="ml-3 hover:text-blue-600">
               info.jobseek@gmail.com
             </a>
           </div>
-
-          <div className="flex items-start text-Sub2Title font-bold">
-            <IoLocationOutline />
-            <address className="not-italic text-CardSubTitle mx-3">
+          <div className="flex items-start text-lg font-semibold">
+            <IoLocationOutline className="text-xl" />
+            <address className="ml-3 text-gray-700 dark:text-gray-300 not-italic">
               {t("address")}
             </address>
           </div>
         </div>
       </div>
-
-      <div className="w-full md:w-1/2 max-w-xs">
+      <div className="w-full md:w-1/2 max-w-sm">
         <img
           data-aos="fade-left"
           src="src/assets/imgAboutUs/Contact.svg"
           alt={t("Contact illustration")}
-          className="w-full h-auto object-contain"
+          className="w-full h-auto"
         />
       </div>
     </div>

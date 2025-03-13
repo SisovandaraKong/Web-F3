@@ -8,23 +8,26 @@ export default function CardAchievement() {
   const { t } = useTranslation();
 
   const achievements = [
-    { icon: <PiBagLight className="text-7xl text-primary" />, count: "899", label: t('Total Jobs') },
-    { icon: <HiOutlineUsers className="text-7xl text-primary" />, count: "16.8k", label: t('Seekers') },
-    { icon: <GrHome className="text-7xl text-primary" />, count: "261", label: t('Companies') },
-    { icon: <HiOutlineUser className="text-7xl text-primary" />, count: "378", label: t('Employers') },
+    { icon: <PiBagLight className="text-5xl text-primary" />, count: "899", label: t("Total Jobs") },
+    { icon: <HiOutlineUsers className="text-5xl text-primary" />, count: "16.8k", label: t("Seekers") },
+    { icon: <GrHome className="text-5xl text-primary" />, count: "261", label: t("Companies") },
+    { icon: <HiOutlineUser className="text-5xl text-primary" />, count: "378", label: t("Employers") },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10 mx-auto w-full max-w-6xl px-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {achievements.map((item, index) => (
         <div
           key={index}
-          data-aos="flip-left"
-          className="bg-white shadow-lg rounded-xl text-center p-6 flex flex-col items-center transition-transform transform hover:scale-105"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+          className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 text-center hover:shadow-lg transition-shadow"
         >
           {item.icon}
-          <h3 className="text-4xl font-bold text-primary mt-3">{item.count}</h3>
-          <h3 className="text-2xl font-semibold text-gray-700 mt-2">{item.label}</h3>
+          <h3 className="text-3xl font-bold text-primary mt-3">{item.count}</h3>
+          <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mt-2">
+            {item.label}
+          </h3>
         </div>
       ))}
     </div>

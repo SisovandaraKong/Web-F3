@@ -1,5 +1,6 @@
 
 import { apiSlide } from "../api/apiSlide";
+
 export const serviceSlide = apiSlide.injectEndpoints({
   endpoints: (build) => ({
     getAllUsers: build.query({

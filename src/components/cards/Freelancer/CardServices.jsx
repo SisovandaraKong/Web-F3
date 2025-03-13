@@ -1,10 +1,10 @@
 import React from "react";
 import { IoMdTime } from "react-icons/io";
-import { useGetAllServicesQuery } from "../../feature/service/serviceSlde";
+import { useGetAllServicesQuery } from "../../../feature/service/serviceSlde";
 import { NavLink } from "react-router"; // Make sure this is imported correctly
-import dataMuck from "../../data/mockData";
+import dataMuck from "../../../data/mockData";
 
-export default function CardJob({ page }) {
+export default function CardServices({ page }) {
   const { data, isLoading, isError } = useGetAllServicesQuery(page);
   console.log("Data in Card Job", data);
 
@@ -18,8 +18,16 @@ export default function CardJob({ page }) {
         />
       </div>
     );
-
-  if (isError) return <p>Failed to load services</p>;
+  if (isError)
+    return (
+      <div className="flex justify-center items-center ">
+        {" "}
+        <img
+          src="https://cfn.tweaking.in/content/wp/tweaklibrary_com/uploads/2020/07/Check-For-Error-Message-min.gif"
+          alt=""
+        />
+      </div>
+    );
 
   const services = data?.content || [];
 
