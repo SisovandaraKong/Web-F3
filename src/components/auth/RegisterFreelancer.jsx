@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import "@fortawesome/fontawesome-free/css/all.css";
@@ -9,21 +9,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
-import { useUplordImageFileMutation } from "../../feature/fileUplord/fileUplordSlide";
 
 const RegisterFreelancer = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [profileImage, setProfileImage] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
-  const [isCompressing, setIsCompressing] = useState(false);
-  const fileInputRef = useRef(null);
   const navigate = useNavigate();
-
-  // Fixed the upload image mutation hook
-  const [uploadImageFile, { isLoading: isUploading }] =
-    useUplordImageFileMutation();
 
   const togglePasswordVisibility = () => setPasswordVisible(!passwordVisible);
   const toggleConfirmPasswordVisibility = () =>
@@ -35,89 +26,6 @@ const RegisterFreelancer = () => {
 
   const [registerFreelancer, { isLoading, error }] =
     useRegisterFreelancerMutation();
-
-  // Compress image before upload
-  const compressImage = (file) => {
-    return new Promise((resolve) => {
-      setIsCompressing(true);
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (event) => {
-        const img = new Image();
-        img.src = event.target.result;
-        img.onload = () => {
-          const canvas = document.createElement("canvas");
-          const MAX_WIDTH = 500;
-          const MAX_HEIGHT = 500;
-
-          let width = img.width;
-          let height = img.height;
-
-          if (width > height) {
-            if (width > MAX_WIDTH) {
-              height = Math.round((height * MAX_WIDTH) / width);
-              width = MAX_WIDTH;
-            }
-          } else {
-            if (height > MAX_HEIGHT) {
-              width = Math.round((width * MAX_HEIGHT) / height);
-              height = MAX_HEIGHT;
-            }
-          }
-
-          canvas.width = width;
-          canvas.height = height;
-
-          const ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, width, height);
-
-          const compressedDataUrl = canvas.toDataURL("image/*", 0.6);
-
-          fetch(compressedDataUrl)
-            .then((res) => res.blob())
-            .then((blob) => {
-              const compressedFile = new File([blob], file.name, {
-                type: "image/*",
-                lastModified: Date.now(),
-              });
-
-              setIsCompressing(false);
-              resolve(compressedFile);
-            });
-        };
-      };
-    });
-  };
-
-  // In your component:
-  const handleFileChange = async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      try {
-        const compressedFile = await compressImage(file);
-
-        // Create FormData for image upload
-        const formData = new FormData();
-
-        // Use the correct field name expected by your API
-        // This might be 'file', 'image', 'media', etc. - check your API docs
-        formData.append("file", compressedFile);
-        // If your API requires additional fields:
-        // formData.append("type", "profile");
-
-        // Call the mutation with the FormData
-        const result = await uploadImageFile(formData).unwrap();
-
-        // Handle the result...
-      } catch (error) {
-        console.error("Error uploading:", error);
-      }
-    }
-  };
-
-  const handleImageClick = () => {
-    fileInputRef.current.click();
-  };
 
   const validationSchema = Yup.object({
     fullName: Yup.string().required("Full name is required"),
@@ -134,8 +42,6 @@ const RegisterFreelancer = () => {
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Confirm password is required"),
-    profileImage: Yup.mixed(),
-    profileImageUrl: Yup.string(),
   });
 
   const formik = useFormik({
@@ -148,36 +54,26 @@ const RegisterFreelancer = () => {
       phone: "",
       password: "",
       confirmPassword: "",
-      profileImage: null,
-      profileImageUrl: "",
     },
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const formData = new FormData();
-        formData.append("fullName", values.fullName);
-        formData.append("gender", values.gender);
-        formData.append("address", values.address);
-        formData.append("username", values.username);
-        formData.append("email", values.email);
-        formData.append("phone", values.phone);
-        formData.append("userType", "FREELANCER");
-        formData.append("portfolioUrl", " ");
-        formData.append("experienceYears", 0);
-        formData.append("bio", "");
-        formData.append("password", values.password);
-        formData.append("skills", JSON.stringify([]));
-
-        // If we have a profileImageUrl from the upload, use that
-        if (values.profileImageUrl) {
-          formData.append("profileImageUrl", values.profileImageUrl);
-        }
-        // Otherwise, if your backend expects the file in this request too
-        else if (profileImage) {
-          formData.append("profileImage", profileImage);
-        }
-
-        const response = await registerFreelancer(formData).unwrap();
+        const formattedData = {
+          fullName: values.fullName,
+          gender: values.gender,
+          address: values.address,
+          username: values.username,
+          email: values.email,
+          profileImageUrl: "",
+          phone: values.phone,
+          userType: "FREELANCER",
+          skills: [],
+          portfolioUrl: " ",
+          experienceYears: 0,
+          bio: "",
+          password: values.password,
+        };
+        const response = await registerFreelancer(formattedData).unwrap();
         toast.success("Registration successful! Welcome to JobSeek!", {
           position: "top-right",
         });
@@ -192,6 +88,7 @@ const RegisterFreelancer = () => {
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
+      {/* Welcome Section */}
       <div className="w-full md:w-1/2 bg-gradient-to-br from-blue-900 to-blue-700 text-white flex items-center justify-center p-6">
         <div className="text-center">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">
@@ -206,6 +103,7 @@ const RegisterFreelancer = () => {
         </div>
       </div>
 
+      {/* Form Section */}
       <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-8">
         <div className="w-full max-w-md space-y-6">
           <div className="flex items-center gap-3">
@@ -222,37 +120,7 @@ const RegisterFreelancer = () => {
             </p>
           </div>
 
-          <form
-            onSubmit={formik.handleSubmit}
-            className="space-y-4"
-            encType="multipart/form-data">
-            <div className="flex justify-center mb-4">
-              <div
-                className="w-24 h-24 rounded-full border-2 border-blue-500 flex items-center justify-center overflow-hidden cursor-pointer relative"
-                onClick={handleImageClick}>
-                {previewUrl ? (
-                  <img
-                    src={previewUrl}
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <i className="fas fa-user text-4xl text-blue-500"></i>
-                )}
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="absolute inset-0 opacity-0 cursor-pointer"
-                />
-                {isCompressing || isUploading ? (
-                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
-                  </div>
-                ) : null}
-              </div>
-            </div>
+          <form onSubmit={formik.handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Full Name */}
               <div>
@@ -447,13 +315,21 @@ const RegisterFreelancer = () => {
                 )}
             </div>
 
+            {/* Submit Button */}
             <button
+              className="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 rounded-lg font-medium disabled:opacity-50 transition"
               type="submit"
-              className="w-full bg-blue-600 text-white font-bold py-3 rounded-md shadow-md hover:bg-blue-700"
-              disabled={isLoading || isUploading || isCompressing}>
-              {isLoading ? "Registering..." : "Create Account"}
+              disabled={isLoading}>
+              {isLoading ? "Creating Account..." : "Create Account"}
             </button>
+            {error && (
+              <p className="text-red-500 text-sm text-center">
+                {error.data?.message ||
+                  "An error occurred during registration."}
+              </p>
+            )}
           </form>
+
           <div className="text-center space-y-2">
             <p className="text-sm text-gray-600">
               Already have an account?{" "}

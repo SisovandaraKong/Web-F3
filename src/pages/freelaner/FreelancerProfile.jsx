@@ -4,28 +4,45 @@ import { RiComputerLine } from "react-icons/ri";
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
 import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
 import { useGetMeQuery } from "../../feature/auth/authSlide";
-import { useGetMyOwnServiceQuery } from "../../feature/service/serviceSlde";
+import {
+  useDeleteServiceMutation,
+  useGetMyOwnServiceQuery,
+} from "../../feature/service/serviceSlde";
 import { MdError } from "react-icons/md";
 
 const FreelancerProfile = () => {
   // State to toggle services view
-  
   const { data, isLoading, error } = useGetMeQuery();
   const {
     data: myService,
     isLoading: myServiceIsLoading,
     error: myServiceError,
   } = useGetMyOwnServiceQuery();
+  console.log("ME in profile", data);
+
+  console.log("myService in in profile", myService);
+
+  // Mutation hook for deleting a service
+  const [
+    deleteService,
+    { isLoading: deleteServiceIsLoading, error: deleteServiceError },
+  ] = useDeleteServiceMutation();
 
   const [showAllServices, setShowAllServices] = useState(false);
   const handleToggleServices = () => {
     setShowAllServices((prevState) => !prevState); // Toggle between showing all or limited services
   };
-  console.log("My Service data:", myService);
-  console.log("User data:", data);
 
   const userData = data?.data || {};
-  console.log("User data :", userData);
+
+  const handleDeleteService = async (serviceId) => {
+    try {
+      await deleteService(serviceId); // Call delete service mutation
+      console.log("Service deleted successfully.");
+    } catch (error) {
+      console.error("Error deleting service:", error);
+    }
+  };
 
   if (isLoading)
     return (
@@ -36,7 +53,7 @@ const FreelancerProfile = () => {
   if (error)
     return (
       <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center text-primary dark:text-white">
-        <div className="text-center p-6  border rounded-lg shadow-lg">
+        <div className="text-center p-6  ">
           <MdError className="text-4xl mb-4 mx-auto text-primary" />
           <h1 className="text-2xl font-bold">Internal Error</h1>
           <p className="mt-2 text-lg">
@@ -51,7 +68,7 @@ const FreelancerProfile = () => {
       <ScrollIndicator />
       <div className="max-w-7xl mx-auto min-h-screen py-10 px-4 sm:px-6 lg:px- bg-gray-50 dark:bg-gray-900">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8 border-b-2 border-primary pb-2">
+        {/* <div className="flex justify-between items-center mb-8 border-b-2 border-primary pb-2">
           <h1 className="text-3xl font-bold text-primary dark:text-white ">
             My Profile
           </h1>
@@ -71,7 +88,7 @@ const FreelancerProfile = () => {
               Let's Chat
             </button>
           </div>
-        </div>
+        </div> */}
 
         {/* Main Content */}
         <div className="flex flex-col md:flex-row gap-8">
@@ -102,17 +119,20 @@ const FreelancerProfile = () => {
                     {userData.fullName || ""}
                   </h2>
                   <div className="flex items-center justify-center gap-2 mt-3">
-                    <FaUserAlt className="h-4 w-4 text-blue-900 dark:text-blue-300" />
+                    {/* <FaUserAlt className="h-4 w-4 text-blue-900 dark:text-blue-300" /> */}
                     <span className="text-sm font-extrabold text-primary">
-                      {userData.userType || "NONE TYPE"}
+                      I'm a {userData.userType || "NONE TYPE"}
                     </span>
                   </div>
                   <span className="text-gray-600 dark:text-gray-400 text-sm mt-3 block">
                     Experience Years {userData.experienceYears}
                   </span>
+                  <span className="text-gray-600 dark:text-gray-400 text-sm mt-3 block">
+                    {userData.bio || "No bio available"}
+                  </span>
                 </div>
               </div>
-              <div className="mt-6 pt-6 border-t dark:border-gray-700">
+              <div className="mt-6 pt-6 border-t dark:border-gray-700  items-center">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                   Contact Information
                 </h3>
@@ -166,8 +186,8 @@ const FreelancerProfile = () => {
           <div className="w-full md:w-2/3 space-y-8">
             {/* Services */}
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                My Services
+              <h2 className="text-md  text-gray-900 dark:text-white mb-4">
+                My profile
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
                 {myServiceIsLoading ? (
@@ -178,9 +198,8 @@ const FreelancerProfile = () => {
                   myService
                     .slice(0, showAllServices ? myService.length : 4)
                     .map((service) => (
-                      <a
+                      <div
                         key={service.id}
-                        href="#"
                         className="relative block rounded-tr-3xl border border-gray-100">
                         {/* Service Image */}
                         <img
@@ -200,16 +219,22 @@ const FreelancerProfile = () => {
                             {service.description || "No description available."}
                           </p>
                         </div>
-                      </a>
+                        {/* Delete Button */}
+                        <button
+                          className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full"
+                          onClick={() => handleDeleteService(service.id)}>
+                          Delete
+                        </button>
+                      </div>
                     ))
                 ) : (
                   <p className="text-gray-500">No services available.</p>
                 )}
               </div>
               <button
-                className="mt-4 text-primary underline   p-3 rounded-md  "
+                className="mt-4 text-primary underline   p-3 rounded-md"
                 onClick={handleToggleServices}>
-                {showAllServices ? "See Less Service" : "See All Servide"}
+                {showAllServices ? "See Less Service" : "See All Service"}
               </button>
             </div>
           </div>

@@ -26,6 +26,8 @@ const LoginPage = () => {
       password: "",
     },
     validationSchema,
+    // In your LoginPage component, modify the onSubmit handler
+
     onSubmit: async (values) => {
       try {
         const response = await login(values).unwrap();
@@ -33,15 +35,29 @@ const LoginPage = () => {
 
         if (response?.accessToken) {
           localStorage.setItem("accessToken", response.accessToken);
-          console.log("Token stored in session storage:", response.accessToken);
 
           if (response?.refreshToken) {
             localStorage.setItem("refreshToken", response.refreshToken);
           }
+
           toast.success("Login successful! Welcome back!", {
             position: "top-right",
           });
-          navigate("/");
+
+          // Add role-based navigation logic
+          if (response.role === "FREELANCER") {
+            console.log("Freelancer login res : ", response.role);
+            localStorage.setItem("userRole", response.role);
+
+           navigate("/");
+          } else if (response.role === "BUSINESS_OWNER") {
+            console.log("bussiness login res :", response.role);
+            localStorage.setItem("userRole", response.role);
+
+           // navigate("/");
+          } else {
+            navigate("/");
+          }
         } else {
           toast.error("Login successful, but no token received.");
         }
@@ -53,7 +69,6 @@ const LoginPage = () => {
       }
     },
   });
-
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
       {/* Welcome Section */}

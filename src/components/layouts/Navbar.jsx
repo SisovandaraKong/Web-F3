@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { GoSun, GoMoon } from "react-icons/go";
 import { RiRobot3Line } from "react-icons/ri";
@@ -8,9 +8,12 @@ import "../../i18n";
 import Button from "../button/Button";
 import { useGetMeQuery } from "../../feature/auth/authSlide";
 import toast from "react-hot-toast";
+<<<<<<< HEAD
 import logo from "../../assets/images/Logo3.png";
 import englishImage from "../../assets/images/England.png";
 import khmerImage from "../../assets/images/Cambodia.png";
+=======
+>>>>>>> 1c4bc3bbfd76cd5476eaa634e03994c6aa180e02
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -21,20 +24,53 @@ export default function Navbar() {
   const navigate = useNavigate();
   const accessToken = localStorage.getItem("accessToken");
   const refreshToken = localStorage.getItem("refreshToken");
+  const [userRole, setUserRole] = useState(
+    localStorage.getItem("userRole") || null
+  );
+  console.log("userRole in navbar", userRole);
+
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
   };
-  const { data, isLoading, error } = useGetMeQuery();
 
+  const { data, isLoading, error } = useGetMeQuery();
   const userData = data?.data || {};
 
+  useEffect(() => {
+    if (userData?.role) {
+      localStorage.setItem("userRole", userData.role);
+      setUserRole(userData.role);
+    }
+  }, [userData]);
+
   const handleLogout = () => {
+<<<<<<< HEAD
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     toast.success("Logged out successfully!", { position: "top-right" });
     setProfileDropdown(false);
     navigate("/");
     window.location.reload();
+=======
+    // Remove tokens and role from localStorage
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("userRole");
+
+    // Update state
+    setUserRole(null);
+
+    // Show success toast
+    toast.success("Logged out successfully!", {
+      position: "bottom-right",
+    });
+
+    // Close the dropdown
+    setProfileDropdown(false);
+
+    // Redirect to home page
+    navigate("/");
+>>>>>>> 1c4bc3bbfd76cd5476eaa634e03994c6aa180e02
   };
 
   return (
@@ -51,6 +87,7 @@ export default function Navbar() {
         <div
           className={`w-full md:flex md:w-auto md:items-center ${
             isOpen ? "block" : "hidden"
+<<<<<<< HEAD
           }`}
         >
           <ul className="flex flex-col items-center md:flex-row md:space-x-4 lg:space-x-6 bg-primary md:bg-transparent p-4 md:p-0 text-sm">
@@ -70,6 +107,70 @@ export default function Navbar() {
                 {t("services")}
               </NavLink>
             </li>
+=======
+          }`}>
+          <ul className="flex flex-col md:flex-row md:space-x-6 bg-primary md:bg-transparent p-4 md:p-0">
+            {/* Common links for all users */}
+
+            {/* Links for freelancers */}
+            {userRole === "FREELANCER" && (
+              <>
+                <li>
+                  <NavLink
+                    to="/job-post"
+                    className="text-white hover:text-secondary">
+                    {t("Jobs")}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/freelancer-page"
+                    className="text-white hover:text-secondary">
+                    {t("Services")}
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {/* Links for business owners */}
+            {userRole === "BUSINESS_OWNER" && (
+              <>
+                <li>
+                  <NavLink
+                    to="/job-post"
+                    className="text-white hover:text-secondary">
+                    {t("Post Job")}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/freelancer-page"
+                    className="text-white hover:text-secondary">
+                    {t("Find Freelancers")}
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {!userRole && (
+              <>
+                <li>
+                  <NavLink
+                    to="/job-post"
+                    className="text-white hover:text-secondary">
+                    {t("job")}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/freelancer-page"
+                    className="text-white hover:text-secondary">
+                    {t("services")}
+                  </NavLink>
+                </li>
+              </>
+            )}
+>>>>>>> 1c4bc3bbfd76cd5476eaa634e03994c6aa180e02
             <li>
               <NavLink
                 to="/about-us"
@@ -104,9 +205,14 @@ export default function Navbar() {
           </ul>
         </div>
 
+<<<<<<< HEAD
         {/* Theme, Chat Bot, and Profile */}
         <div className="flex items-center space-x-2 md:space-x-4">
           {/* Theme Toggle */}
+=======
+        {/* Theme and Language Switch */}
+        <div className="flex items-center space-x-4">
+>>>>>>> 1c4bc3bbfd76cd5476eaa634e03994c6aa180e02
           <button onClick={toggleDarkMode} className="focus:outline-none">
             {isDark ? (
               <GoMoon className="text-secondary text-2xl md:text-2xl lg:text-[24px] cursor-pointer" />
@@ -117,10 +223,40 @@ export default function Navbar() {
 
           {/* Chat Bot */}
           <NavLink to="/chat-bot">
+<<<<<<< HEAD
             <RiRobot3Line className="text-secondary text-lg md:text-xl lg:text-[24px] cursor-pointer" />
           </NavLink>
 
           {/* Profile or Sign Up */}
+=======
+            <RiRobot3Line className="text-secondary text-[24px] cursor-pointer" />
+          </NavLink>
+          <img
+            onClick={() => changeLanguage("en")}
+            src="src/assets/images/England.png"
+            alt="English"
+            className="w-[40px] h-[20px] cursor-pointer"
+          />
+          <img
+            onClick={() => changeLanguage("km")}
+            src="src/assets/images/Cambodia.png"
+            alt="Khmer"
+            className="w-[40px] h-[20px] cursor-pointer"
+          />
+        </div>
+
+        {/* Buttons */}
+        <div className="flex items-center space-x-4">
+          {/* Show "Join as Business" only if not already a business owner */}
+          {(!userRole || userRole !== "BUSINESS_OWNER") && (
+            <NavLink to="/register-businessowner">
+              <button className="text-white px-[17px] py-[9px] border-2 border-secondary rounded-md cursor-pointer">
+                Joint As Business
+              </button>
+            </NavLink>
+          )}
+
+>>>>>>> 1c4bc3bbfd76cd5476eaa634e03994c6aa180e02
           {accessToken || refreshToken ? (
             <div className="relative">
               <button
@@ -146,9 +282,12 @@ export default function Navbar() {
               {profileDropdown && (
                 <div className="absolute right-0 mt-2 w-40 md:w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg text-sm">
                   <ul className="py-2 text-gray-700 dark:text-white">
-                    <li>
+                    {userRole === "FREELANCER" && (
+                      <>
+                       <li>
                       <NavLink
                         to="/freelancer-profile"
+<<<<<<< HEAD
                         className="block px-3 py-1 md:px-4 md:py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
                         {t("Profile")}
@@ -168,8 +307,48 @@ export default function Navbar() {
                         className="block px-3 py-1 md:px-4 md:py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
                         {t("Create Job")}
+=======
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        {t("My Profile")}
+>>>>>>> 1c4bc3bbfd76cd5476eaa634e03994c6aa180e02
                       </NavLink>
                     </li>
+                        <li>
+                          <NavLink
+                            to="/freelancer-profile"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("My Dashboard")}
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/create-service"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("Create Service")}
+                          </NavLink>
+                        </li>
+                      </>
+                    )}
+
+                    {userRole === "BUSINESS_OWNER" && (
+                      <>
+                        <li>
+                          <NavLink
+                            to="/profile"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("My Profile")}
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/dashboard"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("My Dashboard")}
+                          </NavLink>
+                        </li>
+                      </>
+                    )}
+
                     <li>
                       <button
                         onClick={handleLogout}
