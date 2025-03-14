@@ -15,10 +15,10 @@ import FreelancerProfile from "./pages/freelaner/FreelancerProfile.jsx";
 import UserSeeFreelancerProfilePage from "./pages/freelaner/UserSeeFreelancerProfilePage.jsx";
 import ChatbotPage from "./pages/chatBot/ChatbotPage.jsx";
 import FreelancerPage from "./pages/freelaner/FreelancerPage.jsx";
-import ServiceDetail from "./pages/freelaner/ServideDetail.jsx";
 import CreateServicePage from "./pages/creatAtJob/CreatAtService.jsx";
 import RegisterBusinessOwner from "./components/auth/RegisterBusinessOwner.jsx";
 import JobPost from "./pages/businessOwner/JobPost.jsx";
+import ServiceDetail from "./pages/freelaner/ServideDetail.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -83,8 +83,7 @@ export default function ServiceDetail() {
                   : service.status === "disable"
                   ? "bg-red-500"
                   : "bg-blue-500"
-              }`}
-            >
+              }`}>
               {service.status}
             </span>
           </div>
@@ -112,7 +111,9 @@ export default function ServiceDetail() {
                 </div>
               </div>
               <p className="my-2 text-gray-700">{service.category.name}</p>
-              <h2 className="text-2xl font-semibold text-gray-900 sm:text-3xl">{service.title}</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 sm:text-3xl">
+                {service.title}
+              </h2>
               <p className="my-2 text-gray-700">{service.description}</p>
               <span className="whitespace-nowrap rounded-md border border-secondary px-2.5 py-0.5 text-sm mt-4 text-primary">
                 {service.status}
@@ -138,7 +139,6 @@ export default function ServiceDetail() {
                 <p className="text-red-500 mb-6">User not found</p>
               )}
             </div>
-
             <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-colors">
               Apply Now
             </button>
@@ -160,13 +160,9 @@ export default function ServiceDetail() {
                   className="flex transition-transform duration-500 ease-in-out"
                   style={{
                     transform: `translateX(-${currentSlide * 100}%)`,
-                  }}
-                >
+                  }}>
                   {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                    <div
-                      key={slideIndex}
-                      className="flex min-w-full gap-4"
-                    >
+                    <div key={slideIndex} className="flex min-w-full gap-4">
                       {relatedServices
                         .slice(
                           slideIndex * slidesToShow,
@@ -176,8 +172,7 @@ export default function ServiceDetail() {
                           <NavLink
                             key={related.id}
                             to={`/freelancer-page/${related.id}`}
-                            className="w-1/4 p-2"
-                          >
+                            className="w-1/4 p-2">
                             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                               <img
                                 src={
@@ -208,14 +203,12 @@ export default function ServiceDetail() {
                 <>
                   <button
                     onClick={goToPrevious}
-                    className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
-                  >
+                    className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all">
                     ‹
                   </button>
                   <button
                     onClick={goToNext}
-                    className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all"
-                  >
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-primary bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all">
                     ›
                   </button>
                 </>

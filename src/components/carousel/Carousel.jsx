@@ -41,6 +41,7 @@ const Carousel = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, 4000);
     return () => clearInterval(interval);
+    
   }, []);
   useEffect(() => {
     Aos.init({});
@@ -92,7 +93,8 @@ const Carousel = () => {
         ))}
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
-      <div
+      <div 
+      
         data-aos="fade-right"
         data-aos-duration="1000"
         className="absolute inset-0 flex flex-col z-20 justify-center items-start px-5 md:px-20 xl:px-32 text-white dark:text-[var(--color-white-text)]">
@@ -104,6 +106,7 @@ const Carousel = () => {
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-full"
             }`}>
+
             <h2 className="text-3xl md:text-6xl font-bold relative z-20 xl:w-[1000px]">
               {t(slide.titleKey)}
             </h2>
@@ -117,5 +120,6 @@ const Carousel = () => {
     </div>
   );
 };
+
 
 export default Carousel;

@@ -5,3 +5,4 @@ export const apiSlide = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_BAST_URL}` }),
   endpoints: (build) => ({}),
 });
+

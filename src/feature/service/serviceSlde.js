@@ -1,4 +1,3 @@
-
 import { apiSlide } from "../api/apiSlide";
 
 export const serviceSlide = apiSlide.injectEndpoints({
@@ -21,36 +20,63 @@ export const serviceSlide = apiSlide.injectEndpoints({
         method: "GET",
       }),
     }),
-    getAllCategories : build.query({
+    getGetServicesById: build.query({
+      query: (id) => ({
+        url: `/api/jobs-service/services?serviceId=${id}`,
+        method: "GET",
+      }),
+    }),
+    getAllCategories: build.query({
       query: () => ({
         url: "/api/jobs-service/categories",
         method: "GET",
       }),
     }),
- createService: build.mutation({
-  query: (data) => {
-    const token = localStorage.getItem("accessToken"); // Retrieve token
-
-    return {
-      url: "/api/jobs-service/services/create-new",
-      method: "POST",
-      body: data,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Attach token
+    createService: build.mutation({
+      query: (data) => {
+        const token = localStorage.getItem("accessToken"); // Retrieve token
+        return {
+          url: "/api/jobs-service/services/create-new",
+          method: "POST",
+          body: data,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Attach token
+          },
+        };
       },
-    };
-  },
-}),
-
+    }),
+    getMyOwnService: build.query({
+      query: () => ({
+        url: "/api/jobs-service/services/own-service",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }),
+    }),
+    deleteService: build.mutation({
+      query: (id) => {
+        const token = localStorage.getItem("accessToken"); // Retrieve token
+        return {
+          url: `/api/jobs-service/services/${id}`,
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`, // Attach token
+          },
+        };
+      },
+    }),
   }),
 });
 
 export const {
   useGetAllUsersQuery,
   useGetUserByIdQuery,
+  useGetGetServicesByIdQuery,
   useGetAllServicesQuery,
-  useGetServicesByIdQuery,
   useCreateServiceMutation,
   useGetAllCategoriesQuery,
+  useGetMyOwnServiceQuery,
+  useDeleteServiceMutation,
 } = serviceSlide;
