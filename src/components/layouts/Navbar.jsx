@@ -8,6 +8,9 @@ import "../../i18n";
 import Button from "../button/Button";
 import { useGetMeQuery } from "../../feature/auth/authSlide";
 import toast from 'react-hot-toast'; // Import toast
+import logo from "../../assets/images/Logo3.png";
+import englishImage from "../../assets/images/England.png";
+import khmerImage from "../../assets/images/Cambodia.png";
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -51,7 +54,7 @@ export default function Navbar() {
         {/* Logo */}
         <NavLink to="/" className="flex items-center space-x-3">
           <img
-            src="src/assets/images/Logo3.png"
+            src={logo}
             className="md:h-8 h-4"
             alt="JobSeek Logo"
           />
@@ -202,13 +205,13 @@ export default function Navbar() {
           </NavLink>
           <img
             onClick={() => changeLanguage("en")}
-            src="src/assets/images/England.png"
+            src={englishImage}
             alt="English"
             className="w-[40px] h-[20px] cursor-pointer"
           />
           <img
             onClick={() => changeLanguage("km")}
-            src="src/assets/images/Cambodia.png"
+            src={khmerImage}
             alt="Khmer"
             className="w-[40px] h-[20px] cursor-pointer"
           />
