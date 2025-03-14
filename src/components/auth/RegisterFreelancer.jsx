@@ -24,8 +24,7 @@ const RegisterFreelancer = () => {
     formik.setFieldValue("phone", value);
   };
 
-  const [registerFreelancer, { isLoading, error }] =
-    useRegisterFreelancerMutation();
+  const [registerFreelancer, { isLoading, error }] = useRegisterFreelancerMutation();
 
   const validationSchema = Yup.object({
     fullName: Yup.string().required("Full name is required"),
@@ -87,41 +86,41 @@ const RegisterFreelancer = () => {
   });
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
+    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50 dark:bg-gray-900">
       {/* Welcome Section */}
-      <div className="w-full md:w-1/2 bg-gradient-to-br from-blue-900 to-blue-700 text-white flex items-center justify-center p-6">
+      <div className="w-full md:w-1/2 bg-gradient-to-br from-blue-900 to-blue-700 text-white flex items-center justify-center p-4 sm:p-6">
         <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
             Welcome to
           </h1>
-          <h1 className="text-4xl md:text-5xl font-extrabold">JobSeek</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold">JobSeek</h1>
           <img
             src={Ta1}
             alt="Join Us"
-            className="mt-8 w-3/4 mx-auto max-w-md"
+            className="mt-4 sm:mt-8 w-full sm:w-3/4 mx-auto max-w-xs sm:max-w-sm md:max-w-md"
           />
         </div>
       </div>
 
       {/* Form Section */}
-      <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-8">
-        <div className="w-full max-w-md space-y-6">
+      <div className="w-full md:w-1/2 flex items-center justify-center p-4 sm:p-6 md:p-8">
+        <div className="w-full max-w-md space-y-4 sm:space-y-6">
           <div className="flex items-center gap-3">
-            <img src={Ta2} alt="Logo" className="w-12 h-12" />
-            <h1 className="text-3xl font-bold text-blue-900">JobSeek</h1>
+            <img src={Ta2} alt="Logo" className="w-10 h-10 sm:w-12 sm:h-12" />
+            <h1 className="text-2xl sm:text-3xl font-bold text-blue-900 dark:text-blue-300">JobSeek</h1>
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold text-gray-800">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-200">
               Join as a Freelancer
             </h2>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
               Create your account to get started
             </p>
           </div>
 
-          <form onSubmit={formik.handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <form onSubmit={formik.handleSubmit} className="space-y-3 sm:space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {/* Full Name */}
               <div>
                 <input
@@ -132,10 +131,10 @@ const RegisterFreelancer = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.fullName}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full px-3 py-1 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                 />
                 {formik.touched.fullName && formik.errors.fullName && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">
                     {formik.errors.fullName}
                   </p>
                 )}
@@ -151,17 +150,17 @@ const RegisterFreelancer = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.username}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full px-3 py-1 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                 />
                 {formik.touched.username && formik.errors.username && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">
                     {formik.errors.username}
                   </p>
                 )}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {/* Gender */}
               <div>
                 <select
@@ -170,14 +169,15 @@ const RegisterFreelancer = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.gender}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition bg-white">
+                  className="w-full px-3 py-1 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
+                >
                   <option value="">Select gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                   <option value="Other">Other</option>
                 </select>
                 {formik.touched.gender && formik.errors.gender && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">
                     {formik.errors.gender}
                   </p>
                 )}
@@ -193,17 +193,17 @@ const RegisterFreelancer = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.address}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full px-3 py-1 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                 />
                 {formik.touched.address && formik.errors.address && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">
                     {formik.errors.address}
                   </p>
                 )}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {/* Email */}
               <div>
                 <input
@@ -214,10 +214,10 @@ const RegisterFreelancer = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full px-3 py-1 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                 />
                 {formik.touched.email && formik.errors.email && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">
                     {formik.errors.email}
                   </p>
                 )}
@@ -232,10 +232,12 @@ const RegisterFreelancer = () => {
                   onChange={handlePhoneNumberChange}
                   inputStyle={{
                     width: "100%",
-                    height: "42px",
+                    height: "auto",
+                    padding: "0.5rem 0.75rem sm:0.5rem 1rem",
                     border: "1px solid #d1d5db",
                     borderRadius: "8px",
                     paddingLeft: "48px",
+                    backgroundColor: "#fff",
                   }}
                   buttonStyle={{
                     border: "none",
@@ -243,9 +245,10 @@ const RegisterFreelancer = () => {
                   }}
                   containerStyle={{ position: "relative" }}
                   dropdownStyle={{ zIndex: 999 }}
+                  className="dark:[&_.form-control]:bg-gray-700 dark:[&_.form-control]:text-gray-100 dark:[&_.form-control]:border-gray-600"
                 />
                 {formik.touched.phone && formik.errors.phone && (
-                  <p className="text-red-500 text-xs mt-1">
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">
                     {formik.errors.phone}
                   </p>
                 )}
@@ -263,12 +266,13 @@ const RegisterFreelancer = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full px-3 py-1 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                 />
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-900">
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-900 dark:text-blue-300"
+                >
                   {passwordVisible ? (
                     <i className="fas fa-eye-slash"></i>
                   ) : (
@@ -277,7 +281,7 @@ const RegisterFreelancer = () => {
                 </button>
               </div>
               {formik.touched.password && formik.errors.password && (
-                <p className="text-red-500 text-xs mt-1">
+                <p className="text-red-500 dark:text-red-400 text-xs mt-1">
                   {formik.errors.password}
                 </p>
               )}
@@ -294,12 +298,13 @@ const RegisterFreelancer = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.confirmPassword}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  className="w-full px-3 py-1 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                 />
                 <button
                   type="button"
                   onClick={toggleConfirmPasswordVisibility}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-900">
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-900 dark:text-blue-300"
+                >
                   {confirmPasswordVisible ? (
                     <i className="fas fa-eye-slash"></i>
                   ) : (
@@ -307,42 +312,42 @@ const RegisterFreelancer = () => {
                   )}
                 </button>
               </div>
-              {formik.touched.confirmPassword &&
-                formik.errors.confirmPassword && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {formik.errors.confirmPassword}
-                  </p>
-                )}
+              {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+                <p className="text-red-500 dark:text-red-400 text-xs mt-1">
+                  {formik.errors.confirmPassword}
+                </p>
+              )}
             </div>
 
             {/* Submit Button */}
             <button
-              className="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 rounded-lg font-medium disabled:opacity-50 transition"
+              className="w-full bg-blue-900 dark:bg-blue-800 hover:bg-blue-800 dark:hover:bg-blue-700 text-white py-2 sm:py-3 rounded-lg font-medium disabled:opacity-50 transition"
               type="submit"
-              disabled={isLoading}>
+              disabled={isLoading}
+            >
               {isLoading ? "Creating Account..." : "Create Account"}
             </button>
             {error && (
-              <p className="text-red-500 text-sm text-center">
-                {error.data?.message ||
-                  "An error occurred during registration."}
+              <p className="text-red-500 dark:text-red-400 text-sm text-center">
+                {error.data?.message || "An error occurred during registration."}
               </p>
             )}
           </form>
 
           <div className="text-center space-y-2">
-            <p className="text-sm text-gray-600">
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               Already have an account?{" "}
               <span
-                className="text-blue-900 hover:underline cursor-pointer font-medium"
-                onClick={() => navigate("/register-freelancer/login")}>
+                className="text-blue-900 dark:text-blue-300 hover:underline cursor-pointer font-medium"
+                onClick={() => navigate("/register-freelancer/login")}
+              >
                 Login now
               </span>
             </p>
             <div className="flex items-center justify-center gap-2">
-              <span className="w-1/4 h-px bg-gray-300"></span>
-              <span className="text-sm text-gray-500">OR</span>
-              <span className="w-1/4 h-px bg-gray-300"></span>
+              <span className="w-1/4 h-px bg-gray-300 dark:bg-gray-600"></span>
+              <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">OR</span>
+              <span className="w-1/4 h-px bg-gray-300 dark:bg-gray-600"></span>
             </div>
           </div>
         </div>

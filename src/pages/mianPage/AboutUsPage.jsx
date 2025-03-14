@@ -32,9 +32,15 @@ export default function AboutUsPage() {
             data-aos="fade-up"
             className="text-3xl md:text-4xl font-bold text-primary text-center mb-10"
           >
-            {t("ourTeam")}
+            {t("ourMentor")}
           </h2>
           <OurMentor />
+          <h2
+            data-aos="fade-up"
+            className="text-3xl md:text-4xl font-bold text-primary text-center mb-10"
+          >
+            {t("ourTeam")}
+          </h2>
           <OurTeam />
         </section>
         <section className="mt-20">
