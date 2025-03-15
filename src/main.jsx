@@ -10,8 +10,8 @@ import store from "./app/store.js";
 import RegisterFreelancer from "./components/auth/RegisterFreelancer.jsx";
 import Login from "./components/auth/Login.jsx";
 import AboutUsPage from "./pages/mianPage/AboutUsPage.jsx";
-import FreelancerFitPage from "./pages/freelaner/FreelancerFitPage.jsx";
 import FreelancerProfile from "./pages/freelaner/FreelancerProfile.jsx";
+import BusinessOwnerProfile from "./pages/businessOwner/BusinessOwnerProfile.jsx";
 import UserSeeFreelancerProfilePage from "./pages/freelaner/UserSeeFreelancerProfilePage.jsx";
 import ChatbotPage from "./pages/chatBot/ChatbotPage.jsx";
 import FreelancerPage from "./pages/freelaner/FreelancerPage.jsx";
@@ -20,6 +20,8 @@ import RegisterBusinessOwner from "./components/auth/RegisterBusinessOwner.jsx";
 import JobPost from "./pages/businessOwner/JobPost.jsx";
 import ServiceDetail from "./pages/freelaner/ServideDetail.jsx";
 import { useEffect, useState } from "react";
+import CreateJob from "./pages/creatAtJob/CreateJob.jsx";
+import EditProfileBusinessOwner from "./pages/sitting/EditProfileBusinessOwner.jsx";
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const [userRole, setUserRole] = useState(null);
@@ -90,15 +92,39 @@ const AppRoutes = () => (
         path="/profile"
         element={
           <ProtectedRoute allowedRoles={["BUSINESS_OWNER"]}>
-            <FreelancerProfile />
+            <BusinessOwnerProfile />
           </ProtectedRoute>
         }
       />
       <Route
-        path="/job-post"
+        path="/post-job"
         element={
           <ProtectedRoute allowedRoles={["BUSINESS_OWNER"]}>
             <JobPost />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/freelancer-service"
+        element={
+          <ProtectedRoute allowedRoles={["BUSINESS_OWNER"]}>
+            <FreelancerPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/create-job"
+        element={
+          <ProtectedRoute allowedRoles={["BUSINESS_OWNER"]}>
+            <CreateJob />
+          </ProtectedRoute>
+        }
+      />
+           <Route
+        path="/edit-profile-business-owner"
+        element={
+          <ProtectedRoute allowedRoles={["BUSINESS_OWNER"]}>
+            <EditProfileBusinessOwner/>
           </ProtectedRoute>
         }
       />

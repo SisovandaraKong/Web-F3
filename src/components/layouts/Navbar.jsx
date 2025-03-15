@@ -122,16 +122,16 @@ export default function Navbar() {
               <>
                 <li>
                   <NavLink
-                    to="/job-post"
+                    to="/post-job"
                     className="text-white hover:text-secondary">
                     {t("Post Job")}
                   </NavLink>
                 </li>
                 <li>
                   <NavLink
-                    to="/freelancer-page"
+                    to="/freelancer-service"
                     className="text-white hover:text-secondary">
-                    {t("Find Freelancers")}
+                    {t("Freelancers Services")}
                   </NavLink>
                 </li>
               </>
@@ -228,13 +228,13 @@ export default function Navbar() {
                   <ul className="py-2 text-gray-700 dark:text-white">
                     {userRole === "FREELANCER" && (
                       <>
-                       <li>
-                      <NavLink
-                        to="/freelancer-profile"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                        {t("My Profile")}
-                      </NavLink>
-                    </li>
+                        <li>
+                          <NavLink
+                            to="/freelancer-profile"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("My Profile")}
+                          </NavLink>
+                        </li>
                         <li>
                           <NavLink
                             to="/freelancer-profile"
@@ -263,9 +263,9 @@ export default function Navbar() {
                         </li>
                         <li>
                           <NavLink
-                            to="/dashboard"
+                            to="/create-job"
                             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            {t("My Dashboard")}
+                            {t("Create Job")}
                           </NavLink>
                         </li>
                       </>

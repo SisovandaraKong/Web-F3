@@ -1,246 +1,361 @@
 import React, { useState } from "react";
-import { FaUserAlt, FaRegFileAlt, FaPenNib, FaPencilAlt } from "react-icons/fa";
-import { RiComputerLine } from "react-icons/ri";
-import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
-import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
+import {
+  FaUserAlt,
+  FaCalendarAlt,
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaStar,
+  FaEdit,
+  FaPlus,
+} from "react-icons/fa";
 import { useGetMeQuery } from "../../feature/auth/authSlide";
 import {
   useDeleteServiceMutation,
   useGetMyOwnServiceQuery,
 } from "../../feature/service/serviceSlde";
-import { MdError } from "react-icons/md";
+import { MdError, MdWork } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const FreelancerProfile = () => {
-  // State to toggle services view
   const { data, isLoading, error } = useGetMeQuery();
   const {
-    data: myService,
-    isLoading: myServiceIsLoading,
-    error: myServiceError,
+    data: myServices,
+    isLoading: servicesLoading,
+    error: servicesError,
   } = useGetMyOwnServiceQuery();
-  console.log("ME in profile", data);
 
-  console.log("myService in in profile", myService);
-
-  // Mutation hook for deleting a service
-  const [
-    deleteService,
-    { isLoading: deleteServiceIsLoading, error: deleteServiceError },
-  ] = useDeleteServiceMutation();
-
+  const [deleteService, { isLoading: deleteLoading }] =
+    useDeleteServiceMutation();
   const [showAllServices, setShowAllServices] = useState(false);
-  const handleToggleServices = () => {
-    setShowAllServices((prevState) => !prevState); // Toggle between showing all or limited services
-  };
 
   const userData = data?.data || {};
+  const skills = userData.skills || [];
 
   const handleDeleteService = async (serviceId) => {
-    try {
-      await deleteService(serviceId); // Call delete service mutation
-      console.log("Service deleted successfully.");
-    } catch (error) {
-      console.error("Error deleting service:", error);
+    if (confirm("Are you sure you want to delete this service?")) {
+      try {
+        await deleteService(serviceId);
+      } catch (error) {
+        console.error("Error deleting service:", error);
+      }
     }
   };
 
-  if (isLoading)
+  if (isLoading) {
     return (
-      <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center text-gray-500 dark:text-gray-400">
-        Loading...
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
       </div>
     );
-  if (error)
+  }
+
+  if (error) {
     return (
-      <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center text-primary dark:text-white">
-        <div className="text-center p-6  ">
-          <MdError className="text-4xl mb-4 mx-auto text-primary" />
-          <h1 className="text-2xl font-bold">Internal Error</h1>
-          <p className="mt-2 text-lg">
-            Oops! Something went wrong on our end. Please try again later.
+      <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center">
+        <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+          <MdError className="text-5xl mb-4 mx-auto text-red-500" />
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+            Unable to Load Profile
+          </h1>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">
+            We couldn't load your profile information. Please try again later.
           </p>
+          <button className="mt-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition">
+            Retry
+          </button>
         </div>
       </div>
     );
+  }
 
   return (
-    <>
-      <ScrollIndicator />
-      <div className="max-w-7xl mx-auto min-h-screen py-10 px-4 sm:px-6 lg:px- bg-gray-50 dark:bg-gray-900">
-        {/* Header */}
-        {/* <div className="flex justify-between items-center mb-8 border-b-2 border-primary pb-2">
-          <h1 className="text-3xl font-bold text-primary dark:text-white ">
-            My Profile
-          </h1>
-          <div className="flex space-x-3">
-            <button className="flex items-center px-4 py-2 border border-red-500 rounded-lg bg-white text-red-500 hover:bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700 transition">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-2"
-                viewBox="0 0 20 20"
-                fill="currentColor">
-                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-              </svg>
-              Edit
-            </button>
-            <button className="flex items-center px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-700 transition">
-              <ChatBubbleLeftEllipsisIcon className="w-5 h-5 mr-2" />
-              Let's Chat
-            </button>
-          </div>
-        </div> */}
-
-        {/* Main Content */}
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left Column */}
-          <div className="w-full md:w-1/3">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-              {/* Profile Picture & Info */}
-              <div className="flex flex-col items-center text-center">
-                <div>
-                  <div className="w-40 h-40 mb-4 ">
-                    {userData?.profileImageUrl ? (
-                      <img
-                        className="w-full h-full rounded-full object-cover border-2 border-blue-100 dark:border-blue-900"
-                        src={userData.profileImageUrl}
-                        alt="user photo"
-                      />
-                    ) : (
-                      <div className="w-full h-full rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                        <span className="text-blue-600 dark:text-blue-300 text-5xl font-bold">
-                          {userData?.fullName?.charAt(0) || ""}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="border-t w-full text-center p-4">
-                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {userData.fullName || ""}
-                  </h2>
-                  <div className="flex items-center justify-center gap-2 mt-3">
-                    {/* <FaUserAlt className="h-4 w-4 text-blue-900 dark:text-blue-300" /> */}
-                    <span className="text-sm font-extrabold text-primary">
-                      I'm a {userData.userType || "NONE TYPE"}
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-10">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-teal-500 to-blue-500 text-white">
+        <div className="max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="mb-8 md:mb-0 md:mr-10">
+              <div className="w-40 h-40 bg-white rounded-full border-4 border-white shadow-xl overflow-hidden">
+                {userData.profileImageUrl ? (
+                  <img
+                    src={userData.profileImageUrl}
+                    alt={userData.fullName}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-teal-100 flex items-center justify-center">
+                    <span className="text-teal-600 text-5xl font-bold">
+                      {userData.fullName?.charAt(0) || "F"}
                     </span>
                   </div>
-                  <span className="text-gray-600 dark:text-gray-400 text-sm mt-3 block">
-                    Experience Years {userData.experienceYears}
-                  </span>
-                  <span className="text-gray-600 dark:text-gray-400 text-sm mt-3 block">
-                    {userData.bio || "No bio available"}
-                  </span>
+                )}
+              </div>
+            </div>
+            <div className="text-center md:text-left">
+              <h1 className="text-3xl md:text-4xl font-bold">
+                {userData.fullName}
+              </h1>
+              <p className="text-xl mt-2 opacity-90">Freelancer</p>
+              <div className="mt-4 flex flex-wrap justify-center md:justify-start ">
+                <div className="flex items-center  bg-opacity-20 px-4 py-2 rounded-full">
+                  <MdWork className="mr-2" />
+                  <span>{userData.experienceYears || 0} Years Experience</span>
+                </div>
+                <div className="flex items-center  bg-opacity-20 px-4 py-2 rounded-full">
+                  <FaMapMarkerAlt className="mr-2" />
+                  <span>{userData.address || "Location not specified"}</span>
                 </div>
               </div>
-              <div className="mt-6 pt-6 border-t dark:border-gray-700  items-center">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Contact Information
-                </h3>
-                <div className="space-y-4 text-gray-600 dark:text-gray-400">
-                  <div className="flex items-start">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-blue-900 dark:text-blue-300 mr-3 mt-0.5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor">
-                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                    </svg>
-                    <span className="text-sm">
-                      {userData.email || "Email not available"}
-                    </span>
-                  </div>
-                  <div className="flex items-start">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-blue-900 dark:text-blue-300 mr-3 mt-0.5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor">
-                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                    </svg>
-                    <span className="text-sm">
-                      {userData.phone || "Phone not available"}
-                    </span>
-                  </div>
-                  <div className="flex items-start">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-blue-900 dark:text-blue-300 mr-3 mt-0.5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor">
-                      <path
-                        fillRule="evenodd"
-                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="text-sm">
-                      {userData.address || "Location not available"}
-                    </span>
-                  </div>
-                </div>
+              <div className="mt-6">
+                {/* <button className="bg-teal-600 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-teal-700 transition">
+                  <FaPlus className="inline mr-2" />
+                  Add Service
+                </button> */}
               </div>
             </div>
           </div>
-          {/* Right Column */}
-          <div className="w-full md:w-2/3 space-y-8">
-            {/* Services */}
-            <div>
-              <h2 className="text-md  text-gray-900 dark:text-white mb-4">
-                My profile
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Left Column - About & Contact */}
+          <div className="md:col-span-1 space-y-6">
+            {/* About Section */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+              <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+                About Me
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
-                {myServiceIsLoading ? (
-                  <p className="text-gray-500">Loading services...</p>
-                ) : myServiceError ? (
-                  <p className="text-red-500">Error loading services.</p>
-                ) : myService && myService.length > 0 ? (
-                  myService
-                    .slice(0, showAllServices ? myService.length : 4)
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                {userData.bio ||
+                  "No bio information available. Tell clients about yourself, your experience, and what makes you unique."}
+              </p>
+              <Link
+                to="/edit-profile"
+                className="text-primary hover:underline text-sm font-medium">
+                {userData.bio ? "Edit Bio" : "Add Bio"}
+              </Link>
+            </div>
+
+            {/* Skills Section */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+                  Skills
+                </h2>
+                <Link
+                  to="/edit-skills"
+                  className="text-primary hover:underline text-sm font-medium">
+                  {skills.length > 0 ? "Edit Skills" : "Add Skills"}
+                </Link>
+              </div>
+              {skills.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {skills.map((skill, index) => (
+                    <span
+                      key={index}
+                      className="bg-teal-100 text-teal-800 dark:bg-teal-800 dark:text-teal-100 px-3 py-1 rounded-full text-sm">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg">
+                  <p className="text-gray-500 dark:text-gray-400">
+                    No skills added yet. Add skills to help clients find you.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Contact Information */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+              <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">
+                Contact Information
+              </h2>
+              <div className="space-y-4">
+                {userData.email && (
+                  <div className="flex items-center">
+                    <div className="bg-teal-100 dark:bg-teal-800 p-3 rounded-full mr-4">
+                      <FaEnvelope className="text-teal-600 dark:text-teal-200" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        Email
+                      </p>
+                      <p className="text-gray-800 dark:text-white">
+                        {userData.email}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {userData.phone && (
+                  <div className="flex items-center">
+                    <div className="bg-teal-100 dark:bg-teal-800 p-3 rounded-full mr-4">
+                      <FaPhone className="text-teal-600 dark:text-teal-200" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        Phone
+                      </p>
+                      <p className="text-gray-800 dark:text-white">
+                        {userData.phone}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {userData.createdAt && (
+                  <div className="flex items-center">
+                    <div className="bg-teal-100 dark:bg-teal-800 p-3 rounded-full mr-4">
+                      <FaCalendarAlt className="text-teal-600 dark:text-teal-200" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        Member Since
+                      </p>
+                      <p className="text-gray-800 dark:text-white">
+                        {new Date(userData.createdAt).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Services */}
+          <div className="md:col-span-2">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+                  My Services
+                </h2>
+                <button
+                  onClick={() => setShowAllServices(!showAllServices)}
+                  className="text-primary hover:underline font-medium">
+                  {showAllServices ? "Show Less" : "View All"}
+                </button>
+              </div>
+
+              {servicesLoading ? (
+                <div className="flex justify-center py-10">
+                  <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-teal-500"></div>
+                </div>
+              ) : servicesError ? (
+                <div className="text-center py-10">
+                  <MdError className="text-4xl mb-2 mx-auto text-red-500" />
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Unable to load services
+                  </p>
+                </div>
+              ) : myServices && myServices.length > 0 ? (
+                <div className="space-y-6">
+                  {myServices
+                    .slice(0, showAllServices ? myServices.length : 3)
                     .map((service) => (
                       <div
                         key={service.id}
-                        className="relative block rounded-tr-3xl border border-gray-100">
-                        {/* Service Image */}
-                        <img
-                          src={
-                            service.imageUrls && service.imageUrls.length > 0
-                              ? service.imageUrls[0]
-                              : "defaultImage.jpg"
-                          }
-                          alt={service.title}
-                          className="h-60 w-full rounded-tr-3xl object-cover"
-                        />
-                        <div className="p-4 text-start">
-                          <strong className="text-xl font-medium text-gray-900">
-                            {service.title}
-                          </strong>
-                          <p className="mt-2 text-gray-700">
-                            {service.description || "No description available."}
-                          </p>
+                        className="bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition group">
+                        <div className="flex flex-col md:flex-row">
+                          <div className="md:w-1/3 relative">
+                            <img
+                              src={
+                                service.imageUrls?.[0] ||
+                                "https://via.placeholder.com/300x200"
+                              }
+                              alt={service.title}
+                              className="h-48 md:h-full w-full object-cover"
+                            />
+                            <div className="absolute top-2 right-2 flex space-x-2">
+                              <Link
+                                to={`/edit-service/${service.id}`}
+                                className="bg-teal-500 text-white p-2 rounded-full hover:bg-teal-600 transition">
+                                <FaEdit size={14} />
+                              </Link>
+                              <button
+                                onClick={() => handleDeleteService(service.id)}
+                                className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 transition"
+                                disabled={deleteLoading}>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-3.5 w-3.5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor">
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                          <div className="p-6 md:w-2/3">
+                            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+                              {service.title}
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-300 mb-4">
+                              {service.description ||
+                                "No description available."}
+                            </p>
+                            <div className="flex items-center justify-between">
+                              <Link
+                                to={`/service/${service.id}`}
+                                className="text-teal-600 hover:underline font-medium">
+                                View Details
+                              </Link>
+                              {service.price && (
+                                <span className="bg-teal-100 text-teal-800 dark:bg-teal-800 dark:text-teal-100 px-3 py-1 rounded-lg font-medium">
+                                  {typeof service.price === "number"
+                                    ? `$${service.price}`
+                                    : service.price}
+                                </span>
+                              )}
+                            </div>
+                          </div>
                         </div>
-                        {/* Delete Button */}
-                        <button
-                          className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full"
-                          onClick={() => handleDeleteService(service.id)}>
-                          Delete
-                        </button>
                       </div>
-                    ))
-                ) : (
-                  <p className="text-gray-500">No services available.</p>
-                )}
-              </div>
-              <button
-                className="mt-4 text-primary underline   p-3 rounded-md"
-                onClick={handleToggleServices}>
-                {showAllServices ? "See Less Service" : "See All Service"}
-              </button>
+                    ))}
+                </div>
+              ) : (
+                <div className="py-10 text-center border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl">
+                  <div className="text-gray-400 dark:text-gray-500 mb-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-16 w-16 mx-auto"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                      />
+                    </svg>
+                    <p className="mt-2 text-gray-500 dark:text-gray-400">
+                      No services added yet. Start by adding a new service.
+                    </p>
+                    <Link
+                      to="/add-service"
+                      className="mt-4 inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition">
+                      <FaPlus className="mr-2" />
+                      Add Service
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

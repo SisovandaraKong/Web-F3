@@ -1,22 +1,18 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const fileUplordSlide = createApi({
-  reducerPath: 'fileUplordSlide',
-  baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_BAST_URL_UPLORDFILE}` }),  // Set the base URL for the API
+export const fileUploadApi = createApi({
+  reducerPath: "fileUploadApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://202.178.125.77:1235/api/v1/" }),
   endpoints: (builder) => ({
-    uplordImageFile: builder.mutation({
+    uploadImage: builder.mutation({
       query: (formData) => ({
-        url: '/api/v1/medias', 
-        method: 'POST',
+        url: "medias",
+        method: "POST",
         body: formData,
-        prepareHeaders: (headers) => {
-          headers.delete('Content-Type');
-          return headers;
-        },
+        // No need to set Content-Type manually; fetchBaseQuery handles it
       }),
     }),
-
   }),
 });
 
-export const { useUplordImageFileMutation } = fileUplordSlide;
+export  const { useUploadImageMutation } = fileUploadApi;

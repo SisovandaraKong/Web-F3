@@ -49,12 +49,12 @@ const LoginPage = () => {
             console.log("Freelancer login res : ", response.role);
             localStorage.setItem("userRole", response.role);
 
-           navigate("/");
+            navigate("/");
           } else if (response.role === "BUSINESS_OWNER") {
             console.log("bussiness login res :", response.role);
             localStorage.setItem("userRole", response.role);
 
-           // navigate("/");
+            navigate("/");
           } else {
             navigate("/");
           }
