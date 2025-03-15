@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ScrollIndicator from "../../components/scrollIndicator/scrollIndicator";
 import CardJob from "../../components/cards/businessOwner/CardJob";
-
 export default function JobPost() {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 5;
