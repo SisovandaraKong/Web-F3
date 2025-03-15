@@ -39,17 +39,19 @@ const LoginPage = () => {
           }
 
           toast.success("Login successful! Welcome back!", {
-            position: "top-right",
+            position: "bottom-right",
           });
 
           if (response.role === "FREELANCER") {
             console.log("Freelancer login res : ", response.role);
             localStorage.setItem("userRole", response.role);
+
             navigate("/");
           } else if (response.role === "BUSINESS_OWNER") {
             console.log("bussiness login res :", response.role);
             localStorage.setItem("userRole", response.role);
-            // navigate("/");
+
+            navigate("/");
           } else {
             navigate("/");
           }

@@ -62,25 +62,68 @@ export default function Navbar() {
         <div
           className={`w-full md:flex md:w-auto md:items-center ${
             isOpen ? "block" : "hidden"
-          }`}
-        >
-          <ul className="flex flex-col md:items-center md:flex-row md:space-x-4 lg:space-x-6 bg-primary md:bg-transparent p-4 md:p-0 text-lg md:text-lg">
-            <li>
-              <NavLink
-                to="/job-post"
-                className="text-white hover:text-secondary"
-              >
-                {t("job")}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/freelancer-page"
-                className="text-white hover:text-secondary"
-              >
-                {t("services")}
-              </NavLink>
-            </li>
+          }`}>
+          <ul className="flex flex-col md:items-center md:flex-row md:space-x-6 bg-primary md:bg-transparent p-4 md:p-0">
+            {/* Common links for all users */}
+
+            {/* Links for freelancers */}
+            {userRole === "FREELANCER" && (
+              <>
+                <li>
+                  <NavLink
+                    to="/job-post"
+                    className="text-white hover:text-secondary">
+                    {t("Jobs")}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/freelancer-page"
+                    className="text-white hover:text-secondary">
+                    {t("Services")}
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {/* Links for business owners */}
+            {userRole === "BUSINESS_OWNER" && (
+              <>
+                <li>
+                  <NavLink
+                    to="/post-job"
+                    className="text-white hover:text-secondary">
+                    {t("Post Job")}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/freelancer-service"
+                    className="text-white hover:text-secondary">
+                    {t("Freelancers Services")}
+                  </NavLink>
+                </li>
+              </>
+            )}
+
+            {!userRole && (
+              <>
+                <li>
+                  <NavLink
+                    to="/job-post"
+                    className="text-white hover:text-secondary">
+                    {t("job")}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/freelancer-page"
+                    className="text-white hover:text-secondary">
+                    {t("services")}
+                  </NavLink>
+                </li>
+              </>
+            )}
             <li>
               <NavLink
                 to="/about-us"
@@ -162,35 +205,11 @@ export default function Navbar() {
                         <li>
                           <NavLink
                             to="/freelancer-profile"
-                            className="block px-3 py-1 md:px-4 md:py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                          >
-                            {t("Profile")}
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("My Profile")}
                           </NavLink>
                         </li>
-                        <li>
-                          <NavLink
-                            to="/dashboard"
-                            className="block px-3 py-1 md:px-4 md:py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                          >
-                            {t("dashboard")}
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink
-                            to="/create-service"
-                            className="block px-3 py-1 md:px-4 md:py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                          >
-                            {t("Create Job")}
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink
-                            to="/freelancer-profile"
-                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                          >
-                            {t("My Dashboard")}
-                          </NavLink>
-                        </li>
+
                         <li>
                           <NavLink
                             to="/create-service"
@@ -214,10 +233,16 @@ export default function Navbar() {
                         </li>
                         <li>
                           <NavLink
-                            to="/dashboard"
-                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                          >
-                            {t("My Dashboard")}
+                            to="/create-job"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("Create Job")}
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/edit-profile-business-owner"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("Edit Profile")}
                           </NavLink>
                         </li>
                       </>

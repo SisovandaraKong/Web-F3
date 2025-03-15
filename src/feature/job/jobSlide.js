@@ -18,7 +18,7 @@ export const jobSlide = apiSlide.injectEndpoints({
       query: (data) => {
         const token = localStorage.getItem("accessToken");
         return {
-          url: "/api/jobs-service/jobs/create-new",
+          url: "/api/jobs-service/jobs/create-job",
           method: "POST",
           body: data,
           headers: {
@@ -28,9 +28,20 @@ export const jobSlide = apiSlide.injectEndpoints({
         };
       },
     }),
+    getMyOwnJobs: build.query({
+      query: () => ({
+        url: "/api/jobs-service/jobs/get-own-jobs",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }),
+    }),
   }),
 });
 
 export const  {
     useGetAllJobsQuery,
+    useGetMyOwnJobsQuery,
+    useCreateJobMutation,
 } = jobSlide;

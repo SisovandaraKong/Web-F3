@@ -1,22 +1,34 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const fileUplordSlide = createApi({
-  reducerPath: 'fileUplordSlide',
-  baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_BAST_URL_UPLORDFILE}` }),  // Set the base URL for the API
+export const fileUploadApi = createApi({
+  reducerPath: "fileUploadApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://202.178.125.77:1235/api/v1/" }),
   endpoints: (builder) => ({
-    uplordImageFile: builder.mutation({
+    // Mutation for uploading an image
+    uploadImage: builder.mutation({
       query: (formData) => ({
-        url: '/api/v1/medias', 
-        method: 'POST',
+        url: "medias",
+        method: "POST",
         body: formData,
-        prepareHeaders: (headers) => {
-          headers.delete('Content-Type');
-          return headers;
-        },
       }),
     }),
 
+    // Query for fetching a file by its name
+    getFileByName: builder.query({
+      query: (fileName) => ({
+        url: `medias/view/${fileName}`,
+        method: "GET",
+        responseHandler: async (response) => {
+          if (response.ok) {
+            // Handle the response as a blob (for files like images, PDFs, etc.)
+            return await response.blob();
+          }
+          throw new Error("Failed to fetch file");
+        },
+      }),
+    }),
   }),
 });
 
-export const { useUplordImageFileMutation } = fileUplordSlide;
+// Export hooks for usage in components
+export const { useUploadImageMutation, useGetFileByNameQuery } = fileUploadApi;

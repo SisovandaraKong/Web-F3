@@ -46,7 +46,7 @@ export const serviceSlide = apiSlide.injectEndpoints({
         };
       },
     }),
-    getMyOwnService: build.query({
+  getMyOwnService: build.query({
       query: () => ({
         url: "/api/jobs-service/services/own-service",
         method: "GET",
