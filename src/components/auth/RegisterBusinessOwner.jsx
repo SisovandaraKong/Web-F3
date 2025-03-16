@@ -270,7 +270,7 @@ const RegisterBusinessOwner = () => {
               Already have an account?{" "}
               <span
                 className="text-blue-900 dark:text-blue-300 hover:underline cursor-pointer font-medium"
-                onClick={() => navigate("/register-businessowner/login")}
+                onClick={() => navigate("/register-freelancer/login")}
               >
                 Login now
               </span>

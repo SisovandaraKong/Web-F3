@@ -90,7 +90,7 @@ export default function Navbar() {
                     to="/post-job"
                     className="text-white hover:text-secondary"
                   >
-                    {t("Post Job")}
+                    {t("postJob")}
                   </NavLink>
                 </li>
                 <li>
@@ -98,7 +98,7 @@ export default function Navbar() {
                     to="/freelancer-service"
                     className="text-white hover:text-secondary"
                   >
-                    {t("Freelancers Services")}
+                    {t("freelancerService")}
                   </NavLink>
                 </li>
               </>
