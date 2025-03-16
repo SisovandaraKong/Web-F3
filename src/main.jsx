@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import CreateJob from "./pages/creatAtJob/CreateJob.jsx";
 import EditProfileBusinessOwner from "./pages/sitting/EditProfileBusinessOwner.jsx";
 import JobDetailPage from "./pages/businessOwner/jobDetailPage.jsx";
+import EditProfileFreelancerPage from "./pages/sitting/EditProfileFreelancerPage.jsx";
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const [userRole, setUserRole] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -58,6 +59,14 @@ const AppRoutes = () => (
         element={
           <ProtectedRoute allowedRoles={["FREELANCER"]}>
             <FreelancerProfile />
+          </ProtectedRoute>
+        }
+      />
+       <Route
+        path="/edit-profile-freelanecer"
+        element={
+          <ProtectedRoute allowedRoles={["FREELANCER"]}>
+            <EditProfileFreelancerPage/>
           </ProtectedRoute>
         }
       />

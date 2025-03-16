@@ -235,12 +235,18 @@ export default function Navbar() {
                             {t("My Profile")}
                           </NavLink>
                         </li>
-
                         <li>
                           <NavLink
                             to="/create-service"
                             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
                             {t("Create Service")}
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/edit-profile-freelanecer"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("Edit Profile")}
                           </NavLink>
                         </li>
                       </>

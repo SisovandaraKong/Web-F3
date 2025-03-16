@@ -129,7 +129,6 @@ const EditProfileBusinessOwner = () => {
           Authorization: `Bearer ${token}`,
         },
       }).unwrap();
-      
       // Success notification
       alert("Profile updated successfully!");
     } catch (error) {
@@ -186,7 +185,6 @@ const EditProfileBusinessOwner = () => {
               {isUploading && <p className="text-primary">Uploading image...</p>}
               {formErrors.profileImageUrl && <p className="text-red-500 text-sm">{formErrors.profileImageUrl}</p>}
             </div>
-            
             {/* Personal Information */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 border-b pb-2">Personal Information</h3>
