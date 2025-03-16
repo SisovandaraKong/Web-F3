@@ -235,13 +235,7 @@ export default function Navbar() {
                             {t("My Profile")}
                           </NavLink>
                         </li>
-                        <li>
-                          <NavLink
-                            to="/freelancer-profile"
-                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            {t("My Dashboard")}
-                          </NavLink>
-                        </li>
+
                         <li>
                           <NavLink
                             to="/create-service"
@@ -266,6 +260,13 @@ export default function Navbar() {
                             to="/create-job"
                             className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
                             {t("Create Job")}
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="/edit-profile-business-owner"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            {t("Edit Profile")}
                           </NavLink>
                         </li>
                       </>

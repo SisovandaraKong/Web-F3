@@ -7,7 +7,6 @@ const EditProfileBusinessOwner = () => {
     fullName: "",
     gender: "",
     profileImageUrl: "",
-    email: "",
     phone: "",
     address: "",
     companyName: "",
@@ -15,6 +14,7 @@ const EditProfileBusinessOwner = () => {
     industry: "",
   });
 
+  const [selectedFile, setSelectedFile] = useState(null); // Store the selected file
   const [editeProfileBusinessOwner, { loading }] =
     useEditeProfileBusinessOwnerMutation();
   const [uploadImage, { isLoading: isUploading, error: uploadError }] =
@@ -24,41 +24,45 @@ const EditProfileBusinessOwner = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  const handleImageUpload = async (e) => {
-    const files = Array.from(e.target.files);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]; // Get the first selected file
+    setSelectedFile(file); // Store the file in state
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     try {
-      const uploadedUrls = [];
+      let profileImageUrl = formData.profileImageUrl;
 
-      for (const file of files) {
+      // Upload the image only if a file is selected
+      if (selectedFile) {
         const formData = new FormData();
-        formData.append("file", file); // Use the field name expected by your backend
+        formData.append("file", selectedFile); // Append the file to FormData
 
         // Upload the file using the upload hook
         const uploadResponse = await uploadImage(formData).unwrap();
 
         if (uploadResponse && uploadResponse.uri) {
-          uploadedUrls.push(uploadResponse.uri); // Store the URI
+          profileImageUrl = uploadResponse.uri; // Store the uploaded image URL
         }
       }
-
-      // Update the form data with the new image URLs
-      setFormData({
-        ...formData,
-        jobImages: [...formData.profileImageUrl, ...uploadedUrls],
-      });
-    } catch (error) {
-      console.error("Error uploading images:", error);
-      alert("Failed to upload images. Please try again.");
-    }
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await editeProfileBusinessOwner(formData).unwrap();
+      // Update the profile with the new data (including the image URL if uploaded)
+      const token = localStorage.getItem("accessToken");
+      await editeProfileBusinessOwner({
+        body: {
+          ...formData,
+          profileImageUrl, // Include the updated image URL
+        },
+        headers: {
+          Authorization: `Bearer ${token}`, // Include the token in the headers
+        },
+      }).unwrap();
       alert("Profile updated successfully!");
     } catch (error) {
       console.error("Failed to update profile:", error);
+      alert("Failed to update profile. Please try again.");
     }
   };
 
@@ -79,7 +83,7 @@ const EditProfileBusinessOwner = () => {
       <input
         accept=".jpg,.jpeg,.png,.gif"
         type="file"
-        onChange={handleImageUpload}
+        onChange={handleFileChange} // Handle file selection
         disabled={isUploading}
       />
       {isUploading && <p>Uploading image...</p>}
@@ -126,8 +130,8 @@ const EditProfileBusinessOwner = () => {
         onChange={handleChange}
         placeholder="Industry"
       />
-      <button type="submit" disabled={loading}>
-        {loading ? "Updating..." : "Update Profile"}
+      <button type="submit" disabled={loading || isUploading}>
+        {loading || isUploading ? "Updating..." : "Update Profile"}
       </button>
     </form>
   );

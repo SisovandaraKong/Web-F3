@@ -2,6 +2,7 @@ import React from "react";
 import { IoMdTime } from "react-icons/io";
 import { NavLink } from "react-router"; // Make sure this is imported correctly
 import { useGetAllJobsQuery } from "../../../feature/job/jobSlide";
+import { MdError } from "react-icons/md";
 
 export default function CardJob({ page }) {
   const { data, isLoading, isError } = useGetAllJobsQuery(page);
@@ -17,16 +18,22 @@ export default function CardJob({ page }) {
         />
       </div>
     );
-  if (isError)
+
+  if (isError) {
     return (
-      <div className="flex justify-center items-center ">
-        {" "}
-        <img
-          src="https://cfn.tweaking.in/content/wp/tweaklibrary_com/uploads/2020/07/Check-For-Error-Message-min.gif"
-          alt=""
-        />
+      <div className="max-w-7xl mx-auto min-h-screen flex items-center justify-center">
+        <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+          <MdError className="text-5xl mb-4 mx-auto text-red-500" />
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+            Unable to Load Profile
+          </h1>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">
+            We couldn't load your profile information. Please try again later.
+          </p>
+        </div>
       </div>
     );
+  }
 
   const services = data?.content || [];
 
@@ -52,7 +59,7 @@ export default function CardJob({ page }) {
 
             {/* Service Description */}
             <div className="mb-4">
-              <p
+              {/* <p
                 className={`text-sm px-2 py-1 rounded text-white w-fit ${
                   service.status === "active"
                     ? "bg-yellow-300 blur-sm"
@@ -61,9 +68,9 @@ export default function CardJob({ page }) {
                     : "bg-blue-700"
                 }`}>
                 {service.status}
-              </p>
+              </p> */}
 
-              <h3 className="text-lg font-semibold text-black dark:text-white">
+              <h3 className="text-lg font-semibold text-black dark:text-white line-clamp-1">
                 {service.title}
               </h3>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
@@ -73,19 +80,16 @@ export default function CardJob({ page }) {
 
             {/* Service Creation Date */}
             <div className="flex items-center justify-between">
+              <div className="flex gap-2">
+                <span className="text-md text-primary dark:text-gray-400">
+                  {service.budget}$ /M
+                </span>
+              </div>
               <div className="flex items-center gap-2">
                 <IoMdTime className="text-gray-500 dark:text-gray-400" />
                 <span className="text-sm text-gray-500 dark:text-gray-400">
                   {new Date(service.createdAt).toLocaleDateString()}
                 </span>
-              </div>
-              <div className="flex gap-2">
-                <button className="rounded-md px-4 py-2 text-sm border font-medium text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800">
-                  Details
-                </button>
-                <button className="rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800">
-                  Order
-                </button>
               </div>
             </div>
           </div>

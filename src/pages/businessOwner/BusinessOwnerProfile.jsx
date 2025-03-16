@@ -8,15 +8,16 @@ import {
   FaBuilding,
   FaPen,
   FaTimes,
+  FaHeart,
 } from "react-icons/fa";
 import { useGetMeQuery } from "../../feature/auth/authSlide";
-import {
-  useDeleteServiceMutation,
-  useGetMyOwnServiceQuery,
-} from "../../feature/service/serviceSlde";
 import { MdError, MdAdd } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useGetMyOwnJobsQuery } from "../../feature/job/jobSlide";
+import {
+  useDeleteBookmarkMutation,
+  useGetMyBookmarkQuery,
+} from "../../feature/bookmark/bookmarkSlide";
 
 const BusinessProfile = () => {
   const { data, isLoading, error } = useGetMeQuery();
@@ -25,14 +26,28 @@ const BusinessProfile = () => {
     isLoading: servicesLoading,
     error: servicesError,
   } = useGetMyOwnJobsQuery();
+  const {
+    data: wishlistData,
+    isLoading: wishlistLoading,
+    error: wishlistError,
+  } = useGetMyBookmarkQuery();
+  console.log(" My Wish List", wishlistData);
+
+  // Ensure wishlistItems is always an array
+  const wishlistItems = wishlistData?.[0]?.service || [];
+  console.log("Wishlist Items: ");
+  // Fetch wishlist data
+
   console.log("Me As Business owner: ", data);
   console.log("My Services: ", myServices);
   const service = myServices?.content || [];
-  console.log("My Services: ", service);
+
+  console.log("Wishlist Items: ", wishlistItems);
 
   const [deleteService, { isLoading: deleteLoading }] =
-    useDeleteServiceMutation();
+    useDeleteBookmarkMutation();
   const [showAllServices, setShowAllServices] = useState(false);
+  const [showAllWishlist, setShowAllWishlist] = useState(false);
 
   const userData = data?.data || {};
 
@@ -65,9 +80,6 @@ const BusinessProfile = () => {
           <p className="mt-2 text-gray-600 dark:text-gray-300">
             We couldn't load your profile information. Please try again later.
           </p>
-          <button className="mt-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition">
-            Retry
-          </button>
         </div>
       </div>
     );
@@ -76,7 +88,7 @@ const BusinessProfile = () => {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-10">
       {/* Profile Header */}
-      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white">
+      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white  bg-[url(https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)] bg-cover bg-center bg-no-repeat">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row items-center md:items-end space-y-4 md:space-y-0 md:space-x-8">
             <div className="relative">
@@ -121,20 +133,14 @@ const BusinessProfile = () => {
               </div>
             </div>
 
-            <div className="md:ml-auto flex gap-3">
-              <Link
-                to="/edit-profile-business-owner"
-                className=" text-secondary px-4 py-2 rounded-lg shadow-lg border-2 border-secondary transition flex items-center">
-                <FaPen className="mr-1" />
-                Edite Profile
-              </Link>
+            {/* <div className="md:ml-auto flex gap-3">
               <Link
                 to="/create-job"
                 className="bg-primary text-white px-4 py-2 rounded-lg shadow-lg  hover:bg-primary-hover transition flex items-center">
                 <MdAdd className="mr-1" />
                 Add Service
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -220,9 +226,10 @@ const BusinessProfile = () => {
             </div>
           </div>
 
-          {/* Right Column - Services */}
+          {/* Right Column - Services and Wishlist */}
           <div className="md:col-span-2">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+            {/* My Services Section */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mb-8">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
                   My Services
@@ -257,59 +264,158 @@ const BusinessProfile = () => {
                 </div>
               )}
 
-              {/* Services List (Horizontal Layout) */}
+              {/* Services List */}
               <div className="space-y-6">
-                {service.map((serviceItem) => (
-                  <div
-                    key={serviceItem.id}
-                    className="bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex">
-                    {/* Service Image */}
-                    <div className="relative w-[300px] h-[200] flex-shrink-0">
-                      <img
-                        src={
-                          serviceItem.jobImages
-                            ? serviceItem.jobImages[0]
-                            : "https://via.placeholder.com/300"
-                        }
-                        alt={serviceItem.title}
-                        className="h-full w-full object-cover"
-                      />
-                      {/* Delete Button */}
-                    </div>
-
-                    {/* Service Details */}
-                    <div className="p-4 flex-1">
-                      {/* Title and Date */}
-                      <div className="border-b pb-3">
-                        <span className="text-sm text-gray-500 dark:text-gray-400">
-                          {new Date(serviceItem.createdAt).toLocaleDateString()}
-                        </span>
-                        <h3 className="text-xl font-semibold text-gray-800 dark:text-white mt-2 line-clamp-1">
-                          {serviceItem.title}
-                        </h3>
+                {service
+                  .slice(0, showAllServices ? service.length : 2) // Show only 2 items initially
+                  .map((serviceItem) => (
+                    <div
+                      key={serviceItem.id}
+                      className="bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex">
+                      {/* Service Image */}
+                      <div className="relative w-[300px] h-[200px] flex-shrink-0">
+                        <img
+                          src={
+                            serviceItem.jobImages &&
+                            serviceItem.jobImages.length > 0
+                              ? serviceItem.jobImages[0]
+                              : "https://via.placeholder.com/300"
+                          }
+                          alt={serviceItem.title}
+                          className="h-full w-full object-cover"
+                        />
                       </div>
 
-                      {/* Description */}
-                      <p className="mt-3 text-gray-600 dark:text-gray-300 line-clamp-2">
-                        {serviceItem.description}
-                      </p>
+                      {/* Service Details */}
+                      <div className="p-4 flex-1">
+                        {/* Title and Date */}
+                        <div className="border-b pb-3">
+                          <span className="text-sm text-gray-500 dark:text-gray-400">
+                            {new Date(
+                              serviceItem.createdAt
+                            ).toLocaleDateString()}
+                          </span>
+                          <h3 className="text-xl font-semibold text-gray-800 dark:text-white mt-2 line-clamp-1">
+                            {serviceItem.title}
+                          </h3>
+                        </div>
 
-                      {/* Budget and Actions */}
-                      <div className="flex justify-between items-center mt-4">
-                        <span className="text-primary font-bold">
-                          ${serviceItem.budget}/M
-                        </span>
-                        <Link
-                          to={`/service/${serviceItem.id}`}
-                          className="text-teal-600 hover:underline font-medium">
-                          View Details
-                        </Link>
+                        {/* Description */}
+                        <p className="mt-3 text-gray-600 dark:text-gray-300 line-clamp-2">
+                          {serviceItem.description}
+                        </p>
+
+                        {/* Budget and Actions */}
+                        <div className="flex justify-between items-center mt-4">
+                          <span className="text-primary font-bold">
+                            ${serviceItem.budget}/M
+                          </span>
+                          <Link
+                            to={`/service/${serviceItem.id}`}
+                            className="text-teal-600 hover:underline font-medium">
+                            View Details
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
+          </div>
+        </div>
+        <div className="bg-white dark:bg-gray-800 p-6">
+          <div className="flex justify-between items-center mb-6 border-b-2 pb-3">
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+              My Wishlist
+            </h2>
+            <button
+              onClick={() => setShowAllWishlist(!showAllWishlist)}
+              className="text-primary hover:underline font-semibold">
+              {showAllWishlist ? "Show Less" : "View All"}
+            </button>
+          </div>
+
+          {/* Loading State */}
+          {wishlistLoading && (
+            <div className="flex items-center justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+            </div>
+          )}
+
+          {/* Error State */}
+          {wishlistError && (
+            <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+              <MdError className="text-5xl mb-4 mx-auto text-red-500" />
+              <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+                Unable to Load Wishlist
+              </h1>
+              <p className="mt-2 text-gray-600 dark:text-gray-300">
+                We couldn't load your wishlist. Please try again later.
+              </p>
+              <button className="mt-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition">
+                Retry
+              </button>
+            </div>
+          )}
+
+          {/* Wishlist List */}
+          <div className="space-y-6">
+            {wishlistItems.map((wishlistItem) => (
+              <div
+                key={wishlistItem.id}
+                className="bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex">
+                {/* Wishlist Item Image */}
+                <div className="relative w-[300px] h-[200px] flex-shrink-0">
+                  <img
+                    src={
+                      wishlistItem.service.jobImages &&
+                      wishlistItem.service.jobImages.length > 0
+                        ? wishlistItem.service.jobImages[0]
+                        : "https://via.placeholder.com/300"
+                    }
+                    alt={wishlistItem.service.title}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+
+                {/* Wishlist Item Details */}
+                <div className="p-4 flex-1">
+                  {/* Title and Date */}
+                  <div className="border-b pb-3">
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      Added on{" "}
+                      {new Date(
+                        wishlistItem.service.createdAt
+                      ).toLocaleDateString()}
+                    </span>
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mt-2 line-clamp-1">
+                      {wishlistItem.service.title}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="mt-3 text-gray-600 dark:text-gray-300 line-clamp-2">
+                    {wishlistItem.service.description}
+                  </p>
+
+                  {/* Actions */}
+                  <div className="flex  items-center mt-4 gap-4">
+                    <Link
+                      to={`/service/${wishlistItem.service.id}`}
+                      className="text-teal-600 hover:underline font-medium">
+                      View Details
+                    </Link>
+                    <button
+                      onClick={() =>
+                        handleDeleteService(wishlistItem.service.id)
+                      }
+                      className="text-accent hover:underline ">
+                      Dellet Bookmark
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

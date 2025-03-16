@@ -4,7 +4,9 @@ export const editeSildeApi = apiSlide.injectEndpoints({
   endpoints: (build) => ({
     editeProfileBusinessOwner: build.mutation({
       query: (data) => {
-        const token = localStorage.getItem("accessToken"); // Retrieve token
+        const token = localStorage.getItem("accessToken");
+        console.log("Token", token);
+        // Retrieve token
         if (!token) {
           throw new Error("No token found in localStorage");
         }

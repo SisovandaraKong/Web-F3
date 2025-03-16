@@ -24,6 +24,7 @@ const FreelancerProfile = () => {
     isLoading: servicesLoading,
     error: servicesError,
   } = useGetMyOwnServiceQuery();
+  console.log("my serviece : ", myServices);
 
   const [deleteService, { isLoading: deleteLoading }] =
     useDeleteServiceMutation();
@@ -72,7 +73,7 @@ const FreelancerProfile = () => {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-10">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-teal-500 to-blue-500 text-white">
+      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white  bg-[url(https://onlinecs.baylor.edu/sites/default/files/field/image/Future%20of%20Software_Engineering%20%281%29.jpg)] bg-cover bg-center bg-no-repeat">
         <div className="max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center">
             <div className="mb-8 md:mb-0 md:mr-10">
@@ -255,6 +256,7 @@ const FreelancerProfile = () => {
               ) : myServices && myServices.length > 0 ? (
                 <div className="space-y-6">
                   {myServices
+
                     .slice(0, showAllServices ? myServices.length : 3)
                     .map((service) => (
                       <div

@@ -37,18 +37,6 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
     setLoading(false);
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!localStorage.getItem("accessToken")) {
-    return <Navigate to="/register-freelancer/login" />;
-  }
-
-  if (allowedRoles && !allowedRoles.includes(userRole)) {
-    return <Navigate to="/" />;
-  }
-
   return children;
 };
 const AppRoutes = () => (
@@ -56,6 +44,7 @@ const AppRoutes = () => (
     <Route element={<RootLayout />}>
       <Route path="/" element={<App />} />
       <Route path="/about-us" element={<AboutUsPage />} />
+      <Route path="/jos-post" element={<JobPost />} />
       <Route
         path="/job-post"
         element={
@@ -120,11 +109,11 @@ const AppRoutes = () => (
           </ProtectedRoute>
         }
       />
-           <Route
+      <Route
         path="/edit-profile-business-owner"
         element={
           <ProtectedRoute allowedRoles={["BUSINESS_OWNER"]}>
-            <EditProfileBusinessOwner/>
+            <EditProfileBusinessOwner />
           </ProtectedRoute>
         }
       />

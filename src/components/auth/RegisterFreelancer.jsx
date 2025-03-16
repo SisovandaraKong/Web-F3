@@ -79,11 +79,19 @@ const RegisterFreelancer = () => {
         });
         navigate("/register-freelancer/login");
       } catch (err) {
-        toast.error(
-          err.data?.message || "Registration failed! Please try again."
-        );
+        if (err.status === 409) {
+          toast.error(
+            "This account already exists. The email, username, or phone number may already be registered.",
+            { position: "top-right" }
+          );
+        } else {
+          toast.error(
+            err.data?.message || "Registration failed! Please try again.",
+            { position: "top-right" }
+          );
+        }
       }
-    },
+    }
   });
 
   return (
