@@ -6,9 +6,6 @@ import {
   FaEnvelope,
   FaCalendarAlt,
   FaBuilding,
-  FaPen,
-  FaTimes,
-  FaHeart,
 } from "react-icons/fa";
 import { useGetMeQuery } from "../../feature/auth/authSlide";
 import { MdError, MdAdd } from "react-icons/md";
@@ -42,7 +39,7 @@ const BusinessProfile = () => {
 
   console.log("Wishlist Items: ", wishlistItems);
 
-  const [deleteService, { isLoading: deleteBookmarkLoading  }] =
+  const [deleteService, { isLoading: deleteBookmarkLoading }] =
     useDeleteBookmarkMutation();
   const [showAllServices, setShowAllServices] = useState(false);
   const [showAllWishlist, setShowAllWishlist] = useState(false);
@@ -50,7 +47,9 @@ const BusinessProfile = () => {
   const userData = data?.data || {};
 
   const handleDeleteWishlist = async (bookmarkId) => {
-    if (confirm("Are you sure you want to remove this item from your wishlist?")) {
+    if (
+      confirm("Are you sure you want to remove this item from your wishlist?")
+    ) {
       try {
         await deleteService(bookmarkId);
         // You might want to add a success message here

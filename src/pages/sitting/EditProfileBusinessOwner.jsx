@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useEditeProfileBusinessOwnerMutation } from"../../feature/edit/"
-import { useGetMeQuery } from "../../feature/auth/authSlide";
 import { 
   FaUser, 
   FaBuilding, 
@@ -11,12 +9,14 @@ import {
   FaEnvelope, 
   FaVenusMars, 
   FaImage,
-  FaSave
 } from "react-icons/fa";
 import { useUploadImageMutation } from "../../feature/fileUplord/fileUplordSlide";
+import { useGetMeQuery } from "../../feature/auth/authSlide";
+import { useEditeProfileBusinessOwnerMutation } from "../../feature/editProfile/editeProfileSlide";
 
 const EditProfileBusinessOwner = () => {
   const { data: userData, isLoading: userLoading } = useGetMeQuery();
+  const [editeProfileBusinessOwner, { isLoading: updating }] = useEditeProfileBusinessOwnerMutation();
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "",
@@ -30,9 +30,10 @@ const EditProfileBusinessOwner = () => {
   });
   const [previewImage, setPreviewImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [editeProfileBusinessOwner, { isLoading: updating }] = useEditeProfileBusinessOwnerMutation();
   const [uploadImage, { isLoading: isUploading }] = useUploadImageMutation();
   const [formErrors, setFormErrors] = useState({});
+
+  // Load user data when available
   useEffect(() => {
     if (userData?.data) {
       const user = userData.data;

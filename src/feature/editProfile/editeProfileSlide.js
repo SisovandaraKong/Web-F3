@@ -1,6 +1,6 @@
 import { apiSlide } from "../api/apiSlide";
 
-export const editeSildeApi = apiSlide.injectEndpoints({
+export const editeProfileSlide = apiSlide.injectEndpoints({
   endpoints: (build) => ({
     editeProfileBusinessOwner: build.mutation({
       query: (data) => {
@@ -15,7 +15,7 @@ export const editeSildeApi = apiSlide.injectEndpoints({
           body: data,
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         };
       },
@@ -23,4 +23,4 @@ export const editeSildeApi = apiSlide.injectEndpoints({
   }),
 });
 
-export const { useEditeProfileBusinessOwnerMutation } = editeSildeApi;
+export const { useEditeProfileBusinessOwnerMutation } = editeProfileSlide;
