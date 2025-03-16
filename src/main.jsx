@@ -22,7 +22,7 @@ import ServiceDetail from "./pages/freelaner/ServideDetail.jsx";
 import { useEffect, useState } from "react";
 import CreateJob from "./pages/creatAtJob/CreateJob.jsx";
 import EditProfileBusinessOwner from "./pages/sitting/EditProfileBusinessOwner.jsx";
-
+import JobDetailPage from "./pages/businessOwner/jobDetailPage.jsx";
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const [userRole, setUserRole] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -124,6 +124,14 @@ const AppRoutes = () => (
         element={
           <ProtectedRoute allowedRoles={["FREELANCER", "BUSINESS_OWNER"]}>
             <ServiceDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/job-detail/:id"
+        element={
+          <ProtectedRoute allowedRoles={["FREELANCER", "BUSINESS_OWNER"]}>
+            <JobDetailPage />
           </ProtectedRoute>
         }
       />

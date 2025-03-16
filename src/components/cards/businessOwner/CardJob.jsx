@@ -45,7 +45,7 @@ export default function CardJob({ page }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {uniqueServices.map((service) => (
-        <NavLink key={service.id} to={`/freelancer-page/${service.id}`}>
+        <NavLink key={service.id} to={`/job-detail/${service.id}`}>
           <div className="rounded-lg bg-white dark:bg-black p-4 shadow-lg">
             <img
               src={

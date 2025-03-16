@@ -6,18 +6,16 @@ export const editeSildeApi = apiSlide.injectEndpoints({
       query: (data) => {
         const token = localStorage.getItem("accessToken");
         console.log("Token", token);
-        // Retrieve token
         if (!token) {
           throw new Error("No token found in localStorage");
         }
-
         return {
           url: "/api/users/update-business-profile",
           method: "PUT",
           body: data,
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Attach token
+            Authorization: `Bearer ${token}`, 
           },
         };
       },

@@ -1,61 +1,68 @@
 import React from "react";
 import { FaTelegram, FaGithub } from "react-icons/fa"; // Import icons
+import daraImg from "../../assets/imgAboutUs/dara.jpg";
+import sanomImg from "../../assets/imgAboutUs/sanom.jpg";
+import chimImg from "../../assets/imgAboutUs/theara.jpg";
+import daronImg from "../../assets/imgAboutUs/daron.png";
+import marinetImg from "../../assets/imgAboutUs/marinet.jpg";
+import tainganImg from "../../assets/imgAboutUs/TaingAn.jpg";
+
 
 const OurTeam = () => {
   const employees = [
     {
-      name: "Keo KAY",
-      position: "Mentor ",
+      name: "Kong Sisovandara",
+      position: "Lead Web",
       color: "blue",
-      image: "src/assets/imgAboutUs/CherKeo.png",
+      image: daraImg,
       telegram: "https://t.me/keoKAY", // Add your actual Telegram links
       github: "https://github.com/keoKAY", // Add your actual GitHub links
     },
     {
-      name: "Proeung Chiso",
-      position: "Mentor ",
+      name: "Rin Sanom",
+      position: "Lead Web",
       color: "yellow",
-      image: "src/assets/imgAboutUs/CherChiso.png",
+      image: sanomImg,
       telegram: "https://t.me/proeungchiso",
       github: "https://github.com/proeungchiso",
     },
     {
-      name: "Keo KAY",
-      position: "Mentor ",
+      name: "Chim Theara",
+      position: "Lead Java",
       color: "blue",
-      image: "src/assets/imgAboutUs/CherKeo.png",
+      image: chimImg,
       telegram: "https://t.me/keoKAY", // Add your actual Telegram links
       github: "https://github.com/keoKAY", // Add your actual GitHub links
     },
     {
-      name: "Proeung Chiso",
-      position: "Mentor ",
+      name: "Kea Daron",
+      position: "Lead Java",
       color: "yellow",
-      image: "src/assets/imgAboutUs/CherChiso.png",
+      image: daronImg,
       telegram: "https://t.me/proeungchiso",
       github: "https://github.com/proeungchiso",
     },
     {
-      name: "Keo KAY",
-      position: "Mentor ",
+      name: "Chhun Meyling",
+      position: "Lead Java",
       color: "blue",
-      image: "src/assets/imgAboutUs/CherKeo.png",
+      image: daronImg,
       telegram: "https://t.me/keoKAY", // Add your actual Telegram links
       github: "https://github.com/keoKAY", // Add your actual GitHub links
     },
     {
-      name: "Proeung Chiso",
+      name: "Sorn Sophamarinet",
       position: "Mentor ",
       color: "yellow",
-      image: "src/assets/imgAboutUs/CherChiso.png",
+      image: marinetImg,
       telegram: "https://t.me/proeungchiso",
       github: "https://github.com/proeungchiso",
     },
     {
-      name: "Keo KAY",
+      name: "Korm TaingAn",
       position: "Mentor ",
       color: "blue",
-      image: "src/assets/imgAboutUs/CherKeo.png",
+      image: tainganImg,
       telegram: "https://t.me/keoKAY", // Add your actual Telegram links
       github: "https://github.com/keoKAY", // Add your actual GitHub links
     },

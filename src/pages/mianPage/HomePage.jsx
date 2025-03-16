@@ -19,6 +19,7 @@ export default function HomePage() {
     threshold: 0.5, // Trigger when 50% is in view
   });
   const { t } = useTranslation(); // Initialize the translation hook
+  
   useEffect(() => {
     AOS.init({ duration: 700, once: false });
   }, []);
@@ -136,47 +137,51 @@ export default function HomePage() {
           <PopularCart />
         </div>
       </section>
-      <section className="bg-primary container px-5 py-5 md:px-20 xl:px-32 dark:bg-primary">
-        <div className="text-white flex justify-between items-center px-12 py-8 rounded-xl">
-          <div className="max-w-lg">
-            <h2 className="text-3xl font-semibold leading-tight text-white-text dark:text-white-text">
-              {t("opportunitiesCurated")}
-            </h2>
-          </div>
+      <section className="bg-primary container px-5 py-5 md:px-10 lg:px-20 xl:px-32 dark:bg-primary">
+      <div className="text-white flex flex-col md:flex-row justify-between items-center px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-8 rounded-xl gap-6 md:gap-0">
+        {/* Left Section (Title) */}
+        <div className="max-w-full md:max-w-lg text-center md:text-left">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold leading-tight text-white-text dark:text-white-text">
+            {t("opportunitiesCurated")}
+          </h2>
+        </div>
 
-          <div
-            ref={ref}
-            className="flex items-center gap-12 border-l-2 border-white px-12">
-            <div className="text-center">
-              <h3 className="text-4xl font-bold text-white-text dark:text-white-text">
-                {inView && (
-                  <CountUp start={0} end={500} duration={5} separator="," />
-                )}{" "}
-                +
-              </h3>
-              <p className="text-lg text-white-text dark:text-white-text">
-                {t("jobOpenings")}
-              </p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-4xl font-bold text-white-text dark:text-white-text">
-                {inView && <CountUp start={0} end={328} duration={5} />}+
-              </h3>
-              <p className="text-lg text-white-text dark:text-white-text">
-                {t("topEmployers")}
-              </p>
-            </div>
+        {/* Middle Section (Counters) */}
+        <div
+          ref={ref}
+          className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 md:gap-12 border-t-2 sm:border-t-0 sm:border-l-2 border-white pt-6 sm:pt-0 px-4 sm:px-8 md:px-12"
+        >
+          <div className="text-center">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white-text dark:text-white-text">
+              {inView && (
+                <CountUp start={0} end={500} duration={5} separator="," />
+              )}{" "}
+              +
+            </h3>
+            <p className="text-sm sm:text-base md:text-lg text-white-text dark:text-white-text">
+              {t("jobOpenings")}
+            </p>
           </div>
-
-          <div className="relative">
-            <img
-              src="https://remitpay.co.in/assets/img/others/fact_img.png"
-              alt="People"
-              className="w-56 h-auto"
-            />
+          <div className="text-center">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white-text dark:text-white-text">
+              {inView && <CountUp start={0} end={328} duration={5} />}+
+            </h3>
+            <p className="text-sm sm:text-base md:text-lg text-white-text dark:text-white-text">
+              {t("topEmployers")}
+            </p>
           </div>
         </div>
-      </section>
+
+        {/* Right Section (Image) */}
+        <div className="relative">
+          <img
+            src="https://remitpay.co.in/assets/img/others/fact_img.png"
+            alt="People"
+            className="w-40 sm:w-48 md:w-56 h-auto"
+          />
+        </div>
+      </div>
+    </section>
       <section className="container px-5 py-5 md:px-20 xl:px-32 dark:bg-black-background">
         <div className="py-16 text-start  ">
           <h2

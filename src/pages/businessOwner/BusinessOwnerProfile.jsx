@@ -33,9 +33,7 @@ const BusinessProfile = () => {
   } = useGetMyBookmarkQuery();
   console.log(" My Wish List", wishlistData);
 
-  // Ensure wishlistItems is always an array
-  const wishlistItems = wishlistData?.[0]?.service || [];
-  console.log("Wishlist Items: ");
+  const wishlistItems = wishlistData || [];
   // Fetch wishlist data
 
   console.log("Me As Business owner: ", data);
@@ -44,19 +42,21 @@ const BusinessProfile = () => {
 
   console.log("Wishlist Items: ", wishlistItems);
 
-  const [deleteService, { isLoading: deleteLoading }] =
+  const [deleteService, { isLoading: deleteBookmarkLoading  }] =
     useDeleteBookmarkMutation();
   const [showAllServices, setShowAllServices] = useState(false);
   const [showAllWishlist, setShowAllWishlist] = useState(false);
 
   const userData = data?.data || {};
 
-  const handleDeleteService = async (serviceId) => {
-    if (confirm("Are you sure you want to delete this service?")) {
+  const handleDeleteWishlist = async (bookmarkId) => {
+    if (confirm("Are you sure you want to remove this item from your wishlist?")) {
       try {
-        await deleteService(serviceId);
+        await deleteService(bookmarkId);
+        // You might want to add a success message here
       } catch (error) {
-        console.error("Error deleting service:", error);
+        console.error("Error removing item from wishlist:", error);
+        // You might want to show an error message to the user
       }
     }
   };
@@ -359,63 +359,67 @@ const BusinessProfile = () => {
           )}
 
           {/* Wishlist List */}
+          {/* Wishlist List */}
           <div className="space-y-6">
-            {wishlistItems.map((wishlistItem) => (
-              <div
-                key={wishlistItem.id}
-                className="bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex">
-                {/* Wishlist Item Image */}
-                <div className="relative w-[300px] h-[200px] flex-shrink-0">
-                  <img
-                    src={
-                      wishlistItem.service.jobImages &&
-                      wishlistItem.service.jobImages.length > 0
-                        ? wishlistItem.service.jobImages[0]
-                        : "https://via.placeholder.com/300"
-                    }
-                    alt={wishlistItem.service.title}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-
-                {/* Wishlist Item Details */}
-                <div className="p-4 flex-1">
-                  {/* Title and Date */}
-                  <div className="border-b pb-3">
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                      Added on{" "}
-                      {new Date(
-                        wishlistItem.service.createdAt
-                      ).toLocaleDateString()}
-                    </span>
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mt-2 line-clamp-1">
-                      {wishlistItem.service.title}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <p className="mt-3 text-gray-600 dark:text-gray-300 line-clamp-2">
-                    {wishlistItem.service.description}
-                  </p>
-
-                  {/* Actions */}
-                  <div className="flex  items-center mt-4 gap-4">
-                    <Link
-                      to={`/service/${wishlistItem.service.id}`}
-                      className="text-teal-600 hover:underline font-medium">
-                      View Details
-                    </Link>
-                    <button
-                      onClick={() =>
-                        handleDeleteService(wishlistItem.service.id)
+            {(showAllWishlist ? wishlistItems : wishlistItems.slice(0, 2)).map(
+              (wishlistItem) => (
+                <div
+                  key={wishlistItem.id}
+                  className="bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden flex">
+                  {/* Wishlist Item Image */}
+                  <div className="relative w-[300px] h-[200px] flex-shrink-0">
+                    <img
+                      src={
+                        wishlistItem.service.jobImages &&
+                        wishlistItem.service.jobImages.length > 0
+                          ? wishlistItem.service.jobImages[0]
+                          : "https://via.placeholder.com/300"
                       }
-                      className="text-accent hover:underline ">
-                      Dellet Bookmark
-                    </button>
+                      alt={wishlistItem.service.title}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+
+                  {/* Wishlist Item Details */}
+                  <div className="p-4 flex-1">
+                    {/* Title and Date */}
+                    <div className="border-b pb-3">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        Added on{" "}
+                        {new Date(
+                          wishlistItem.service.createdAt
+                        ).toLocaleDateString()}
+                      </span>
+                      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mt-2 line-clamp-1">
+                        {wishlistItem.service.title}
+                      </h3>
+                    </div>
+
+                    {/* Description */}
+                    <p className="mt-3 text-gray-600 dark:text-gray-300 line-clamp-2">
+                      {wishlistItem.service.description}
+                    </p>
+
+                    {/* Actions */}
+                    <div className="flex items-center mt-4 gap-4">
+                      <Link
+                        to={`/service/${wishlistItem.service.id}`}
+                        className="text-teal-600 hover:underline font-medium">
+                        View Details
+                      </Link>
+                      <button
+                        onClick={() => handleDeleteWishlist(wishlistItem.id)} // Use the wishlist item ID, not the service ID
+                        disabled={deleteBookmarkLoading}
+                        className="text-accent hover:underline">
+                        {deleteBookmarkLoading
+                          ? "Deleting..."
+                          : "Delete Bookmark"}
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
       </div>

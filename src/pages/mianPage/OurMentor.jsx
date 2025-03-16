@@ -1,5 +1,7 @@
 import React from "react";
 import { FaTelegram, FaGithub } from "react-icons/fa"; // Import icons
+import cherChisoImg from "../../assets/imgAboutUs/cherChiso.png";
+import cherKeoImg from "../../assets/imgAboutUs/CherKeo.png";
 
 const OurMentor = () => {
   const employees = [
@@ -7,7 +9,7 @@ const OurMentor = () => {
       name: "Keo KAY",
       position: "Mentor ",
       color: "blue",
-      image: "src/assets/imgAboutUs/CherKeo.png",
+      image: cherKeoImg,
       telegram: "https://t.me/keoKAY", // Add your actual Telegram links
       github: "https://github.com/keoKAY", // Add your actual GitHub links
     },
@@ -15,7 +17,7 @@ const OurMentor = () => {
       name: "Proeung Chiso",
       position: "Mentor ",
       color: "yellow",
-      image: "src/assets/imgAboutUs/CherChiso.png",
+      image: cherChisoImg,
       telegram: "https://t.me/proeungchiso",
       github: "https://github.com/proeungchiso",
     },
