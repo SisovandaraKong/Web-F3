@@ -79,15 +79,15 @@ const CardWhyUS = () => {
               {/* Add translated title */}
               <p>{t(card.descriptionKey)}</p> {/* Add translated description */}
             </div>
-            <div className="pt-5 text-base font-semibold leading-7">
+            {/* <div className="pt-5 text-base font-semibold leading-7">
               <p>
                 <a
                   href={card.link}
                   className="text-secondary transition-all duration-300 group-hover:text-white-text">
-                  {t("readDocs")} &rarr; {/* Add translated link text */}
+                  {t("readDocs")} &rarr;
                 </a>
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       ))}

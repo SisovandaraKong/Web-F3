@@ -10,7 +10,7 @@ export const jobSlide = apiSlide.injectEndpoints({
     }),
     getJobById: build.query({
       query: (id) => ({
-        url: `/api/jobs-service/jobs/${id} =page${page}`,
+        url: `/api/job-service/job${id}`,
         method: "GET",
       }),
     }),
@@ -23,7 +23,7 @@ export const jobSlide = apiSlide.injectEndpoints({
           body: data,
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         };
       },
@@ -40,8 +40,9 @@ export const jobSlide = apiSlide.injectEndpoints({
   }),
 });
 
-export const  {
-    useGetAllJobsQuery,
-    useGetMyOwnJobsQuery,
-    useCreateJobMutation,
+export const {
+  useGetAllJobsQuery,
+  useGetMyOwnJobsQuery,
+  useGetJobByIdQuery,
+  useCreateJobMutation,
 } = jobSlide;
