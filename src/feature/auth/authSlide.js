@@ -30,8 +30,7 @@ export const registerFreelancer = apiSlide.injectEndpoints({
       query: () => {
         const token = localStorage.getItem("accessToken");
         if (!token) {
-          console.error("Token is missing. Please log in again.");
-          return {};
+          throw new Error("No token found in localStorage");
         }
         return {
           url: "/api/users/me",
@@ -41,6 +40,7 @@ export const registerFreelancer = apiSlide.injectEndpoints({
           },
         };
       },
+      providesTags: ["User"], // Tag this query for cache invalidation
     }),
   }),
 });
