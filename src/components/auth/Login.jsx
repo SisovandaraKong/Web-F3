@@ -41,7 +41,7 @@ const LoginPage = () => {
           }
 
           toast.success("Login successful! Welcome back!", {
-            position: "top-right",
+            position: "bottom-right",
           });
 
           // Add role-based navigation logic
