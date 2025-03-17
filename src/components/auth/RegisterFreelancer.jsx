@@ -76,7 +76,7 @@ const RegisterFreelancer = () => {
         toast.success("Registration successful! Welcome to JobSeek!", {
           position: "top-right",
         });
-        navigate("/register-freelancer/login");
+        navigate("/login");
       } catch (err) {
         if (err.status === 409) {
           toast.error(
@@ -347,7 +347,7 @@ const RegisterFreelancer = () => {
               Already have an account?{" "}
               <span
                 className="text-blue-900 dark:text-blue-300 hover:underline cursor-pointer font-medium"
-                onClick={() => navigate("/register-freelancer/login")}
+                onClick={() => navigate("/login")}
               >
                 Login now
               </span>
