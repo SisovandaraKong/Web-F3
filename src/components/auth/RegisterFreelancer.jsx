@@ -6,7 +6,7 @@ import Ta1 from "../../assets/Ta_Images/LoginJoinUs.png";
 import Ta2 from "../../assets/Ta_Images/Logo.png";
 import { useRegisterFreelancerMutation } from "../../feature/auth/authSlide";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import * as yup from "yup";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
@@ -24,22 +24,26 @@ const RegisterFreelancer = () => {
     formik.setFieldValue("phone", value);
   };
 
-  const [registerFreelancer, { isLoading, error }] = useRegisterFreelancerMutation();
+  const [registerFreelancer, { isLoading, error }] =
+    useRegisterFreelancerMutation();
 
-  const validationSchema = Yup.object({
-    fullName: Yup.string().required("Full name is required"),
-    gender: Yup.string().required("Gender is required"),
-    address: Yup.string().required("Address is required"),
-    username: Yup.string()
+  const validationSchema = yup.object({
+    fullName: yup.string().required("Full name is required"),
+    gender: yup.string().required("Gender is required"),
+    address: yup.string().required("Address is required"),
+    username: yup
+      .string()
       .min(3, "Username must be at least 3 characters")
       .required("Username is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    phone: Yup.string().required("Phone number is required"),
-    password: Yup.string()
+    email: yup.string().email("Invalid email").required("Email is required"),
+    phone: yup.string().required("Phone number is required"),
+    password: yup
+      .string()
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords must match")
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match")
       .required("Confirm password is required"),
   });
 
@@ -90,7 +94,7 @@ const RegisterFreelancer = () => {
           );
         }
       }
-    }
+    },
   });
 
   return (
@@ -101,7 +105,9 @@ const RegisterFreelancer = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
             Welcome to
           </h1>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold">JobSeek</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold">
+            JobSeek
+          </h1>
           <img
             src={Ta1}
             alt="Join Us"
@@ -115,7 +121,9 @@ const RegisterFreelancer = () => {
         <div className="w-full max-w-md space-y-4 sm:space-y-6">
           <div className="flex items-center gap-3">
             <img src={Ta2} alt="Logo" className="w-10 h-10 sm:w-12 sm:h-12" />
-            <h1 className="text-2xl sm:text-3xl font-bold text-blue-900 dark:text-blue-300">JobSeek</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-blue-900 dark:text-blue-300">
+              JobSeek
+            </h1>
           </div>
 
           <div>
@@ -127,7 +135,10 @@ const RegisterFreelancer = () => {
             </p>
           </div>
 
-          <form onSubmit={formik.handleSubmit} className="space-y-3 sm:space-y-4">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="space-y-3 sm:space-y-4"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {/* Full Name */}
               <div>
@@ -320,11 +331,12 @@ const RegisterFreelancer = () => {
                   )}
                 </button>
               </div>
-              {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-                <p className="text-red-500 dark:text-red-400 text-xs mt-1">
-                  {formik.errors.confirmPassword}
-                </p>
-              )}
+              {formik.touched.confirmPassword &&
+                formik.errors.confirmPassword && (
+                  <p className="text-red-500 dark:text-red-400 text-xs mt-1">
+                    {formik.errors.confirmPassword}
+                  </p>
+                )}
             </div>
 
             {/* Submit Button */}
@@ -337,7 +349,8 @@ const RegisterFreelancer = () => {
             </button>
             {error && (
               <p className="text-red-500 dark:text-red-400 text-sm text-center">
-                {error.data?.message || "An error occurred during registration."}
+                {error.data?.message ||
+                  "An error occurred during registration."}
               </p>
             )}
           </form>
@@ -354,7 +367,9 @@ const RegisterFreelancer = () => {
             </p>
             <div className="flex items-center justify-center gap-2">
               <span className="w-1/4 h-px bg-gray-300 dark:bg-gray-600"></span>
-              <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">OR</span>
+              <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                OR
+              </span>
               <span className="w-1/4 h-px bg-gray-300 dark:bg-gray-600"></span>
             </div>
           </div>
