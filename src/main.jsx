@@ -22,7 +22,7 @@ import ServiceDetail from "./pages/freelaner/ServideDetail.jsx";
 import { useEffect, useState } from "react";
 import CreateJob from "./pages/creatAtJob/CreateJob.jsx";
 import EditProfileBusinessOwner from "./pages/sitting/EditProfileBusinessOwner.jsx";
-import JobDetailPage from "./pages/businessOwner/jobDetailPage.jsx";
+import JobDetailPage from "./pages/businessOwner/JobDetailPage.jsx";
 import EditProfileFreelancerPage from "./pages/sitting/EditProfileFreelancerPage.jsx";
 const ProtectedRoute = ({ children, allowedRoles }) => {
   const [userRole, setUserRole] = useState(null);
@@ -165,7 +165,7 @@ const AppRoutes = () => (
     {/* Authentication routes */}
     <Route path="/register-freelancer" element={<RegisterFreelancer />} />
     <Route path="/register-businessowner" element={<RegisterBusinessOwner />} />
-    <Route path="/register-freelancer/login" element={<Login />} />
+    <Route path="/login" element={<Login />} />
   </Routes>
 );
 

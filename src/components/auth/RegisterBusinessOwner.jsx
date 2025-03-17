@@ -42,7 +42,7 @@ const RegisterBusinessOwner = () => {
       toast.success("Registration successful! Welcome to JobSeek!", {
         position: "top-right",
       });
-      navigate("/register-businessowner/login");
+      navigate("/login");
     } catch (err) {
       toast.error(err.data?.message || "Registration failed! Please try again.");
     }
@@ -270,7 +270,7 @@ const RegisterBusinessOwner = () => {
               Already have an account?{" "}
               <span
                 className="text-blue-900 dark:text-blue-300 hover:underline cursor-pointer font-medium"
-                onClick={() => navigate("/register-businessowner/login")}
+                onClick={() => navigate("/login")}
               >
                 Login now
               </span>
