@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import * as yup from "yup";
 import { useNavigate } from "react-router";
 import { useLoginMutation } from "../../feature/auth/authSlide";
 import Ta1 from "../../assets/Ta_Images/LoginJoinUs.png";
@@ -15,9 +15,9 @@ const LoginPage = () => {
 
   const togglePasswordVisibility = () => setPasswordVisible(!passwordVisible);
 
-  const validationSchema = Yup.object({
-    email: Yup.string().required("Email or username is required"),
-    password: Yup.string().required("Password is required"),
+  const validationSchema = yup.object({
+    email: yup.string().required("Email or username is required"),
+    password: yup.string().required("Password is required"),
   });
 
   const formik = useFormik({
@@ -75,7 +75,9 @@ const LoginPage = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
             Welcome to
           </h1>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold">JobSeek</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold">
+            JobSeek
+          </h1>
           <img
             src={Ta1}
             alt="Welcome Graphic"
@@ -89,7 +91,9 @@ const LoginPage = () => {
         <div className="w-full max-w-md space-y-6 sm:space-y-8">
           <div className="flex items-center gap-3">
             <img src={Ta2} alt="Logo" className="w-10 h-10 sm:w-12 sm:h-12" />
-            <h1 className="text-2xl sm:text-3xl font-bold text-blue-900 dark:text-blue-300">JobSeek</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-blue-900 dark:text-blue-300">
+              JobSeek
+            </h1>
           </div>
 
           <div>
@@ -101,7 +105,10 @@ const LoginPage = () => {
             </p>
           </div>
 
-          <form onSubmit={formik.handleSubmit} className="space-y-4 sm:space-y-6">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="space-y-4 sm:space-y-6"
+          >
             {/* Email/Username */}
             <div>
               <input
@@ -164,7 +171,8 @@ const LoginPage = () => {
             {/* Error Message */}
             {error && (
               <p className="text-red-500 dark:text-red-400 text-xs sm:text-sm text-center">
-                {error?.data?.message || "Invalid credentials. Please try again."}
+                {error?.data?.message ||
+                  "Invalid credentials. Please try again."}
               </p>
             )}
 
