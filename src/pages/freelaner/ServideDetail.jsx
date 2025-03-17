@@ -13,7 +13,9 @@ export default function ServiceDetail() {
   const users = userData?.data?.content || [];
   const services = serviceData?.content || [];
   const service = services.find((item) => String(item.id) === String(id));
-  const user = users.find((item) => String(item.id) === String(service?.userId));
+  const user = users.find(
+    (item) => String(item.id) === String(service?.userId)
+  );
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const relatedServices = services.filter((s) => s.id !== service?.id);
@@ -30,8 +32,8 @@ export default function ServiceDetail() {
   }, [totalSlides]);
 
   const goToNext = () => setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  const goToPrevious = () => setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-
+  const goToPrevious = () =>
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -42,7 +44,6 @@ export default function ServiceDetail() {
       </div>
     );
   }
-
   if (isError || !service) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -57,129 +58,148 @@ export default function ServiceDetail() {
       </div>
     );
   }
-
   return (
     <section className="bg-gray-50 dark:bg-gray-900 min-h-screen pt-16 pb-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Service Hero Section */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden mb-12">
-          {/* Shorter Image Section */}
-          <div className="relative">
-            <img
-              src={
-                service.jobImages[0] ||
-                "https://i.pinimg.com/originals/4f/7e/ab/4f7eab8b98913e658391c54b57980e68.gif"
-              }
-              className="w-full h-[350px] object-cover" // Reduced from 500px to 350px
-              alt={service.title}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-            <span
-              className={`absolute top-6 left-6 px-4 py-1.5 rounded-full text-sm font-medium text-white shadow-md ${
-                service.status === "active"
-                  ? "bg-green-500"
-                  : service.status === "disable"
-                  ? "bg-red-500"
-                  : "bg-blue-500"
-              }`}
-            >
-              {service.status.charAt(0).toUpperCase() + service.status.slice(1)}
-            </span>
-          </div>
-
-          {/* Details Section */}
-          <div className="p-8">
-            <div className="flex items-center gap-4 mb-6">
+      <div className="max-w-7xl mx-auto ">
+        <div className="bg-white dark:bg-gray-800 rounded-xl  overflow-hidden mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Left Column: Image Section */}
+            <div className="relative">
               <img
                 src={
-                  service.jobImages.length > 0
-                    ? service.jobImages[0]
-                    : "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                  service.jobImages[0] ||
+                  "https://i.pinimg.com/originals/4f/7e/ab/4f7eab8b98913e658391c54b57980e68.gif"
                 }
-                className="h-12 w-12 rounded-full object-cover border-2 border-gray-200 dark:border-gray-600 shadow-sm"
-                alt="service logo"
+                className="w-full h-[350px] object-cover"
+                alt={service.title}
               />
-              <div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {service.category.name}
-                </p>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mt-1">
-                  {service.title}
-                </h1>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <span
+                className={`absolute top-6 left-6 px-4 py-1.5 rounded-full text-sm font-medium text-white shadow-md ${
+                  service.status === "active"
+                    ? "bg-green-500"
+                    : service.status === "disable"
+                    ? "bg-red-500"
+                    : "bg-blue-500"
+                }`}>
+                {service.status.charAt(0).toUpperCase() +
+                  service.status.slice(1)}
+              </span>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6">
-              {service.description}
-            </p>
-
-            {/* Static Text Sections */}
-            <div className="space-y-8 mb-8">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Job Description
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  We provide professional IT solutions, including web and software development, system optimization, and technical support. Our goal is to deliver high-quality, efficient, and secure digital solutions tailored to your needs.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Job Responsibility
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  We handle everything from coding and system integration to troubleshooting and performance enhancement. Our team ensures smooth project execution, clear communication, and timely delivery to meet your business objectives.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  My Experience
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  With years of hands-on experience in IT and software development, we have successfully completed various projects across multiple industries. Our expertise spans full-stack development, cybersecurity, cloud computing, and AI integration.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  My Background
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Backed by a strong foundation in IT, programming, and network engineering, we stay updated with the latest technologies and best practices. Our commitment to continuous learning ensures we provide innovative and reliable solutions to help businesses grow.
-                </p>
-              </div>
-            </div>
-
-            {/* User Info */}
-            {user ? (
-              <div className="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg mb-8">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Service Provider
-                </h3>
-                <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <p>
-                    <strong className="font-medium">Name:</strong> {user.fullName}
+            {/* Right Column: Details Section */}
+            <div className="p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {service.category.name}
                   </p>
-                  <p>
-                    <strong className="font-medium">Email:</strong> {user.email}
-                  </p>
-                  <p>
-                    <strong className="font-medium">Phone:</strong> {user.phone}
-                  </p>
+                  <h1 className="text-3xl font-bold text-gray-900 dark:text-white mt-1">
+                    {service.title}
+                  </h1>
                 </div>
               </div>
-            ) : (
-              <p className="text-red-500 mb-8">Provider information unavailable</p>
-            )}
+              <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6">
+                {service.description}
+              </p>
 
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
-              Apply Now
-            </button>
+              {user ? (
+                <div className="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg mb-8">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                    Service Provider
+                  </h3>
+                  <div className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <p>
+                      <strong className="font-medium">Name:</strong>{" "}
+                      {user.fullName}
+                    </p>
+                    <p>
+                      <strong className="font-medium">Email:</strong>{" "}
+                      {user.email}
+                    </p>
+                    <p>
+                      <strong className="font-medium">Phone:</strong>{" "}
+                      {user.phone}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-red-500 mb-8">
+                  Provider information unavailable
+                </p>
+              )}
+              <button className="w-full bg-primary  text-white font-semibold py-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
+                Apply Now
+              </button>
+            </div>
           </div>
         </div>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800">
+              Job Description
+            </h2>
+            <p className="mt-2 text-gray-700">
+              As a software development company dedicated to delivering
+              high-quality, scalable, and innovative web solutions, we are
+              looking for a highly skilled Senior Back-End Developer to join our
+              team and help us build and maintain robust server-side
+              applications. If you are passionate about coding, problem-solving,
+              and working with the latest technologies, we want to hear from
+              you!
+            </p>
+          </div>
 
+          {/* Job Requirement Section */}
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800">
+              Job Requirements
+            </h2>
+            <ul className="mt-2 list-disc list-inside space-y-2 text-gray-700">
+              <li>4+ years of experience in back-end web development.</li>
+              <li>
+                Proficiency in Node.js, Python (Django/Flask), Java, or PHP
+                (Laravel).
+              </li>
+              <li>
+                Strong experience with databases such as PostgreSQL, MySQL, or
+                MongoDB.
+              </li>
+              <li>
+                Knowledge of RESTful APIs, and microservices architecture.
+              </li>
+              <li>
+                Familiarity with cloud platforms such as AWS, Google Cloud, or
+                Azure.
+              </li>
+            </ul>
+          </div>
+          {/* Job Responsibility Section */}
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800">
+              Job Responsibilities
+            </h2>
+            <ul className="mt-2 list-disc list-inside space-y-2 text-gray-700">
+              <li>
+                Design, develop, and maintain scalable and secure server-side
+                applications.
+              </li>
+              <li>
+                Write clean, efficient, and maintainable code following best
+                practices.
+              </li>
+              <li>
+                Build and maintain APIs and microservices for front-end and
+                mobile applications.
+              </li>
+              <li>Optimize database performance and ensure data integrity.</li>
+              <li>
+                Collaborate with front-end developers, DevOps engineers, and
+                other team members.
+              </li>
+            </ul>
+          </div>
+        </div>
         {/* Contact Us Section */}
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-12">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
@@ -188,7 +208,9 @@ export default function ServiceDetail() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Google Maps */}
             <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.631404683705!2d104.89921187452715!3d11.578259843893385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951e96d257a6f%3A0x6b66703c5fc0c7cc!2sScience%20and%20Technology%20Advanced%20Development%20Co.%2C%20Ltd.!5e0!3m2!1skm!2skh!4v1741927447451!5m2!1skm!2skh"                width="100%"
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.631404683705!2d104.89921187452715!3d11.578259843893385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951e96d257a6f%3A0x6b66703c5fc0c7cc!2sScience%20and%20Technology%20Advanced%20Development%20Co.%2C%20Ltd.!5e0!3m2!1skm!2skh!4v1741927447451!5m2!1skm!2skh"
+                width="100%"
                 height="300"
                 style={{ border: 0, borderRadius: "8px" }}
                 allowFullScreen=""
@@ -236,18 +258,19 @@ export default function ServiceDetail() {
               <div className="overflow-hidden">
                 <div
                   className="flex transition-transform duration-500 ease-in-out"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                   {Array.from({ length: totalSlides }).map((_, slideIndex) => (
                     <div key={slideIndex} className="flex min-w-full gap-6">
                       {relatedServices
-                        .slice(slideIndex * slidesToShow, (slideIndex + 1) * slidesToShow)
+                        .slice(
+                          slideIndex * slidesToShow,
+                          (slideIndex + 1) * slidesToShow
+                        )
                         .map((related) => (
                           <NavLink
                             key={related.id}
                             to={`/freelancer-page/${related.id}`}
-                            className="w-1/4"
-                          >
+                            className="w-1/4">
                             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group">
                               <div className="relative overflow-hidden">
                                 <img
@@ -279,15 +302,13 @@ export default function ServiceDetail() {
                 <>
                   <button
                     onClick={goToPrevious}
-                    className="absolute left-[-20px] top-1/2 -translate-y-1/2 bg-gray-800 dark:bg-gray-700 bg-opacity-70 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-90 transition-all"
-                  >
-                    <span className="text-2xl">‹</span>
+                    className="absolute left-[-50px] top-1/2 -translate-y-1/2 text-primary-hover bg-opacity-70  w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-90 transition-all">
+                    <span className="text-6xl">‹</span>
                   </button>
                   <button
-                    onClick={goToNext}
-                    className="absolute right-[-20px] top-1/2 -translate-y-1/2 bg-gray-800 dark:bg-gray-700 bg-opacity-70 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-90 transition-all"
-                  >
-                    <span className="text-2xl">›</span>
+                    onClick={goToPrevious}
+                    className="absolute right-[-50px] top-1/2 -translate-y-1/2 text-primary-hover bg-opacity-70  w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-90 transition-all">
+                    <span className="text-6xl">›</span>
                   </button>
                 </>
               )}
