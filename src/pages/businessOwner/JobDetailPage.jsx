@@ -9,6 +9,9 @@ export default function JobDetailPage() {
   const { data: userData } = useGetAllUsersQuery();
 
   const jobData = jobs?.content?.find((job) => job.id === id);
+  console.log("Job Data", jobData);
+
+  // Find the user who posted the job
   const users = userData?.data?.content || [];
   const jobPoster = users.find((user) => user.id === jobData?.userId);
 
@@ -77,13 +80,13 @@ export default function JobDetailPage() {
               </span>
             </div>
           </div>
-          <div className="mt-4 sm:mt-6">
-            <button className="bg-blue-500 dark:bg-blue-600 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg hover:bg-blue-600 dark:hover:bg-blue-700 transition duration-300 w-full text-sm sm:text-base">
+          {/* Apply Button */}
+          {/* <div className="mt-6">
+            <button className="bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition duration-300 w-full md:w-auto">
               Apply for this job
             </button>
-          </div>
+          </div> */}
         </div>
-
         {/* Right Column: Job Poster and Images */}
         <div className="space-y-4 sm:space-y-6">
           {jobPoster && (
@@ -117,6 +120,114 @@ export default function JobDetailPage() {
             ))}
           </div>
         </div>
+      </div>
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div>
+          <h2 className="text-xl font-semibold text-gray-800">
+            Job Description
+          </h2>
+          <p className="mt-2 text-gray-700">
+            As a software development company dedicated to delivering
+            high-quality, scalable, and innovative web solutions, we are looking
+            for a highly skilled Senior Back-End Developer to join our team and
+            help us build and maintain robust server-side applications. If you
+            are passionate about coding, problem-solving, and working with the
+            latest technologies, we want to hear from you!
+          </p>
+        </div>
+
+        {/* Job Requirement Section */}
+        <div>
+          <h2 className="text-xl font-semibold text-gray-800">
+            Job Requirements
+          </h2>
+          <ul className="mt-2 list-disc list-inside space-y-2 text-gray-700">
+            <li>4+ years of experience in back-end web development.</li>
+            <li>
+              Proficiency in Node.js, Python (Django/Flask), Java, or PHP
+              (Laravel).
+            </li>
+            <li>
+              Strong experience with databases such as PostgreSQL, MySQL, or
+              MongoDB.
+            </li>
+            <li>Knowledge of RESTful APIs, and microservices architecture.</li>
+            <li>
+              Familiarity with cloud platforms such as AWS, Google Cloud, or
+              Azure.
+            </li>
+          </ul>
+        </div>
+        {/* Job Responsibility Section */}
+        <div>
+          <h2 className="text-xl font-semibold text-gray-800">
+            Job Responsibilities
+          </h2>
+          <ul className="mt-2 list-disc list-inside space-y-2 text-gray-700">
+            <li>
+              Design, develop, and maintain scalable and secure server-side
+              applications.
+            </li>
+            <li>
+              Write clean, efficient, and maintainable code following best
+              practices.
+            </li>
+            <li>
+              Build and maintain APIs and microservices for front-end and mobile
+              applications.
+            </li>
+            <li>Optimize database performance and ensure data integrity.</li>
+            <li>
+              Collaborate with front-end developers, DevOps engineers, and other
+              team members.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 border-t border-primary pt-8 pb-8 ">
+        <div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.631404683705!2d104.89921187452715!3d11.578259843893385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951e96d257a6f%3A0x6b66703c5fc0c7cc!2sScience%20and%20Technology%20Advanced%20Development%20Co.%2C%20Ltd.!5e0!3m2!1skm!2skh!4v1741927447451!5m2!1skm!2skh"
+            width="100%"
+            height="300"
+            style={{ border: 0, borderRadius: "8px" }}
+            allowFullScreen=""
+            loading="lazy"
+            title="Location Map"></iframe>
+        </div>
+
+        <div className="space-y-6 text-gray-700 dark:text-gray-300">
+          <div>
+            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              Phone
+            </h4>
+            <p>+1 (555) 123-4567</p>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              Email
+            </h4>
+            <p>support@itsolutions.com</p>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              Working Hours
+            </h4>
+            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+            <p>Saturday: 10:00 AM - 2:00 PM</p>
+            <p>Sunday: Closed</p>
+          </div>
+        </div>
+      </div>
+      <div calssName="pt-8">
+        <h2 className="text-xl font-semibold text-gray-800">
+          Employee Benefits
+        </h2>
+        <ul className="mt-2 list-disc list-inside space-y-2 text-gray-700">
+          <li>Competitive salary and performance-based bonuses.</li>
+          <li>Flexible work hours.</li>
+          <li>Collaborative and dynamic work environment.</li>
+        </ul>
       </div>
     </div>
   );

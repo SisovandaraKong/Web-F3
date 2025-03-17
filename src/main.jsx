@@ -165,7 +165,7 @@ const AppRoutes = () => (
     {/* Authentication routes */}
     <Route path="/register-freelancer" element={<RegisterFreelancer />} />
     <Route path="/register-businessowner" element={<RegisterBusinessOwner />} />
-    <Route path="/register-freelancer/login" element={<Login />} />
+    <Route path="/login" element={<Login />} />
   </Routes>
 );
 
