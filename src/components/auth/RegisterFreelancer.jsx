@@ -6,7 +6,7 @@ import Ta1 from "../../assets/Ta_Images/LoginJoinUs.png";
 import Ta2 from "../../assets/Ta_Images/Logo.png";
 import { useRegisterFreelancerMutation } from "../../feature/auth/authSlide";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import * as yup from "yup";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
@@ -27,23 +27,23 @@ const RegisterFreelancer = () => {
   const [registerFreelancer, { isLoading, error }] =
     useRegisterFreelancerMutation();
 
-  const validationSchema = Yup.object({
-    fullName: Yup.string().required("Full name is required"),
-    gender: Yup.string().required("Gender is required"),
-    address: Yup.string().required("Address is required"),
-    username: Yup
+  const validationSchema = yup.object({
+    fullName: yup.string().required("Full name is required"),
+    gender: yup.string().required("Gender is required"),
+    address: yup.string().required("Address is required"),
+    username: yup
       .string()
       .min(3, "Username must be at least 3 characters")
       .required("Username is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    phone: Yup.string().required("Phone number is required"),
-    password: Yup
+    email: yup.string().email("Invalid email").required("Email is required"),
+    phone: yup.string().required("Phone number is required"),
+    password: yup
       .string()
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
-    confirmPassword: Yup
+    confirmPassword: yup
       .string()
-      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .oneOf([yup.ref("password"), null], "Passwords must match")
       .required("Confirm password is required"),
   });
 
