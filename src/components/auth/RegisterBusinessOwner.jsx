@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import * as yup from "yup";
+import * as Yup from "yup";
 import { useRegisterBusinessOwnerMutation } from "../../feature/auth/authSlide";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -10,23 +10,23 @@ import Ta2 from "../../assets/Ta_Images/Logo.png";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
-const validationSchema = yup.object({
-  fullName: yup.string().required("Full Name is required"),
-  gender: yup.string().required("Gender is required"),
-  profileImageUrl: yup.string().required("Profile Image URL is required"),
-  email: yup
+const validationSchema = Yup.object({
+  fullName: Yup.string().required("Full Name is required"),
+  gender: Yup.string().required("Gender is required"),
+  profileImageUrl: Yup.string().required("Profile Image URL is required"),
+  email: Yup
     .string()
     .email("Invalid email address")
     .required("Email is required"),
-  phone: yup.string().required("Phone number is required"),
-  userType: yup.string().required("User type is required"),
-  companyName: yup.string().required("Company Name is required"),
-  companyWebsite: yup
+  phone: Yup.string().required("Phone number is required"),
+  userType: Yup.string().required("User type is required"),
+  companyName: Yup.string().required("Company Name is required"),
+  companyWebsite: Yup
     .string()
     .url("Invalid URL")
     .required("Company Website is required"),
-  industry: yup.string().required("Industry is required"),
-  password: yup
+  industry: Yup.string().required("Industry is required"),
+  password: Yup
     .string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
