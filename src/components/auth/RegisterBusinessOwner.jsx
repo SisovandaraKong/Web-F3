@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import * as yup from "yup";
 import { useRegisterBusinessOwnerMutation } from "../../feature/auth/authSlide";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -10,21 +10,31 @@ import Ta2 from "../../assets/Ta_Images/Logo.png";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
-const validationSchema = Yup.object({
-  fullName: Yup.string().required("Full Name is required"),
-  gender: Yup.string().required("Gender is required"),
-  profileImageUrl: Yup.string().required("Profile Image URL is required"),
-  email: Yup.string().email("Invalid email address").required("Email is required"),
-  phone: Yup.string().required("Phone number is required"),
-  userType: Yup.string().required("User type is required"),
-  companyName: Yup.string().required("Company Name is required"),
-  companyWebsite: Yup.string().url("Invalid URL").required("Company Website is required"),
-  industry: Yup.string().required("Industry is required"),
-  password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+const validationSchema = yup.object({
+  fullName: yup.string().required("Full Name is required"),
+  gender: yup.string().required("Gender is required"),
+  profileImageUrl: yup.string().required("Profile Image URL is required"),
+  email: yup
+    .string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  phone: yup.string().required("Phone number is required"),
+  userType: yup.string().required("User type is required"),
+  companyName: yup.string().required("Company Name is required"),
+  companyWebsite: yup
+    .string()
+    .url("Invalid URL")
+    .required("Company Website is required"),
+  industry: yup.string().required("Industry is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
 });
 
 const RegisterBusinessOwner = () => {
-  const [registerBusinessOwner, { isLoading }] = useRegisterBusinessOwnerMutation();
+  const [registerBusinessOwner, { isLoading }] =
+    useRegisterBusinessOwnerMutation();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const navigate = useNavigate();
@@ -44,7 +54,9 @@ const RegisterBusinessOwner = () => {
       });
       navigate("/login");
     } catch (err) {
-      toast.error(err.data?.message || "Registration failed! Please try again.");
+      toast.error(
+        err.data?.message || "Registration failed! Please try again."
+      );
     }
   };
 
@@ -56,7 +68,9 @@ const RegisterBusinessOwner = () => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
             Welcome to
           </h1>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold">JobSeek</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold">
+            JobSeek
+          </h1>
           <img
             src={Ta1}
             alt="Join Us"
@@ -112,7 +126,11 @@ const RegisterBusinessOwner = () => {
                       placeholder="Full Name"
                       className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                     />
-                    <ErrorMessage name="fullName" component="p" className="text-red-500 dark:text-red-400 text-xs mt-1" />
+                    <ErrorMessage
+                      name="fullName"
+                      component="p"
+                      className="text-red-500 dark:text-red-400 text-xs mt-1"
+                    />
                   </div>
 
                   {/* Gender */}
@@ -127,7 +145,11 @@ const RegisterBusinessOwner = () => {
                       <option value="female">Female</option>
                       <option value="other">Other</option>
                     </Field>
-                    <ErrorMessage name="gender" component="p" className="text-red-500 dark:text-red-400 text-xs mt-1" />
+                    <ErrorMessage
+                      name="gender"
+                      component="p"
+                      className="text-red-500 dark:text-red-400 text-xs mt-1"
+                    />
                   </div>
                 </div>
 
@@ -140,7 +162,11 @@ const RegisterBusinessOwner = () => {
                       placeholder="Email"
                       className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                     />
-                    <ErrorMessage name="email" component="p" className="text-red-500 dark:text-red-400 text-xs mt-1" />
+                    <ErrorMessage
+                      name="email"
+                      component="p"
+                      className="text-red-500 dark:text-red-400 text-xs mt-1"
+                    />
                   </div>
 
                   {/* Phone */}
@@ -148,7 +174,9 @@ const RegisterBusinessOwner = () => {
                     <PhoneInput
                       country={"kh"}
                       value={phoneNumber}
-                      onChange={(value) => handlePhoneNumberChange(value, setFieldValue)}
+                      onChange={(value) =>
+                        handlePhoneNumberChange(value, setFieldValue)
+                      }
                       inputStyle={{
                         width: "100%",
                         height: "42px",
@@ -157,14 +185,19 @@ const RegisterBusinessOwner = () => {
                         paddingLeft: "48px",
                         backgroundColor: "#fff", // Light mode
                       }}
-                      buttonStyle={{ border: "none", background: "transparent" }}
+                      buttonStyle={{
+                        border: "none",
+                        background: "transparent",
+                      }}
                       containerStyle={{ position: "relative" }}
                       dropdownStyle={{ zIndex: 999 }}
                       specialLabel=""
                       className="dark:[&_.form-control]:bg-gray-700 dark:[&_.form-control]:border-gray-600 dark:[&_.form-control]:text-gray-100"
                     />
                     {touched.phone && errors.phone && (
-                      <p className="text-red-500 dark:text-red-400 text-xs mt-1">{errors.phone}</p>
+                      <p className="text-red-500 dark:text-red-400 text-xs mt-1">
+                        {errors.phone}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -177,7 +210,11 @@ const RegisterBusinessOwner = () => {
                     placeholder="Profile Image URL"
                     className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                   />
-                  <ErrorMessage name="profileImageUrl" component="p" className="text-red-500 dark:text-red-400 text-xs mt-1" />
+                  <ErrorMessage
+                    name="profileImageUrl"
+                    component="p"
+                    className="text-red-500 dark:text-red-400 text-xs mt-1"
+                  />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
@@ -189,7 +226,11 @@ const RegisterBusinessOwner = () => {
                       placeholder="Company Name"
                       className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                     />
-                    <ErrorMessage name="companyName" component="p" className="text-red-500 dark:text-red-400 text-xs mt-1" />
+                    <ErrorMessage
+                      name="companyName"
+                      component="p"
+                      className="text-red-500 dark:text-red-400 text-xs mt-1"
+                    />
                   </div>
 
                   {/* Industry */}
@@ -200,7 +241,11 @@ const RegisterBusinessOwner = () => {
                       placeholder="Industry"
                       className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                     />
-                    <ErrorMessage name="industry" component="p" className="text-red-500 dark:text-red-400 text-xs mt-1" />
+                    <ErrorMessage
+                      name="industry"
+                      component="p"
+                      className="text-red-500 dark:text-red-400 text-xs mt-1"
+                    />
                   </div>
                 </div>
 
@@ -212,7 +257,11 @@ const RegisterBusinessOwner = () => {
                     placeholder="Company Website"
                     className="w-full px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent transition text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700"
                   />
-                  <ErrorMessage name="companyWebsite" component="p" className="text-red-500 dark:text-red-400 text-xs mt-1" />
+                  <ErrorMessage
+                    name="companyWebsite"
+                    component="p"
+                    className="text-red-500 dark:text-red-400 text-xs mt-1"
+                  />
                 </div>
 
                 {/* User Type */}
@@ -225,7 +274,11 @@ const RegisterBusinessOwner = () => {
                     <option value="BUSINESS_OWNER">Business Owner</option>
                     <option value="INDIVIDUAL">Individual</option>
                   </Field>
-                  <ErrorMessage name="userType" component="p" className="text-red-500 dark:text-red-400 text-xs mt-1" />
+                  <ErrorMessage
+                    name="userType"
+                    component="p"
+                    className="text-red-500 dark:text-red-400 text-xs mt-1"
+                  />
                 </div>
 
                 {/* Password */}
@@ -249,7 +302,11 @@ const RegisterBusinessOwner = () => {
                       )}
                     </button>
                   </div>
-                  <ErrorMessage name="password" component="p" className="text-red-500 dark:text-red-400 text-xs mt-1" />
+                  <ErrorMessage
+                    name="password"
+                    component="p"
+                    className="text-red-500 dark:text-red-400 text-xs mt-1"
+                  />
                 </div>
 
                 {/* Submit Button */}
@@ -277,7 +334,9 @@ const RegisterBusinessOwner = () => {
             </p>
             <div className="flex items-center justify-center gap-2">
               <span className="w-1/4 h-px bg-gray-300 dark:bg-gray-600"></span>
-              <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">OR</span>
+              <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                OR
+              </span>
               <span className="w-1/4 h-px bg-gray-300 dark:bg-gray-600"></span>
             </div>
           </div>
