@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { useFormik } from "formik";
-import * as yup from "yup";
+import * as Yup from "yup";
 import { useNavigate } from "react-router";
 import { useLoginMutation } from "../../feature/auth/authSlide";
 import Ta1 from "../../assets/Ta_Images/LoginJoinUs.png";
@@ -15,9 +15,9 @@ const LoginPage = () => {
 
   const togglePasswordVisibility = () => setPasswordVisible(!passwordVisible);
 
-  const validationSchema = yup.object({
-    email: yup.string().required("Email or username is required"),
-    password: yup.string().required("Password is required"),
+  const validationSchema = Yup.object({
+    email: Yup.string().required("Email or username is required"),
+    password: Yup.string().required("Password is required"),
   });
 
   const formik = useFormik({
